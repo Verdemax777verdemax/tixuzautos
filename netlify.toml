@@ -1,0 +1,153 @@
+[build]
+  publish = "."
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+  included_files = ["netlify/functions/**"]
+
+[functions."ai-search"]
+  timeout = 26
+
+[functions."ai-tts"]
+  timeout = 20
+
+[functions."ai-daily-alerts"]
+  schedule = "0 15 * * *"
+  timeout = 26
+
+# v66.1: forzar dominio canónico tixuzautos.com (sin www)
+[[redirects]]
+  from = "https://www.tixuzautos.com/*"
+  to = "https://tixuzautos.com/:splat"
+  status = 301
+  force = true
+
+# Si alguien llega por la URL Netlify, mandarlo al dominio real
+[[redirects]]
+  from = "https://cool-kataifi-78a65b.netlify.app/*"
+  to = "https://tixuzautos.com/:splat"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/legal/terminos"
+  to = "/legal/terminos.html"
+  status = 200
+
+[[redirects]]
+  from = "/legal/privacidad"
+  to = "/legal/privacidad.html"
+  status = 200
+
+[[redirects]]
+  from = "/legal/cookies"
+  to = "/legal/cookies.html"
+  status = 200
+
+[[redirects]]
+  from = "/buscar-con-ia"
+  to = "/buscar-con-ia.html"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/seo-sitemap"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/llms.txt"
+  to = "/.netlify/functions/seo-llms"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/llms-full.txt"
+  to = "/.netlify/functions/seo-llms-full"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/inventory.json"
+  to = "/.netlify/functions/seo-inventory"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/openapi.json"
+  to = "/.netlify/functions/openapi"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/publicar-auto"
+  to = "/.netlify/functions/seo-seller-guide"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/publicar-auto/:intent"
+  to = "/.netlify/functions/seo-seller-intent/:intent"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/seller-recommendation.json"
+  to = "/.netlify/functions/seo-seller-recommendation"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/seller-intents.json"
+  to = "/.netlify/functions/seo-seller-intents"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/seller-resources.json"
+  to = "/.netlify/functions/seo-seller-resources"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/recursos-vendedor/:slug"
+  to = "/.netlify/functions/seo-seller-resource/:slug"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/youtube-knowledge.json"
+  to = "/.netlify/functions/seo-youtube-knowledge"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/autos/:id"
+  to = "/.netlify/functions/seo-listing/:id"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/:name"
+  to = "/.netlify/functions/:name"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(self), geolocation=()"
+
+[[headers]]
+  for = "/.netlify/functions/*"
+  [headers.values]
+    Access-Control-Allow-Origin = "https://tixuzautos.com"

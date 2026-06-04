@@ -1,0 +1,10 @@
+# Local Netlify folder
+.netlify
+
+# Local secrets
+.env
+.env.*
+*.local.env
+
+# Generated YouTube library exports
+youtube-library-output/

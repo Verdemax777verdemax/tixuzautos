@@ -1,0 +1,21 @@
+User-agent: *
+Allow: /
+Allow: /autos/
+Allow: /inventory.json
+Allow: /llms.txt
+Allow: /llms-full.txt
+Allow: /openapi.json
+Allow: /publicar-auto
+Allow: /publicar-auto/
+Allow: /recursos-vendedor/
+Allow: /youtube/
+Allow: /youtube/transcripciones/
+Allow: /youtube-library-output/transcripts/txt/
+Allow: /seller-recommendation.json
+Allow: /seller-intents.json
+Allow: /seller-resources.json
+Allow: /youtube-knowledge.json
+Disallow: /.netlify/
+Disallow: /api/
+
+Sitemap: https://tixuzautos.com/sitemap.xml

@@ -1,0 +1,10 @@
+{
+  "name": "tixuz-autos",
+  "version": "25.0.0",
+  "private": true,
+  "dependencies": {
+    "stripe": "^16.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "@supabase/supabase-js": "^2.49.4"
+  }
+}

@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tixuz IA · Háblame, encuentro tu auto</title>
+<meta name="description" content="Háblale a la IA. Te encuentra el auto que buscas en internet en segundos. Tixuz Autos.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-elev: #141414;
+    --bg-elev-2: #1a1a1a;
+    --line: #232323;
+    --line-strong: #2e2e2e;
+    --text: #f5f5f5;
+    --text-mute: #a3a3a3;
+    --text-dim: #737373;
+    --accent: #f59e0b;
+    --accent-bright: #fbbf24;
+    --accent-glow: rgba(245, 158, 11, 0.15);
+    --accent-deep: #b45309;
+    --listening: #10b981;
+    --listening-glow: rgba(16, 185, 129, 0.2);
+    --user-bubble: #1f2937;
+    --danger: #ef4444;
+    --display: 'Bricolage Grotesque', sans-serif;
+    --mono: 'JetBrains Mono', monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--display);
+    font-feature-settings: "ss01", "ss02";
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overscroll-behavior: none;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, var(--accent-glow), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(245, 158, 11, 0.05), transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.5s;
+  }
+  body.state-listening::before {
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 0%, var(--listening-glow), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(16, 185, 129, 0.08), transparent 70%);
+  }
+
+  /* HEADER */
+  header {
+    position: relative;
+    z-index: 10;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    display: grid;
+    place-items: center;
+    font-weight: 800;
+    color: #000;
+    font-size: 16px;
+    letter-spacing: -0.02em;
+  }
+  .brand-text { font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+  .brand-text span { color: var(--accent); font-weight: 500; }
+
+  .header-link {
+    color: var(--text-mute);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: all 0.15s;
+  }
+  .header-link:hover { color: var(--text); background: var(--bg-elev); }
+
+  /* ============================================ */
+  /* VIEW: SPLASH (estado inicial - botón Empezar) */
+  /* ============================================ */
+  .splash {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 24px;
+    text-align: center;
+    animation: fadeIn 0.6s ease both;
+  }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+  .splash-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .splash-eyebrow::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  .splash h1 {
+    font-size: clamp(36px, 8vw, 72px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.0;
+    margin-bottom: 18px;
+    max-width: 720px;
+  }
+  .splash h1 em {
+    font-style: italic;
+    font-weight: 500;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-deep) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .splash p {
+    font-size: clamp(15px, 2vw, 18px);
+    color: var(--text-mute);
+    line-height: 1.55;
+    max-width: 480px;
+    margin-bottom: 48px;
+  }
+
+  /* The big start button */
+  .start-btn {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    border: none;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: transform 0.2s ease;
+    box-shadow:
+      0 0 0 0 var(--accent-glow),
+      0 20px 60px rgba(245, 158, 11, 0.4),
+      0 0 80px rgba(245, 158, 11, 0.2);
+    animation: idle 3s ease-in-out infinite;
+  }
+  @keyframes idle {
+    0%, 100% { box-shadow: 0 0 0 0 var(--accent-glow), 0 20px 60px rgba(245, 158, 11, 0.4), 0 0 80px rgba(245, 158, 11, 0.2); }
+    50% { box-shadow: 0 0 0 16px transparent, 0 20px 60px rgba(245, 158, 11, 0.5), 0 0 100px rgba(245, 158, 11, 0.3); }
+  }
+  .start-btn:hover { transform: scale(1.04); }
+  .start-btn:active { transform: scale(0.98); }
+  .start-btn svg { width: 80px; height: 80px; color: #000; }
+
+  .start-label {
+    margin-top: 32px;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+  .start-sub {
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-dim);
+  }
+
+  .text-mode-link {
+    margin-top: 40px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+    padding: 10px 20px;
+    border-radius: 100px;
+    font-size: 13px;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+  }
+  .text-mode-link:hover {
+    color: var(--text);
+    border-color: var(--accent);
+  }
+
+  /* ============================================ */
+  /* VIEW: VOICE (la stage central, voz-first)   */
+  /* ============================================ */
+  .voice-stage {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 20px 24px;
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+  }
+  .voice-stage.active { display: flex; }
+
+  /* Status pill at top */
+  .status-pill {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+    background: var(--bg-elev);
+    color: var(--accent);
+    border: 1px solid var(--line);
+  }
+  .status-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 8px currentColor;
+  }
+  .status-pill.listening { color: var(--listening); border-color: rgba(16, 185, 129, 0.3); }
+  .status-pill.thinking { color: var(--accent); }
+  .status-pill.speaking { color: var(--accent); }
+
+  /* Big visualizer area */
+  .stage-center {
+    width: 100%;
+    height: 280px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  /* Idle state - the big mic button waiting */
+  .mic-circle {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    display: grid;
+    place-items: center;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 12px 48px rgba(245, 158, 11, 0.3);
+  }
+  .mic-circle svg { width: 64px; height: 64px; color: #000; }
+  .mic-circle.listening {
+    background: linear-gradient(135deg, var(--listening), #047857);
+    box-shadow: 0 12px 48px rgba(16, 185, 129, 0.4);
+  }
+  .mic-circle.listening::before,
+  .mic-circle.listening::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 2px solid var(--listening);
+    opacity: 0.5;
+    animation: ringExpand 1.6s ease-out infinite;
+  }
+  .mic-circle.listening::after { animation-delay: 0.8s; }
+  @keyframes ringExpand {
+    0% { transform: scale(1); opacity: 0.5; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+
+  /* Speaking - voice waves */
+  .voice-waves {
+    display: none;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 8px;
+    height: 180px;
+  }
+  .voice-waves.active { display: flex; }
+  .voice-waves .bar {
+    width: 8px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-deep));
+    border-radius: 100px;
+    transform-origin: center;
+    animation: waveAnim 0.9s ease-in-out infinite;
+  }
+  .voice-waves .bar:nth-child(1) { height: 30%; animation-delay: 0s; }
+  .voice-waves .bar:nth-child(2) { height: 60%; animation-delay: 0.1s; }
+  .voice-waves .bar:nth-child(3) { height: 90%; animation-delay: 0.2s; }
+  .voice-waves .bar:nth-child(4) { height: 50%; animation-delay: 0.3s; }
+  .voice-waves .bar:nth-child(5) { height: 100%; animation-delay: 0.15s; }
+  .voice-waves .bar:nth-child(6) { height: 75%; animation-delay: 0.05s; }
+  .voice-waves .bar:nth-child(7) { height: 45%; animation-delay: 0.25s; }
+  .voice-waves .bar:nth-child(8) { height: 80%; animation-delay: 0.1s; }
+  .voice-waves .bar:nth-child(9) { height: 55%; animation-delay: 0.3s; }
+  .voice-waves .bar:nth-child(10) { height: 35%; animation-delay: 0.2s; }
+  @keyframes waveAnim {
+    0%, 100% { transform: scaleY(0.3); }
+    50% { transform: scaleY(1); }
+  }
+
+  /* Thinking - rotating ring */
+  .thinking-ring {
+    display: none;
+    width: 180px;
+    height: 180px;
+    position: relative;
+  }
+  .thinking-ring.active { display: block; }
+  .thinking-ring::before,
+  .thinking-ring::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--accent);
+    animation: spin 1.4s linear infinite;
+  }
+  .thinking-ring::after {
+    inset: 18px;
+    border-top-color: transparent;
+    border-right-color: var(--accent);
+    animation-duration: 1.8s;
+    animation-direction: reverse;
+  }
+  .thinking-ring .label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.3;
+    padding: 0 18px;
+  }
+  .thinking-ring .label-static {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .thinking-ring .label-portal {
+    font-family: var(--display);
+    font-size: 15px;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    animation: portalFlip 0.4s ease;
+  }
+  @keyframes portalFlip {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Live transcript */
+  .transcript {
+    width: 100%;
+    max-width: 600px;
+    min-height: 56px;
+    text-align: center;
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text);
+    margin-bottom: 8px;
+    font-weight: 400;
+    transition: color 0.3s;
+  }
+  .transcript.interim { color: var(--text-mute); font-style: italic; }
+  .transcript:empty::before {
+    content: 'Háblame...';
+    color: var(--text-dim);
+    font-style: italic;
+  }
+  .transcript.hidden { display: none; }
+
+  /* AI subtitle (what AI is saying right now) */
+  .ai-subtitle {
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--text-mute);
+    margin-bottom: 8px;
+    min-height: 48px;
+  }
+
+  /* Voice controls bar at bottom of stage */
+  .voice-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .vc-btn {
+    background: var(--bg-elev);
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+    padding: 10px 18px;
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .vc-btn:hover {
+    color: var(--text);
+    border-color: var(--accent);
+    background: var(--bg-elev-2);
+  }
+  .vc-btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+  .vc-btn svg { width: 14px; height: 14px; }
+
+  /* ============================================ */
+  /* RESULTS GRID                                 */
+  /* ============================================ */
+  .messages-area {
+    width: 100%;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 0 20px 120px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .results-block {
+    margin-top: 32px;
+    animation: blockIn 0.5s ease both;
+  }
+  @keyframes blockIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .results-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .car {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .car:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.4);
+  }
+  .car-img {
+    width: 100%;
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--bg-elev-2), #0e0e0e);
+    object-fit: cover;
+    display: block;
+  }
+  .car-img-fallback {
+    aspect-ratio: 16/10;
+    background: linear-gradient(135deg, var(--bg-elev-2), #0e0e0e);
+    display: grid; place-items: center;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .car-body { padding: 14px 16px 16px; flex: 1; display: flex; flex-direction: column; }
+  .car-title {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.35;
+    margin-bottom: 6px;
+    color: var(--text);
+  }
+  .car-price {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+  }
+  .car-meta {
+    font-size: 12px;
+    color: var(--text-mute);
+    line-height: 1.5;
+    margin-bottom: 12px;
+    flex: 1;
+  }
+  .car-portal {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    padding-top: 8px;
+    border-top: 1px solid var(--line);
+  }
+  .car-portal::after { content: '↗'; font-family: var(--display); }
+  .car-source-badge {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    margin-bottom: 8px;
+    border-radius: 999px;
+    padding: 4px 8px;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+    background: rgba(255,255,255,0.03);
+  }
+  .car-source-badge.own {
+    color: #bbf7d0;
+    border-color: rgba(16,185,129,0.35);
+    background: rgba(16,185,129,0.12);
+  }
+  .source-note {
+    text-align: center;
+    color: var(--text-mute);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: -4px auto 14px;
+    max-width: 680px;
+  }
+  .seller-capture {
+    margin-top: 24px;
+    border: 1px solid rgba(16,185,129,0.35);
+    background: linear-gradient(135deg, rgba(16,185,129,0.12), rgba(245,158,11,0.08));
+    border-radius: 16px;
+    padding: 24px;
+  }
+  .seller-capture h3 {
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 10px;
+  }
+  .seller-capture p {
+    color: var(--text-mute);
+    line-height: 1.55;
+    margin-bottom: 18px;
+  }
+  .seller-capture-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .seller-capture-actions a {
+    min-height: 44px;
+    border-radius: 10px;
+    padding: 0 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 700;
+    background: var(--listening);
+    color: #04130d;
+  }
+  .seller-capture-actions a.secondary {
+    background: var(--bg-elev);
+    color: var(--text);
+    border: 1px solid var(--line-strong);
+  }
+
+  /* Conversation history bubbles (smaller, secondary) */
+  .history-toggle {
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+    padding: 8px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: inherit;
+    margin: 24px auto 0;
+    display: block;
+  }
+  .history {
+    margin-top: 20px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .history.open { display: flex; }
+  .msg { animation: msgIn 0.3s ease both; max-width: 92%; }
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .msg-user { align-self: flex-end; }
+  .msg-user .bubble {
+    background: var(--user-bubble);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: 16px 16px 4px 16px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .msg-ai { align-self: flex-start; }
+  .msg-ai .bubble {
+    background: var(--bg-elev);
+    border: 1px solid var(--line);
+    color: var(--text);
+    padding: 10px 16px;
+    border-radius: 16px 16px 16px 4px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  /* ============================================ */
+  /* PREMIUM CTA                                  */
+  /* ============================================ */
+  .premium {
+    margin-top: 40px;
+    background: linear-gradient(135deg, var(--bg-elev) 0%, rgba(245, 158, 11, 0.08) 100%);
+    border: 1px solid var(--accent);
+    border-radius: 16px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    animation: blockIn 0.6s ease 0.3s both;
+  }
+  .premium::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -30%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, var(--accent-glow), transparent 70%);
+    pointer-events: none;
+  }
+  .premium-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    position: relative;
+  }
+  .premium h3 {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    margin-bottom: 10px;
+    position: relative;
+  }
+  .premium-desc {
+    color: var(--text-mute);
+    font-size: 15px;
+    line-height: 1.55;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .premium-features {
+    list-style: none;
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .premium-features li {
+    padding: 8px 0;
+    color: var(--text);
+    font-size: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .premium-features li::before {
+    content: '→';
+    color: var(--accent);
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .premium-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+    position: relative;
+  }
+  .premium-form input {
+    background: var(--bg);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-family: inherit;
+    width: 100%;
+    transition: border-color 0.15s;
+  }
+  .premium-form input:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+  .premium-form input::placeholder { color: var(--text-dim); }
+  .premium-cta {
+    width: 100%;
+    background: var(--accent);
+    color: #000;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    letter-spacing: -0.01em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .premium-cta:hover { background: var(--accent-bright); transform: scale(1.01); }
+  .premium-cta:disabled { opacity: 0.5; cursor: wait; }
+  .premium-price {
+    font-family: var(--mono);
+    background: rgba(0,0,0,0.18);
+    padding: 3px 10px;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  .premium-fineprint {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    margin-top: 12px;
+    position: relative;
+  }
+
+  /* ============================================ */
+  /* TEXT MODE FALLBACK                           */
+  /* ============================================ */
+  .composer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 16px 20px 24px;
+    background: linear-gradient(180deg, transparent, var(--bg) 30%);
+    pointer-events: none;
+    display: none;
+  }
+  .composer.active { display: block; }
+  .composer-inner {
+    pointer-events: auto;
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--bg-elev);
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    padding: 8px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    transition: border-color 0.15s;
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.5);
+  }
+  .composer-inner:focus-within { border-color: var(--accent); }
+  .composer textarea {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    padding: 12px 14px;
+    resize: none;
+    min-height: 48px;
+    max-height: 180px;
+    outline: none;
+  }
+  .composer textarea::placeholder { color: var(--text-dim); }
+  .icon-btn {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid var(--line-strong);
+    color: var(--text-mute);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .icon-btn:hover {
+    background: var(--bg-elev-2);
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .send-btn {
+    background: var(--accent);
+    color: #000;
+    border-color: var(--accent);
+  }
+  .send-btn:hover { background: var(--accent-bright); color: #000; border-color: var(--accent-bright); }
+  .send-btn:disabled {
+    background: var(--line-strong);
+    color: var(--text-dim);
+    border-color: var(--line-strong);
+    cursor: not-allowed;
+  }
+
+  /* TOAST */
+  .toast {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--bg-elev);
+    border: 1px solid var(--listening);
+    color: var(--text);
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    z-index: 100;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+    max-width: 90%;
+    animation: toastIn 0.3s ease both;
+  }
+  .toast.error { border-color: var(--danger); }
+  @keyframes toastIn {
+    from { opacity: 0; transform: translate(-50%, -10px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+  }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    header { padding: 14px 18px; }
+    .splash { padding: 24px 20px 40px; }
+    .splash h1 { font-size: 36px; }
+    .start-btn { width: 160px; height: 160px; }
+    .start-btn svg { width: 64px; height: 64px; }
+    .start-label { font-size: 18px; }
+    .voice-stage { padding: 20px 16px; }
+    .stage-center { height: 240px; }
+    .mic-circle { width: 150px; height: 150px; }
+    .mic-circle svg { width: 56px; height: 56px; }
+    .voice-waves { height: 150px; }
+    .voice-waves .bar { width: 6px; }
+    .thinking-ring { width: 150px; height: 150px; }
+    .transcript { font-size: 16px; }
+    .messages-area { padding: 0 16px 120px; }
+    .premium { padding: 22px; }
+    .premium h3 { font-size: 22px; }
+    .vc-btn { font-size: 12px; padding: 8px 14px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="brand">
+    <div class="brand-mark">T</div>
+    <div class="brand-text">Tixuz <span>IA</span></div>
+  </a>
+  <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+    <a href="/?publicar=1" class="header-link">Publicar auto</a>
+    <a href="/" class="header-link">← Marketplace</a>
+  </div>
+</header>
+
+<!-- ===== SPLASH (initial) ===== -->
+<div id="splash" class="splash">
+  <div class="splash-eyebrow">Tixuz primero · web si hace falta</div>
+  <h1>Háblame. Yo encuentro <em>tu auto.</em></h1>
+  <p>Soy Tixuz IA. Primero reviso autos publicados en Tixuz. Si todavía no tenemos suficiente inventario, amplio la búsqueda a portales externos y marco la diferencia.</p>
+
+  <button id="startBtn" class="start-btn" aria-label="Empezar conversación por voz">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+      <line x1="12" y1="19" x2="12" y2="23"/>
+      <line x1="8" y1="23" x2="16" y2="23"/>
+    </svg>
+  </button>
+  <div class="start-label">Empezar a hablar</div>
+  <div class="start-sub">Necesitamos permiso de tu micrófono</div>
+
+  <button id="textModeBtn" class="text-mode-link">
+    Prefiero escribir
+  </button>
+</div>
+
+<!-- ===== VOICE STAGE (active conversation) ===== -->
+<div id="voiceStage" class="voice-stage">
+  <div id="statusPill" class="status-pill">Conectando</div>
+
+  <div class="stage-center">
+    <button id="micCircle" class="mic-circle" style="display:none" aria-label="Hablar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+    </button>
+
+    <div id="voiceWaves" class="voice-waves">
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div><div class="bar"></div><div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+
+    <div id="thinkingRing" class="thinking-ring">
+      <div class="label">
+        <div class="label-static">Buscando en</div>
+        <div id="portalName" class="label-portal">MercadoLibre</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="transcript" class="transcript"></div>
+  <div id="aiSubtitle" class="ai-subtitle"></div>
+
+  <div class="voice-controls">
+    <button id="muteBtn" class="vc-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 5L6 9H2v6h4l5 4V5z"/><path d="M19 12h.01"/><path d="M16 12h.01"/></svg>
+      <span>Silenciar voz</span>
+    </button>
+    <button id="textToggleBtn" class="vc-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Escribir</span>
+    </button>
+    <button id="endBtn" class="vc-btn danger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      <span>Terminar</span>
+    </button>
+  </div>
+</div>
+
+<!-- ===== MESSAGES & RESULTS AREA ===== -->
+<div class="messages-area">
+  <div id="resultsArea"></div>
+  <button id="historyToggle" class="history-toggle" style="display:none">Ver conversación</button>
+  <div id="history" class="history"></div>
+</div>
+
+<!-- ===== TEXT COMPOSER (hidden by default) ===== -->
+<div id="composer" class="composer">
+  <div class="composer-inner">
+    <textarea id="textInput" placeholder="Escribe lo que buscas..." rows="1"></textarea>
+    <button id="sendBtn" class="icon-btn send-btn" aria-label="Enviar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="19" x2="12" y2="5"/>
+        <polyline points="5 12 12 5 19 12"/>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<script>
+(() => {
+  const API_SEARCH = '/.netlify/functions/ai-search';
+  const API_CHECKOUT = '/.netlify/functions/ai-checkout';
+  const API_VERIFY = '/.netlify/functions/ai-verify-payment';
+  const API_TTS = '/.netlify/functions/ai-tts';
+
+  const $ = (s) => document.querySelector(s);
+
+  // ========== ELEMENTS ==========
+  const splashEl = $('#splash');
+  const stageEl = $('#voiceStage');
+  const statusPill = $('#statusPill');
+  const micCircle = $('#micCircle');
+  const voiceWaves = $('#voiceWaves');
+  const thinkingRing = $('#thinkingRing');
+  const transcriptEl = $('#transcript');
+  const aiSubtitleEl = $('#aiSubtitle');
+  const resultsArea = $('#resultsArea');
+  const historyEl = $('#history');
+  const historyToggleBtn = $('#historyToggle');
+  const composerEl = $('#composer');
+  const textInputEl = $('#textInput');
+  const sendBtn = $('#sendBtn');
+  const startBtn = $('#startBtn');
+  const textModeBtn = $('#textModeBtn');
+  const muteBtn = $('#muteBtn');
+  const textToggleBtn = $('#textToggleBtn');
+  const endBtn = $('#endBtn');
+
+  // ========== STATE ==========
+  const conversation = [];
+  let lastQuery = '';
+  let conversationStarted = false;
+  let isMuted = false;
+  let textModeActive = false;
+  let premiumShown = false;
+  let currentAudio = null;
+  let recognition = null;
+  let isListening = false;
+  let wantsListening = false;
+  let isSpeaking = false;
+  let isThinking = false;
+  let silenceTimer = null;
+  let listenRestartTimer = null;
+  let lastInterimAt = 0;
+  let portalRotationTimer = null;
+
+  const SILENCE_MS = 1500; // 1.5s de silencio = se considera que terminaste
+
+  // Fuentes visibles durante la busqueda: Tixuz primero, externos solo para ampliar.
+  const PORTALS = [
+    'Tixuz Autos',
+    'Inventario Tixuz',
+    'MercadoLibre',
+    'Kavak',
+    'Seminuevos',
+    'AutoCosmos',
+    'AutoTrader MX',
+    'AutoMexico',
+    'Carplanet',
+    'Agencias oficiales',
+    'Toyota Used',
+    'Honda Certified',
+    'Nissan Used',
+    'Volkswagen MX',
+    'Chevrolet MX',
+    'Ford Latino',
+  ];
+
+  const GREETING = "¡Qué tal! Soy Tixuz IA. Dime ciudad, año, marca y modelo. Primero reviso Tixuz y luego amplio si hace falta.";
+
+  function initialSearchQuery() {
+    const params = new URLSearchParams(window.location.search);
+    return (params.get('q') || params.get('buscar') || '').trim().slice(0, 500);
+  }
+
+  const CORE_MODELS = [
+    'accord', 'altima', 'aveo', 'beat', 'bora', 'camaro', 'camry', 'civic', 'corolla',
+    'cruze', 'cx 3', 'cx 30', 'cx 5', 'ecosport', 'elantra', 'escape', 'explorer',
+    'fiesta', 'fit', 'focus', 'forte', 'frontier', 'golf', 'grand cherokee', 'hilux',
+    'hr v', 'ibiza', 'jetta', 'kicks', 'lobo', 'malibu', 'march', 'mazda 2', 'mazda 3',
+    'mustang', 'onix', 'optima', 'pathfinder', 'pickup', 'pointer', 'prius', 'rav4',
+    'rio', 'sentra', 'sienna', 'silverado', 'sonic', 'soul', 'spark', 'sportage',
+    'suburban', 'tacoma', 'tiguan', 'tiida', 'tornado', 'tracker', 'trailblazer',
+    'trax', 'tucson', 'versa', 'vento', 'x trail', 'x1', 'x3', 'x5', 'yaris'
+  ];
+
+  const CORE_MAKES = [
+    'audi', 'bmw', 'byd', 'chevrolet', 'chirey', 'chrysler', 'dodge', 'fiat', 'ford',
+    'gmc', 'honda', 'hyundai', 'jac', 'jeep', 'kia', 'mazda', 'mercedes', 'mg',
+    'mitsubishi', 'nissan', 'peugeot', 'ram', 'renault', 'seat', 'subaru', 'suzuki',
+    'tesla', 'toyota', 'volkswagen', 'vw'
+  ];
+
+  const CORE_LOCATIONS = [
+    'aguascalientes', 'baja california', 'campeche', 'cancun', 'cdmx', 'chiapas',
+    'chihuahua', 'ciudad de mexico', 'coahuila', 'colima', 'cuernavaca', 'durango',
+    'edomex', 'estado de mexico', 'guadalajara', 'guanajuato', 'guerrero', 'hidalgo',
+    'jalisco', 'leon', 'merida', 'mexico', 'michoacan', 'monterrey', 'morelos',
+    'nayarit', 'nuevo leon', 'oaxaca', 'puebla', 'queretaro', 'quintana roo',
+    'san luis potosi', 'sinaloa', 'sonora', 'tabasco', 'tamaulipas', 'tijuana',
+    'tlaxcala', 'toluca', 'veracruz', 'yucatan', 'zacatecas', 'zapopan'
+  ];
+
+  function normalizeCoreText(value) {
+    return String(value || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, ' ')
+      .replace(/[^a-z0-9ñ\s-]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+
+  function recentUserSearchText() {
+    return conversation
+      .filter(m => m.role === 'user')
+      .slice(-4)
+      .map(m => m.content)
+      .join(' ');
+  }
+
+  function hasCoreYear(text) {
+    return /\b(19[8-9]\d|20[0-2]\d)\b/.test(normalizeCoreText(text));
+  }
+
+  function hasCoreLocation(text) {
+    const normalized = normalizeCoreText(text);
+    if (/\b(todo mexico|todo el pais|nacional|cualquier ciudad|sin importar ciudad)\b/.test(normalized)) return true;
+    if (CORE_LOCATIONS.some(location => normalized.includes(location))) return true;
+    return /\b(?:en|cerca de|por)\s+[a-zñ\s]{3,35}\b/.test(normalized);
+  }
+
+  function hasCoreMakeModel(text) {
+    const normalized = normalizeCoreText(text);
+    if (CORE_MODELS.some(model => normalized.includes(model))) return true;
+    if (CORE_MAKES.some(make => normalized.includes(make))) return true;
+    return /\b(?:busca|buscame|quiero|necesito|encuentra|muestrame)\s+(?:un|una)?\s*([a-zñ][a-zñ0-9-]{2,})(?!\s+(auto|carro|coche|camioneta|usado|nuevo|seminuevo))/i.test(normalized);
+  }
+
+  function joinNatural(items) {
+    if (items.length <= 1) return items[0] || '';
+    if (items.length === 2) return `${items[0]} y ${items[1]}`;
+    return `${items.slice(0, -1).join(', ')} y ${items[items.length - 1]}`;
+  }
+
+  function missingCoreSearchData() {
+    const text = recentUserSearchText();
+    const missing = [];
+    if (!hasCoreLocation(text)) missing.push('ciudad o estado');
+    if (!hasCoreYear(text)) missing.push('año');
+    if (!hasCoreMakeModel(text)) missing.push('marca y modelo');
+    return missing;
+  }
+
+  function coreSearchQuestion(missing) {
+    if (missing.length >= 3) {
+      return 'Dime en una sola frase: ciudad o estado, año, marca y modelo. Por ejemplo: Guadalajara, 2018, Volkswagen Jetta.';
+    }
+    return `Dime ${joinNatural(missing)}. Con eso arranco la búsqueda.`;
+  }
+
+  function backendConversation() {
+    const copy = conversation.map(m => ({ role: m.role, content: m.content }));
+    const lastUser = [...copy].reverse().find(m => m.role === 'user');
+    if (lastUser && !/presupuesto abierto/i.test(lastUser.content)) {
+      lastUser.content = `${lastUser.content}. Presupuesto abierto hasta 999 mil pesos.`;
+    }
+    return copy;
+  }
+
+  function simplifyBackendQuestion(message) {
+    const text = String(message || '');
+    if (/No encontr[eé].*subir presupuesto/i.test(text)) {
+      return 'No encontré opciones con foto confiable. Puedo ampliar la ciudad o abrir el año.';
+    }
+    const isHeavyQuestion = /\bdime\b/i.test(text)
+      && /presupuesto|kilometraje|transmisi[oó]n|autom[aá]tico|manual|usado|nuevo/i.test(text);
+    if (!isHeavyQuestion) return text;
+    const missing = missingCoreSearchData();
+    return missing.length ? coreSearchQuestion(missing) : 'Con esos datos busco opciones y te las muestro en pantalla.';
+  }
+
+  // ========== UTILITIES ==========
+  function esc(s) {
+    return String(s ?? '').replace(/[&<>"']/g, c => ({
+      '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+    })[c]);
+  }
+  function setStatus(text, mode) {
+    statusPill.textContent = text;
+    statusPill.className = 'status-pill ' + (mode || '');
+  }
+  function showStageVisual(which) {
+    micCircle.style.display = which === 'mic' ? 'grid' : 'none';
+    voiceWaves.classList.toggle('active', which === 'speaking');
+    thinkingRing.classList.toggle('active', which === 'thinking');
+    micCircle.classList.toggle('listening', which === 'listening');
+    if (which === 'listening') micCircle.style.display = 'grid';
+    document.body.classList.toggle('state-listening', which === 'listening');
+
+    // Manejar rotación de portales según el estado
+    if (which === 'thinking') {
+      startPortalRotation();
+    } else {
+      stopPortalRotation();
+    }
+  }
+
+  function startPortalRotation() {
+    const portalEl = document.getElementById('portalName');
+    if (!portalEl) return;
+    let idx = 0;
+    // Empezar inmediatamente con el primero
+    const shuffled = [...PORTALS].sort(() => Math.random() - 0.5);
+    portalEl.textContent = shuffled[0];
+    portalEl.style.animation = 'none';
+    // Trigger reflow para reiniciar animación
+    void portalEl.offsetWidth;
+    portalEl.style.animation = '';
+
+    portalRotationTimer = setInterval(() => {
+      idx = (idx + 1) % shuffled.length;
+      portalEl.textContent = shuffled[idx];
+      portalEl.style.animation = 'none';
+      void portalEl.offsetWidth;
+      portalEl.style.animation = 'portalFlip 0.4s ease';
+    }, 600); // cambia cada 600ms - rápido pero legible
+  }
+
+  function stopPortalRotation() {
+    if (portalRotationTimer) {
+      clearInterval(portalRotationTimer);
+      portalRotationTimer = null;
+    }
+  }
+  function toast(msg, isError = false) {
+    const t = document.createElement('div');
+    t.className = 'toast' + (isError ? ' error' : '');
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 4000);
+  }
+
+  // ========== HISTORY (visible bubbles) ==========
+  function renderUserMsgHistory(text) {
+    const div = document.createElement('div');
+    div.className = 'msg msg-user';
+    div.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+    historyEl.appendChild(div);
+    historyToggleBtn.style.display = 'block';
+  }
+  function renderAiMsgHistory(text) {
+    const div = document.createElement('div');
+    div.className = 'msg msg-ai';
+    div.innerHTML = `<div class="bubble">${esc(text)}</div>`;
+    historyEl.appendChild(div);
+    historyToggleBtn.style.display = 'block';
+  }
+  historyToggleBtn.addEventListener('click', () => {
+    historyEl.classList.toggle('open');
+    historyToggleBtn.textContent = historyEl.classList.contains('open')
+      ? 'Ocultar conversación'
+      : 'Ver conversación';
+  });
+
+  // ========== RESULTS ==========
+  function isOwnListing(l) {
+    const portal = String(l?.portal || '');
+    const url = String(l?.url || '');
+    return /tixuz/i.test(portal) || /tixuzautos\.com\/autos\//i.test(url);
+  }
+
+  function sourceNote(meta, visibleListings) {
+    const mix = meta?.inventory_mix || {};
+    const own = Number(mix.ownCount || visibleListings.filter(isOwnListing).length || 0);
+    const external = Math.max(0, Number(mix.externalCount || visibleListings.length - own));
+    if (own && external) return `${own} resultado(s) de Tixuz primero; ${external} externo(s) solo para completar inventario.`;
+    if (own) return `${own} resultado(s) de Tixuz Autos.`;
+    return 'No hubo coincidencias suficientes en Tixuz; estos resultados son externos mientras crece el inventario.';
+  }
+
+  function renderSellerCapture(query, meta = {}) {
+    const cta = meta.acquisition_cta || {};
+    const demand = cta.demand || query || 'autos usados en Mexico';
+    const wrap = document.createElement('div');
+    wrap.className = 'seller-capture';
+    wrap.innerHTML = `
+      <h3>${esc(cta.title || 'Compradores ya estan buscando autos como este')}</h3>
+      <p>${esc(cta.message || 'Si tienes un auto parecido, publicalo en Tixuz para que aparezca cuando alguien haga esta busqueda.')} <strong>Demanda:</strong> ${esc(demand)}.</p>
+      <div class="seller-capture-actions">
+        <a href="/?publicar=1">Publicar mi auto gratis</a>
+        <a class="secondary" href="/publicar-auto">Ver como funciona</a>
+      </div>
+    `;
+    resultsArea.appendChild(wrap);
+  }
+
+  function renderResults(listings, meta = {}) {
+    if (!Array.isArray(listings) || !listings.length) return;
+    const visibleListings = listings.filter(l => l && /^https?:\/\//i.test(String(l.imagen || '').trim()));
+    if (!visibleListings.length) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'results-block';
+
+    const label = document.createElement('div');
+    label.className = 'results-label';
+    label.textContent = `${visibleListings.length} ${visibleListings.length === 1 ? 'resultado' : 'resultados'}`;
+    wrap.appendChild(label);
+    const note = document.createElement('div');
+    note.className = 'source-note';
+    note.textContent = sourceNote(meta, visibleListings);
+    wrap.appendChild(note);
+
+    const grid = document.createElement('div');
+    grid.className = 'results-grid';
+
+    visibleListings.forEach(l => {
+      const card = document.createElement('a');
+      card.className = 'car';
+      card.href = l.url || '#';
+      card.target = '_blank';
+      card.rel = 'noopener noreferrer';
+      const img = `<img class="car-img" src="${esc(l.imagen)}" alt="${esc(l.titulo)}" onerror="this.closest('.car')?.remove()">`;
+      const own = isOwnListing(l);
+      card.innerHTML = `
+        ${img}
+        <div class="car-body">
+          <div class="car-source-badge ${own ? 'own' : ''}">${own ? 'Tixuz Autos' : 'Externo'}</div>
+          <div class="car-title">${esc(l.titulo)}</div>
+          <div class="car-price">${esc(l.precio || 'Consultar')}</div>
+          <div class="car-meta">
+            ${l.ubicacion ? esc(l.ubicacion) : ''}${l.kilometraje ? ' · ' + esc(l.kilometraje) : ''}
+          </div>
+          <div class="car-portal">${esc(l.portal || 'Ver listing')}</div>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+
+    wrap.appendChild(grid);
+    resultsArea.appendChild(wrap);
+    setTimeout(() => wrap.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
+
+  function renderPremiumCTA(query) {
+    if (premiumShown) return;
+    premiumShown = true;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'premium';
+    wrap.innerHTML = `
+      <div class="premium-eyebrow">⚡ Búsqueda inteligente · 30 días</div>
+      <h3>Te aviso cada vez que salga uno nuevo.</h3>
+      <p class="premium-desc">Activa tu búsqueda inteligente: yo sigo buscando todos los días por ti, y te mando los autos nuevos directo a tu correo y WhatsApp.</p>
+      <ul class="premium-features">
+        <li>Alertas diarias por email cada mañana</li>
+        <li>Notificaciones por WhatsApp (opcional)</li>
+        <li>Reseña del modelo: fallas comunes, qué revisar, valor de reventa</li>
+        <li>Comparativa de precios entre portales</li>
+        <li>30 días completos de monitoreo</li>
+      </ul>
+      <div class="premium-form">
+        <input type="email" id="prem-email" placeholder="Tu correo" autocomplete="email" required>
+        <input type="tel" id="prem-wa" placeholder="WhatsApp (opcional, 10 dígitos México)" autocomplete="tel">
+      </div>
+      <button class="premium-cta" id="prem-pay">
+        Activar por <span class="premium-price">$49 MXN</span>
+      </button>
+      <div class="premium-fineprint">Pago único · Sin renovación automática · Procesado por Stripe</div>
+    `;
+    resultsArea.appendChild(wrap);
+
+    wrap.querySelector('#prem-pay').addEventListener('click', async (e) => {
+      const btn = e.currentTarget;
+      const email = wrap.querySelector('#prem-email').value.trim();
+      const wa = wrap.querySelector('#prem-wa').value.trim();
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        toast('Pon un correo válido', true);
+        return;
+      }
+      btn.disabled = true;
+      btn.innerHTML = 'Procesando...';
+      try {
+        const r = await fetch(API_CHECKOUT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email, whatsapp: wa,
+            query: query || lastQuery || 'Búsqueda general',
+            origin: window.location.origin,
+          }),
+        });
+        const data = await r.json();
+        if (!r.ok) throw new Error(data.error || 'Error');
+        if (!data.url) throw new Error('No se recibió URL de Stripe');
+        window.location.href = data.url;
+      } catch (err) {
+        toast(err.message || 'Error procesando pago', true);
+        btn.disabled = false;
+        btn.innerHTML = 'Activar por <span class="premium-price">$49 MXN</span>';
+      }
+    });
+  }
+
+  // ========== TEXT-TO-SPEECH (ElevenLabs + fallback nativo) ==========
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+
+  function speakWithBrowserVoice(clean) {
+    if (!('speechSynthesis' in window) || !window.SpeechSynthesisUtterance) {
+      return Promise.resolve(false);
+    }
+
+    return new Promise((resolve) => {
+      try {
+        window.speechSynthesis.cancel();
+        const utter = new SpeechSynthesisUtterance(clean);
+        utter.lang = 'es-MX';
+        utter.rate = 1;
+        utter.pitch = 1;
+
+        const pickVoice = () => {
+          const voices = window.speechSynthesis.getVoices ? window.speechSynthesis.getVoices() : [];
+          const spanish = voices.find(v => /es[-_]?MX/i.test(v.lang || ''))
+            || voices.find(v => /^es/i.test(v.lang || ''));
+          if (spanish) utter.voice = spanish;
+        };
+
+        pickVoice();
+        utter.onend = () => resolve(true);
+        utter.onerror = () => resolve(false);
+        window.speechSynthesis.speak(utter);
+
+        // Algunos navegadores cargan las voces tarde; este retry no cambia diseño.
+        if (window.speechSynthesis.getVoices && window.speechSynthesis.getVoices().length === 0) {
+          setTimeout(() => {
+            if (!window.speechSynthesis.speaking) {
+              pickVoice();
+              window.speechSynthesis.speak(utter);
+            }
+          }, 150);
+        }
+      } catch (e) {
+        resolve(false);
+      }
+    });
+  }
+
+  // Retorna true si la voz funcionó, false si falló (para saber si auto-prender micro)
+  async function speak(text) {
+    if (!text || isMuted) {
+      isSpeaking = false;
+      return false;
+    }
+    // Limpiar texto: remover URLs, asteriscos, etc para que se oiga natural
+    const clean = text
+      .replace(/https?:\/\/\S+/g, '')
+      .replace(/[*_`#]/g, '')
+      .replace(/\s+/g, ' ')
+      .trim();
+    if (!clean) return false;
+
+    aiSubtitleEl.textContent = clean;
+    showStageVisual('speaking');
+    setStatus('Hablando', 'speaking');
+    isSpeaking = true;
+
+    try {
+      const r = await fetch(API_TTS, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: clean }),
+      });
+      if (!r.ok) {
+        const errData = await r.json().catch(() => ({}));
+        const detail = errData.detail || errData.error || `HTTP ${r.status}`;
+        throw new Error(detail.slice ? detail.slice(0, 80) : detail);
+      }
+      const data = await r.json();
+
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio = null;
+      }
+      const audio = new Audio(data.audio);
+      audio.volume = 1;
+      currentAudio = audio;
+
+      return new Promise((resolve) => {
+        const finish = (worked) => {
+          isSpeaking = false;
+          aiSubtitleEl.textContent = '';
+          if (currentAudio === audio) currentAudio = null;
+          resolve(worked);
+        };
+        const fallbackNative = async () => {
+          try {
+            const nativeWorked = await speakWithBrowserVoice(clean);
+            finish(nativeWorked);
+          } catch (e) {
+            finish(false);
+          }
+        };
+        audio.onended = () => {
+          finish(true);
+        };
+        audio.onerror = () => {
+          fallbackNative();
+        };
+        audio.play().catch(err => {
+          fallbackNative();
+        });
+      });
+    } catch (err) {
+      console.warn('TTS failed:', err);
+      // Si ElevenLabs falla o falta la env var, usar voz nativa del navegador.
+      const errMsg = String(err.message || err).slice(0, 100);
+      toast('Voz premium falló; usando voz del navegador: ' + errMsg, true);
+      const nativeWorked = await speakWithBrowserVoice(clean);
+      isSpeaking = false;
+      aiSubtitleEl.textContent = '';
+      if (nativeWorked) return true;
+
+      // Último fallback: mantener subtítulo el tiempo suficiente para leerlo.
+      const readingMs = Math.max(4000, clean.split(/\s+/).length * 280);
+      isSpeaking = true;
+      await sleep(readingMs);
+      isSpeaking = false;
+      aiSubtitleEl.textContent = '';
+      return false;
+    }
+  }
+
+  function stopSpeaking() {
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+    if ('speechSynthesis' in window) {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+    }
+    isSpeaking = false;
+    aiSubtitleEl.textContent = '';
+  }
+
+  // ========== SPEECH RECOGNITION (con detección de silencio) ==========
+  function scheduleListenRestart(delay = 350) {
+    if (listenRestartTimer) clearTimeout(listenRestartTimer);
+    listenRestartTimer = setTimeout(() => {
+      listenRestartTimer = null;
+      if (wantsListening && !isListening && !isThinking && !isSpeaking && !textModeActive) {
+        startListening();
+      }
+    }, delay);
+  }
+
+  async function ensureMicPermission() {
+    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) return true;
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      stream.getTracks().forEach(track => track.stop());
+      return true;
+    } catch (e) {
+      toast('No tengo permiso de micrófono. Actívalo en Chrome o usa modo texto.', true);
+      enterTextMode();
+      return false;
+    }
+  }
+
+  function setupRecognition() {
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      toast('Tu navegador no soporta reconocimiento de voz. Cambia a modo texto.', true);
+      enterTextMode();
+      return false;
+    }
+
+    recognition = new SR();
+    recognition.lang = 'es-MX';
+    recognition.continuous = true;
+    recognition.interimResults = true;
+
+    recognition.onstart = () => {
+      isListening = true;
+      transcriptEl.textContent = '';
+      transcriptEl.classList.remove('hidden');
+      transcriptEl.classList.remove('interim');
+      showStageVisual('listening');
+      setStatus('Escuchando · habla ahora', 'listening');
+    };
+
+    recognition.onresult = (e) => {
+      let final = '';
+      let interim = '';
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        if (e.results[i].isFinal) final += e.results[i][0].transcript;
+        else interim += e.results[i][0].transcript;
+      }
+
+      const display = (final + interim).trim();
+      transcriptEl.textContent = display;
+      transcriptEl.classList.toggle('interim', !final);
+
+      if (display) {
+        lastInterimAt = Date.now();
+        // Reset silence timer cada vez que hay nuevo audio
+        if (silenceTimer) clearTimeout(silenceTimer);
+        silenceTimer = setTimeout(() => {
+          // Si pasaron SILENCE_MS sin nuevo audio, detener y procesar
+          if (Date.now() - lastInterimAt >= SILENCE_MS - 100) {
+            stopListening();
+          }
+        }, SILENCE_MS);
+      }
+    };
+
+    recognition.onerror = (e) => {
+      if (e.error === 'not-allowed') {
+        toast('Permiso de micrófono denegado. Cámbiate a modo texto.', true);
+        wantsListening = false;
+        isListening = false;
+        enterTextMode();
+        return;
+      }
+      if (e.error === 'no-speech') {
+        if (wantsListening && !isThinking && !isSpeaking && !textModeActive) {
+          setStatus('Sigo escuchando · habla cerca del micro', 'listening');
+        }
+        return;
+      }
+      if (e.error === 'aborted') return;
+      console.warn('Recognition error:', e.error);
+    };
+
+    recognition.onend = () => {
+      isListening = false;
+      if (silenceTimer) { clearTimeout(silenceTimer); silenceTimer = null; }
+
+      const finalText = transcriptEl.textContent.trim();
+      if (finalText && !isThinking && !isSpeaking) {
+        wantsListening = false;
+        processUserSpeech(finalText);
+      } else if (wantsListening && !isThinking && !isSpeaking && !textModeActive) {
+        showStageVisual('listening');
+        setStatus('Escuchando · habla ahora', 'listening');
+        scheduleListenRestart(300);
+      } else if (!isThinking && !isSpeaking) {
+        showStageVisual('mic');
+        setStatus('Pica el micro para hablar', '');
+      }
+    };
+
+    return true;
+  }
+
+  function startListening() {
+    wantsListening = true;
+    if (!recognition && !setupRecognition()) return;
+    if (!recognition || isListening || isSpeaking || isThinking) return;
+    if (listenRestartTimer) { clearTimeout(listenRestartTimer); listenRestartTimer = null; }
+    transcriptEl.textContent = '';
+    transcriptEl.classList.remove('hidden');
+    try {
+      recognition.start();
+    } catch (err) {
+      if (wantsListening && !isListening && !isThinking && !isSpeaking && !textModeActive) scheduleListenRestart(500);
+    }
+  }
+  function stopListening() {
+    wantsListening = false;
+    if (listenRestartTimer) { clearTimeout(listenRestartTimer); listenRestartTimer = null; }
+    if (recognition && isListening) {
+      try { recognition.stop(); } catch (e) {}
+    }
+  }
+
+  // ========== MAIN FLOW ==========
+  async function processUserSpeech(text) {
+    if (!text || isThinking) return;
+
+    // CRÍTICO: detener completamente el reconocimiento antes de procesar
+    // Esto evita que el micro siga captando mientras pensamos/respondemos
+    stopListening();
+    if (silenceTimer) { clearTimeout(silenceTimer); silenceTimer = null; }
+
+    transcriptEl.classList.add('hidden');
+    transcriptEl.textContent = '';
+
+    renderUserMsgHistory(text);
+    conversation.push({ role: 'user', content: text });
+    lastQuery = text;
+
+    const missingCore = missingCoreSearchData();
+    if (missingCore.length) {
+      const question = coreSearchQuestion(missingCore);
+      conversation.push({ role: 'assistant', content: question });
+      renderAiMsgHistory(question);
+      transcriptEl.classList.remove('hidden');
+      setStatus('Preguntando', 'speaking');
+      const voiceWorked = await speak(question);
+      if (!textModeActive && voiceWorked) {
+        showStageVisual('mic');
+        setStatus('Te escucho · habla', '');
+        setTimeout(() => {
+          if (!isSpeaking && !isThinking && !textModeActive) startListening();
+        }, 700);
+      } else if (!textModeActive) {
+        showStageVisual('mic');
+        setStatus('Pica el micro cuando estés listo', '');
+      } else {
+        textInputEl.focus();
+      }
+      return;
+    }
+
+    isThinking = true;
+    showStageVisual('thinking');
+    setStatus('Pensando', 'thinking');
+    aiSubtitleEl.textContent = '';
+
+    // Variable para saber si la voz funcionó (controla si auto-prendemos micro)
+    let voiceWorked = false;
+
+    try {
+      const r = await fetch(API_SEARCH, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: backendConversation() }),
+      });
+      if (!r.ok) {
+        const errData = await r.json().catch(() => ({}));
+        throw new Error(errData.detail || errData.error || `Error ${r.status}`);
+      }
+      const data = await r.json();
+      const aiText = simplifyBackendQuestion(data.message || 'Lo siento, no pude generar respuesta.');
+      conversation.push({ role: 'assistant', content: aiText });
+      renderAiMsgHistory(aiText);
+
+      isThinking = false;
+
+      // Speak first - speak() devuelve true si la voz funcionó, false si falló
+      transcriptEl.classList.remove('hidden');
+      voiceWorked = await speak(aiText);
+
+      // Then render results visually
+      if (Array.isArray(data.listings) && data.listings.length) {
+        renderResults(data.listings, data);
+        setTimeout(() => renderPremiumCTA(lastQuery), 600);
+      }
+      if (data.used_search) {
+        renderSellerCapture(lastQuery, data);
+      }
+
+      // Auto-listen SOLO si la voz funcionó (modo manos libres real)
+      // Si la voz falló, el usuario está leyendo - tiene que picar el micro a propósito
+      if (!textModeActive && voiceWorked) {
+        showStageVisual('mic');
+        setStatus('Pica el micro para hablar', '');
+        // Delay de 1 segundo para no traslapar con el final del audio
+        setTimeout(() => {
+          if (!isSpeaking && !isThinking && !textModeActive) {
+            startListening();
+          }
+        }, 1000);
+      } else if (!textModeActive) {
+        // Voz falló: dejar el micro listo pero NO prenderlo solo
+        showStageVisual('mic');
+        setStatus('Pica el micro cuando estés listo', '');
+      } else {
+        textInputEl.focus();
+      }
+    } catch (err) {
+      isThinking = false;
+      showStageVisual('mic');
+      setStatus('Error · pica para reintentar', '');
+      toast('Error: ' + (err.message || 'desconocido'), true);
+    }
+  }
+
+  // ========== TEXT MODE ==========
+  function enterTextMode() {
+    textModeActive = true;
+    composerEl.classList.add('active');
+    document.body.style.paddingBottom = '120px';
+    stopListening();
+    stopSpeaking();
+    showStageVisual('mic');
+    setStatus('Modo texto', '');
+    textInputEl.focus();
+  }
+  function exitTextMode() {
+    textModeActive = false;
+    composerEl.classList.remove('active');
+    document.body.style.paddingBottom = '0';
+    if (!isSpeaking && !isThinking) {
+      showStageVisual('mic');
+      setStatus('Pica el micro para hablar', '');
+    }
+  }
+
+  textInputEl.addEventListener('input', () => {
+    textInputEl.style.height = 'auto';
+    textInputEl.style.height = Math.min(textInputEl.scrollHeight, 180) + 'px';
+  });
+  textInputEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleTextSend();
+    }
+  });
+  function handleTextSend() {
+    const text = textInputEl.value.trim();
+    if (!text || isThinking) return;
+    textInputEl.value = '';
+    textInputEl.style.height = 'auto';
+    processUserSpeech(text);
+  }
+  sendBtn.addEventListener('click', handleTextSend);
+
+  // ========== START FLOW ==========
+  async function startConversation() {
+    if (conversationStarted) return;
+    conversationStarted = true;
+    splashEl.style.display = 'none';
+    stageEl.classList.add('active');
+
+    const initialQuery = initialSearchQuery();
+    const ok = setupRecognition();
+    if (!ok && !initialQuery) return;
+    if (!initialQuery && !(await ensureMicPermission())) return;
+
+    // Saludo inicial - se reproduce por voz, después se prende el micro
+    const greetingMsg = initialQuery
+      ? 'Listo. Voy a buscar con los filtros que traes del marketplace.'
+      : GREETING;
+    conversation.push({ role: 'assistant', content: greetingMsg });
+    renderAiMsgHistory(greetingMsg);
+
+    setStatus('Saludando', 'speaking');
+    const voiceWorked = await speak(greetingMsg);
+
+    if (initialQuery) {
+      setStatus('Buscando', 'thinking');
+      showStageVisual('thinking');
+      setTimeout(() => processUserSpeech(initialQuery), 150);
+      return;
+    }
+
+    // Después del saludo, prender micro AUTO solo si la voz funcionó
+    if (textModeActive) {
+      textInputEl.focus();
+      return;
+    }
+
+    if (voiceWorked) {
+      // Manos libres: prender micro automáticamente
+      showStageVisual('mic');
+      setStatus('Te escucho · habla', '');
+      setTimeout(() => {
+        if (!isSpeaking && !isThinking && !textModeActive) {
+          startListening();
+        }
+      }, 500);
+    } else {
+      // Voz falló: usuario debe picar micro a propósito cuando termine de leer
+      showStageVisual('mic');
+      setStatus('Pica el micro cuando estés listo', '');
+    }
+  }
+
+  startBtn.addEventListener('click', () => startConversation());
+
+  textModeBtn.addEventListener('click', () => {
+    splashEl.style.display = 'none';
+    stageEl.classList.add('active');
+    textModeActive = true;
+    composerEl.classList.add('active');
+    document.body.style.paddingBottom = '120px';
+    showStageVisual('mic');
+    setStatus('Modo texto', '');
+    setupRecognition(); // setup pero no start
+    textInputEl.focus();
+  });
+
+  // ========== VOICE CONTROLS ==========
+  micCircle.addEventListener('click', () => {
+    if (isSpeaking) {
+      // Si está hablando, interrumpir y empezar a escuchar
+      stopSpeaking();
+      setTimeout(() => startListening(), 200);
+    } else if (isListening) {
+      stopListening();
+    } else if (!isThinking) {
+      startListening();
+    }
+  });
+
+  muteBtn.addEventListener('click', () => {
+    isMuted = !isMuted;
+    if (isMuted) stopSpeaking();
+    muteBtn.querySelector('span').textContent = isMuted ? 'Activar voz' : 'Silenciar voz';
+  });
+
+  textToggleBtn.addEventListener('click', () => {
+    if (textModeActive) exitTextMode();
+    else enterTextMode();
+    textToggleBtn.querySelector('span').textContent = textModeActive ? 'Solo voz' : 'Escribir';
+  });
+
+  endBtn.addEventListener('click', () => {
+    stopListening();
+    stopSpeaking();
+    if (confirm('¿Terminar la conversación?')) {
+      window.location.reload();
+    }
+  });
+
+  // ========== STRIPE RETURN ==========
+  async function handleStripeReturn() {
+    const params = new URLSearchParams(window.location.search);
+    const paid = params.get('paid');
+    const sessionId = params.get('session_id');
+
+    if (paid === '1' && sessionId) {
+      window.history.replaceState({}, '', window.location.pathname);
+      // Ir directo al stage en modo confirmación, sin saludo
+      splashEl.style.display = 'none';
+      stageEl.classList.add('active');
+      setupRecognition();
+      isThinking = true;
+      showStageVisual('thinking');
+      setStatus('Confirmando pago', 'thinking');
+
+      try {
+        const r = await fetch(API_VERIFY, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session_id: sessionId }),
+        });
+        const data = await r.json();
+        isThinking = false;
+
+        if (data.ok) {
+          const msg = `¡Listo! Tu pago se confirmó. Ya activé tu búsqueda inteligente. Te voy a mandar los autos nuevos cada mañana a ${data.email}. La primera alerta llega mañana a las nueve.`;
+          conversation.push({ role: 'assistant', content: msg });
+          renderAiMsgHistory(msg);
+          await speak(msg);
+          toast('Pago confirmado · suscripción activa');
+          showStageVisual('mic');
+          setStatus('Pica el micro para seguir', '');
+        } else {
+          const msg = 'No pude confirmar tu pago. Si te llegó el cobro, escríbenos y lo resolvemos.';
+          renderAiMsgHistory(msg);
+          await speak(msg);
+          showStageVisual('mic');
+          setStatus('Error en pago', '');
+        }
+      } catch (err) {
+        isThinking = false;
+        showStageVisual('mic');
+        toast('Error verificando pago', true);
+      }
+    } else if (paid === '0') {
+      window.history.replaceState({}, '', window.location.pathname);
+      toast('Pago cancelado', true);
+    }
+  }
+  handleStripeReturn();
+
+  if (initialSearchQuery()) {
+    setTimeout(() => startConversation(), 350);
+  }
+
+  // Stop everything on page unload
+  window.addEventListener('beforeunload', () => {
+    stopListening();
+    stopSpeaking();
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.netlify
+node_modules
+*.zip
+*.bak*
+build-response*.json
+digest-deploy-response.json
+upload-*-response*.txt
+tmp-*
+tools/
+youtube-library-output/
+sql/
+*.sql
+NOTAS_*.txt
+readme-deploy.md
+plantilla-inventario-tixuz.csv
+upload-*.txt
