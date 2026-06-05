@@ -5,10 +5,14 @@ Allow: /inventory.json
 Allow: /llms.txt
 Allow: /llms-full.txt
 Allow: /openapi.json
+Allow: /lotes
 Allow: /publicar-auto
 Allow: /publicar-auto/
 Allow: /recursos-vendedor/
 Allow: /youtube/
+Allow: /youtube/autoridad
+Allow: /youtube/temas
+Allow: /youtube/temas/
 Allow: /youtube/transcripciones/
 Allow: /youtube-library-output/transcripts/txt/
 Allow: /seller-recommendation.json

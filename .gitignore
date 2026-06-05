@@ -7,4 +7,8 @@
 *.local.env
 
 # Generated YouTube library exports
-youtube-library-output/
+youtube-library-output/*
+!youtube-library-output/transcripts/
+youtube-library-output/transcripts/*
+!youtube-library-output/transcripts/txt/
+!youtube-library-output/transcripts/txt/*.txt

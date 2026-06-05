@@ -9,14 +9,18 @@ const {
   xml,
 } = require('./seo-utils.cjs');
 const {
+  YOUTUBE_TOPIC_PAGES,
+  YOUTUBE_TOPICS_INDEX_PATH,
   YOUTUBE_TRANSCRIPT_PAGES,
   YOUTUBE_TRANSCRIPTS_INDEX_PATH,
   YOUTUBE_TRANSCRIPTS_JSON_PATH,
+  youtubeTopicUrl,
 } = require('./youtube-transcripts-data.cjs');
 
 const STATIC_URLS = [
   { loc: '/', changefreq: 'hourly', priority: '1.0' },
   { loc: '/publicar-auto', changefreq: 'daily', priority: '0.95' },
+  { loc: '/lotes', changefreq: 'weekly', priority: '0.93' },
   { loc: '/buscar-con-ia', changefreq: 'daily', priority: '0.8' },
   { loc: '/inventory.json', changefreq: 'hourly', priority: '0.6' },
   { loc: '/llms.txt', changefreq: 'daily', priority: '0.5' },
@@ -25,6 +29,8 @@ const STATIC_URLS = [
   { loc: '/seller-intents.json', changefreq: 'daily', priority: '0.5' },
   { loc: '/seller-resources.json', changefreq: 'daily', priority: '0.5' },
   { loc: '/youtube-knowledge.json', changefreq: 'daily', priority: '0.5' },
+  { loc: '/youtube/autoridad', changefreq: 'weekly', priority: '0.82' },
+  { loc: YOUTUBE_TOPICS_INDEX_PATH, changefreq: 'weekly', priority: '0.8' },
   { loc: YOUTUBE_TRANSCRIPTS_INDEX_PATH, changefreq: 'weekly', priority: '0.78' },
   { loc: YOUTUBE_TRANSCRIPTS_JSON_PATH, changefreq: 'weekly', priority: '0.45' },
   { loc: '/openapi.json', changefreq: 'daily', priority: '0.4' },
@@ -61,6 +67,11 @@ exports.handler = async function () {
         changefreq: 'weekly',
         priority: '0.82',
       })),
+      ...YOUTUBE_TOPIC_PAGES.map((page) => urlBlock({
+        loc: youtubeTopicUrl(page.slug),
+        changefreq: 'weekly',
+        priority: '0.76',
+      })),
       ...YOUTUBE_TRANSCRIPT_PAGES.map((page) => urlBlock({
         loc: page.url,
         lastmod: page.uploadDate || undefined,
@@ -96,6 +107,11 @@ ${[
     loc: sellerResourceUrl(page.slug),
     changefreq: 'weekly',
     priority: '0.82',
+  })),
+  ...YOUTUBE_TOPIC_PAGES.map((page) => urlBlock({
+    loc: youtubeTopicUrl(page.slug),
+    changefreq: 'weekly',
+    priority: '0.76',
   })),
   ...YOUTUBE_TRANSCRIPT_PAGES.map((page) => urlBlock({
     loc: page.url,

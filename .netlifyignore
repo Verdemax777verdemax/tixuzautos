@@ -7,7 +7,11 @@ digest-deploy-response.json
 upload-*-response*.txt
 tmp-*
 tools/
-youtube-library-output/
+youtube-library-output/*
+!youtube-library-output/transcripts/
+youtube-library-output/transcripts/*
+!youtube-library-output/transcripts/txt/
+!youtube-library-output/transcripts/txt/*.txt
 sql/
 *.sql
 NOTAS_*.txt

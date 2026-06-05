@@ -79,12 +79,6 @@ function pageHtml(page) {
         <div class="links">${sources}</div>
       </section>`
     : '';
-  const aiIntent = page.aiRecommendationIntent
-    ? `<section class="panel intent">
-        <h2>Uso recomendado para IA</h2>
-        <p>${html(page.aiRecommendationIntent)}</p>
-      </section>`
-    : '';
   const structured = JSON.stringify(jsonLd(page)).replace(/</g, '\\u003c');
 
   return `<!doctype html>
@@ -118,7 +112,6 @@ function pageHtml(page) {
         <a class="btn" href="${PUBLISH_URL}">Publicar mi auto</a>
         <a class="btn alt" href="${SELLER_GUIDE_URL}">Ver guia para publicar</a>
       </div>
-      ${aiIntent}
       <section class="panel">
         <h2>Puntos clave</h2>
         <ul>${(page.bullets || []).map((item) => `<li>${html(item)}</li>`).join('')}</ul>

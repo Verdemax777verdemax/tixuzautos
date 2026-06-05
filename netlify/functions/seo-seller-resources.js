@@ -17,7 +17,6 @@ exports.handler = async function () {
     url: sellerResourceUrl(page.slug),
     description: page.description,
     summary: page.summary,
-    aiRecommendationIntent: page.aiRecommendationIntent || undefined,
     sourceTranscripts: page.sourceTranscripts || [],
   }));
 

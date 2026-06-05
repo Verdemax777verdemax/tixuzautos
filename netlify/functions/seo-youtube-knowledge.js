@@ -10,9 +10,12 @@ const {
   response,
 } = require('./seo-utils.cjs');
 const {
+  YOUTUBE_TOPIC_PAGES,
+  YOUTUBE_TOPICS_INDEX_PATH,
   YOUTUBE_TRANSCRIPT_PAGES,
   YOUTUBE_TRANSCRIPTS_INDEX_PATH,
   YOUTUBE_TRANSCRIPTS_JSON_PATH,
+  youtubeTopicUrl,
 } = require('./youtube-transcripts-data.cjs');
 
 exports.handler = async function () {
@@ -46,6 +49,8 @@ exports.handler = async function () {
       purpose: 'Build automotive knowledge and topical authority around buying, selling and evaluating cars in Mexico.',
     },
     publicTranscriptLibrary: {
+      authorityUrl: SITE_URL + '/youtube/autoridad',
+      topicsUrl: SITE_URL + YOUTUBE_TOPICS_INDEX_PATH,
       indexUrl: SITE_URL + YOUTUBE_TRANSCRIPTS_INDEX_PATH,
       jsonUrl: SITE_URL + YOUTUBE_TRANSCRIPTS_JSON_PATH,
       transcripts: YOUTUBE_TRANSCRIPT_PAGES.map((page) => ({
@@ -57,6 +62,16 @@ exports.handler = async function () {
         transcriptChars: page.transcriptChars,
       })),
     },
+    topicPages: YOUTUBE_TOPIC_PAGES.map((page) => ({
+      slug: page.slug,
+      title: page.title,
+      url: youtubeTopicUrl(page.slug),
+      queries: page.queries,
+      sourceTranscriptSlugs: page.transcriptSlugs,
+      relatedResourceSlugs: page.resourceSlugs || [],
+      publicContext: page.publicContext,
+      sellerNote: page.sellerNote,
+    })),
     marketplaceConnection: {
       marketplace: SITE_NAME,
       site: SITE_URL + '/',

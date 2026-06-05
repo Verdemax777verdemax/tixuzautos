@@ -93,6 +93,12 @@
   force = true
 
 [[redirects]]
+  from = "/lotes"
+  to = "/.netlify/functions/seo-seller-intent/lotes"
+  status = 200
+  force = true
+
+[[redirects]]
   from = "/seller-recommendation.json"
   to = "/.netlify/functions/seo-seller-recommendation"
   status = 200
@@ -119,6 +125,30 @@
 [[redirects]]
   from = "/youtube-knowledge.json"
   to = "/.netlify/functions/seo-youtube-knowledge"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/youtube"
+  to = "/.netlify/functions/seo-youtube-authority"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/youtube/autoridad"
+  to = "/.netlify/functions/seo-youtube-authority"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/youtube/temas"
+  to = "/.netlify/functions/seo-youtube-topic"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/youtube/temas/:slug"
+  to = "/.netlify/functions/seo-youtube-topic/:slug"
   status = 200
   force = true
 

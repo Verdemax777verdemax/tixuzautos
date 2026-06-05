@@ -503,11 +503,15 @@ async function revealWA(id,btn,targetId){
 
 // ── LOT PROSPECTING ──
 const PROSPECT_KEY='tixuz_lot_prospects_v1';
-const LOT_INTAKE_PUBLIC_URL='https://tixuzautos.com/?lote=1';
+const PROSPECT_DAILY_GOAL=10;
+const LOT_LANDING_PUBLIC_URL='https://tixuzautos.com/publicar-auto/lotes?inv=prospectos-lotes';
+const LOT_INTAKE_PUBLIC_URL='https://tixuzautos.com/?lote=1&inv=prospectos-lotes';
 const PROSPECT_TEMPLATES={
-  founder:`Hola, vimos que venden autos y queremos invitarlos a publicar en Tixuz Autos, el marketplace del programa de YouTube Tixuz Autos.\n\nPromoción de lanzamiento: hasta 20 autos gratis por 90 días, sin comisión por venta y con contacto directo a su WhatsApp.\n\nSi les interesa, ingresen aquí:\nhttps://tixuzautos.com/?lote=1`,
-  followup:`Hola, les damos seguimiento a la invitación para publicar sus autos en Tixuz Autos.\n\nLa promoción sigue activa: hasta 20 autos gratis por 90 días, sin comisión por venta y con contacto directo a su WhatsApp.\n\nSi les interesa, ingresen aquí:\nhttps://tixuzautos.com/?lote=1`,
-  inventory:`Para cargar su inventario en Tixuz Autos, entren aquí:\nhttps://tixuzautos.com/?lote=1\n\nNecesitan: nombre del lote, WhatsApp, ciudad, un PIN de 4 dígitos y la lista/archivo de autos con marca, modelo, año, precio y fotos si las tienen.\n\nPromoción: hasta 20 autos gratis por 90 días, sin comisión por venta.`
+  founder:`Hola, son {nombre}? Soy del programa de Tixuz Autos en YouTube. Estamos armando inventario real por ciudad e invitando lotes fundadores esta semana.\n\nPueden publicar hasta 20 autos gratis por 90 dias, sin comision por venta, con compradores directo a su WhatsApp y revision humana antes de activar.\n\nPrimero revisen la invitacion aqui:\n${LOT_LANDING_PUBLIC_URL}`,
+  followup:`Buen dia, le doy seguimiento a la invitacion de Tixuz Autos. La etapa de lotes fundadores sigue abierta esta semana: hasta 20 autos gratis por 90 dias, sin comision y con contacto directo a su WhatsApp.\n\nSi les interesa, aqui pueden revisar como funciona:\n${LOT_LANDING_PUBLIC_URL}`,
+  inventory:`Para cargar su inventario en Tixuz Autos, entren aqui:\n${LOT_INTAKE_PUBLIC_URL}\n\nNecesitan: nombre del lote, WhatsApp, ciudad, un PIN de 4 digitos para gestionar su carga y la lista/archivo de autos con marca, modelo, ano, precio y fotos si las tienen.\n\nNo pedimos tarjeta ni datos bancarios. Revision estimada: 24 a 48 horas.`,
+  cost:`Por ahora cuesta $0 porque estamos en etapa piloto y queremos sumar inventario real antes de cobrar planes. La invitacion cubre hasta 20 autos gratis por 90 dias, sin comision por venta y sin pedir tarjeta.\n\nPueden revisar primero aqui:\n${LOT_LANDING_PUBLIC_URL}`,
+  trust:`Entiendo perfecto la duda. Para cuidarlos: no pedimos dinero, tarjeta, contrasenas ni datos bancarios. El PIN solo sirve para gestionar su carga, y los autos quedan en revision humana antes de activarse.\n\nPueden revisar la invitacion y decidir aqui:\n${LOT_LANDING_PUBLIC_URL}`
 };
 const PROSPECT_STATUS_LABELS={pendiente:'pendiente',contactado:'contactado',interesado:'interesado',no:'no'};
 function loadProspects(){
@@ -529,6 +533,9 @@ function shortDate(iso){
 }
 function isDueProspect(p){
   return p.status==='contactado'&&p.next_followup&&p.next_followup<=localISODate(0);
+}
+function isProspectTouchedToday(p){
+  return String(p?.last_contact||'').slice(0,10)===localISODate(0);
 }
 function openProspects(){
   if(!hasOpsAccess())return requestOpsUnlock(openProspects);
@@ -1016,7 +1023,7 @@ function prospectEmailUrl(p){
   return `mailto:${encodeURIComponent(p.email)}?subject=${encodeURIComponent(prospectEmailSubject(p))}&body=${encodeURIComponent(prospectMessage(p))}`;
 }
 function prospectCallScript(p){
-  return `Hola, llamo de Tixuz Autos. Vimos que venden autos y queremos invitarlos a publicar gratis en tixuzautos.com. ¿Me puede pasar el WhatsApp o correo de la persona que ve publicaciones de inventario?`;
+  return `Hola, soy del programa de Tixuz Autos en YouTube. Estamos invitando lotes fundadores a publicar hasta 20 autos gratis por 90 dias, sin comision y con contacto directo a su WhatsApp. ¿Me puede pasar con la persona que ve publicaciones de inventario?`;
 }
 function saveProspectTouch(p,channel){
   if(!p)return;
@@ -1084,19 +1091,25 @@ function setActiveProspect(id){
 }
 function activeProspect(){
   loadProspects();
-  return prospects.find(p=>p.id===activeProspectId)||null;
+  const p=prospects.find(p=>p.id===activeProspectId)||null;
+  if(!p)return null;
+  if(p.status==='pendiente'||p.status==='interesado'||isDueProspect(p))return p;
+  return null;
 }
 function renderProspectActive(){
   const el=document.getElementById('prospectActive');
   const pv=document.getElementById('prospectPreview');
+  const qr=document.getElementById('prospectQuickReplies');
   if(!el)return;
   const active=activeProspect();
   const next=active||nextProspect();
   if(!next){
     el.innerHTML='Siguiente: sin prospectos.';
     if(pv)pv.textContent='El mensaje se llena cuando importes un lote.';
+    if(qr)qr.style.display='none';
     return;
   }
+  if(qr)qr.style.display='flex';
   const label=active?'Activo':'Siguiente';
   const ch=bestProspectChannel(next);
   const phone=next.whatsapp?` · ${escHTML(next.whatsapp)}${next.no_whatsapp?' sin WhatsApp':''}`:' · sin telefono';
@@ -1104,6 +1117,32 @@ function renderProspectActive(){
   el.innerHTML=`${label}: <strong>${escHTML(next.name)}</strong> · ${escHTML(next.city||'sin ciudad')}${phone}${follow} <span class="channel-badge ${ch==='call'?'warn':''}">${escHTML(prospectChannelLabel(ch))}</span>`;
   const contactBits=[next.email&&`Email ${next.email}`,next.link&&'Web',next.facebook&&'Facebook',next.instagram&&'Instagram'].filter(Boolean).join(' · ');
   if(pv)pv.textContent=`Siguiente acción: ${prospectChannelLabel(ch)}${contactBits?' · '+contactBits:''}. Mensaje: ${prospectMessage(next).slice(0,190)}${prospectMessage(next).length>190?'...':''}`;
+}
+async function copyActiveProspectReply(kind='followup'){
+  loadProspects();
+  const p=activeProspect()||nextProspect();
+  if(!p)return prospectMsg('No hay prospecto activo para responder.','warn');
+  const key=PROSPECT_TEMPLATES[kind]?kind:'followup';
+  const msg=fillTemplate(PROSPECT_TEMPLATES[key],p);
+  const ok=await copyProspectText(msg);
+  p.last_message=msg.slice(0,1000);
+  p.last_contact=new Date().toISOString();
+  if(key==='inventory'){
+    p.status='interesado';
+    p.next_followup=localISODate(1);
+  }else if(key==='followup'){
+    p.status='contactado';
+    p.next_followup=localISODate(2);
+  }else if(p.status==='pendiente'){
+    p.status='contactado';
+    p.next_followup=localISODate(1);
+  }
+  p.last_channel=p.last_channel||bestProspectChannel(p);
+  activeProspectId=p.id;
+  sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
+  saveProspects();renderProspects();
+  const labels={followup:'seguimiento',cost:'costo $0',trust:'confianza',inventory:'link de carga'};
+  prospectMsg(`${ok?'Copiada':'Respuesta lista'}: ${labels[key]||key} para ${p.name}.`, ok?'ok':'warn');
 }
 async function copyProspect(id){
   const p=prospects.find(x=>x.id===id);if(!p)return;
@@ -1158,6 +1197,13 @@ function nextProspect(){
   return prospects.find(p=>prospectHasAnyChannel(p)&&isDueProspect(p))||
     prospects.find(p=>p.status==='pendiente'&&prospectHasAnyChannel(p))||null;
 }
+function advanceActiveProspect(){
+  const next=nextProspect();
+  activeProspectId=next?.id||'';
+  if(activeProspectId)sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
+  else sessionStorage.removeItem('tixuz_active_prospect');
+  return next;
+}
 function openNextProspect(){
   const p=nextProspect();
   if(!p)return prospectMsg('No hay prospectos pendientes con canal de contacto.','warn');
@@ -1182,10 +1228,10 @@ function markActiveProspectSent(days=1){
   p.last_contact=new Date().toISOString();
   p.next_followup=localISODate(days);
   p.last_channel=p.last_channel||bestProspectChannel(p);
-  activeProspectId=p.id;
-  sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
-  saveProspects();renderProspects();
-  prospectMsg(`${p.name} marcado como enviado. Seguimiento: ${shortDate(p.next_followup)}.`, 'ok');
+  saveProspects();
+  const next=advanceActiveProspect();
+  renderProspects();
+  prospectMsg(`${p.name} marcado como enviado. Seguimiento: ${shortDate(p.next_followup)}.${next?` Siguiente: ${next.name}.`:' Ya no quedan pendientes con canal.'}`, 'ok');
 }
 function prospectToLot(id){
   const p=prospects.find(x=>x.id===id);if(!p)return;
@@ -1220,14 +1266,62 @@ function prospectRank(p){
   if(p.status==='interesado')return 3;
   return 4;
 }
+function todayProspectQueue(limit=PROSPECT_DAILY_GOAL){
+  loadProspects();
+  return prospects
+    .filter(p=>prospectHasAnyChannel(p)&&(isDueProspect(p)||p.status==='pendiente'))
+    .sort((a,b)=>prospectRank(a)-prospectRank(b)||String(a.created_at).localeCompare(String(b.created_at)))
+    .slice(0,Math.max(1,Number(limit)||PROSPECT_DAILY_GOAL));
+}
+function renderProspectTodayPlan(stats={}){
+  const box=document.getElementById('prospectTodayPlan');
+  if(!box)return;
+  const touched=Number(stats.today||0);
+  const remaining=Math.max(PROSPECT_DAILY_GOAL-touched,0);
+  if(!prospects.length){
+    box.innerHTML='<strong>Plan de hoy</strong><p>Carga prospectos para que Tixuz arme la cola diaria.</p>';
+    return;
+  }
+  const limit=remaining>0?Math.min(PROSPECT_DAILY_GOAL,Math.max(remaining,3)):3;
+  const queue=todayProspectQueue(limit);
+  if(!queue.length){
+    box.innerHTML=`<strong>Plan de hoy: ${touched}/${PROSPECT_DAILY_GOAL}</strong><p>No hay prospectos pendientes con canal. Importa mas lotes o revisa interesados.</p>`;
+    return;
+  }
+  const title=remaining>0?`Plan de hoy: faltan ${remaining} contactos`:`Meta de hoy completa: ${touched}/${PROSPECT_DAILY_GOAL}`;
+  box.innerHTML=`<strong>${escHTML(title)}</strong><p>Trabaja de arriba hacia abajo: preparar contacto, enviar, marcar enviado y dejar seguimiento para manana.</p><div class="today-list">${queue.map((p,i)=>`<div class="today-pill"><b>${i+1}. ${escHTML(p.name)}</b>${escHTML(p.city||'Sin ciudad')} · ${escHTML(prospectChannelLabel(bestProspectChannel(p)))}${isDueProspect(p)?' · seguimiento hoy':''}</div>`).join('')}</div>`;
+}
+function todayProspectPlanText(){
+  loadProspects();
+  const touched=prospects.filter(isProspectTouchedToday).length;
+  const remaining=Math.max(PROSPECT_DAILY_GOAL-touched,0);
+  const queue=todayProspectQueue(remaining>0?Math.min(PROSPECT_DAILY_GOAL,Math.max(remaining,3)):3);
+  const lines=[
+    `Plan Tixuz Prospectos ${localISODate(0)}`,
+    `Enviados hoy: ${touched}/${PROSPECT_DAILY_GOAL}`,
+    remaining>0?`Faltan: ${remaining}`:'Meta diaria completa',
+    ''
+  ];
+  queue.forEach((p,i)=>{
+    lines.push(`${i+1}. ${p.name} | ${p.city||'sin ciudad'} | ${prospectChannelLabel(bestProspectChannel(p))} | ${p.whatsapp||p.email||p.link||p.facebook||p.instagram||''}`);
+  });
+  return lines.join('\n').trim();
+}
+async function copyTodayProspectPlan(){
+  const text=todayProspectPlanText();
+  await copyProspectText(text);
+  prospectMsg('Plan de hoy copiado. Trabaja la lista y marca cada envio.', 'ok');
+}
 function renderProspects(){
   loadProspects();
   renderProspectSources();
   const stats={pendiente:0,contactado:0,interesado:0,no:0,due:0};
   prospects.forEach(p=>stats[p.status]=(stats[p.status]||0)+1);
   stats.due=prospects.filter(isDueProspect).length;
+  stats.today=prospects.filter(isProspectTouchedToday).length;
   const s=document.getElementById('prospectStats');
-  if(s)s.innerHTML=`<div class="pstat"><strong>${stats.pendiente||0}</strong><span>Pendientes</span></div><div class="pstat"><strong>${stats.due||0}</strong><span>Tocan hoy</span></div><div class="pstat"><strong>${stats.contactado||0}</strong><span>Contactados</span></div><div class="pstat"><strong>${stats.interesado||0}</strong><span>Interesados</span></div><div class="pstat"><strong>${stats.no||0}</strong><span>No / descartar</span></div>`;
+  if(s)s.innerHTML=`<div class="pstat"><strong>${stats.today||0}/${PROSPECT_DAILY_GOAL}</strong><span>Enviados hoy</span></div><div class="pstat"><strong>${stats.pendiente||0}</strong><span>Pendientes</span></div><div class="pstat"><strong>${stats.due||0}</strong><span>Tocan hoy</span></div><div class="pstat"><strong>${stats.contactado||0}</strong><span>Contactados</span></div><div class="pstat"><strong>${stats.interesado||0}</strong><span>Interesados</span></div><div class="pstat"><strong>${stats.no||0}</strong><span>No / descartar</span></div>`;
+  renderProspectTodayPlan(stats);
   renderProspectActive();
   const table=document.getElementById('prospectTable');
   if(!table)return;

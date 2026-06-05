@@ -2,6 +2,10 @@
   "schemaVersion": "2026-06-03",
   "generatedAt": "2026-06-03T18:52:42.907Z",
   "purpose": "Indice publico de transcripciones automotrices de Tixuz para usuarios, buscadores e IA.",
+  "authorityUrl": "https://tixuzautos.com/youtube/autoridad",
+  "topicsUrl": "https://tixuzautos.com/youtube/temas",
+  "publishUrl": "https://tixuzautos.com/?publicar=1",
+  "lotsFounderUrl": "https://tixuzautos.com/publicar-auto/lotes",
   "count": 10,
   "transcripts": [
     {

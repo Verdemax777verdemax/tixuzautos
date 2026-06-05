@@ -1,4 +1,4 @@
-// Tixuz Autos · carga asistida para lotes fundadores.
+// Tixuz Autos - carga asistida para lotes y agencias.
 // Crea anuncios gratis en revisión humana; no activa inventario público automáticamente.
 
 const { patchListingWithFallback, notifyReviewCreated } = require('./_review-utils.cjs');
