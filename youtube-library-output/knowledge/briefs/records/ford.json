@@ -1,0 +1,251 @@
+{
+  "topic": "Ford",
+  "slug": "ford",
+  "generated_at": "2026-06-01T01:07:14.752573+00:00",
+  "status": "ready_for_human_editor",
+  "publication_score": 86,
+  "angle": "Guia de compra sobre Ford apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 29,
+  "selected_claim_count": 10,
+  "source_count": 5,
+  "sources": {
+    "Jaime Gabaldoni": 17,
+    "Autoboutique 1/4 de Milla": 4,
+    "CarsLatino": 3,
+    "El Dios de los Autos": 3,
+    "Sergio Oliveira": 2
+  },
+  "polarity": {
+    "neutral": 25,
+    "negative": 3,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 3,
+  "owned_tixuz_videos": [
+    {
+      "id": "j9IPzpuHSp8",
+      "url": "https://www.youtube.com/watch?v=j9IPzpuHSp8",
+      "title": "FORD #2021 ¿me lo compro, o no me lo compro?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "cAQZZKiK8GY",
+      "url": "https://www.youtube.com/watch?v=cAQZZKiK8GY",
+      "title": "Las JMC telitoly... o como dicen Jodida Mi Camioneta 😂 ford nacidos chinos",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "V79lGPB82zc",
+      "url": "https://www.youtube.com/watch?v=V79lGPB82zc",
+      "title": "Yougi y Los Ford Cougar",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Ford convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Ford que debe revisar un comprador?",
+    "Que modelos de Ford tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Ford en Mexico?",
+    "Conviene comprar Ford nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Ford para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+      "source_url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+      "source_video_id": "wFtjSBAacbI",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Ford; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Nissan Versa vs Ford Figo. Si es tan bueno el Versa, ¿por qué compré un Figo?",
+      "source_url": "https://www.youtube.com/watch?v=Lm1_TKc7Eow",
+      "source_video_id": "Lm1_TKc7Eow",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Jeep Gladiator Mojave vs Ford F-150 Raptor: ¿Son realmente comparables?",
+      "source_url": "https://www.youtube.com/watch?v=-ayU1rQYyxM",
+      "source_video_id": "-ayU1rQYyxM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Ford Expedition 2025: ¿La mejor SUV familiar tamaño completo? | Prueba de Manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=z1RBvS2-nFQ",
+      "source_video_id": "z1RBvS2-nFQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¡Ford está FURIOSO! Responde TOYOTA y Suzuki!!",
+      "source_url": "https://www.youtube.com/watch?v=C0G0H_c_o48",
+      "source_video_id": "C0G0H_c_o48",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "Chevrolet ¡NUEVA Pick Up de $17,000 TIENE a Toyota y Ford de RODILLAS!",
+      "source_url": "https://www.youtube.com/watch?v=hqsVHkRdSP4",
+      "source_video_id": "hqsVHkRdSP4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Prueba de Manejo - Ford Mustang GT 2017",
+      "source_url": "https://www.youtube.com/watch?v=hC557xbz5XE",
+      "source_video_id": "hC557xbz5XE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "6 FORD QUE NO DEBERÍAS COMPRAR... Y 6 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=AgB9XQ_yXso",
+      "source_video_id": "AgB9XQ_yXso",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica | #43",
+      "source_url": "https://www.youtube.com/watch?v=BhwicrKoEO4",
+      "source_video_id": "BhwicrKoEO4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "43. Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica",
+      "source_url": "https://www.youtube.com/watch?v=cQZbi2OPviU",
+      "source_video_id": "cQZbi2OPviU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "j9IPzpuHSp8",
+      "url": "https://www.youtube.com/watch?v=j9IPzpuHSp8",
+      "title": "FORD #2021 ¿me lo compro, o no me lo compro?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "cAQZZKiK8GY",
+      "url": "https://www.youtube.com/watch?v=cAQZZKiK8GY",
+      "title": "Las JMC telitoly... o como dicen Jodida Mi Camioneta 😂 ford nacidos chinos",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "V79lGPB82zc",
+      "url": "https://www.youtube.com/watch?v=V79lGPB82zc",
+      "title": "Yougi y Los Ford Cougar",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "wFtjSBAacbI",
+      "url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+      "title": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "Lm1_TKc7Eow",
+      "url": "https://www.youtube.com/watch?v=Lm1_TKc7Eow",
+      "title": "Nissan Versa vs Ford Figo. Si es tan bueno el Versa, ¿por qué compré un Figo?",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

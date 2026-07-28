@@ -1,0 +1,80 @@
+{
+  "id": "E-dAwmDZ80M",
+  "slug": "me-lo-compro-o-no-me-lo-compro-con-lalo-vargas-gmc-y-honda-E-dAwmDZ80M",
+  "source_url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+  "source_context": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission",
+    "editorial_permission_required": true
+  },
+  "usage_rights": "external-reference",
+  "reuse_policy": "embed_link_and_summarize_only",
+  "transcript_policy": "do_not_store_full_transcript_without_permission",
+  "editorial_permission_required": true,
+  "title_original": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+  "title_seo": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+  "meta_description": "Un nuevo episodio de \"Me lo compro o no me lo compro\", junto a Lalo Vargas de Tixuz, analizando los modelos que GMC y Honda ofrecen en el mercado mexicano.",
+  "executive_summary": "Un nuevo episodio de \"Me lo compro o no me lo compro\", junto a Lalo Vargas de Tixuz, analizando los modelos que GMC y Honda ofrecen en el mercado mexicano.",
+  "key_takeaways": [
+    "Un nuevo episodio de \"Me lo compro o no me lo compro\", junto a Lalo Vargas de Tixuz, analizando los modelos que GMC y Honda ofrecen en el mercado mexicano."
+  ],
+  "vehicles_or_brands": [],
+  "buyer_questions_answered": [],
+  "market_topics": [
+    "Con",
+    "GMC",
+    "Honda",
+    "Lalo",
+    "Tixuz",
+    "Vargas"
+  ],
+  "publishable_article_outline": [],
+  "internal_links_to_create": [],
+  "schema_org_notes": [],
+  "external_claims": [
+    {
+      "vehicle_or_brand": "GMC",
+      "claim_summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Honda",
+      "claim_summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "claims_count": 2,
+  "claims_extraction_provider": "local",
+  "editorial_warnings": [
+    "Fuente externa: publicar como resumen con embed/enlace y atribucion; no republicar transcripcion completa sin permiso."
+  ],
+  "duration": 1976,
+  "upload_date": "20251222",
+  "thumbnail": "https://i.ytimg.com/vi/E-dAwmDZ80M/sddefault.jpg?sqp=-oaymwEmCIAFEOAD8quKqQMa8AEB-AH-CYACogWKAgwIABABGFMgWChlMA8=&rs=AOn4CLAHkG8ejLfcx1j3nlarsKebL8GxEA",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "transcript_available": false,
+  "transcript_chars": 0,
+  "enrichment_provider": "local",
+  "generated_at": "2026-05-29T22:47:43.046965+00:00"
+}

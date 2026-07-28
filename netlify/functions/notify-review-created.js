@@ -1,5 +1,5 @@
 // Tixuz Autos v62 · reenvío manual/seguro de aviso interno de revisión.
-// POST { listing_id, token? }  o GET ?id=...&token=...
+// POST { listing_id, token}  o GET id=...&token=...
 const { notifyReviewCreated, reviewSecret } = require('./_review-utils.cjs');
 
 const headers = {

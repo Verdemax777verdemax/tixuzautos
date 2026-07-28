@@ -1,0 +1,58 @@
+{
+  "source_video_id": "-eSA_bgaHjA",
+  "source_url": "https://www.youtube.com/watch?v=-eSA_bgaHjA",
+  "slug": "montx-auto-china-2026",
+  "title_seo": "MONTX en Auto China 2026: Innovaciones Off-Road y Tecnología",
+  "meta_description": "Descubre las innovaciones de MONTX presentadas en el Auto China 2026, incluyendo los conceptos P10 y B10, ideales para el off-road y la vida nómada.",
+  "executive_summary": "En el Auto China 2026, MONTX presentó dos conceptos innovadores: el P10, una picop con integración de dron, y el B10, un camper diseñado para nómadas digitales. Ambos vehículos buscan redefinir el uso de la tecnología en el transporte y están enfocados en el mercado mexicano.",
+  "key_takeaways": [
+    "MONTX es una nueva marca del GC Group que busca innovar en el mercado automotriz.",
+    "El P10 combina características de una picop con tecnología de drones.",
+    "El B10 está diseñado para el estilo de vida nómada, con un interior versátil y funcional."
+  ],
+  "vehicles_or_brands": [
+    {
+      "make": "MONTX",
+      "model": "P10",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Se menciona que el P10 es una picop que integra un dron y tiene cuatro motores independientes."
+    },
+    {
+      "make": "MONTX",
+      "model": "B10",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "El B10 es descrito como un camper que se adapta a diferentes necesidades, incluyendo trabajo remoto y vida nómada."
+    }
+  ],
+  "buyer_questions_answered": [
+    "¿Qué innovaciones trae MONTX al mercado?",
+    "¿Cómo se diferencian los modelos P10 y B10 de otros vehículos?",
+    "¿Qué características hacen al B10 ideal para nómadas digitales?"
+  ],
+  "market_topics": [
+    "Innovaciones en vehículos off-road",
+    "Tendencias en el diseño de campers",
+    "Integración de tecnología en automóviles"
+  ],
+  "publishable_article_outline": [
+    "Introducción a MONTX y su presentación en Auto China 2026",
+    "Descripción del modelo P10 y sus características",
+    "Descripción del modelo B10 y su enfoque en el estilo de vida nómada",
+    "Análisis de la propuesta de MONTX para el mercado mexicano",
+    "Conclusiones sobre el futuro de la movilidad y la tecnología en vehículos"
+  ],
+  "internal_links_to_create": [
+    "articulo-sobre-innovaciones-en-vehiculos-off-road",
+    "guia-de-compras-para-campers-y-vehiculos-nomadas"
+  ],
+  "schema_org_notes": [
+    "Incluir datos estructurados para los modelos P10 y B10."
+  ],
+  "editorial_warnings": [
+    "La información sobre MONTX y sus modelos es preliminar y debe ser validada con fuentes oficiales."
+  ],
+  "generated_at": "2026-05-29T18:27:57.299Z",
+  "model": "gpt-4o-mini"
+}

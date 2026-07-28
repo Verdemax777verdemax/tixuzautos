@@ -14,7 +14,7 @@ const {
 function slugFromEvent(event) {
   const raw =
     decodeURIComponent(String(event.path || '').split('/seo-seller-resource/')[1] || '') ||
-    decodeURIComponent(String(event.rawUrl || '').match(/\/recursos-vendedor\/([^/?#]+)/)?.[1] || '') ||
+    decodeURIComponent(String(event.rawUrl || '').match(/\/recursos-vendedor\/([^/#]+)/)?.[1] || '') ||
     '';
   return raw.replace(/^\/+|\/+$/g, '');
 }

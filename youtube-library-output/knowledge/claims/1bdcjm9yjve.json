@@ -1,0 +1,65 @@
+{
+  "source_attribution": {
+    "source_video_id": "1bdcjm9yJVE",
+    "source_url": "https://www.youtube.com/watch?v=1bdcjm9yJVE",
+    "source_title": "De Mazda a MG - Me lo compro o no me lo compro",
+    "source_channel": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "source_owner": "Sergio Oliveira",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Mazda",
+      "claim_summary": "Fuente externa registrada sobre Mazda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mercedes",
+      "claim_summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mercedes-Benz",
+      "claim_summary": "Fuente externa registrada sobre Mercedes-Benz; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "MG",
+      "claim_summary": "Fuente externa registrada sobre MG; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:22:57.537702+00:00"
+}

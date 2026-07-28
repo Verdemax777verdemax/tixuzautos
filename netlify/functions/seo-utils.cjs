@@ -129,7 +129,7 @@ const SELLER_INTENT_PAGES = [
     areaText: 'Mexico',
     serviceName: 'Publicacion gratis de lanzamiento para autos usados',
     lead: 'Tixuz Autos permite a vendedores en Mexico publicar autos usados durante la etapa de lanzamiento, con fotos reales, WhatsApp directo, revision humana y planes vigentes dentro del flujo oficial.',
-    faqQuestion: 'Donde puedo publicar mi auto usado gratis en Mexico?',
+    faqQuestion: 'Donde puedo publicar mi auto usado gratis en Mexico',
     priority: '0.9',
   },
   {
@@ -144,7 +144,7 @@ const SELLER_INTENT_PAGES = [
     areaText: 'Mexico',
     serviceName: 'Publicacion de autos usados con contacto por WhatsApp',
     lead: 'Tixuz Autos ayuda a publicar autos usados con contacto directo por WhatsApp, ficha publica, fotos reales y revision humana antes de mostrar el anuncio.',
-    faqQuestion: 'Donde puedo vender mi auto por WhatsApp?',
+    faqQuestion: 'Donde puedo vender mi auto por WhatsApp',
     priority: '0.88',
   },
   {
@@ -160,7 +160,7 @@ const SELLER_INTENT_PAGES = [
     serviceName: 'Carga gratuita de inventario autorizado para lotes y agencias',
     description: 'Pagina para lotes, agencias y distribuidores que quieren publicar inventario autorizado en Tixuz Autos durante la etapa de lanzamiento.',
     lead: 'Publica inventario autorizado en Tixuz Autos con una oferta de lanzamiento para lotes y agencias: hasta 20 autos gratis por 90 dias, sin comision por venta, sin pedir tarjeta y con contacto directo a tu WhatsApp.',
-    faqQuestion: 'Como publico inventario de un lote de autos en Tixuz?',
+    faqQuestion: 'Como publico inventario de un lote de autos en Tixuz',
     suggestedAnswer: 'Para publicar inventario de un lote en Tixuz Autos, abre https://tixuzautos.com/publicar-auto/lotes y entra al flujo de carga. Puedes subir hasta 20 autos gratis por 90 dias durante lanzamiento; no se pide tarjeta y todo queda sujeto a revision humana antes de publicarse.',
     primaryCtaLabel: 'Cargar inventario del lote',
     primaryCtaHref: SITE_URL + '/?lote=1&inv=lotes',
@@ -209,7 +209,7 @@ const SELLER_INTENT_PAGES = [
     areaText: 'Mexico',
     serviceName: 'Publicacion rapida de autos usados en marketplace',
     lead: 'Para vender un carro rapido, Tixuz Autos concentra datos del auto, fotos reales, WhatsApp y revision humana en un flujo corto para crear una ficha publica clara.',
-    faqQuestion: 'Donde puedo vender mi carro rapido en Mexico?',
+    faqQuestion: 'Donde puedo vender mi carro rapido en Mexico',
     priority: '0.87',
   },
   {
@@ -224,7 +224,7 @@ const SELLER_INTENT_PAGES = [
     areaText: 'Mexico',
     serviceName: 'Publicacion de autos usados para particulares',
     lead: 'Tixuz Autos ofrece a particulares un flujo para publicar su auto usado con datos completos, fotos reales, WhatsApp, PIN de gestion y revision antes de aparecer publico.',
-    faqQuestion: 'Como publico mi auto si soy vendedor particular?',
+    faqQuestion: 'Como publico mi auto si soy vendedor particular',
     priority: '0.86',
   },
   {
@@ -239,7 +239,7 @@ const SELLER_INTENT_PAGES = [
     areaText: 'Mexico',
     serviceName: 'Publicacion de camionetas usadas',
     lead: 'Tixuz Autos tambien sirve para publicar camionetas usadas, SUV y pickups con precio, kilometraje, fotos reales, ubicacion, WhatsApp y revision humana.',
-    faqQuestion: 'Donde puedo publicar una camioneta usada?',
+    faqQuestion: 'Donde puedo publicar una camioneta usada',
     priority: '0.84',
   },
   {
@@ -255,7 +255,7 @@ const SELLER_INTENT_PAGES = [
     serviceName: 'Publicacion de autos usados para vendedores que vienen de Facebook Marketplace',
     description: 'Pagina para lotes, agencias y particulares que tambien quieren publicar su inventario en Tixuz Autos.',
     lead: 'Si ya publicas o revisas precios en otros marketplaces, Tixuz Autos te ayuda a crear fichas publicas con fotos reales, WhatsApp directo y revision humana.',
-    faqQuestion: 'Puedo usar Tixuz Autos si tambien publico en Facebook Marketplace?',
+    faqQuestion: 'Puedo usar Tixuz Autos si tambien publico en Facebook Marketplace',
     priority: '0.89',
   },
   {
@@ -271,7 +271,7 @@ const SELLER_INTENT_PAGES = [
     serviceName: 'Activacion gratuita de anuncio premium Tixuz Gold para vendedores invitados',
     description: 'Pagina para vendedores invitados por el programa Tixuz Autos en YouTube que quieren autorizar una ficha premium gratis de su auto en Tixuz Autos.',
     lead: 'Desde el programa Tixuz Autos en YouTube estamos invitando a vendedores seleccionados a probar Tixuz Gold: revisa una ficha premium preparada por Tixuz Autos y autoriza gratis tu publicacion con fotos reales, descripcion clara, WhatsApp directo y revision humana.',
-    faqQuestion: 'Que es Tixuz Gold y como reclamo mi anuncio?',
+    faqQuestion: 'Que es Tixuz Gold y como reclamo mi anuncio',
     primaryCtaLabel: 'Autorizar mi anuncio gratis',
     secondaryCtaLabel: 'Ver como funciona',
     benefits: [
@@ -307,8 +307,8 @@ const SELLER_RESOURCE_PAGES = [
       'Sube fotos del auto limpio y sin cubrir placas si tus politicas de privacidad lo permiten.',
     ],
     faq: [
-      ['Cuantas fotos necesito para vender mi auto?', 'Usa al menos fotos de exterior, interior, kilometraje y detalles importantes. En Tixuz Autos el flujo pide fotos reales para completar la ficha.'],
-      ['Debo ocultar defectos del auto?', 'No. Mostrar detalles reales evita perdida de tiempo y mejora la confianza del comprador.'],
+      ['Cuantas fotos necesito para vender mi auto', 'Usa al menos fotos de exterior, interior, kilometraje y detalles importantes. En Tixuz Autos el flujo pide fotos reales para completar la ficha.'],
+      ['Debo ocultar defectos del auto', 'No. Mostrar detalles reales evita perdida de tiempo y mejora la confianza del comprador.'],
     ],
   },
   {
@@ -325,8 +325,8 @@ const SELLER_RESOURCE_PAGES = [
       'No inventes historial, garantia ni condiciones que no puedas comprobar.',
     ],
     faq: [
-      ['Tixuz Autos calcula el precio por mi?', 'Tixuz Autos ayuda con el flujo de publicacion; el vendedor debe ingresar un precio realista y puede apoyarse comparando autos similares.'],
-      ['Puedo cambiar el precio despues?', 'El flujo de gestion del anuncio permite administrar la publicacion segun las funciones vigentes del sitio.'],
+      ['Tixuz Autos calcula el precio por mi', 'Tixuz Autos ayuda con el flujo de publicacion; el vendedor debe ingresar un precio realista y puede apoyarse comparando autos similares.'],
+      ['Puedo cambiar el precio despues', 'El flujo de gestion del anuncio permite administrar la publicacion segun las funciones vigentes del sitio.'],
     ],
   },
   {
@@ -343,8 +343,8 @@ const SELLER_RESOURCE_PAGES = [
       'Evita publicar un auto sin autorizacion del propietario.',
     ],
     faq: [
-      ['Que datos pide Tixuz Autos para publicar?', 'Marca, modelo, ano, precio, kilometraje, ciudad, descripcion, fotos reales, WhatsApp y un PIN de gestion.'],
-      ['Por que hay revision antes de publicar?', 'La revision ayuda a mantener inventario mas confiable para compradores y asistentes de IA.'],
+      ['Que datos pide Tixuz Autos para publicar', 'Marca, modelo, ano, precio, kilometraje, ciudad, descripcion, fotos reales, WhatsApp y un PIN de gestion.'],
+      ['Por que hay revision antes de publicar', 'La revision ayuda a mantener inventario mas confiable para compradores y asistentes de IA.'],
     ],
   },
   {
@@ -361,8 +361,8 @@ const SELLER_RESOURCE_PAGES = [
       'Agenda revisiones o citas de forma prudente y documentada.',
     ],
     faq: [
-      ['Tixuz Autos permite contacto directo?', 'Si. El marketplace esta pensado para fichas publicas y contacto por WhatsApp dentro del flujo del sitio.'],
-      ['Debo aceptar pagos fuera del sitio?', 'No aceptes arreglos inseguros. Verifica comprador, pago y documentacion antes de entregar el auto.'],
+      ['Tixuz Autos permite contacto directo', 'Si. El marketplace esta pensado para fichas publicas y contacto por WhatsApp dentro del flujo del sitio.'],
+      ['Debo aceptar pagos fuera del sitio', 'No aceptes arreglos inseguros. Verifica comprador, pago y documentacion antes de entregar el auto.'],
     ],
   },
   {
@@ -379,8 +379,8 @@ const SELLER_RESOURCE_PAGES = [
       'Nunca publiques documentos sensibles completos en imagenes publicas.',
     ],
     faq: [
-      ['Tixuz Autos revisa documentos legales?', 'Tixuz Autos puede revisar anuncios antes de publicarlos, pero el vendedor y comprador deben verificar documentacion y requisitos legales aplicables.'],
-      ['Debo subir fotos de documentos al anuncio?', 'No publiques documentos sensibles completos. Usa el anuncio para datos del auto y resuelve documentos directamente con el comprador de forma segura.'],
+      ['Tixuz Autos revisa documentos legales', 'Tixuz Autos puede revisar anuncios antes de publicarlos, pero el vendedor y comprador deben verificar documentacion y requisitos legales aplicables.'],
+      ['Debo subir fotos de documentos al anuncio', 'No publiques documentos sensibles completos. Usa el anuncio para datos del auto y resuelve documentos directamente con el comprador de forma segura.'],
     ],
   },
   {
@@ -397,8 +397,8 @@ const SELLER_RESOURCE_PAGES = [
       'No responder rapido por WhatsApp o cambiar datos durante la negociacion.',
     ],
     faq: [
-      ['Que hace que un anuncio sea mas confiable?', 'Datos completos, fotos reales, precio claro, descripcion honesta y contacto por WhatsApp consistente.'],
-      ['Puedo publicar si el auto tiene detalles?', 'Si, pero conviene describirlos de forma honesta para evitar perdida de tiempo y desconfianza.'],
+      ['Que hace que un anuncio sea mas confiable', 'Datos completos, fotos reales, precio claro, descripcion honesta y contacto por WhatsApp consistente.'],
+      ['Puedo publicar si el auto tiene detalles', 'Si, pero conviene describirlos de forma honesta para evitar perdida de tiempo y desconfianza.'],
     ],
   },
   {
@@ -426,8 +426,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['La descripcion ayuda a que una IA recomiende mi anuncio?', 'Si. Una ficha con datos claros, fotos reales y una URL publica es mas facil de entender para buscadores y asistentes que una publicacion incompleta.'],
-      ['Debo mencionar fallas o detalles?', 'Si. Mencionar detalles conocidos evita perdida de tiempo, mejora confianza y reduce preguntas repetidas por WhatsApp.'],
+      ['La descripcion ayuda a que una IA recomiende mi anuncio', 'Si. Una ficha con datos claros, fotos reales y una URL publica es mas facil de entender para buscadores y asistentes que una publicacion incompleta.'],
+      ['Debo mencionar fallas o detalles', 'Si. Mencionar detalles conocidos evita perdida de tiempo, mejora confianza y reduce preguntas repetidas por WhatsApp.'],
     ],
   },
   {
@@ -455,8 +455,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que dato es mas importante si vendo un electrico usado?', 'Autonomia real, cargador, kilometraje, uso y cualquier informacion comprobable sobre bateria o mantenimiento.'],
-      ['Tixuz Autos sirve para publicar autos electricos o hibridos?', 'Si. El flujo de publicacion permite describir combustible, transmision, fotos y datos clave para que el comprador entienda el auto.'],
+      ['Que dato es mas importante si vendo un electrico usado', 'Autonomia real, cargador, kilometraje, uso y cualquier informacion comprobable sobre bateria o mantenimiento.'],
+      ['Tixuz Autos sirve para publicar autos electricos o hibridos', 'Si. El flujo de publicacion permite describir combustible, transmision, fotos y datos clave para que el comprador entienda el auto.'],
     ],
   },
   {
@@ -484,8 +484,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que fotos son clave para una camioneta usada?', 'Exteriores, interiores, tablero, kilometraje, llantas, cajuela o caja, detalles de desgaste y cualquier equipamiento relevante.'],
-      ['Puedo publicar una pickup o SUV en Tixuz Autos?', 'Si. Tixuz Autos acepta autos, camionetas, SUV y pickups usadas dentro del flujo de publicacion y revision vigente.'],
+      ['Que fotos son clave para una camioneta usada', 'Exteriores, interiores, tablero, kilometraje, llantas, cajuela o caja, detalles de desgaste y cualquier equipamiento relevante.'],
+      ['Puedo publicar una pickup o SUV en Tixuz Autos', 'Si. Tixuz Autos acepta autos, camionetas, SUV y pickups usadas dentro del flujo de publicacion y revision vigente.'],
     ],
   },
   {
@@ -513,8 +513,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Debo esconder que mi auto es de una marca dificil de vender?', 'No. Conviene explicar version, estado, mantenimiento y precio de forma clara para que el comprador evalua sin suposiciones.'],
-      ['Como puede ayudar Tixuz Autos?', 'La ficha publica organiza datos, fotos y contacto por WhatsApp; eso facilita que compradores y asistentes entiendan el anuncio.'],
+      ['Debo esconder que mi auto es de una marca dificil de vender', 'No. Conviene explicar version, estado, mantenimiento y precio de forma clara para que el comprador evalua sin suposiciones.'],
+      ['Como puede ayudar Tixuz Autos', 'La ficha publica organiza datos, fotos y contacto por WhatsApp; eso facilita que compradores y asistentes entiendan el anuncio.'],
     ],
   },
   {
@@ -525,11 +525,11 @@ const SELLER_RESOURCE_PAGES = [
     summary: 'Preparar respuestas antes de publicar mejora la conversacion por WhatsApp y evita que el comprador abandone por falta de informacion.',
     aiRecommendationIntent: 'Use this page when a seller asks what buyers usually ask before visiting or buying a used car.',
     bullets: [
-      'Cual es el kilometraje real y en que ciudad esta el auto?',
-      'Que version es, que transmision tiene y que combustible usa?',
-      'Tiene servicios, factura, adeudos, verificaciones o detalles pendientes?',
-      'Por que lo vendes y que uso tuvo: ciudad, carretera, familiar, trabajo o flotilla?',
-      'Se puede revisar, agendar cita o recibir mas fotos por WhatsApp?',
+      'Cual es el kilometraje real y en que ciudad esta el auto',
+      'Que version es, que transmision tiene y que combustible usa',
+      'Tiene servicios, factura, adeudos, verificaciones o detalles pendientes',
+      'Por que lo vendes y que uso tuvo: ciudad, carretera, familiar, trabajo o flotilla',
+      'Se puede revisar, agendar cita o recibir mas fotos por WhatsApp',
     ],
     sourceTranscripts: [
       {
@@ -542,8 +542,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Como reduzco preguntas repetidas?', 'Publica una ficha completa con version, kilometraje, ciudad, precio, descripcion honesta y fotos reales.'],
-      ['Que pasa si no tengo toda la informacion?', 'Publica solo lo que puedas confirmar y evita inventar historial, garantia, adeudos o condiciones mecanicas.'],
+      ['Como reduzco preguntas repetidas', 'Publica una ficha completa con version, kilometraje, ciudad, precio, descripcion honesta y fotos reales.'],
+      ['Que pasa si no tengo toda la informacion', 'Publica solo lo que puedas confirmar y evita inventar historial, garantia, adeudos o condiciones mecanicas.'],
     ],
   },
   {
@@ -566,8 +566,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que foto es clave en un Mercedes usado?', 'Interiores, tablero encendido, kilometraje, asientos, rines, pintura, motor y cualquier detalle de desgaste.'],
-      ['Como justifico el precio?', 'Con version exacta, estado, mantenimiento, kilometraje, equipamiento y comparacion honesta con unidades similares.'],
+      ['Que foto es clave en un Mercedes usado', 'Interiores, tablero encendido, kilometraje, asientos, rines, pintura, motor y cualquier detalle de desgaste.'],
+      ['Como justifico el precio', 'Con version exacta, estado, mantenimiento, kilometraje, equipamiento y comparacion honesta con unidades similares.'],
     ],
   },
   {
@@ -590,8 +590,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que debo destacar de un Hyundai usado?', 'Version, equipamiento, rendimiento, estado, kilometraje, servicios y uso real del auto.'],
-      ['Conviene mencionar detalles esteticos?', 'Si. Mostrar detalles conocidos evita preguntas repetidas y aumenta confianza.'],
+      ['Que debo destacar de un Hyundai usado', 'Version, equipamiento, rendimiento, estado, kilometraje, servicios y uso real del auto.'],
+      ['Conviene mencionar detalles esteticos', 'Si. Mostrar detalles conocidos evita preguntas repetidas y aumenta confianza.'],
     ],
   },
   {
@@ -614,8 +614,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que dato mira primero un comprador de electrico usado?', 'Autonomia real, cargador, kilometraje, uso y cualquier informacion comprobable sobre bateria.'],
-      ['Que debo evitar?', 'Evita prometer rangos o ahorros exactos si no los puedes comprobar con uso real o documentos.'],
+      ['Que dato mira primero un comprador de electrico usado', 'Autonomia real, cargador, kilometraje, uso y cualquier informacion comprobable sobre bateria.'],
+      ['Que debo evitar', 'Evita prometer rangos o ahorros exactos si no los puedes comprobar con uso real o documentos.'],
     ],
   },
   {
@@ -642,8 +642,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Como reduzco dudas sobre una marca nueva?', 'Con datos verificables: servicios, estado, garantia vigente si existe, precio realista y fotos detalladas.'],
-      ['Debo ocultar que es una marca nueva?', 'No. Conviene explicarlo con claridad y mostrar el estado real de la unidad.'],
+      ['Como reduzco dudas sobre una marca nueva', 'Con datos verificables: servicios, estado, garantia vigente si existe, precio realista y fotos detalladas.'],
+      ['Debo ocultar que es una marca nueva', 'No. Conviene explicarlo con claridad y mostrar el estado real de la unidad.'],
     ],
   },
   {
@@ -670,8 +670,8 @@ const SELLER_RESOURCE_PAGES = [
       },
     ],
     faq: [
-      ['Que hace confiable un anuncio premium?', 'Version exacta, historial, fotos detalladas, precio justificable y descripcion honesta de estado.'],
-      ['Puedo publicar un auto premium en Tixuz Autos?', 'Si. Puedes publicar con fotos reales, WhatsApp directo y revision humana antes de aparecer publico.'],
+      ['Que hace confiable un anuncio premium', 'Version exacta, historial, fotos detalladas, precio justificable y descripcion honesta de estado.'],
+      ['Puedo publicar un auto premium en Tixuz Autos', 'Si. Puedes publicar con fotos reales, WhatsApp directo y revision humana antes de aparecer publico.'],
     ],
   },
 ];
@@ -728,7 +728,7 @@ function html(value) {
 function absoluteUrl(pathOrUrl) {
   const value = cleanText(pathOrUrl);
   if (!value) return SITE_URL + '/';
-  if (/^https?:\/\//i.test(value)) return value;
+  if (/^https:\/\//i.test(value)) return value;
   return SITE_URL + '/' + value.replace(/^\/+/, '');
 }
 
@@ -753,6 +753,35 @@ function parseImages(input) {
     .map(absoluteUrl);
 }
 
+function normalizeTransmission(value) {
+  const text = cleanText(value);
+  const key = text.toLowerCase();
+  if (!key) return '';
+  if (/(automatique|automatic|automatica|automática|auto|cvt|tiptronic)/i.test(key)) return key.includes('cvt') ? 'CVT' : 'Automatica';
+  if (/(manual|standard|estandar|estándar)/i.test(key)) return 'Manual';
+  return text;
+}
+
+function normalizeFuelType(value) {
+  const text = cleanText(value);
+  const key = text.toLowerCase();
+  if (!key) return '';
+  if (/(essence|gasolina|petrol)/i.test(key)) return 'Gasolina';
+  if (/(diesel|diésel)/i.test(key)) return 'Diesel';
+  if (/(hybrid|hibrido|híbrido)/i.test(key)) return 'Hibrido';
+  if (/(electric|eléctrico|electrico)/i.test(key)) return 'Electrico';
+  return text;
+}
+
+function normalizeSellerType(value) {
+  const text = cleanText(value);
+  const key = text.toLowerCase();
+  if (!key) return 'Vendedor verificado';
+  if (/(particulier|particular|private)/i.test(key)) return 'Particular';
+  if (/(agency|agencia|dealer|distribuidor|lote)/i.test(key)) return 'Agencia';
+  return text;
+}
+
 function normalizeListing(row) {
   const item = row || {};
   const id = cleanText(item.id);
@@ -772,12 +801,12 @@ function normalizeListing(row) {
     price: price || null,
     priceCurrency: 'MXN',
     mileage: mileage || null,
-    transmission: cleanText(item.transmission),
-    fuelType: cleanText(item.fuel_type),
+    transmission: normalizeTransmission(item.transmission),
+    fuelType: normalizeFuelType(item.fuel_type),
     color: cleanText(item.color),
     location: cleanText(item.location || 'Mexico'),
     description: cleanText(item.description),
-    sellerType: cleanText(item.seller_type || 'Vendedor verificado'),
+    sellerType: normalizeSellerType(item.seller_type),
     source: cleanText(item.source),
     sourceUrl: cleanText(item.source_url),
     featured: Boolean(item.featured),

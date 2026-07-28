@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Ford: guia de compra Tixuz",
+      "description": "Borrador editorial de Tixuz Autos sobre Ford: videos propios, fuentes externas atribuidas y preguntas de compra.",
+      "inLanguage": "es-MX",
+      "isAccessibleForFree": true,
+      "url": "https://tixuzautos.com/guias/ford/",
+      "author": {
+        "@type": "Person",
+        "name": "Eduardo Vargas"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tixuz Autos",
+        "url": "https://tixuzautos.com",
+        "sameAs": [
+          "https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg",
+          "https://www.youtube.com/c/Tixuz"
+        ]
+      },
+      "about": {
+        "@type": "Brand",
+        "name": "Ford"
+      },
+      "video": [
+        {
+          "@type": "VideoObject",
+          "name": "FORD #2021 ¿me lo compro, o no me lo compro?",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Ford.",
+          "embedUrl": "https://www.youtube.com/embed/j9IPzpuHSp8",
+          "url": "https://www.youtube.com/watch?v=j9IPzpuHSp8",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Las JMC telitoly... o como dicen Jodida Mi Camioneta 😂 ford nacidos chinos",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Ford.",
+          "embedUrl": "https://www.youtube.com/embed/cAQZZKiK8GY",
+          "url": "https://www.youtube.com/watch?v=cAQZZKiK8GY",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Yougi y Los Ford Cougar",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Ford.",
+          "embedUrl": "https://www.youtube.com/embed/V79lGPB82zc",
+          "url": "https://www.youtube.com/watch?v=V79lGPB82zc",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Ford.",
+          "embedUrl": "https://www.youtube.com/embed/wFtjSBAacbI",
+          "url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sergio Oliveira"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Nissan Versa vs Ford Figo. Si es tan bueno el Versa, ¿por qué compré un Figo?",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Ford.",
+          "embedUrl": "https://www.youtube.com/embed/Lm1_TKc7Eow",
+          "url": "https://www.youtube.com/watch?v=Lm1_TKc7Eow",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sergio Oliveira"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tixuz Autos",
+          "item": "https://tixuzautos.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guias",
+          "item": "https://tixuzautos.com/guias/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Ford",
+          "item": "https://tixuzautos.com/guias/ford/"
+        }
+      ]
+    }
+  ]
+}

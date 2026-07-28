@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "JrVN4HVNjJg",
+    "source_url": "https://www.youtube.com/watch?v=JrVN4HVNjJg",
+    "source_title": "161. BYD Seagull, Cupra Tavaskan, Jaecoo 7 y 9, Mach E en Australia",
+    "source_channel": "Autoboutique 1/4 de Milla",
+    "source_channel_id": "UCpC4ElFQZGj22H6yt6tWFxg",
+    "source_owner": "Autoboutique 1/4 de Milla",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "BYD",
+      "claim_summary": "El video contiene una posible opinion favorable sobre BYD; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:16:17.109642+00:00"
+}

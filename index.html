@@ -1,15 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Tixuz Autos Â· Compra y vende autos usados en MÃ©xico</title>
-<meta name="description" content="Marketplace de autos usados en MÃ©xico. Publica con IA, contacto por WhatsApp, paga con tarjeta.">
+<title>Tixuz Autos · Compra y vende autos usados en México</title>
+<meta name="description" content="Marketplace de autos usados en México. Publica con IA, contacto por WhatsApp, paga con tarjeta.">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Tixuz Autos">
-<meta property="og:title" content="Tixuz Autos Â· Compra y vende autos usados en MÃ©xico">
-<meta property="og:description" content="Marketplace mexicano con asistente IA, revisiÃ³n humana y contacto directo por WhatsApp. Publica gratis por lanzamiento.">
+<meta property="og:title" content="Tixuz Autos · Compra y vende autos usados en México">
+<meta property="og:description" content="Marketplace mexicano con asistente IA, revisión humana y contacto directo por WhatsApp. Publica gratis por lanzamiento.">
 <meta property="og:url" content="https://tixuzautos.com/">
 <meta property="og:image" content="https://tixuzautos.com/assets/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -17,8 +17,8 @@
 <meta property="og:locale" content="es_MX">
 <!-- Twitter / X -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Tixuz Autos Â· Autos usados en MÃ©xico">
-<meta name="twitter:description" content="Asistente IA + revisiÃ³n humana + WhatsApp. Publica gratis por lanzamiento.">
+<meta name="twitter:title" content="Tixuz Autos · Autos usados en México">
+<meta name="twitter:description" content="Asistente IA + revisión humana + WhatsApp. Publica gratis por lanzamiento.">
 <meta name="twitter:image" content="https://tixuzautos.com/assets/og-cover.jpg">
 <link rel="canonical" href="https://tixuzautos.com/">
 <link rel="me" href="https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg">
@@ -32,7 +32,7 @@
 <link rel="alternate" type="text/plain" href="https://tixuzautos.com/llms.txt" title="Guia para asistentes IA">
 <link rel="alternate" type="text/html" href="https://tixuzautos.com/publicar-auto" title="Publicar auto usado en Tixuz Autos">
 <link rel="alternate" type="text/html" href="https://tixuzautos.com/publicar-auto/lotes" title="Lotes y agencias Tixuz Autos">
-<link rel="alternate" type="text/html" href="https://tixuzautos.com/youtube/autoridad" title="Autoridad automotriz Tixuz en YouTube">
+<link rel="alternate" type="text/html" href="https://tixuzautos.com/youtube/autoridad" title="Biblioteca YouTube Tixuz">
 <link rel="alternate" type="text/html" href="https://tixuzautos.com/youtube/temas" title="Temas automotrices Tixuz en YouTube">
 <link rel="alternate" type="application/xml" href="https://tixuzautos.com/sitemap.xml" title="Sitemap">
 <script type="application/ld+json">
@@ -40,17 +40,17 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 <script defer src="/assets/vendor/supabase-2.49.4.js"></script>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0f1623;--bg2:#161e2e;--bg3:#1e2a3d;--bg4:#263248;
-  --border:#2a3750;
-  --text:#f0f4ff;--text2:#9aaec8;--text3:#7f96b4;
-  --accent:#3b82f6;--accent2:#2563eb;
-  --green:#10b981;--green2:#059669;
-  --gold:#f59e0b;--purple:#7c3aed;--danger:#ef4444;
+  --bg:#0D0E11;--bg2:#17181F;--bg3:#1E2029;--bg4:#262833;
+  --border:#262833;
+  --text:#ECEEF3;--text2:#969CAC;--text3:#5C6273;
+  --accent:#6AA6FF;--accent2:#4F8FF5;
+  --green:#25D366;--green2:#16a34a;
+  --gold:#E8B24A;--purple:#4FC07E;--danger:#ef4444;
   --radius:12px;--shadow:0 8px 32px rgba(0,0,0,.5);
 }
 body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
@@ -59,7 +59,7 @@ button{cursor:pointer;border:none;font-family:inherit}
 input,select,textarea{font-family:inherit}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 
-/* â”€â”€ HEADER â”€â”€ */
+/* ── HEADER ── */
 header{
   position:sticky;top:0;z-index:100;
   background:rgba(15,22,35,.96);backdrop-filter:blur(16px);
@@ -75,8 +75,11 @@ header{
 .hbtn{padding:7px 13px;border-radius:8px;font-size:.78rem;font-weight:700;display:inline-flex;align-items:center;gap:5px;transition:all .15s;white-space:nowrap;border:1px solid transparent}
 .hbtn-ai{background:rgba(59,130,246,.15);color:var(--accent);border-color:rgba(59,130,246,.3)}
 .hbtn-ai:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+.menu-toggle{display:none;background:var(--bg2);border:1px solid var(--border);color:var(--text);width:38px;height:36px;border-radius:9px;font-size:1.1rem;line-height:1;cursor:pointer}
 .hbtn-gold{background:rgba(245,158,11,.12);color:var(--gold);border-color:rgba(245,158,11,.25)}
 .hbtn-gold:hover{background:var(--gold);color:#000;border-color:var(--gold)}
+.hbtn-promo{background:rgba(37,211,102,.13);color:#bdf3d2;border-color:rgba(37,211,102,.35)}
+.hbtn-promo:hover{background:var(--green);color:#04130d;border-color:var(--green)}
 .hbtn-green{background:var(--green);color:#fff}
 .hbtn-green:hover{background:var(--green2)}
 .hbtn-ghost{background:rgba(255,255,255,.06);color:var(--text2);border-color:var(--border)}
@@ -86,29 +89,64 @@ body.show-admin .admin-lite{display:inline-flex!important}
 .ops-lite{display:none!important}
 body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 
-/* â”€â”€ HERO â”€â”€ */
+/* ── HERO ── */
 .hero{
-  text-align:center;padding:44px 20px 28px;
-  background:radial-gradient(ellipse 80% 60% at 50% 0%,rgba(59,130,246,.07) 0%,transparent 70%);
+  position:relative;text-align:center;min-height:84vh;padding:6vh 24px 5vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;
+  background:#0D0E11;
 }
-.hero h1{font-size:clamp(1.7rem,5vw,3rem);font-weight:800;line-height:1.1;margin-bottom:10px}
-.hero h1 em{font-style:normal;background:linear-gradient(135deg,#3b82f6,#7c3aed);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{font-size:.95rem;color:var(--text2);max-width:500px;margin:0 auto 20px}
-.hero-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:16px}
+.hero::before{content:"";position:absolute;left:50%;bottom:-10%;width:min(1000px,130%);height:520px;transform:translateX(-50%);background:radial-gradient(ellipse 60% 60% at 50% 60%,rgba(106,166,255,.42) 0%,rgba(106,166,255,.12) 38%,transparent 70%);filter:blur(28px);opacity:.55;pointer-events:none}
+.hero-wrap{position:relative;z-index:1;width:100%;max-width:760px;text-align:center}
+.spark{display:inline-flex;margin-bottom:18px;color:var(--accent)}
+.hero h1{font-family:'Poppins',sans-serif;font-size:clamp(28px,4.6vw,46px);font-weight:600;letter-spacing:0;line-height:1.05;margin:0;color:var(--text)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p{display:block;font-size:clamp(14px,1.6vw,16px);color:var(--text2);max-width:480px;margin:14px auto 0;line-height:1.55}
+.hero p b{color:var(--text);font-weight:600}
+.hero-search{position:relative;margin:30px auto 0;width:100%;display:block;background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:6px;text-align:left;box-shadow:0 24px 60px -28px rgba(0,0,0,.8);transition:border-color .25s,box-shadow .25s}
+.hero-search::before{content:"";position:absolute;top:-1px;left:50%;transform:translateX(-50%);width:34%;height:2px;border-radius:2px;background:linear-gradient(90deg,transparent,var(--accent),transparent);opacity:.35;transition:width .3s ease,opacity .3s ease}
+.hero-search:focus-within{border-color:rgba(106,166,255,.55);box-shadow:0 26px 70px -26px rgba(79,143,245,.5)}
+.hero-search:focus-within::before{width:72%;opacity:1}
+.hero-search-top{display:flex;align-items:flex-start;gap:12px;padding:14px 14px 8px}
+.hero-search-top .ico{flex:0 0 auto;color:var(--text2);margin-top:2px}
+.hero-search input{flex:1;min-width:0;border:0;outline:0;background:transparent;color:var(--text);font-size:17px;font-family:inherit;line-height:1.45;padding:0}
+.hero-search input::placeholder{color:var(--text3)}
+.hero-search-bottom{display:flex;align-items:center;gap:10px;padding:6px 10px 8px 12px}
+.region{display:inline-flex;align-items:center;gap:7px;background:transparent;border:1px solid var(--border);color:var(--text2);border-radius:10px;padding:7px 8px 7px 11px;font-size:13px;font-weight:500}
+.region svg{color:var(--accent)}
+.region select{appearance:none;background:transparent;border:0;outline:0;color:inherit;font:inherit;cursor:pointer}
+.region select option{background:var(--bg3);color:var(--text)}
+.hero-spacer{flex:1}
+.iconbtn{width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:transparent;color:var(--text2);display:grid;place-items:center}
+.go{height:38px;padding:0 18px;border:0;border-radius:11px;background:var(--accent);color:#08101F;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px}
+.quick-actions{display:flex!important;flex-wrap:wrap;justify-content:center;gap:9px;margin:18px auto 0;max-width:640px}
+.quick-actions .hbtn-hero{width:auto;max-width:none;border-radius:999px;padding:9px 15px;font-size:13.5px;color:var(--text2);background:var(--bg2);border:1px solid var(--border)}
+.hero-btns{display:flex!important;justify-content:center;margin:26px auto 0}
+.hero-btns .hbtn-hero:not(.sell-second){display:none}
+.hero-btns .sell-second{background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.4);color:#bdf3d2;border-radius:14px;padding:13px 20px;font-size:14.5px}
+.hero-btns::before,.hero-btns::after{content:"";width:150px;height:1px;background:var(--border);align-self:center;margin:0 14px}
+.pills{display:none!important}
+.scroll-hint{position:relative;z-index:1;margin-top:34px;display:inline-flex;flex-direction:column;align-items:center;gap:6px;color:var(--text3);font-size:12px}
 .hbtn-hero{padding:11px 24px;border-radius:10px;font-size:.95rem;font-weight:700;display:inline-flex;align-items:center;gap:7px;transition:all .15s}
 .hbtn-hero.g{background:var(--green);color:#fff}
 .hbtn-hero.g:hover{background:var(--green2);transform:translateY(-1px)}
-.hbtn-hero.s{background:linear-gradient(135deg,var(--accent),var(--purple));color:#fff;box-shadow:0 8px 22px rgba(59,130,246,.22)}
+.hbtn-hero.s{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#07111f;box-shadow:0 8px 22px rgba(106,166,255,.22)}
 .hbtn-hero.s:hover{filter:brightness(1.06);transform:translateY(-1px)}
 .hbtn-hero.b{background:rgba(59,130,246,.15);color:var(--accent);border:1px solid rgba(59,130,246,.3)}
 .hbtn-hero.b:hover{background:var(--accent);color:#fff}
 .pills{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;font-size:.75rem;color:var(--text3)}
 .pills span{background:var(--bg3);border:1px solid var(--border);padding:3px 11px;border-radius:20px}
+.seller-trust{border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:rgba(22,30,46,.72);padding:14px 20px}
+.seller-trust-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:12px;align-items:start}
+.seller-trust h2{font-size:.95rem;line-height:1.25;margin-bottom:4px}
+.seller-trust p{font-size:.8rem;color:var(--text2);line-height:1.45}
+.seller-trust-item{border-left:1px solid var(--border);padding-left:12px}
+.seller-trust-item strong{display:block;font-size:.8rem;color:var(--text);margin-bottom:3px}
+.seller-trust-item span{font-size:.73rem;color:var(--text3);line-height:1.4}
 
-/* â”€â”€ FILTERS â”€â”€ */
+/* ── FILTERS ── */
 .filters{
-  background:var(--bg2);border-bottom:1px solid var(--border);
-  padding:10px 20px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  background:rgba(23,24,31,.96);border:1px solid var(--border);border-radius:14px;
+  margin:18px auto 8px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:1180px;
 }
 .fi{
   background:var(--bg3);border:1px solid var(--border);color:var(--text);
@@ -119,18 +157,19 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .fi::placeholder{color:var(--text3)}
 .fi-sort{margin-left:auto}
 
-/* â”€â”€ GRID â”€â”€ */
-.grid-hdr{padding:12px 20px 4px;display:flex;align-items:center;gap:8px}
+/* ── GRID ── */
+.grid-hdr{padding:12px 20px 4px;display:flex;align-items:center;gap:8px;max-width:1220px;margin:0 auto;width:100%}
 .grid-count{font-weight:700;font-size:.9rem}
 .grid-count span{color:var(--text3);font-weight:400}
 .cars-grid{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
   gap:14px;padding:0 20px 60px;
-  min-height:2480px;
+  max-width:1220px;margin:0 auto;width:100%;
+  min-height:520px;
 }
 
-/* â”€â”€ CAR CARD â”€â”€ */
+/* ── CAR CARD ── */
 .car-card{
   background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius);
   overflow:hidden;cursor:pointer;
@@ -139,33 +178,44 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 }
 .car-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow)}
 .cimg{position:relative;height:180px;overflow:hidden;background:var(--bg3)}
+.cimg::before{content:"auto";position:absolute;inset:0;display:grid;place-items:center;color:var(--text3);font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:linear-gradient(135deg,var(--bg3),var(--bg4));z-index:0}
 .cimg img{width:100%;height:100%;object-fit:cover;transition:transform .3s;display:block}
+.cimg img{position:relative;z-index:1}
 .car-card:hover .cimg img{transform:scale(1.04)}
 .cimg-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:2.8rem}
+.source-ph{position:relative;z-index:1;flex-direction:column;gap:8px;background:linear-gradient(135deg,#172033,#263348);color:#e5eefb;text-align:center;font-size:.78rem;font-weight:800;letter-spacing:0;padding:14px}
+.source-ph strong{display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);font-size:1.05rem}
+.source-ph span{max-width:92%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#cbd5e1}
 .cbadge{
   position:absolute;top:9px;left:9px;
+  z-index:2;
   font-size:.67rem;font-weight:800;padding:2px 9px;border-radius:20px;
   letter-spacing:.4px;text-transform:uppercase;
 }
 .bp{background:linear-gradient(135deg,#7c3aed,#ec4899);color:#fff}
 .bf{background:linear-gradient(135deg,#f59e0b,#ef4444);color:#fff}
+.btixuz{left:8px;right:auto;background:linear-gradient(135deg,#047857,#14b8a6);color:#ecfdf5;border:1px solid rgba(236,253,245,.55);box-shadow:0 3px 10px rgba(4,120,87,.38);text-shadow:0 1px 1px rgba(0,0,0,.2)}
 .cstype{
   position:absolute;top:9px;right:9px;
+  z-index:2;
   font-size:.65rem;font-weight:700;padding:2px 7px;border-radius:5px;
   background:rgba(0,0,0,.65);color:#fff;backdrop-filter:blur(4px);
 }
 .cbody{padding:12px}
 .ctitle{font-weight:700;font-size:.9rem;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.cprice{font-size:1.2rem;font-weight:800;color:var(--accent);margin-bottom:7px}
+.cprice{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--accent);margin-bottom:7px}
 .cmeta{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
 .cmeta span{font-size:.7rem;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px}
+.cmeta span:first-child{font-family:'JetBrains Mono',monospace}
+.verdict-chip{display:inline-flex;margin:0 0 8px;font-size:.68rem;font-weight:800;padding:4px 8px;border-radius:999px;border:1px solid rgba(79,192,126,.3);background:rgba(79,192,126,.12);color:#bdf3d2}
+.verdict-chip.watch{border-color:rgba(232,178,74,.34);background:rgba(232,178,74,.12);color:#ffe0a3}
 .cloc{font-size:.74rem;color:var(--text3);display:flex;justify-content:space-between;align-items:center}
 
-/* â”€â”€ EMPTY â”€â”€ */
+/* ── EMPTY ── */
 .empty{text-align:center;padding:50px 20px;grid-column:1/-1;color:var(--text3)}
 .empty h3{font-size:1rem;color:var(--text2);margin-bottom:4px}
 
-/* â”€â”€ OVERLAY / MODAL â”€â”€ */
+/* ── OVERLAY / MODAL ── */
 .overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:200;align-items:center;justify-content:center;padding:14px}
 .overlay.open{display:flex}
 .modal{background:var(--bg2);border:1px solid var(--border);border-radius:16px;width:100%;max-width:560px;max-height:92vh;overflow-y:auto;box-shadow:0 32px 80px rgba(0,0,0,.7)}
@@ -177,14 +227,14 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .mbody{padding:16px 20px}
 .mfoot{padding:12px 20px;border-top:1px solid var(--border);display:flex;gap:8px;justify-content:flex-end}
 
-/* â”€â”€ SELL STEPS â”€â”€ */
+/* ── SELL STEPS ── */
 .steps{display:flex;border-radius:8px;overflow:hidden;border:1px solid var(--border);margin-bottom:18px}
 .stab{flex:1;padding:8px;text-align:center;font-size:.74rem;font-weight:600;background:var(--bg3);color:var(--text3);border-right:1px solid var(--border)}
 .stab:last-child{border-right:none}
 .stab.active{background:var(--accent);color:#fff}
 .stab.done{background:var(--green);color:#fff}
 
-/* â”€â”€ FORM â”€â”€ */
+/* ── FORM ── */
 .fg{margin-bottom:12px}
 .fg label{display:block;font-size:.8rem;font-weight:600;color:var(--text2);margin-bottom:4px}
 .fg input,.fg select,.fg textarea{width:100%;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 11px;border-radius:8px;font-size:.85rem;outline:none;transition:border-color .15s}
@@ -202,7 +252,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .btn-ghost:hover{color:var(--text);border-color:var(--accent)}
 .btn-danger{background:var(--danger);color:#fff}
 
-/* â”€â”€ PLAN CARDS â”€â”€ */
+/* ── PLAN CARDS ── */
 .pcards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
 .pcard{border:2px solid var(--border);border-radius:10px;padding:12px 8px;cursor:pointer;transition:all .15s;text-align:center}
 .pcard.sel,.pcard:hover{border-color:var(--accent);background:rgba(59,130,246,.05)}
@@ -210,9 +260,12 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .pcard .pp{font-size:1.2rem;font-weight:800;color:var(--green)}
 .pcard .pp sub{font-size:.6rem;font-weight:400;color:var(--text3)}
 .pcard ul{list-style:none;text-align:left;font-size:.7rem;color:var(--text2);margin-top:6px;line-height:1.8}
-.pcard ul li::before{content:"âœ“ "}
+.pcard ul li::before{content:"✓ "}
+.pcard.soon{opacity:.55;cursor:not-allowed}
+.pcard.soon:hover{border-color:var(--border);background:none}
+.pcard .soon-badge{display:inline-block;background:var(--bg4);color:var(--gold);font-size:.6rem;font-weight:800;padding:2px 9px;border-radius:999px;margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
 
-/* â”€â”€ PHOTO GRID â”€â”€ */
+/* ── PHOTO GRID ── */
 .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:8px}
 .pslot{aspect-ratio:4/3;border:2px dashed var(--border);border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-size:.68rem;color:var(--text3);position:relative;overflow:hidden;background:var(--bg3);transition:border-color .15s}
 .pslot:hover{border-color:var(--accent)}
@@ -228,7 +281,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 }
 .prm{position:absolute;top:3px;right:3px;background:rgba(0,0,0,.7);color:#fff;border:none;border-radius:4px;width:18px;height:18px;font-size:.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
-/* â”€â”€ DETAIL extras (v66) â”€â”€ */
+/* ── DETAIL extras (v66) ── */
 .trust-row{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 12px}
 .trust-chip{display:inline-flex;align-items:center;gap:4px;font-size:.68rem;font-weight:800;padding:4px 9px;border-radius:999px;background:rgba(59,130,246,.10);color:#bfdbfe;border:1px solid rgba(96,165,250,.24)}
 .trust-chip.good{background:rgba(16,185,129,.10);color:#bbf7d0;border-color:rgba(16,185,129,.28)}
@@ -251,72 +304,14 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .lot-ok{color:var(--green);font-weight:800}
 .lot-warn{color:var(--gold);font-weight:800}
 .lot-bad{color:var(--danger);font-weight:800}
-.prospect-toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:10px 0}
-.prospect-easy{border:1px solid rgba(59,130,246,.25);background:rgba(59,130,246,.07);border-radius:12px;padding:10px;margin:10px 0 12px}
-.easy-title{font-weight:800;color:var(--text);font-size:.86rem;margin-bottom:8px}
-.easy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:8px}
-.easy-grid button{justify-content:center;min-height:38px}
-.easy-active{margin-top:8px;font-size:.75rem;color:var(--text2);line-height:1.45}
-.easy-active strong{color:var(--text)}
-.prospect-advanced{border:1px solid var(--border);border-radius:8px;padding:10px;margin:10px 0;background:rgba(15,23,42,.35)}
-.prospect-advanced summary{cursor:pointer;color:var(--text2);font-weight:800;font-size:.78rem}
-.prospect-advanced[open] summary{margin-bottom:10px;color:var(--text)}
-.operator-guide{display:grid;gap:10px}
-.guide-block{border:1px solid var(--border);background:var(--bg3);border-radius:10px;padding:11px}
-.guide-block h3{font-size:.9rem;margin:0 0 7px;color:var(--text)}
-.guide-block ol,.guide-block ul{margin:0;padding-left:18px;color:var(--text2);font-size:.82rem;line-height:1.55}
-.guide-block li{margin:4px 0}
-.guide-good{color:var(--green);font-weight:800}
-.guide-warn{color:var(--gold);font-weight:800}
-.prospect-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:10px 0}
-.pstat{border:1px solid var(--border);background:var(--bg3);border-radius:10px;padding:8px}
-.pstat strong{display:block;color:var(--text);font-size:1.05rem}
-.pstat span{font-size:.68rem;color:var(--text3)}
-.prospect-today{border:1px solid rgba(74,222,128,.28);background:rgba(74,222,128,.07);border-radius:10px;padding:10px;margin:10px 0 12px}
-.prospect-today strong{color:var(--text)}
-.prospect-today p{margin:4px 0 8px;color:var(--text2);font-size:.78rem;line-height:1.45}
-.today-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:6px}
-.today-pill{border:1px solid var(--border);background:rgba(15,23,42,.46);border-radius:8px;padding:7px;font-size:.72rem;color:var(--text2)}
-.today-pill b{display:block;color:var(--text);font-size:.76rem;margin-bottom:2px}
-.quick-replies{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-.quick-replies button{border:1px solid var(--border);background:var(--bg3);color:var(--text2);border-radius:8px;padding:7px 9px;font-size:.72rem;font-weight:800;cursor:pointer}
-.quick-replies button:hover{border-color:var(--accent);color:var(--text)}
-.quick-replies .green{border-color:rgba(74,222,128,.32);background:rgba(74,222,128,.10);color:#bbf7d0}
-.prospect-sources{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin:8px 0 12px}
-.psource{border:1px solid var(--border);border-radius:10px;background:var(--bg3);padding:9px;text-decoration:none;color:var(--text2);font-size:.72rem;line-height:1.35}
-.psource:hover{border-color:var(--accent);color:var(--text)}
-.psource strong{display:block;color:var(--text);font-size:.76rem;margin-bottom:2px}
-.prospect-table{max-height:310px;overflow:auto;border:1px solid var(--border);border-radius:10px;margin-top:10px}
-.prospect-table table{width:100%;border-collapse:collapse;font-size:.72rem}
-.prospect-table th,.prospect-table td{padding:7px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
-.prospect-table th{position:sticky;top:0;background:var(--bg2);color:var(--text3);z-index:1}
-.pstatus{display:inline-block;border-radius:20px;padding:2px 7px;font-size:.65rem;font-weight:800;background:rgba(59,130,246,.12);color:var(--accent)}
-.pstatus.contactado{background:rgba(245,158,11,.13);color:var(--gold)}
-.pstatus.interesado{background:rgba(16,185,129,.13);color:var(--green)}
-.pstatus.no{background:rgba(239,68,68,.13);color:var(--danger)}
-.pdue{display:inline-block;margin-top:5px;color:var(--text3);font-size:.68rem}
-.pdue.due{color:var(--gold);font-weight:800}
-.pmeta{color:var(--text3);font-size:.68rem;line-height:1.45;margin-top:3px}
-.pactions{display:flex;gap:5px;flex-wrap:wrap}
-.pactions button,.pactions a{border:1px solid var(--border);background:var(--bg3);color:var(--text2);border-radius:6px;padding:5px 7px;font-size:.68rem;font-weight:700;text-decoration:none;cursor:pointer}
-.pactions button:hover,.pactions a:hover{border-color:var(--accent);color:var(--text)}
-.channel-badge{display:inline-flex;align-items:center;gap:4px;border:1px solid rgba(59,130,246,.28);background:rgba(59,130,246,.10);color:#bfdbfe;border-radius:999px;padding:2px 7px;font-size:.64rem;font-weight:800;margin-top:4px}
-.channel-badge.warn{border-color:rgba(245,158,11,.32);background:rgba(245,158,11,.10);color:#fde68a}
-.contact-card{margin-top:8px;border:1px solid var(--border);background:rgba(15,23,42,.36);border-radius:10px;padding:8px;font-size:.72rem;color:var(--text2);line-height:1.45}
-.contact-card strong{color:var(--text)}
-.contact-list{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}
-.contact-list span{border:1px solid var(--border);background:var(--bg3);border-radius:999px;padding:2px 7px;color:var(--text3);font-size:.64rem}
-.ops-pin-note{border:1px solid rgba(245,158,11,.28);background:rgba(245,158,11,.08);border-radius:12px;padding:12px;color:var(--text2);font-size:.84rem;line-height:1.5;margin-bottom:12px}
-.ops-pin-note strong{color:var(--text)}
-
-/* â”€â”€ DETAIL â”€â”€ */
+/* DETAIL */
 .dgal{display:flex;gap:7px;overflow-x:auto;margin-bottom:14px;padding-bottom:3px}
 .dgal img{height:200px;min-width:240px;object-fit:cover;border-radius:8px;flex-shrink:0}
 .dgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
 .di label{font-size:.7rem;color:var(--text3);display:block;margin-bottom:1px}
 .di span{font-size:.88rem;font-weight:600}
 
-/* â”€â”€ MY LISTINGS â”€â”€ */
+/* ── MY LISTINGS ── */
 .lrow{display:flex;align-items:center;gap:9px;padding:9px;background:var(--bg3);border-radius:8px;margin-bottom:5px}
 .lrow img{width:52px;height:52px;object-fit:cover;border-radius:5px;flex-shrink:0;background:var(--bg4)}
 .lrow-info{flex:1;min-width:0}
@@ -327,7 +322,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .sp{background:rgba(245,158,11,.15);color:var(--gold)}
 .ss{background:rgba(100,116,139,.15);color:var(--text3)}
 
-/* â”€â”€ ADMIN â”€â”€ */
+/* ── ADMIN ── */
 .atabs{display:flex;border-bottom:1px solid var(--border);margin-bottom:14px}
 .atab{padding:8px 12px;font-size:.78rem;font-weight:600;color:var(--text3);border-bottom:2px solid transparent;cursor:pointer;background:none}
 .atab.active{color:var(--accent);border-bottom-color:var(--accent)}
@@ -335,7 +330,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .atable th{text-align:left;padding:6px;color:var(--text3);border-bottom:1px solid var(--border)}
 .atable td{padding:6px;border-bottom:1px solid var(--border);vertical-align:middle}
 
-/* â”€â”€ AI PANEL â”€â”€ */
+/* ── AI PANEL ── */
 .ai-fab{
   position:fixed;bottom:24px;right:24px;z-index:150;
   width:54px;height:54px;border-radius:50%;
@@ -382,7 +377,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .aidot:nth-child(3){animation-delay:.3s}
 @keyframes dot{0%,80%,100%{transform:scale(.8);opacity:.4}40%{transform:scale(1.2);opacity:1}}
 
-/* â”€â”€ TOAST â”€â”€ */
+/* ── TOAST ── */
 .toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:10px 18px;border-radius:9px;font-size:.84rem;font-weight:600;z-index:999;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .25s;white-space:nowrap}
 .toast.show{opacity:1}
 .toast.success{border-color:var(--green);color:var(--green)}
@@ -390,7 +385,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .spin{display:inline-block;width:16px;height:16px;border:2px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:sp .7s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 
-/* â”€â”€ FOOTER â”€â”€ */
+/* ── FOOTER ── */
 footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px}
 .fs h4{font-size:.82rem;font-weight:700;margin-bottom:9px}
 .fs a,.fs p{font-size:.76rem;color:var(--text3);display:block;margin-bottom:3px}
@@ -413,42 +408,52 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
 @media (min-width:900px) and (max-width:1170px){
   .cars-grid{min-height:3340px}
 }
-@media(max-width:380px){.cars-grid{grid-template-columns:1fr}}
-/* â”€â”€ MOBILE FIX V51: solo responsive, desktop intacto â”€â”€ */
+@media(max-width:340px){.cars-grid{grid-template-columns:1fr}}
+/* ── MOBILE FIX V51: solo responsive, desktop intacto ── */
 @media (max-width: 640px){
   html,body{width:100%;max-width:100%;overflow-x:hidden}
   body{min-width:0;-webkit-text-size-adjust:100%}
-  header{height:auto;min-height:56px;padding:8px 10px;gap:8px;align-items:flex-start;flex-wrap:wrap}
+  header{height:auto;min-height:56px;padding:8px 10px;gap:8px;align-items:center;flex-wrap:wrap}
   .logo{flex:1 1 auto;min-width:150px;font-size:1rem}
   .logo-icon{width:28px;height:28px}
   .logo-sub{font-size:.5rem;letter-spacing:1.5px}
-  .hbtns{width:100%;margin-left:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .menu-toggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+  .hbtns{width:100%;margin-left:0;display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .hbtns.open{display:grid}
   .hbtn{width:100%;justify-content:center;min-height:34px;padding:7px 8px;font-size:.72rem;line-height:1.1;white-space:normal;text-align:center}
   .hero{padding:28px 12px 22px}
   .hero h1{font-size:2.05rem;line-height:1.05;margin-bottom:8px}
   .hero p{font-size:.88rem;max-width:330px;margin-bottom:16px}
   .hbtn-hero{width:100%;max-width:260px;justify-content:center}
   .hero-btns{gap:8px;margin-bottom:14px}
-  .hero-btns .hbtn-hero.s{order:1}
-  .hero-btns .hbtn-hero.g{order:2}
+  .hero-btns .hbtn-hero.g{order:1}
+  .hero-btns .hbtn-hero.s{order:2}
   .pills{gap:6px;padding:0 2px}
   .pills span{font-size:.68rem;padding:4px 9px}
+  .seller-trust{padding:12px}
+  .seller-trust-inner{grid-template-columns:1fr;gap:9px}
+  .seller-trust-item{border-left:0;border-top:1px solid var(--border);padding-left:0;padding-top:8px}
   .filters{padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:8px;align-items:stretch}
   .fi{width:100%;min-width:0;padding:9px 10px;font-size:.78rem}
   #fQ{grid-column:1/-1}
   .fi-sort{margin-left:0}
   .filters button{width:100%;min-height:38px;justify-content:center;text-align:center;white-space:normal}
   .grid-hdr{padding:12px 12px 5px}
-  .cars-grid{grid-template-columns:1fr!important;gap:12px;padding:0 12px 70px}
+  .cars-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:9px;padding:0 10px 70px}
   .cars-grid{min-height:0}
-  .car-card{border-radius:14px}
+  .car-card{border-radius:10px;min-width:0}
   .car-card:hover{transform:none}
-  .cimg{height:205px}
-  .cbody{padding:12px 13px}
-  .ctitle{font-size:.95rem;white-space:normal;line-height:1.25;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-  .cprice{font-size:1.25rem}
-  .cmeta span{font-size:.68rem}
-  .cloc{font-size:.72rem;gap:8px}
+  .cimg{height:auto;aspect-ratio:4/3}
+  .cbadge{font-size:.58rem;padding:3px 6px;max-width:calc(100% - 12px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cstype{font-size:.58rem;right:6px;bottom:6px;padding:3px 6px;max-width:calc(100% - 12px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cbody{padding:9px 9px 10px}
+  .ctitle{font-size:.78rem;white-space:normal;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:1.9em}
+  .cprice{font-size:.95rem;margin:3px 0 6px}
+  .verdict-chip{font-size:.58rem;padding:3px 6px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cmeta{gap:4px;margin-bottom:6px}
+  .cmeta span{font-size:.58rem;padding:2px 5px;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .cloc{font-size:.6rem;gap:5px;display:block}
+  .cloc span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .overlay{padding:8px;align-items:flex-start;justify-content:center;overflow-y:auto}
   .modal,.modal-lg{width:100%;max-width:100%;max-height:calc(100dvh - 16px);border-radius:14px;overflow-y:auto}
   .mhdr{padding:13px 14px;top:0;z-index:3}
@@ -510,198 +515,167 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
 
 <header>
   <div class="logo">
-    <div class="logo-icon">ðŸš—</div>
+    <div class="logo-icon">🚗</div>
     <div class="logo-txt">
       Tixuz<span style="color:var(--accent)">.Autos</span>
       <span class="logo-sub">Marketplace</span>
     </div>
   </div>
+  <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú" title="Menú">☰</button>
   <div class="hbtns">
-    <button class="hbtn hbtn-ai" onclick="openAI()">ðŸ¤– Asesor IA</button>
-    <button class="hbtn hbtn-ai" onclick="openFullSearchAI()">ðŸ”Ž Buscar con IA</button>
-    <button class="hbtn hbtn-ghost ops-lite" onclick="openProspects()">Seguimiento</button>
+    <a class="hbtn hbtn-promo" href="https://tixuz-autos-julio-2026.netlify.app/" target="_blank" rel="noopener">Promos autos nuevos</a>
+    <button class="hbtn hbtn-ai" onclick="openAI()">🤖 Asesor IA</button>
+    <button class="hbtn hbtn-ai" onclick="openFullSearchAI()">🔎 Veredicto IA</button>
     <button class="hbtn hbtn-gold" onclick="openLotIntake()">Lotes y agencias</button>
     <button class="hbtn hbtn-gold" onclick="openPlans()">Ver planes</button>
     <button class="hbtn hbtn-ghost" onclick="openMyListings()">Mis Anuncios</button>
-    <!-- Admin oculto en producciÃ³n: usar ?admin=1 o #admin -->
+    <!-- Admin oculto en producción: usar ?admin=1 o #admin -->
   </div>
 </header>
 
 <main id="main">
 <section class="hero">
-  <h1>Encuentra tu prÃ³ximo auto<br>o publica el tuyo en <em>minutos</em> con IA</h1>
-  <p>Busca autos seminuevos en MÃ©xico o publica el tuyo con ayuda de IA y contacto por WhatsApp.</p>
-  <div class="hero-btns">
-    <button class="hbtn-hero g sell-second" onclick="openSell()" style="font-size:1.05rem;padding:14px 36px">Publicar mi auto</button>
-    <button class="hbtn-hero b" onclick="openLotIntake()" style="font-size:1.05rem;padding:14px 26px">Cargar lote</button>
-    <button class="hbtn-hero b ops-lite" onclick="openProspects()" style="font-size:1.05rem;padding:14px 26px">Seguimiento interno</button>
-    <button class="hbtn-hero s buy-first" onclick="openFullSearchAI()" style="font-size:1.05rem;padding:14px 36px">Buscar con IA</button>
-    <button class="hbtn-hero b" onclick="openSearchAI()" style="font-size:1.05rem;padding:14px 26px">Filtrar marketplace</button>
+  <div class="hero-wrap">
+    <span class="spark" aria-hidden="true">✦</span>
+    <h1>¿Qué auto buscas hoy?</h1>
+    <p>Busca seminuevos de todo México con el <b>Veredicto IA</b> de Tixuz en cada anuncio.</p>
+    <form class="hero-search">
+      <div class="hero-search-top">
+        <span class="ico" aria-hidden="true">⌕</span>
+        <label class="sr-only" for="heroQ">Buscar autos</label>
+        <input id="heroQ" placeholder="Marca, modelo o describe el auto que quieres..." autocomplete="off">
+      </div>
+      <div class="hero-search-bottom">
+        <label class="region">
+          <span aria-hidden="true">⌖</span>
+          <select aria-label="Ubicación">
+            <option>Todo México</option><option>Jalisco</option><option>CDMX y Edomex</option><option>Nuevo León</option><option>Querétaro</option>
+          </select>
+        </label>
+        <span class="hero-spacer"></span>
+        <button type="button" class="iconbtn" onclick="openSearchAI()" aria-label="Buscar por voz" title="Búsqueda por voz">🎙</button>
+        <button type="submit" class="go">Buscar →</button>
+      </div>
+    </form>
+    <div class="quick-actions">
+      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'suv'},'SUV')">SUV</button>
+      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'sedan'},'Sedán')">Sedán</button>
+      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'pickup'},'Pickup')">Pickup</button>
+      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'hatchback'},'Hatchback')">Hatchback</button>
+      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({price_max:200000},'Hasta $200,000')">&lt; $200,000</button>
+      <a class="hbtn-hero b" href="https://tixuz-autos-julio-2026.netlify.app/" target="_blank" rel="noopener">Promos julio</a>
+    </div>
+    <div class="hero-btns">
+      <button class="hbtn-hero g sell-second" onclick="openSell()">Vende tu auto</button>
+      <button class="hbtn-hero b" onclick="openLotIntake()">Cargar lote</button>
+      <button class="hbtn-hero s buy-first" onclick="openFullSearchAI()">Veredicto IA</button>
+      <button class="hbtn-hero b" onclick="openSearchAI()">Filtrar marketplace</button>
+    </div>
+    <div class="pills">
+      <span>Gratis lanzamiento activo</span>
+      <span>Anuncios activos en México</span>
+      <span>WhatsApp protegido</span>
+    </div>
+    <div class="scroll-hint">Autos disponibles <span aria-hidden="true">⌄</span></div>
   </div>
-  <div class="pills">
-    <span>Gratis lanzamiento activo</span>
-    <span>Anuncios activos en MÃ©xico</span>
-    <span>Pago seguro con Stripe</span>
-    <span>WhatsApp protegido</span>
+</section>
+
+<section class="seller-trust" aria-label="Confianza para vendedores">
+  <div class="seller-trust-inner">
+    <div>
+      <h2>Marketplace de Tixuz Autos, conectado al programa en YouTube</h2>
+      <p>Estamos abriendo inventario real en México. Publicar es gratis durante el lanzamiento y cada anuncio pasa por revisión humana antes de activarse. Soporte: soporte@tixuzautos.com.</p>
+    </div>
+    <div class="seller-trust-item"><strong>Sin comisión</strong><span>El comprador contacta directo por WhatsApp; Tixuz no cobra porcentaje por venta.</span></div>
+    <div class="seller-trust-item"><strong>Ficha asistida</strong><span>La IA ayuda a ordenar marca, modelo, precio, fotos y descripción para que no empieces desde cero.</span></div>
+    <div class="seller-trust-item"><strong>Control del vendedor</strong><span>Usas tu WhatsApp y un PIN de 4 dígitos para editar o borrar tus anuncios sin crear cuenta.</span></div>
   </div>
 </section>
 
 <div class="filters">
   <label class="sr-only" for="fQ">Buscar por marca o modelo</label>
-  <input class="fi" id="fQ" placeholder="Marca o modelo" oninput="applyFilters()" autocomplete="off" aria-label="Buscar por marca o modelo">
+  <input class="fi" id="fQ" placeholder="Marca o modelo" autocomplete="off" aria-label="Buscar por marca o modelo">
   <label class="sr-only" for="fCity">Ciudad o zona</label>
   <select class="fi" id="fCity" onchange="applyFilters()" aria-label="Ciudad o zona">
     <option value="">Ciudad / zona</option>
   </select>
   <label class="sr-only" for="fPMin">Precio minimo</label>
-  <input class="fi" id="fPMin" type="number" placeholder="Precio mÃ­n" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio minimo">
+  <input class="fi" id="fPMin" type="number" placeholder="Precio mín" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio minimo">
   <label class="sr-only" for="fPMax">Precio maximo</label>
-  <input class="fi" id="fPMax" type="number" placeholder="Precio mÃ¡x" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio maximo">
+  <input class="fi" id="fPMax" type="number" placeholder="Precio máx" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio maximo">
   <label class="sr-only" for="fYear">Ano desde</label>
   <select class="fi" id="fYear" onchange="applyFilters()" autocomplete="off" aria-label="Ano desde">
-    <option value="">AÃ±o desde</option>
+    <option value="">Año desde</option>
   </select>
   <label class="sr-only" for="fTrans">Transmision</label>
   <select class="fi" id="fTrans" onchange="applyFilters()" aria-label="Transmision">
-    <option value="">TransmisiÃ³n</option>
-    <option>AutomÃ¡tica</option><option>Manual</option><option>CVT</option>
+    <option value="">Transmisión</option>
+    <option>Automática</option><option>Manual</option><option>CVT</option>
   </select>
   <label class="sr-only" for="fSort">Ordenar resultados</label>
   <select class="fi fi-sort" id="fSort" onchange="applyFilters()" aria-label="Ordenar resultados">
-    <option value="new">MÃ¡s recientes</option>
+    <option value="default">Ordenar resultados</option>
+    <option value="new">Más recientes</option>
     <option value="lo">Menor precio</option>
     <option value="hi">Mayor precio</option>
-    <option value="yr">MÃ¡s nuevo</option>
+    <option value="yr">Más nuevo</option>
     <option value="km">Menor km</option>
   </select>
-  <button onclick="openFullSearchAI()" title="Buscar con IA en todo internet" style="background:linear-gradient(135deg,var(--accent),var(--purple));border:0;color:#fff;padding:7px 12px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 4px 12px rgba(59,130,246,.3)">Buscar con IA</button>
-  <button onclick="clearFilters()" title="Limpiar filtros" style="background:var(--bg3);border:1px solid var(--border);color:var(--text3);padding:7px 11px;border-radius:8px;font-size:.78rem;cursor:pointer;transition:all .15s;white-space:nowrap" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text3)'">âœ• Limpiar</button>
+  <button onclick="openFullSearchAI()" title="Veredicto IA para comparar autos y anuncios" style="background:linear-gradient(135deg,var(--accent),var(--purple));border:0;color:#fff;padding:7px 12px;border-radius:8px;font-size:.78rem;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 4px 12px rgba(59,130,246,.3)">Veredicto IA</button>
+  <button onclick="clearFilters()" title="Limpiar filtros" style="background:var(--bg3);border:1px solid var(--border);color:var(--text3);padding:7px 11px;border-radius:8px;font-size:.78rem;cursor:pointer;transition:all .15s;white-space:nowrap" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text3)'">✕ Limpiar</button>
 </div>
 
 <div class="grid-hdr">
-  <div class="grid-count" id="gc"><strong>8</strong> <span>autos seminuevos MÃ©xico</span></div>
+  <div class="grid-count" id="gc"><strong>0</strong> <span>autos reales</span></div>
 </div>
 <div class="inventory-notice" id="inventoryNotice"></div>
 <div class="density-note" id="densityNotice"></div>
-<div class="cars-grid" id="carsGrid">
-<div class="car-card" data-id="seed-001" data-detail-id="seed-001">
-      <div class="cimg"><img src="assets/seed/demo01.jpg" alt="2022 Nissan Versa Advance" loading="lazy"><span class="cbadge bf">Destacado</span><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2022 Nissan Versa Advance</div>
-        <div class="cprice">$268,000</div>
-        <div class="cmeta"><span>42,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>Guadalajara, Jal.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-002" data-detail-id="seed-002">
-      <div class="cimg"><img src="assets/seed/demo02.jpg" alt="2021 Volkswagen Jetta Comfortline" loading="lazy"><span class="cbadge bp">PRO</span><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2021 Volkswagen Jetta Comfortline</div>
-        <div class="cprice">$365,000</div>
-        <div class="cmeta"><span>48,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>CDMX</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-003" data-detail-id="seed-003">
-      <div class="cimg"><img src="assets/seed/demo03.jpg" alt="2020 Toyota Corolla LE" loading="lazy"><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2020 Toyota Corolla LE</div>
-        <div class="cprice">$332,000</div>
-        <div class="cmeta"><span>58,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>QuerÃ©taro, Qro.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-004" data-detail-id="seed-004">
-      <div class="cimg"><img src="assets/seed/demo04.jpg" alt="2021 Kia Rio HB EX" loading="lazy"><span class="cbadge bf">Destacado</span><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2021 Kia Rio HB EX</div>
-        <div class="cprice">$245,000</div>
-        <div class="cmeta"><span>53,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>Monterrey, N.L.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-005" data-detail-id="seed-005">
-      <div class="cimg"><img src="assets/seed/demo05.jpg" alt="2021 Mazda 3 SedÃ¡n i Grand Touring" loading="lazy"><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2021 Mazda 3 SedÃ¡n i Grand Touring</div>
-        <div class="cprice">$355,000</div>
-        <div class="cmeta"><span>44,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>Puebla, Pue.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-006" data-detail-id="seed-006">
-      <div class="cimg"><img src="assets/seed/demo06.jpg" alt="2020 Nissan Sentra SR" loading="lazy"><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2020 Nissan Sentra SR</div>
-        <div class="cprice">$329,000</div>
-        <div class="cmeta"><span>61,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>LeÃ³n, Gto.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-007" data-detail-id="seed-007">
-      <div class="cimg"><img src="assets/seed/demo07.jpg" alt="2020 Honda Civic i-Style" loading="lazy"><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2020 Honda Civic i-Style</div>
-        <div class="cprice">$372,000</div>
-        <div class="cmeta"><span>64,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>MÃ©rida, Yuc.</span><span>Hoy</span></div>
-      </div>
-    </div>
-<div class="car-card" data-id="seed-008" data-detail-id="seed-008">
-      <div class="cimg"><img src="assets/seed/demo08.jpg" alt="2021 Hyundai Elantra GLS" loading="lazy"><span class="cstype">Particular</span></div>
-      <div class="cbody">
-        <div class="ctitle">2021 Hyundai Elantra GLS</div>
-        <div class="cprice">$315,000</div>
-        <div class="cmeta"><span>49,000 km</span><span>AutomÃ¡tica</span><span>Gasolina</span></div>
-        <div class="cloc"><span>Aguascalientes, Ags.</span><span>Hoy</span></div>
-      </div>
-    </div>
-</div>
+<div class="cars-grid" id="carsGrid"><div class="empty" style="grid-column:1/-1"><h3>Cargando autos reales...</h3><p>Estamos consultando el inventario activo de Tixuz.</p></div></div>
 
 </main>
 
 <!-- DETAIL -->
 <div class="overlay" id="detailOv">
 <div class="modal modal-lg">
-  <div class="mhdr"><h2 id="detailTitle">Detalle</h2><button class="mclose" onclick="closeO('detailOv')">âœ•</button></div>
+  <div class="mhdr"><h2 id="detailTitle">Detalle</h2><button class="mclose" onclick="closeO('detailOv')">✕</button></div>
   <div class="mbody" id="detailBody"></div>
 </div></div>
 
 <!-- SELL -->
 <div class="overlay" id="sellOv">
 <div class="modal">
-  <div class="mhdr"><h2>Publicar mi auto</h2><button class="mclose" onclick="closeO('sellOv')">âœ•</button></div>
+  <div class="mhdr"><h2>Publicar mi auto</h2><button class="mclose" onclick="closeO('sellOv')">✕</button></div>
   <div class="mbody">
     <div class="steps">
-      <div class="stab active" id="st1">1 Â· Info</div>
-      <div class="stab" id="st2">2 Â· Fotos</div>
-      <div class="stab" id="st3">3 Â· Publicar</div>
+      <div class="stab active" id="st1">1 · Info</div>
+      <div class="stab" id="st2">2 · Fotos</div>
+      <div class="stab" id="st3">3 · Publicar</div>
     </div>
     <!-- STEP 1 -->
     <div id="sp1">
       <div class="frow">
-        <div class="fg"><label>Marca *</label><input id="sMake" placeholder="Toyota, Hondaâ€¦"></div>
-        <div class="fg"><label>Modelo *</label><input id="sModel" placeholder="Corolla, Civicâ€¦"></div>
+        <div class="fg"><label>Marca *</label><input id="sMake" placeholder="Toyota, Honda…"></div>
+        <div class="fg"><label>Modelo *</label><input id="sModel" placeholder="Corolla, Civic…"></div>
       </div>
       <div class="frow">
-        <div class="fg"><label>AÃ±o *</label><input id="sYear" type="number" placeholder="2020" min="1980" max="2027"></div>
+        <div class="fg"><label>Año *</label><input id="sYear" type="number" placeholder="2020" min="1980" max="2027"></div>
         <div class="fg"><label>Precio MXN *</label><input id="sPrice" type="number" placeholder="200000"></div>
       </div>
       <div class="frow">
         <div class="fg"><label>Kilometraje</label><input id="sMileage" type="number" placeholder="50000"></div>
-        <div class="fg"><label for="sTrans">TransmisiÃ³n</label><select id="sTrans"><option>AutomÃ¡tica</option><option>Manual</option><option>CVT</option></select></div>
+        <div class="fg"><label for="sTrans">Transmisión</label><select id="sTrans"><option>Automática</option><option>Manual</option><option>CVT</option></select></div>
       </div>
       <div class="frow">
-        <div class="fg"><label for="sFuel">Combustible</label><select id="sFuel"><option>Gasolina</option><option>DiÃ©sel</option><option>HÃ­brido</option><option>ElÃ©ctrico</option></select></div>
+        <div class="fg"><label for="sFuel">Combustible</label><select id="sFuel"><option>Gasolina</option><option>Diésel</option><option>Híbrido</option><option>Eléctrico</option></select></div>
         <div class="fg"><label>Color</label><input id="sColor" placeholder="Blanco"></div>
       </div>
       <div class="fg"><label>Estado / Ciudad</label><input id="sLoc" placeholder="Guadalajara, Jalisco"></div>
-      <div class="fg"><label>DescripciÃ³n</label><textarea id="sDesc" rows="3" placeholder="CondiciÃ³n, extras, historialâ€¦"></textarea></div>
+      <div class="fg"><label>Descripción</label><textarea id="sDesc" rows="3" placeholder="Condición, extras, historial…"></textarea></div>
       <div class="ferr" id="e1"></div>
     </div>
     <!-- STEP 2 -->
     <div id="sp2" style="display:none">
-      <p style="font-size:.78rem;color:var(--text2);margin-bottom:10px">Sube fotos reales del auto Â· quedan en revisiÃ³n manual antes de publicarse Â· JPG/PNG/WebP Â· se optimizan automÃ¡ticamente</p>
+      <p style="font-size:.78rem;color:var(--text2);margin-bottom:10px">Sube fotos reales del auto · quedan en revisión manual antes de publicarse · JPG/PNG/WebP · se optimizan automáticamente</p>
       <div class="pgrid" id="photoGrid"></div>
       <input type="file" id="photoInput" multiple accept="image/jpeg,image/png,image/webp" style="display:none" onchange="handlePhotos(event)">
       <button class="btn btn-ghost" onclick="document.getElementById('photoInput').click()" style="width:100%">Agregar fotos</button>
@@ -709,48 +683,69 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
     </div>
     <!-- STEP 3 -->
     <div id="sp3" style="display:none">
-      <div class="fg"><label>Tu nombre *</label><input id="sName" placeholder="Juan PÃ©rez"></div>
-      <div class="fg"><label>WhatsApp (10 dÃ­gitos) *</label><input id="sWA" type="tel" maxlength="10" placeholder="3310001234"></div>
+      <div class="fg"><label>Tu nombre *</label><input id="sName" placeholder="Juan Pérez"></div>
+      <div class="fg"><label>WhatsApp (10 dígitos) *</label><input id="sWA" type="tel" maxlength="10" placeholder="3310001234"></div>
       <div class="fg"><label for="sType">Tipo de vendedor</label><select id="sType"><option>Particular</option><option>Agencia</option><option>Distribuidor</option></select></div>
       <div class="fg">
-        <label style="color:#fbbf24">PIN de 4 dÃ­gitos *</label>
+        <label style="color:#fbbf24">PIN de 4 dígitos *</label>
         <div style="position:relative">
-          <input id="sPin" type="password" maxlength="4" placeholder="â€¢â€¢â€¢â€¢" inputmode="numeric" autocomplete="off" style="padding-right:40px;width:100%">
-          <button type="button" onclick="togglePin('sPin',this)" tabindex="-1" title="Mostrar/ocultar PIN" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fbbf24;cursor:pointer;font-size:1.1rem;padding:4px 6px;line-height:1">ðŸ‘</button>
+          <input id="sPin" type="password" maxlength="4" placeholder="••••" inputmode="numeric" autocomplete="off" style="padding-right:40px;width:100%">
+          <button type="button" onclick="togglePin('sPin',this)" tabindex="-1" title="Mostrar/ocultar PIN" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#fbbf24;cursor:pointer;font-size:1.1rem;padding:4px 6px;line-height:1">👁</button>
         </div>
-        <div class="fhint" style="color:#fbbf24;font-weight:600">Guarda este PIN de 4 dÃ­gitos. Es tu llave para gestionar el anuncio. Si lo olvidas, contÃ¡ctanos en soporte@tixuzautos.com</div>
+        <div class="fhint" style="color:#fbbf24;font-weight:600">Guarda este PIN de 4 dígitos. Es tu llave para gestionar el anuncio. Si lo olvidas, contáctanos en soporte@tixuzautos.com</div>
       </div>
       <p style="font-size:.78rem;font-weight:700;color:var(--text2);margin:14px 0 8px">Elige tu plan</p>
-      <div class="pcards" id="planCards"><div style="color:var(--text3);grid-column:1/-1;text-align:center">Cargandoâ€¦</div></div>
-      <div class="fhint" style="margin-top:10px;color:var(--text3)">Plan gratis disponible por lanzamiento. Los planes pagados agregan mÃ¡s exposiciÃ³n y fotos. Tu anuncio pasa a revisiÃ³n manual antes de activarse.</div>
+      <div class="pcards" id="planCards"><div style="color:var(--text3);grid-column:1/-1;text-align:center">Cargando…</div></div>
+      <div class="fhint" style="margin-top:10px;color:var(--text3)">Plan gratis disponible por lanzamiento. Los planes pagados agregan más exposición y fotos. Tu anuncio pasa a revisión manual antes de activarse.</div>
+      <div class="detail-note" style="margin-top:10px"><strong style="color:var(--text)">Publicar es gratis por lanzamiento.</strong> Los planes Destacado y PRO estarán disponibles próximamente. Tixuz no recibe ni custodia el pago del vehículo.</div>
       <div class="ferr" id="e3"></div>
     </div>
   </div>
   <div class="mfoot">
-    <button class="btn btn-ghost" id="btnBack" style="display:none" onclick="stepBack()">â† AtrÃ¡s</button>
-    <button class="btn btn-primary" id="btnNext" onclick="stepNext()">Siguiente â†’</button>
+    <button class="btn btn-ghost" id="btnBack" style="display:none" onclick="stepBack()">← Atrás</button>
+    <button class="btn btn-primary" id="btnNext" onclick="stepNext()">Siguiente →</button>
+  </div>
+</div></div>
+
+<!-- PUBLISH SUCCESS -->
+<div class="overlay" id="publishSuccessOv">
+<div class="modal">
+  <div class="mhdr"><h2>¡Anuncio recibido!</h2><button class="mclose" onclick="closeO('publishSuccessOv')">✕</button></div>
+  <div class="mbody" style="text-align:center;padding-top:30px;padding-bottom:30px">
+    <div style="font-size:58px;line-height:1;margin-bottom:18px">✅</div>
+    <h3 style="font-size:1.25rem;margin-bottom:12px">¡Listo! Tu anuncio se envió a revisión.</h3>
+    <p style="color:var(--text2);line-height:1.65;max-width:470px;margin:0 auto 18px">En cuanto lo aprobemos (usualmente pocas horas) aparecerá publicado. Te avisamos por WhatsApp.</p>
+    <div class="detail-note" style="text-align:left;max-width:470px;margin:0 auto">
+      <strong style="color:var(--text)">Tu PIN quedó guardado en este navegador</strong><br>
+      Lo necesitarás para editar o administrar el anuncio después.
+      <div id="publishSuccessId" style="font-size:.68rem;color:var(--text3);margin-top:8px;word-break:break-all"></div>
+    </div>
+  </div>
+  <div class="mfoot">
+    <button class="btn btn-ghost" onclick="closeO('publishSuccessOv')">Cerrar</button>
+    <button class="btn btn-green" onclick="closeO('publishSuccessOv');openMyListings();setTimeout(loadML,350)">Ver mis anuncios</button>
   </div>
 </div></div>
 
 <!-- PLANS -->
 <div class="overlay" id="plansOv">
 <div class="modal">
-  <div class="mhdr"><h2>Planes</h2><button class="mclose" onclick="closeO('plansOv')">âœ•</button></div>
+  <div class="mhdr"><h2>Planes</h2><button class="mclose" onclick="closeO('plansOv')">✕</button></div>
   <div class="mbody" id="plansBody"></div>
-  <div class="mfoot"><button class="btn btn-green" onclick="closeO('plansOv');openSell()">Publicar ahora â†’</button></div>
+  <div class="mfoot"><button class="btn btn-green" onclick="closeO('plansOv');openSell()">Publicar ahora →</button></div>
 </div></div>
 
-<!-- LOT FOUNDER INTAKE -->
+<!-- SELLER INTAKE -->
 <div class="overlay" id="lotOv">
 <div class="modal modal-lg">
-  <div class="mhdr"><h2>Carga para lotes y agencias</h2><button class="mclose" onclick="closeO('lotOv')">âœ•</button></div>
+  <div class="mhdr"><h2>Carga para lotes y agencias</h2><button class="mclose" onclick="closeO('lotOv')">✕</button></div>
   <div class="mbody">
     <div class="lot-intro">
       <strong style="color:var(--text)">Marketplace oficial de Tixuz Autos.</strong><br>
-      Carga directa para lotes y agencias. PromociÃ³n de lanzamiento: hasta 20 autos gratis por 90 dÃ­as, sin comisiÃ³n por venta y con contacto directo a tu WhatsApp. El PIN de 4 dÃ­gitos solo sirve para gestionar tu carga; no pedimos tarjeta ni datos bancarios. La IA acomoda marca, modelo, aÃ±o, precio, fotos y datos; todo pasa a revisiÃ³n humana antes de activarse.
+      Carga directa para lotes y agencias. Promoción de lanzamiento: hasta 20 autos gratis por 90 días, sin comisión por venta y con contacto directo a tu WhatsApp. El PIN de 4 dígitos solo sirve para gestionar tu carga; no pedimos tarjeta ni datos bancarios. La IA acomoda marca, modelo, año, precio, fotos y datos; todo pasa a revisión humana antes de activarse.
     </div>
     <div class="frow">
-      <div class="fg"><label>Nombre del lote *</label><input id="lotName" placeholder="Autos LÃ³pez"></div>
+      <div class="fg"><label>Nombre del lote *</label><input id="lotName" placeholder="Autos López"></div>
       <div class="fg"><label>WhatsApp del lote *</label><input id="lotWA" type="tel" maxlength="10" placeholder="3310001234" inputmode="numeric"></div>
     </div>
     <div class="frow">
@@ -759,206 +754,47 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
     </div>
     <div class="lot-drop" onclick="document.getElementById('lotFiles').click()">
       <strong>Subir archivo de inventario</strong><br>
-      <span style="font-size:.76rem;color:var(--text3)">CSV, Excel, JSON o TXT. TambiÃ©n puedes pegar lista de WhatsApp abajo.</span>
+      <span style="font-size:.76rem;color:var(--text3)">CSV, Excel, JSON o TXT. También puedes pegar lista de WhatsApp abajo.</span>
     </div>
     <input id="lotFiles" type="file" multiple accept=".csv,.tsv,.json,.txt,.xlsx,.xls" style="display:none" onchange="handleLotFiles(event)">
     <div class="fg">
       <label>Pegar inventario o mensaje de WhatsApp</label>
-      <textarea id="lotPaste" rows="5" placeholder="Ej: Nissan Versa 2022, $268,000, 42,000 km, automÃ¡tico, Guadalajara, fotos: https://..."></textarea>
+      <textarea id="lotPaste" rows="5" placeholder="Ej: Nissan Versa 2022, $268,000, 42,000 km, automático, Guadalajara, fotos: https://..."></textarea>
     </div>
     <div style="display:flex;gap:8px;flex-wrap:wrap">
       <button class="btn btn-primary" id="lotAnalyzeBtn" onclick="analyzeLotInventory()">Acomodar inventario</button>
       <button class="btn btn-ghost" onclick="clearLotIntake()">Limpiar</button>
     </div>
-    <div class="lot-status" id="lotStatus">Sin inventario analizado todavÃ­a.</div>
+    <div class="lot-status" id="lotStatus">Sin inventario analizado todavía.</div>
     <div class="lot-preview" id="lotPreview" style="display:none"></div>
     <label style="display:flex;gap:8px;align-items:flex-start;margin-top:12px;color:var(--text2);font-size:.78rem;line-height:1.45">
       <input type="checkbox" id="lotAuthorized" style="width:auto;margin-top:2px">
-      Confirmo que soy dueÃ±o o representante autorizado del lote y que los datos/fotos pertenecen a nuestros autos.
+      Confirmo que soy dueño o representante autorizado del lote y que los datos/fotos pertenecen a nuestros autos.
     </label>
     <div class="ferr" id="lotErr"></div>
   </div>
   <div class="mfoot">
     <button class="btn btn-ghost" onclick="closeO('lotOv')">Cerrar</button>
-    <button class="btn btn-green" id="lotSubmitBtn" onclick="submitLotFounder()">Enviar a revisiÃ³n â†’</button>
-  </div>
-</div></div>
-
-<!-- OPS PIN -->
-<div class="overlay" id="opsPinOv">
-<div class="modal">
-  <div class="mhdr"><h2>Acceso interno</h2><button class="mclose" onclick="closeO('opsPinOv')">âœ•</button></div>
-  <div class="mbody">
-    <div class="ops-pin-note">
-      <strong>Herramientas privadas de Tixuz Autos.</strong><br>
-      Ingresa el PIN para desbloquear herramientas internas de operacion.
-    </div>
-    <div class="fg">
-      <label>PIN interno</label>
-      <input id="opsPinInput" type="password" inputmode="numeric" autocomplete="off" placeholder="PIN" onkeydown="if(event.key==='Enter')submitOpsPin()">
-      <div class="ferr" id="opsPinErr"></div>
-    </div>
-  </div>
-  <div class="mfoot">
-    <button class="btn btn-ghost" onclick="closeO('opsPinOv')">Cerrar</button>
-    <button class="btn btn-primary" onclick="submitOpsPin()">Desbloquear</button>
-  </div>
-</div></div>
-
-<!-- OPERATOR GUIDE -->
-<div class="overlay" id="operatorGuideOv">
-<div class="modal modal-lg">
-  <div class="mhdr"><h2>Instrucciones del operador</h2><button class="mclose" onclick="closeO('operatorGuideOv')">âœ•</button></div>
-  <div class="mbody">
-    <div class="operator-guide">
-      <div class="guide-block">
-        <h3>Objetivo</h3>
-        <ul>
-          <li>Encontrar lotes de autos reales con telÃ©fono pÃºblico.</li>
-          <li>Invitarlos a publicar gratis en Tixuz Autos.</li>
-          <li>Guardar seguimiento y mandarles el link para que ellos carguen su inventario.</li>
-        </ul>
-      </div>
-      <div class="guide-block">
-        <h3>Flujo de trabajo</h3>
-        <ol>
-          <li>Escribe la ciudad en <strong>Ciudad foco</strong>.</li>
-          <li>Presiona <strong>1 Buscar lotes</strong> y abre fichas en Google Maps.</li>
-          <li>Copia la ficha del lote: nombre, telÃ©fono, direcciÃ³n y link si aparece.</li>
-          <li>Regresa a Tixuz y presiona <strong>2 Pegar e importar</strong>.</li>
-          <li>Presiona <strong>3 Preparar siguiente</strong>, revisa el mensaje y envÃ­alo tÃº manualmente.</li>
-          <li>Cuando ya lo mandaste, presiona <strong>4 Ya lo enviÃ©</strong>.</li>
-        </ol>
-      </div>
-      <div class="guide-block">
-        <h3>Estados</h3>
-        <ul>
-          <li><span class="guide-warn">Pendiente:</span> todavÃ­a no se le escribiÃ³.</li>
-          <li><span class="guide-warn">Contactado:</span> ya se mandÃ³ mensaje; queda seguimiento.</li>
-          <li><span class="guide-good">Interesado:</span> respondiÃ³ que sÃ­ o pidiÃ³ informaciÃ³n.</li>
-          <li><span class="guide-warn">No:</span> dijo que no, no insiste.</li>
-        </ul>
-      </div>
-      <div class="guide-block">
-        <h3>Cuando digan que sÃ­</h3>
-        <ol>
-          <li>Marca <strong>Interesado</strong>.</li>
-          <li>Presiona <strong>Link carga</strong> o manda el link que ya viene en la plantilla.</li>
-          <li>El lote entra a <strong>tixuzautos.com/?lote=1</strong> y carga sus autos.</li>
-          <li>TÃº sÃ³lo das seguimiento y revisas cuando entren a revisiÃ³n.</li>
-        </ol>
-      </div>
-      <div class="guide-block">
-        <h3>Reglas</h3>
-        <ul>
-          <li>No mandar mensajes masivos automÃ¡ticos.</li>
-          <li>No insistir si dicen que no.</li>
-          <li>No inventar datos ni publicar autos sin autorizaciÃ³n.</li>
-          <li>Revisar el mensaje antes de enviarlo.</li>
-          <li>Usar solo telÃ©fonos pÃºblicos de negocios o lotes.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div></div>
-
-<!-- INTERNAL FOLLOWUP -->
-<div class="overlay" id="prospectOv">
-<div class="modal modal-lg">
-  <div class="mhdr"><h2>Seguimiento interno</h2><button class="mclose" onclick="closeO('prospectOv')">âœ•</button></div>
-  <div class="mbody">
-    <div class="lot-intro">
-      <strong style="color:var(--text)">Herramienta interna de seguimiento.</strong><br>
-      Administra contactos, mensajes, estados y enlaces de carga desde una vista privada.
-    </div>
-    <div class="prospect-easy">
-      <div class="easy-title">Paso a paso</div>
-      <div class="frow">
-        <div class="fg"><label>Ciudad para buscar</label><input id="prospectCityFocus" placeholder="Guadalajara" oninput="renderProspectSources();renderProspects()"></div>
-        <div class="fg"><label for="prospectTemplate">Tipo de mensaje</label><select id="prospectTemplate" onchange="changeProspectTemplate()"><option value="founder">InvitaciÃ³n inicial</option><option value="followup">Seguimiento</option><option value="inventory">Mandar link de carga</option><option value="cost">Si pregunta costo</option><option value="trust">Si desconfÃ­a</option></select></div>
-      </div>
-      <div class="easy-active"><strong>Flujo interno:</strong> revisa, prepara contacto, registra estado y comparte el enlace de carga solo cuando corresponda.</div>
-      <div class="easy-grid">
-        <button class="btn btn-primary" onclick="openProspectSource('maps')">1 Abrir Google Maps</button>
-        <button class="btn btn-primary" onclick="importPastedProspectsUnified()">2 Importar lo pegado</button>
-        <button class="btn btn-ghost" onclick="prepareNextProspect()">3 Preparar contacto</button>
-        <button class="btn btn-green" onclick="markActiveProspectSent(1)">4 Ya lo enviÃ©</button>
-        <button class="btn btn-ghost" onclick="copyTodayProspectPlan()">Copiar resumen</button>
-        <button class="btn btn-ghost" onclick="openOperatorGuide()">Ver instrucciones</button>
-      </div>
-      <div class="easy-active" id="prospectActive">Siguiente: sin registros.</div>
-      <div class="easy-active" id="prospectPreview">El mensaje se llena cuando importes un lote.</div>
-      <div class="quick-replies" id="prospectQuickReplies">
-        <button onclick="copyActiveProspectReply('followup')">Seguimiento</button>
-        <button onclick="copyActiveProspectReply('cost')">Costo $0</button>
-        <button onclick="copyActiveProspectReply('trust')">Confianza</button>
-        <button class="green" onclick="copyActiveProspectReply('inventory')">Si: link carga</button>
-      </div>
-    </div>
-    <div class="fg">
-      <label>Texto copiado de Google Maps</label>
-      <textarea id="prospectPaste" rows="5" placeholder="Pega aquÃ­ lo que copiaste de Google Maps. Puede venir con nombre, direcciÃ³n, web y telÃ©fono; si no trae nombre, lo guardo con ciudad y telÃ©fono.&#10;&#10;Ejemplo:&#10;Av. Adolfo LÃ³pez Mateos Sur 5654, Guadalajara&#10;suzukigdl.com.mx&#10;33 3884 8200"></textarea>
-    </div>
-    <div class="prospect-toolbar">
-      <button class="btn btn-ghost" onclick="clearProspectInput()">Limpiar texto</button>
-    </div>
-    <div class="lot-intro">
-      <strong style="color:var(--text)">Si Maps no copia bien el telÃ©fono:</strong><br>
-      EscrÃ­belo aquÃ­ manualmente. Es mÃ¡s rÃ¡pido que pelear con el portapapeles.
-    </div>
-    <div class="frow">
-      <div class="fg"><label>Nombre del lote opcional</label><input id="manualProspectName" placeholder="Si Maps no lo copiÃ³, puede ir vacÃ­o"></div>
-      <div class="fg"><label>WhatsApp / telÃ©fono</label><input id="manualProspectPhone" inputmode="numeric" placeholder="5515104493"></div>
-    </div>
-    <div class="frow">
-      <div class="fg"><label>Ciudad</label><input id="manualProspectCity" placeholder="Ciudad de MÃ©xico"></div>
-      <div class="fg"><label>&nbsp;</label><button class="btn btn-primary" onclick="addManualProspectFromFields()" style="width:100%;justify-content:center">Agregar manualmente</button></div>
-    </div>
-    <div class="frow">
-      <div class="fg"><label>Email opcional</label><input id="manualProspectEmail" type="email" placeholder="ventas@lote.com"></div>
-      <div class="fg"><label>Web / Facebook / Instagram opcional</label><input id="manualProspectAlt" placeholder="https://... o facebook.com/..."></div>
-    </div>
-    <div class="prospect-stats" id="prospectStats"></div>
-    <div class="prospect-today" id="prospectTodayPlan"></div>
-    <details class="prospect-advanced">
-      <summary>Herramientas avanzadas</summary>
-      <div class="frow">
-        <div class="fg"><label for="prospectFilter">Filtro</label><select id="prospectFilter" onchange="renderProspects()"><option value="all">Todos</option><option value="due">Toca hoy</option><option value="pendiente">Pendientes</option><option value="contactado">Contactados</option><option value="interesado">Interesados</option><option value="no">No / descartar</option></select></div>
-        <div class="fg"><label>Buscar</label><input id="prospectSearch" placeholder="nombre, ciudad, fuente, telefono" oninput="renderProspects()"></div>
-      </div>
-      <textarea id="prospectTemplateText" style="display:none" oninput="renderProspects()"></textarea>
-      <div class="prospect-sources" id="prospectSources"></div>
-      <div class="prospect-toolbar">
-        <button class="btn btn-ghost" onclick="pasteClipboardAndImportProspects(true)">Pegar portapapeles e importar</button>
-        <button class="btn btn-ghost" onclick="openNextProspect()">Abrir siguiente</button>
-        <button class="btn btn-ghost" onclick="copyNextProspect()">Copiar siguiente</button>
-        <button class="btn btn-ghost" onclick="copyTodayProspectPlan()">Copiar resumen</button>
-        <button class="btn btn-ghost" onclick="copyActiveLotIntakeLink()">Copiar link carga</button>
-        <button class="btn btn-ghost" onclick="exportProspects()">Exportar CSV</button>
-        <button class="btn btn-ghost" onclick="removeProspectsWithoutPhone()">Quitar sin canal</button>
-      </div>
-    </details>
-    <div class="lot-status" id="prospectStatus">Sin registros todavÃ­a.</div>
-    <div class="prospect-table" id="prospectTable"></div>
+    <button class="btn btn-green" id="lotSubmitBtn" onclick="submitLotInventory()">Enviar a revisión →</button>
   </div>
 </div></div>
 
 <!-- MY LISTINGS -->
 <div class="overlay" id="myOv">
 <div class="modal">
-  <div class="mhdr"><h2>Mis Anuncios</h2><button class="mclose" onclick="closeO('myOv')">âœ•</button></div>
+  <div class="mhdr"><h2>Mis Anuncios</h2><button class="mclose" onclick="closeO('myOv')">✕</button></div>
   <div class="mbody">
     <div class="fg"><label>WhatsApp</label><input id="mlWA" type="tel" maxlength="10" placeholder="3310001234"></div>
     <div class="fg">
-      <label style="color:#4ade80">PIN (4 dÃ­gitos)</label>
+      <label style="color:#4ade80">PIN (4 dígitos)</label>
       <div style="position:relative">
-        <input id="mlPin" type="password" maxlength="4" placeholder="â€¢â€¢â€¢â€¢" inputmode="numeric" autocomplete="off" style="padding-right:40px;width:100%">
-        <button type="button" onclick="togglePin('mlPin',this)" tabindex="-1" title="Mostrar/ocultar PIN" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#4ade80;cursor:pointer;font-size:1.1rem;padding:4px 6px;line-height:1">ðŸ‘</button>
+        <input id="mlPin" type="password" maxlength="4" placeholder="••••" inputmode="numeric" autocomplete="off" style="padding-right:40px;width:100%">
+        <button type="button" onclick="togglePin('mlPin',this)" tabindex="-1" title="Mostrar/ocultar PIN" style="position:absolute;right:8px;top:50%;transform:translateY(-50%);background:transparent;border:0;color:#4ade80;cursor:pointer;font-size:1.1rem;padding:4px 6px;line-height:1">👁</button>
       </div>
-      <div class="fhint" style="color:#fbbf24">Usa el PIN que guardaste al publicar. Si lo olvidaste, escrÃ­benos a soporte@tixuzautos.com</div>
+      <div class="fhint" style="color:#fbbf24">Usa el PIN que guardaste al publicar. Si lo olvidaste, escríbenos a soporte@tixuzautos.com</div>
     </div>
     <div class="ferr" id="mlerr"></div>
-    <button class="btn btn-primary" onclick="loadML()" style="width:100%;justify-content:center">Ver mis anuncios â†’</button>
+    <button class="btn btn-primary" onclick="loadML()" style="width:100%;justify-content:center">Ver mis anuncios →</button>
     <div id="mlRes" style="margin-top:12px"></div>
   </div>
 </div></div>
@@ -966,75 +802,130 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
 <!-- ADMIN -->
 <div class="overlay" id="adminOv">
 <div class="modal modal-lg">
-  <div class="mhdr"><h2>Panel Admin</h2><button class="mclose" onclick="closeO('adminOv')">âœ•</button></div>
+  <div class="mhdr"><h2>Panel Admin</h2><button class="mclose" onclick="closeO('adminOv')">✕</button></div>
   <div class="mbody" id="adminBody">
-    <div class="fg"><label>ContraseÃ±a</label><input id="adminPwd" type="password" onkeydown="if(event.key==='Enter')loginAdmin()"></div>
+    <div class="fg"><label>Contraseña</label><input id="adminPwd" type="password" onkeydown="if(event.key==='Enter')loginAdmin()"></div>
     <div class="ferr" id="adminErr"></div>
     <button class="btn btn-primary" onclick="loginAdmin()">Entrar</button>
   </div>
 </div></div>
 
-<!-- BÃšSQUEDA CON IA -->
+<!-- BÚSQUEDA CON IA -->
 <div class="overlay" id="searchAIOv">
 <div class="modal modal-lg">
   <div class="mhdr">
-    <h2>Buscar auto con IA</h2>
-    <button class="mclose" onclick="closeO('searchAIOv')">âœ•</button>
+    <h2>Veredicto Tixuz IA</h2>
+    <button class="mclose" onclick="closeO('searchAIOv')">✕</button>
   </div>
   <div class="mbody" style="padding:0">
     <div style="padding:10px 14px;background:rgba(59,130,246,.08);border-bottom:1px solid var(--border);display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap">
-      <span style="font-size:.78rem;color:var(--text2);line-height:1.4">Primero filtramos Tixuz. Si falta inventario, la IA completa amplia a portales externos y te invita a publicar aqui.</span>
+      <span style="font-size:.78rem;color:var(--text2);line-height:1.4">Pega un anuncio, link o modelo. Tixuz te dice que revisar, si conviene y que preguntarle al vendedor.</span>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button class="btn btn-green" onclick="openSell()" style="font-size:.75rem;padding:7px 12px">Publicar auto</button>
-        <button class="btn btn-primary" onclick="openFullSearchAI()" style="font-size:.75rem;padding:7px 12px">Abrir IA completa</button>
+        <button class="btn btn-primary" onclick="openFullSearchAI()" style="font-size:.75rem;padding:7px 12px">Abrir veredicto completo</button>
       </div>
     </div>
     <div id="saiSummary" style="display:none;padding:10px 14px;background:linear-gradient(135deg,rgba(59,130,246,.15),rgba(124,58,237,.15));border-bottom:1px solid var(--border);font-size:.78rem;color:var(--text2)"></div>
     <div id="saiMsgs" style="height:340px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:8px;background:var(--bg)"></div>
     <div id="saiSuggs" style="padding:8px 14px;display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--border);background:var(--bg2);min-height:42px"></div>
     <div style="display:flex;gap:6px;padding:10px 14px;border-top:1px solid var(--border);background:var(--bg2)">
-      <input class="ai-inp" id="saiInp" placeholder="Escribe o toca el micrÃ³fono: SUV automÃ¡tica en Zapopan" onkeydown="if(event.key==='Enter')saiSend()" oninput="saiPredict()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.85rem">
-      <button id="saiMicBtn" class="ai-send" onclick="saiStartVoice()" title="Hablar bÃºsqueda" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:8px;cursor:pointer;font-size:.95rem">ðŸŽ™ï¸</button>
-      <button class="ai-send" onclick="saiSend()" style="background:linear-gradient(135deg,var(--accent),var(--purple));border:0;color:#fff;width:38px;height:38px;border-radius:8px;cursor:pointer;font-size:1rem">âž¤</button>
+      <input class="ai-inp" id="saiInp" placeholder="Pega link/anuncio o escribe: Honda Civic 1999" onkeydown="if(event.key==='Enter')saiSend()" oninput="saiPredict()" style="flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:8px;font-size:.85rem">
+      <button id="saiMicBtn" class="ai-send" onclick="saiStartVoice()" title="Hablar búsqueda" style="background:var(--bg3);border:1px solid var(--border);color:var(--text);width:38px;height:38px;border-radius:8px;cursor:pointer;font-size:.95rem">🎙️</button>
+      <button class="ai-send" onclick="saiSend()" style="background:linear-gradient(135deg,var(--accent),var(--purple));border:0;color:#fff;width:38px;height:38px;border-radius:8px;cursor:pointer;font-size:1rem">➤</button>
     </div>
     <div style="display:flex;gap:8px;padding:8px 14px 12px;background:var(--bg2);border-top:1px solid var(--border)">
-      <button class="btn btn-ghost" onclick="saiReset()" style="flex:1;font-size:.75rem;padding:6px 10px">â†º Reiniciar</button>
-      <button class="btn btn-primary" onclick="saiApply()" style="flex:2;font-size:.78rem;padding:6px 10px">âœ“ Aplicar filtros y ver resultados</button>
+      <button class="btn btn-ghost" onclick="saiReset()" style="flex:1;font-size:.75rem;padding:6px 10px">↺ Reiniciar</button>
+      <button class="btn btn-primary" onclick="saiApply()" style="flex:2;font-size:.78rem;padding:6px 10px">✓ Aplicar filtros y ver resultados</button>
     </div>
   </div>
 </div></div>
 
 <!-- AI FAB + PANEL -->
 <button class="ai-fab" onclick="toggleAI()" id="aiFab" title="Asesor IA">
-  <div class="ai-pulse"></div>ðŸ¤–
+  <div class="ai-pulse"></div>🤖
 </button>
 <div class="ai-panel" id="aiPanel">
   <div class="ai-hdr">
-    <div class="ai-hdr-ico">ðŸ¤–</div>
+    <div class="ai-hdr-ico">🤖</div>
     <div>
       <h3>Asesor IA</h3>
-      <p>â— En lÃ­nea Â· Compra y venta</p>
+      <p>● En línea · Compra y venta</p>
     </div>
-    <button class="ai-hdr-x" onclick="toggleAI()">âœ•</button>
+    <button class="ai-hdr-x" onclick="toggleAI()">✕</button>
   </div>
   <div class="ai-msgs" id="aiMsgs"></div>
   <div class="ai-suggs" id="aiSuggs"></div>
   <div class="ai-iw">
-    <input class="ai-inp" id="aiInp" placeholder="Escribe quÃ© necesitasâ€¦" onkeydown="if(event.key==='Enter')aiSend()" oninput="aiPredict()">
-    <button class="ai-send" onclick="aiSend()">âž¤</button>
+    <input class="ai-inp" id="aiInp" placeholder="Escribe qué necesitas…" onkeydown="if(event.key==='Enter')aiSend()" oninput="aiPredict()">
+    <button class="ai-send" onclick="aiSend()">➤</button>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <footer>
-  <div class="fs"><h4>Tixuz Autos</h4><p>El marketplace de autos usados hecho para MÃ©xico. IA + WhatsApp + pagos seguros.</p></div>
+  <div class="fs"><h4>Tixuz Autos</h4><p>El marketplace de autos usados hecho para México. IA, revisión humana y contacto directo por WhatsApp.</p></div>
   <div class="fs"><h4>Marketplace</h4><a href="/?publicar=1" onclick="openSell();return false">Vender mi auto</a><a href="/publicar-auto/lotes">Lotes y agencias</a><a href="/?planes=1" onclick="openPlans();return false">Ver planes</a><a href="/?mis-anuncios=1" onclick="openMyListings();return false">Mis anuncios</a></div>
-  <div class="fs"><h4>Contacto</h4><a href="mailto:soporte@tixuzautos.com">soporte@tixuzautos.com</a><a href="https://wa.me/523330573809">WhatsApp: 33 3057 3809</a><a href="/youtube/autoridad">Autoridad YouTube</a><a href="/youtube/temas">Temas YouTube</a><a href="/youtube/transcripciones/">Transcripciones YouTube</a><a href="https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg" rel="me noopener" target="_blank">YouTube oficial</a><a href="https://www.youtube.com/c/Tixuz" rel="me noopener" target="_blank">youtube.com/c/Tixuz</a></div>
-  <div class="fs"><h4>Legal</h4><a href="/legal/terminos">TÃ©rminos</a><a href="/legal/privacidad">Privacidad</a><a href="/legal/cookies">Cookies</a><a href="/?operador=1" onclick="openOperatorEntry();return false">Operador</a></div>
+  <div class="fs"><h4>Contacto</h4><a href="mailto:soporte@tixuzautos.com">soporte@tixuzautos.com</a><a href="https://wa.me/523330573809">WhatsApp: 33 3057 3809</a><a href="/youtube/autoridad">Biblioteca YouTube Tixuz</a><a href="/youtube/temas">Temas YouTube</a><a href="/youtube/transcripciones/">Transcripciones YouTube</a><a href="https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg" rel="me noopener" target="_blank">YouTube oficial</a><a href="https://www.youtube.com/c/Tixuz" rel="me noopener" target="_blank">youtube.com/c/Tixuz</a></div>
+  <div class="fs"><h4>Legal</h4><a href="/legal/terminos">Términos</a><a href="/legal/privacidad">Privacidad</a><a href="/legal/cookies">Cookies</a></div>
 </footer>
-<div class="fb">Â© 2026 Tixuz Autos Â· MÃ©xico Â· Plataforma segura con Stripe y Supabase Â· Grupo Upperline S.A. de C.V.</div>
+<div class="fb">© 2026 Tixuz Autos · México · Marketplace de anuncios · Grupo Upperline S.A. de C.V.</div>
 
-<script defer src="/assets/app.js"></script>
-</body>
+<script defer src="/assets/app.js?v=planes-proximamente-20260727"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-05V90MWKN9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-05V90MWKN9');
+</script><style>
+#tixuz-live-box{margin:18px auto;max-width:1200px;padding:18px;border:1px solid rgba(120,160,255,.28);border-radius:14px;background:rgba(17,24,42,.72);color:#dbe4ff;font-family:inherit}
+#tixuz-live-box .tzl-head{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700}
+#tixuz-live-box .tzl-sub{opacity:.7;margin-top:6px;font-size:13px}
+.tzl-spin{width:16px;height:16px;border:2px solid rgba(219,228,255,.25);border-top-color:#7aa2ff;border-radius:50%;display:inline-block;animation:tzlspin .8s linear infinite;flex:none}
+@keyframes tzlspin{to{transform:rotate(360deg)}}
+.tzl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px}
+.tzl-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tzl-card img{width:100%;height:140px;object-fit:cover;background:#0d1426;display:block}
+.tzl-card .tzl-body{padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.tzl-title{font-size:14px;font-weight:600;color:#eef2ff;line-height:1.25}
+.tzl-price{font-size:16px;font-weight:800;color:#6ea8fe}
+.tzl-src{font-size:11px;opacity:.65}
+.tzl-link{margin-top:6px;font-size:13px;color:#8ab4ff;text-decoration:none;font-weight:600}
+.tzl-portales{margin-top:14px;font-size:13px;opacity:.85}
+.tzl-portales a{color:#8ab4ff;text-decoration:none;font-weight:600}
+.tzl-btn{margin-top:10px;background:#2c67ff;border:0;color:#fff;padding:8px 14px;border-radius:9px;font-weight:700;cursor:pointer}
+.tzl-note{margin-top:12px;font-size:12px;opacity:.55}
+</style>
+<script>
+(function(){'use strict';if(window.__tixuzLiveSearch)return;window.__tixuzLiveSearch=true;var E='/.netlify/functions/buscar-externos',P='AutoCosmos, Kavak, Seminuevos y GoCAR',UMBRAL=5,SUPA='https://rbiuoljoduekajivffzh.supabase.co/rest/v1/agg_marcas_modelos?select=marca,modelo',AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiaXVvbGpvZHVla2FqaXZmZnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExNzc4NDYsImV4cCI6MjA4Njc1Mzg0Nn0.fvKu71jVZWfSdIVcqMrhMZqUAjswzvaOgnm6-MQpaxM',ALIAS={vw:'Volkswagen',chevy:'Chevrolet',mb:'Mercedes-Benz',benz:'Mercedes-Benz'},MAP=null,S={lastQ:'',timer:null,ctrl:null,done:{}};function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}function fmt(p){var n=Number(p);if(!n||n<=0)return null;try{return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});}catch(e){return'$'+n;}}async function cargarMapa(){if(MAP)return MAP;try{var r=await window.__tzlF(SUPA,{headers:{apikey:AK}});var j=await r.json();MAP={modelos:{},marcas:{}};for(var i=0;i<j.length;i++){var m=j[i];if(m.modelo)MAP.modelos[m.modelo.toLowerCase()]=m.marca;if(m.marca)MAP.marcas[m.marca.toLowerCase()]=1;}}catch(e){MAP={modelos:{},marcas:{}};}return MAP;}async function expandir(q){try{var mapa=await cargarMapa();var toks=q.split(/\s+/).filter(Boolean);var out=[];var hasBrand=false;for(var i=0;i<toks.length;i++){var t=toks[i].toLowerCase();if(ALIAS[t]){out.push(ALIAS[t]);hasBrand=true;}else{out.push(toks[i]);if(mapa.marcas[t])hasBrand=true;}}if(hasBrand)return out.join(' ');for(var j2=0;j2<toks.length;j2++){var m=mapa.modelos[toks[j2].toLowerCase()];if(m)return m+' '+out.join(' ');}return out.join(' ');}catch(e){}return q;}function box(){var b=document.getElementById('tixuz-live-box');if(b)return b;b=document.createElement('div');b.id='tixuz-live-box';var a=null;try{var els=document.querySelectorAll('h1,h2,h3,h4,p,div,span');for(var i=0;i<els.length;i++){var t=(els[i].textContent||'').trim();if((t.indexOf('No encontramos')===0||/^\d+\s+autos?\s+encontrados?/i.test(t))&&t.length<140&&els[i].children.length<=2){a=els[i];break;}}}catch(e){}if(a){var h=a.closest?a.closest('section,div'):a;if(h&&h.parentNode){h.parentNode.insertBefore(b,h.nextSibling);return b;}}var f=document.querySelector('form');if(f&&f.parentNode){f.parentNode.insertBefore(b,f.nextSibling);return b;}document.body.appendChild(b);return b;}function spin(q){var b=box();b.innerHTML='<div class="tzl-head"><span class="tzl-spin"></span>\uD83D\uDD0D Buscando \u201c'+esc(q)+'\u201d en vivo en '+P+'\u2026</div><div class="tzl-sub">Tarda 5\u201310 segundos porque consultamos los portales reales en este momento.</div>';try{b.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}function norm(c){var price=c.price||c.precio||c.price_mxn||0,year=c.year||c.anio||c.vehicle_year||null,url=c.url||c.source_url||c.permalink||c.link||'#',img=c.image||c.image_url||c.thumbnail||c.thumbnail_url||'',make=c.make||c.marca||c.brand||'',model=c.model||c.modelo||'',title=c.title||c.titulo||([make,model,year].filter(Boolean).join(' ').trim())||'Auto',source=c.source||c.source_name||c.fuente||'Portal externo',pg=(c.source_kind==='verified_source_page')&&!(Number(price)>0)&&!year;return{price:price,year:year,url:url,img:img,title:title,source:source,pg:pg};}function render(q,arr,partial){var b=box(),reales=[],portales=[],v={};for(var i=0;i<(arr||[]).length;i++){var n=norm(arr[i]);if(n.pg){if(!v[n.source]){v[n.source]=1;portales.push(n);}}else reales.push(n);}var h='';if(reales.length){h+='<div class="tzl-head">\u2705 '+reales.length+' m\u00e1s encontrados en vivo para \u201c'+esc(q)+'\u201d</div><div class="tzl-grid">';for(var j3=0;j3<Math.min(reales.length,12);j3++){var r=reales[j3],p=fmt(r.price);h+='<div class="tzl-card">'+(r.img?'<img src="'+esc(r.img)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':'')+'<div class="tzl-body"><div class="tzl-title">'+esc(r.title)+'</div>'+(p?'<div class="tzl-price">'+p+'</div>':'<div class="tzl-price" style="opacity:.7">Ver precio</div>')+'<div class="tzl-src">Fuente: '+esc(r.source)+'</div><a class="tzl-link" href="'+esc(r.url)+'" target="_blank" rel="noopener nofollow">Ver anuncio original \u2192</a></div></div>';}h+='</div><div class="tzl-note">Estos hallazgos ya quedaron guardados en Tixuz: la pr\u00f3xima b\u00fasqueda ser\u00e1 instant\u00e1nea.</div>';}else{h+='<div class="tzl-head">Lo buscamos en 4 portales y a\u00fan no aparece \u201c'+esc(q)+'\u201d.</div><div class="tzl-sub">Ya qued\u00f3 apuntado: el robot lo consigue en las pr\u00f3ximas cargas.</div><button class="tzl-btn" id="tzl-retry">Reintentar</button>';}if(portales.length){var lk=[];for(var k=0;k<portales.length;k++)lk.push('<a href="'+esc(portales[k].url)+'" target="_blank" rel="noopener nofollow">'+esc(portales[k].source)+'</a>');h+='<div class="tzl-portales">Sigue buscando en: '+lk.join(' \u00b7 ')+'</div>';}if(partial)h+='<div class="tzl-note">Algunos portales tardaron; puede haber m\u00e1s en unos minutos.</div>';b.innerHTML=h;var btn=document.getElementById('tzl-retry');if(btn)btn.onclick=function(){S.done[q]=false;live(q);};}function err(q){var b=box();b.innerHTML='<div class="tzl-head">Los portales est\u00e1n tardando m\u00e1s de lo normal.</div><button class="tzl-btn" id="tzl-retry">Reintentar</button>';var btn=document.getElementById('tzl-retry');if(btn)btn.onclick=function(){S.done[q]=false;live(q);};}function live(q){try{if(S.done[q])return;S.done[q]=true;if(S.ctrl){try{S.ctrl.abort();}catch(e){}}var ctrl=('AbortController'in window)?new AbortController():null;S.ctrl=ctrl;spin(q);var to=setTimeout(function(){if(ctrl)try{ctrl.abort();}catch(e){}},15000);window.__tzlF(E+'?q='+encodeURIComponent(q)+'&legacy=1&live=1',ctrl?{signal:ctrl.signal}:undefined).then(function(r){return r.json();}).then(function(j){clearTimeout(to);var a=j.cars||j.results||j.items||(Array.isArray(j)?j:[]);render(q,a,!!j.partial);}).catch(function(){clearTimeout(to);if(S.lastQ===q)err(q);});}catch(e){}}function maybe(q){q=(q||'').trim();if(q.length<3)return;S.lastQ=q;if(S.timer)clearTimeout(S.timer);S.timer=setTimeout(function(){if(S.lastQ!==q)return;expandir(q).then(function(q2){if(S.lastQ===q&&!S.done[q2])live(q2);});},900);}var of=window.fetch.bind(window);window.__tzlF=of;cargarMapa();window.fetch=function(input,init){var u='';try{u=(typeof input==='string')?input:((input&&input.url)||'');}catch(e){}var p=of(input,init);try{if(u.indexOf('/api/buscar')!==-1&&u.indexOf('buscar-externos')===-1){p.then(function(res){try{var cl=res.clone();cl.json().then(function(j){try{var q='';try{q=new URL(u,location.origin).searchParams.get('q')||'';}catch(e){}var l=(j&&(j.results||j.cars||j.items))||[];var n=(typeof j.count==='number')?j.count:l.length;var pocos=!!(j&&(j.zero_results===true||n<UMBRAL));if(pocos&&q)maybe(q);else{if(S.timer)clearTimeout(S.timer);var b=document.getElementById('tixuz-live-box');if(b)b.remove();}}catch(e){}}).catch(function(){});}catch(e){}}).catch(function(){});}}catch(e){}return p;};})();
+</script><script>(function(){function extra(u){u=String(u||'');return /automarket\.bbva\.mx\/[a-z0-9-]+-\d{3,}-\d{3,}\.html/i.test(u)||/kavak\.com\/mx\/usado\/[a-z0-9_-]+/i.test(u)||/seminuevosgocar\.mx\/seminuevo\/[^\/]+\/[a-f0-9]{8,}/i.test(u);}function patch(){try{if(typeof window.isIndividualExternalListingUrl==='function'&&!window.__fuentesParche){var orig=window.isIndividualExternalListingUrl;window.isIndividualExternalListingUrl=function(v){return orig(v)||extra(v);};window.__fuentesParche=true;}}catch(e){}}patch();document.addEventListener('DOMContentLoaded',patch);setTimeout(patch,0);setTimeout(patch,500);})();</script><script>(function(){var EF='https://rbiuoljoduekajivffzh.supabase.co/functions/v1/foto-seminuevos';var KEY=null;function getKey(){if(KEY)return Promise.resolve(KEY);return fetch('/assets/app.js').then(function(r){return r.text();}).then(function(t){var m=t.match(/eyJ[A-Za-z0-9_\-\.]+/);KEY=m?m[0]:null;return KEY;})['catch'](function(){return null;});}var of=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&&u.indexOf('/rest/v1/agg_autos_inventory')>-1){u=u.replace('limit=300','limit=500');}}catch(e){}var p=of.call(this,u,o);try{if(typeof u==='string'&&u.indexOf('/api/buscar-serper')>-1){return p.then(function(r){return r.clone().json().then(function(j){var cars=(j&&j.cars)||[];var faltan=[];for(var i=0;i<cars.length;i++){var c=cars[i];if(c&&c.url&&/seminuevos\.com\/vehicle\//i.test(c.url)&&!c.thumbnail_url){faltan.push(c.url);}}if(!faltan.length)return r;return getKey().then(function(k){if(!k)return r;return of(EF,{method:'POST',headers:{'Content-Type':'application/json','apikey':k,'Authorization':'Bearer '+k},body:JSON.stringify({urls:faltan.slice(0,15)})}).then(function(rr){return rr.ok?rr.json():{fotos:{}};}).then(function(f){var fotos=(f&&f.fotos)||{};for(var i=0;i<cars.length;i++){var c=cars[i];var img=c&&c.url?fotos[c.url]:null;if(img){c.thumbnail_url=img;c.imagen_tipo='real_source';}}return new Response(JSON.stringify(j),{status:r.status,headers:{'Content-Type':'application/json'}});})['catch'](function(){return r;});});})['catch'](function(){return r;});});}}catch(e){}return p;};})();</script><script>(function(){var EF='https://rbiuoljoduekajivffzh.supabase.co/functions/v1/foto-seminuevos';var KEY=null;function getKey(){if(KEY)return Promise.resolve(KEY);return fetch('/assets/app.js').then(function(r){return r.text();}).then(function(t){var m=t.match(/eyJ[A-Za-z0-9_\-\.]+/);KEY=m?m[0]:null;return KEY;})['catch'](function(){return null;});}var of=window.fetch;window.fetch=function(u,o){var p=of.call(this,u,o);try{if(typeof u==='string'&&u.indexOf('/api/buscar-serper')>-1){return p.then(function(r){return r.clone().json().then(function(j){var arr=(j&&(j.results||j.cars))||[];var faltan=[];for(var i=0;i<arr.length;i++){var c=arr[i];if(c&&c.url&&/seminuevos\.com\/vehicle\//i.test(c.url)&&!c.image_url){faltan.push(c.url);}}if(!faltan.length)return r;return getKey().then(function(k){if(!k)return r;return of(EF,{method:'POST',headers:{'Content-Type':'application/json','apikey':k,'Authorization':'Bearer '+k},body:JSON.stringify({urls:faltan.slice(0,15)})}).then(function(rr){return rr.ok?rr.json():{fotos:{}};}).then(function(f){var fotos=(f&&f.fotos)||{};for(var i=0;i<arr.length;i++){var c=arr[i];var img=c&&c.url?fotos[c.url]:null;if(img){c.image_url=img;c.image_kind='real_source';c.thumbnail_url=img;c.imagen_tipo='real_source';}}return new Response(JSON.stringify(j),{status:r.status,headers:{'Content-Type':'application/json'}});})['catch'](function(){return r;});});})['catch'](function(){return r;});});}}catch(e){}return p;};})();</script><style>
+.tixuz-dep-btn{background:linear-gradient(135deg,#ef3340,#b91c2a)!important;color:#fff!important;border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 5px 16px rgba(239,51,64,.28)}
+.tixuz-dep-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+</style>
+<script>
+(function(){
+  var path=(location.pathname||'').replace(/\/+$/,'')||'/';
+  if(path==='/depreciacion'){
+    location.replace('https://tixuz-depreciacion-2026.netlify.app/'+location.search+location.hash);
+    return;
+  }
+  function updateButton(){
+    var duplicate=document.getElementById('tixuz-dep-hero');
+    if(duplicate)duplicate.remove();
+    var head=document.querySelector('.hbtns');
+    if(!head)return;
+    var a=document.getElementById('tixuz-dep-header');
+    if(!a){
+      a=document.createElement('a');
+      a.id='tixuz-dep-header';
+      a.className='hbtn tixuz-dep-btn';
+      a.href='/depreciacion/';
+      head.insertBefore(a,head.firstChild);
+    }
+    a.textContent='📉 Depreciación 2026';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateButton);else updateButton();
+})();
+</script></body>
 </html>

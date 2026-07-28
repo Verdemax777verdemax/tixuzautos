@@ -1,0 +1,12 @@
+{"id": "WtKWwh3ffiY", "ok": true, "provider": "local"}
+{"id": "bneJw3WuvXU", "ok": true, "provider": "local"}
+{"id": "4SqINL97dhM", "ok": true, "provider": "local"}
+{"id": "u-QIh-nnUYg", "ok": true, "provider": "local"}
+{"id": "t18L1VU4jxs", "ok": true, "provider": "local"}
+{"id": "u4Hj3qKhhw0", "ok": true, "provider": "local"}
+{"id": "rxZx1JRVhsA", "ok": true, "provider": "local"}
+{"id": "GGhqHR8rfz4", "ok": false, "error": "missing_transcript"}
+{"id": "-eSA_bgaHjA", "ok": true, "provider": "local"}
+{"id": "-eSA_bgaHjA", "ok": false, "error": "No provider succeeded for route extract. Errors: deepseek: AIRouterError, kimi: AIRouterError, openai: AIRouterError"}
+{"id": "-eSA_bgaHjA", "ok": true, "provider": "local"}
+{"id": "-eSA_bgaHjA", "ok": true, "provider": "local"}

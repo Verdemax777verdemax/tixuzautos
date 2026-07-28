@@ -1,0 +1,3 @@
+make,model,year,price,mileage,transmission,fuel_type,color,location,description,images,seller_name,seller_whatsapp,seller_type,plan,featured,source_url
+Nissan,Sentra SR,2021,335000,52000,Automática,Gasolina,Blanco,"Guadalajara, Jalisco","Inventario autorizado por agencia. Factura original y servicios al día.","https://images.unsplash.com/photo-1541899481282-d53bffe3c35d?w=1200",Autos Ejemplo Agencia,5512345678,Agencia,basic,false,
+Toyota,Corolla LE,2020,332000,58000,Automática,Gasolina,Plata,"Querétaro, Querétaro","Auto autorizado para publicación en Tixuz Autos.","https://images.unsplash.com/photo-1550355291-bbee04a92027?w=1200",Autos Ejemplo Agencia,5512345678,Agencia,featured,true,

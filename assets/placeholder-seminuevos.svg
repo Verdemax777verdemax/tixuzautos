@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600" role="img" aria-label="Seminuevos sin foto disponible">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#172033"/>
+      <stop offset="1" stop-color="#2f3d56"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#g)"/>
+  <circle cx="400" cy="250" r="86" fill="#ffffff" opacity=".11"/>
+  <path d="M270 285h260l38 74h-42c-10-25-34-43-62-43s-52 18-62 43h-74c-10-25-34-43-62-43s-52 18-62 43h-44l34-66c12-24 36-38 63-38h17l32-54c12-20 34-32 58-32h86c24 0 46 12 58 32l32 54h14c24 0 46 13 58 33l-12 6h-46l-29-50H299l-29 50z" fill="#e5eefb" opacity=".88"/>
+  <circle cx="266" cy="365" r="30" fill="#38bdf8" opacity=".9"/>
+  <circle cx="464" cy="365" r="30" fill="#38bdf8" opacity=".9"/>
+  <text x="400" y="455" text-anchor="middle" font-family="Arial, sans-serif" font-size="42" font-weight="800" fill="#f8fafc">Seminuevos</text>
+  <text x="400" y="500" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#cbd5e1">Foto no disponible</text>
+</svg>

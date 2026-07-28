@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Hyundai: guia de compra Tixuz",
+      "description": "Borrador editorial de Tixuz Autos sobre Hyundai: videos propios, fuentes externas atribuidas y preguntas de compra.",
+      "inLanguage": "es-MX",
+      "isAccessibleForFree": true,
+      "url": "https://tixuzautos.com/guias/hyundai/",
+      "author": {
+        "@type": "Person",
+        "name": "Eduardo Vargas"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tixuz Autos",
+        "url": "https://tixuzautos.com",
+        "sameAs": [
+          "https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg",
+          "https://www.youtube.com/c/Tixuz"
+        ]
+      },
+      "about": {
+        "@type": "Brand",
+        "name": "Hyundai"
+      },
+      "video": [
+        {
+          "@type": "VideoObject",
+          "name": "me lo compro no me lo compro hyundai",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Hyundai.",
+          "embedUrl": "https://www.youtube.com/embed/u4Hj3qKhhw0",
+          "url": "https://www.youtube.com/watch?v=u4Hj3qKhhw0",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Hyundai.",
+          "embedUrl": "https://www.youtube.com/embed/t18L1VU4jxs",
+          "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Noticias Motor Abril 2026",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Hyundai.",
+          "embedUrl": "https://www.youtube.com/embed/FpXwO0V3CxM",
+          "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Hyundai #2021 ¿Me lo compro, o no me lo compro?",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Hyundai.",
+          "embedUrl": "https://www.youtube.com/embed/1uuA-AocDkA",
+          "url": "https://www.youtube.com/watch?v=1uuA-AocDkA",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Hyundai.",
+          "embedUrl": "https://www.youtube.com/embed/gw9Rc4_qs6U",
+          "url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sergio Oliveira"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tixuz Autos",
+          "item": "https://tixuzautos.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guias",
+          "item": "https://tixuzautos.com/guias/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Hyundai",
+          "item": "https://tixuzautos.com/guias/hyundai/"
+        }
+      ]
+    }
+  ]
+}

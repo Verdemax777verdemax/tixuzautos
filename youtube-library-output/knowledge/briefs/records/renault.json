@@ -1,0 +1,152 @@
+{
+  "topic": "Renault",
+  "slug": "renault",
+  "generated_at": "2026-06-01T01:07:14.900287+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 30,
+  "angle": "Mapa editorial de Renault: modelos, dudas frecuentes, reputacion y videos que conviene revisar antes de publicar.",
+  "claim_count": 6,
+  "selected_claim_count": 5,
+  "source_count": 3,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 3,
+    "El Dios de los Autos": 2,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 6
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Renault convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Renault que debe revisar un comprador?",
+    "Que modelos de Renault tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Renault en Mexico?",
+    "Conviene comprar Renault nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Renault para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "source_url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "source_video_id": "RJuaMqk0J_M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "QUE AUTO BARATO ME COMPRO| RENAULT SANDERO",
+      "source_url": "https://www.youtube.com/watch?v=llKqCi3kJSo",
+      "source_video_id": "llKqCi3kJSo",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "COMPRÉ un RENAULT y lo DESTRUÍ al instante",
+      "source_url": "https://www.youtube.com/watch?v=EGtnVtejo2o",
+      "source_video_id": "EGtnVtejo2o",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Renault Duster Turbo CVT | PruebameLa... Nave #184 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=vWr-5fVzYNY",
+      "source_video_id": "vWr-5fVzYNY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Renault Duster Oroch | PruebameLa... Nave #63 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=ubnd7gHVK-c",
+      "source_video_id": "ubnd7gHVK-c",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "RJuaMqk0J_M",
+      "url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "llKqCi3kJSo",
+      "url": "https://www.youtube.com/watch?v=llKqCi3kJSo",
+      "title": "QUE AUTO BARATO ME COMPRO| RENAULT SANDERO",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "EGtnVtejo2o",
+      "url": "https://www.youtube.com/watch?v=EGtnVtejo2o",
+      "title": "COMPRÉ un RENAULT y lo DESTRUÍ al instante",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "vWr-5fVzYNY",
+      "url": "https://www.youtube.com/watch?v=vWr-5fVzYNY",
+      "title": "Renault Duster Turbo CVT | PruebameLa... Nave #184 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "ubnd7gHVK-c",
+      "url": "https://www.youtube.com/watch?v=ubnd7gHVK-c",
+      "title": "Renault Duster Oroch | PruebameLa... Nave #63 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

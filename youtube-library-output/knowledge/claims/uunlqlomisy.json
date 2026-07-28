@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "UuNlqloMIsY",
+    "source_url": "https://www.youtube.com/watch?v=UuNlqloMIsY",
+    "source_title": "¿BMW, AUDI O MERCEDES? |EXPLICACIÓN A PRUEBA DE IDIOTAS",
+    "source_channel": "El Dios de los Autos",
+    "source_channel_id": "UCDvtCV47PP-5FUfd0NAHP5g",
+    "source_owner": "El Dios de los Autos",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Audi",
+      "claim_summary": "El video contiene una posible opinion critica sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": "es",
+  "transcript_fetch_error": "",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:00:27.879279+00:00"
+}

@@ -1,0 +1,82 @@
+{
+  "id": "fASJ3iE-Yxg",
+  "slug": "me-lo-compro-o-no-me-lo-compro-1-con-lalo-vargas-china-infiniti-y-jeep-fASJ3iE-Yxg",
+  "source_url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+  "source_context": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission",
+    "editorial_permission_required": true
+  },
+  "usage_rights": "external-reference",
+  "reuse_policy": "embed_link_and_summarize_only",
+  "transcript_policy": "do_not_store_full_transcript_without_permission",
+  "editorial_permission_required": true,
+  "title_original": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+  "title_seo": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+  "meta_description": "Un nuevo episodio de Me lo Compro o no me lo compro, con Lalo Vargas de Tixuz, donde analizamos la situación de la industria China y exploramos las gamas d",
+  "executive_summary": "Un nuevo episodio de Me lo Compro o no me lo compro, con Lalo Vargas de Tixuz, donde analizamos la situación de la industria China y exploramos las gamas de Infiniti y Jeep para conocer sus modelos",
+  "key_takeaways": [
+    "Un nuevo episodio de Me lo Compro o no me lo compro, con Lalo Vargas de Tixuz, donde analizamos la situación de la industria China y exploramos las gamas de Infiniti y Jeep para conocer sus modelos"
+  ],
+  "vehicles_or_brands": [],
+  "buyer_questions_answered": [],
+  "market_topics": [
+    "China",
+    "Compro",
+    "Con",
+    "Infiniti",
+    "Jeep",
+    "Lalo",
+    "Tixuz",
+    "Vargas"
+  ],
+  "publishable_article_outline": [],
+  "internal_links_to_create": [],
+  "schema_org_notes": [],
+  "external_claims": [
+    {
+      "vehicle_or_brand": "Infiniti",
+      "claim_summary": "Fuente externa registrada sobre Infiniti; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Jeep",
+      "claim_summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "claims_count": 2,
+  "claims_extraction_provider": "local",
+  "editorial_warnings": [
+    "Fuente externa: publicar como resumen con embed/enlace y atribucion; no republicar transcripcion completa sin permiso."
+  ],
+  "duration": 1740,
+  "upload_date": "20260117",
+  "thumbnail": "https://i.ytimg.com/vi/fASJ3iE-Yxg/maxresdefault.jpg",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "transcript_available": false,
+  "transcript_chars": 0,
+  "enrichment_provider": "local",
+  "generated_at": "2026-05-29T22:47:43.008064+00:00"
+}

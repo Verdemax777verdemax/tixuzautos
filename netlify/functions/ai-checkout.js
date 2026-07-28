@@ -96,8 +96,8 @@ exports.handler = async function (event) {
         whatsapp: waClean || '',
         query: query.slice(0, 480),
       },
-      success_url: `${baseUrl}/buscar-con-ia.html?paid=1&session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${baseUrl}/buscar-con-ia.html?paid=0`,
+      success_url: `${baseUrl}/buscar-con-ia.htmlpaid=1&session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/buscar-con-ia.htmlpaid=0`,
     });
 
     return {

@@ -1,0 +1,65 @@
+{
+  "source_attribution": {
+    "source_video_id": "gw9Rc4_qs6U",
+    "source_url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+    "source_title": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+    "source_channel": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "source_owner": "Sergio Oliveira",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "GMC",
+      "claim_summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Great Wall",
+      "claim_summary": "Fuente externa registrada sobre Great Wall; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Honda",
+      "claim_summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Hyundai",
+      "claim_summary": "Fuente externa registrada sobre Hyundai; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:15:59.371237+00:00"
+}

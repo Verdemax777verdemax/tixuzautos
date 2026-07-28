@@ -1,0 +1,199 @@
+{
+  "topic": "Mercedes",
+  "slug": "mercedes",
+  "generated_at": "2026-06-01T01:07:14.798658+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 68,
+  "angle": "Guia de compra sobre Mercedes apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 12,
+  "selected_claim_count": 7,
+  "source_count": 5,
+  "sources": {
+    "Jaime Gabaldoni": 5,
+    "Sergio Oliveira": 3,
+    "CarsLatino": 2,
+    "Autoboutique 1/4 de Milla": 1,
+    "El Dios de los Autos": 1
+  },
+  "polarity": {
+    "neutral": 12
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "u-QIh-nnUYg",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "summary": "Sergio otra vez está aquí con nosotros. Oye, pues nos toca, ¿me lo compro o no me lo compro? Una marca, pues, híjole, ¿qué te diré?",
+      "transcript_available": true,
+      "transcript_chars": 23686
+    },
+    {
+      "id": "2tr5BIOGzQg",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Mercedes convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Mercedes que debe revisar un comprador?",
+    "Que modelos de Mercedes tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Mercedes en Mexico?",
+    "Conviene comprar Mercedes nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Mercedes para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "source_url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "source_video_id": "RlYrDLaCEIg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Infiniti QX30 2017; Alma de Mercedes, aunque no del mejor Mercedes.",
+      "source_url": "https://www.youtube.com/watch?v=VWTikrCbsyU",
+      "source_video_id": "VWTikrCbsyU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Mercedes-AMG GT63 COUPÉ 2025 | Prueba de Manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=fKrXVm0Dw88",
+      "source_video_id": "fKrXVm0Dw88",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "CADILLAC ACABA DE APLASTAR A BMW, AUDI Y MERCEDES (Y NADIE LO HA NOTADO)",
+      "source_url": "https://www.youtube.com/watch?v=6leoXMpsOjw",
+      "source_video_id": "6leoXMpsOjw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "El Interior Es Lo Que Cuenta - Prueba de Manejo Mercedes Benz C200 Sport *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=Wam4zmsU9-0",
+      "source_video_id": "Wam4zmsU9-0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 MERCEDES BENZ QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=6FPe17Hb180",
+      "source_video_id": "6FPe17Hb180",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "boot accu air sema 2016 las vegas nevada nissan gtr lamborghini bmw mercedes benz",
+      "source_url": "https://www.youtube.com/watch?v=4hyw3gHG4YA",
+      "source_video_id": "4hyw3gHG4YA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "u-QIh-nnUYg",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "2tr5BIOGzQg",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "RlYrDLaCEIg",
+      "url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "VWTikrCbsyU",
+      "url": "https://www.youtube.com/watch?v=VWTikrCbsyU",
+      "title": "Infiniti QX30 2017; Alma de Mercedes, aunque no del mejor Mercedes.",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "fKrXVm0Dw88",
+      "url": "https://www.youtube.com/watch?v=fKrXVm0Dw88",
+      "title": "Mercedes-AMG GT63 COUPÉ 2025 | Prueba de Manejo | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

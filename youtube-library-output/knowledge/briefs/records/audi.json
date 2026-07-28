@@ -1,0 +1,211 @@
+{
+  "topic": "Audi",
+  "slug": "audi",
+  "generated_at": "2026-06-01T01:07:14.760521+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 49,
+  "angle": "Alertas y puntos a revisar antes de comprar un Audi, usando referencias externas como pistas editoriales.",
+  "claim_count": 17,
+  "selected_claim_count": 9,
+  "source_count": 4,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 8,
+    "El Dios de los Autos": 4,
+    "Sergio Oliveira": 3,
+    "Jaime Gabaldoni": 2
+  },
+  "polarity": {
+    "negative": 10,
+    "neutral": 5,
+    "positive": 2
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Audi convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Audi que debe revisar un comprador?",
+    "Que modelos de Audi tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Audi en Mexico?",
+    "Conviene comprar Audi nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Audi para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Me lo compro o no me lo compro. Alfa Romeo y Audi",
+      "source_url": "https://www.youtube.com/watch?v=I_fLLaMrC7c",
+      "source_video_id": "I_fLLaMrC7c",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Audi Q8 S Line 2020. La Mejor en su clase.",
+      "source_url": "https://www.youtube.com/watch?v=0agsGb2JgMw",
+      "source_video_id": "0agsGb2JgMw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Audi RS 7 Performance 2025: potencia, lujo y tecnología | Prueba de manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=arDaOi3bbhA",
+      "source_video_id": "arDaOi3bbhA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Audi Q8 Sportback e-tron 2024 - 🔋 una de las mejores SUV eléctricas hoy ⚡️ | Reseña Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=t2HI1mdkrZk",
+      "source_video_id": "t2HI1mdkrZk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¿Compro un AUDI A1 o un TOYOTA COROLLA? AHORA CUESTAN IGUAL",
+      "source_url": "https://www.youtube.com/watch?v=xJKQKFfs9ew",
+      "source_video_id": "xJKQKFfs9ew",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¿BMW, AUDI O MERCEDES? |EXPLICACIÓN A PRUEBA DE IDIOTAS",
+      "source_url": "https://www.youtube.com/watch?v=UuNlqloMIsY",
+      "source_video_id": "UuNlqloMIsY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "CADILLAC ACABA DE APLASTAR A BMW, AUDI Y MERCEDES (Y NADIE LO HA NOTADO)",
+      "source_url": "https://www.youtube.com/watch?v=6leoXMpsOjw",
+      "source_video_id": "6leoXMpsOjw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Audi A3 Sedan, Ford Mondeo, Mazda el mejor lugar para trabajar, Toyota Yaris GRMN | Podcast #32",
+      "source_url": "https://www.youtube.com/watch?v=MTnDZy3vkmk",
+      "source_video_id": "MTnDZy3vkmk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "32. Audi A3 Sedan, Ford Mondeo, Mazda el mejor lugar para trabajar, Toyota Yaris GRMN",
+      "source_url": "https://www.youtube.com/watch?v=XU_i1DgxASY",
+      "source_video_id": "XU_i1DgxASY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "I_fLLaMrC7c",
+      "url": "https://www.youtube.com/watch?v=I_fLLaMrC7c",
+      "title": "Me lo compro o no me lo compro. Alfa Romeo y Audi",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "0agsGb2JgMw",
+      "url": "https://www.youtube.com/watch?v=0agsGb2JgMw",
+      "title": "Audi Q8 S Line 2020. La Mejor en su clase.",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "arDaOi3bbhA",
+      "url": "https://www.youtube.com/watch?v=arDaOi3bbhA",
+      "title": "Audi RS 7 Performance 2025: potencia, lujo y tecnología | Prueba de manejo | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "t2HI1mdkrZk",
+      "url": "https://www.youtube.com/watch?v=t2HI1mdkrZk",
+      "title": "Audi Q8 Sportback e-tron 2024 - 🔋 una de las mejores SUV eléctricas hoy ⚡️ | Reseña Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "xJKQKFfs9ew",
+      "url": "https://www.youtube.com/watch?v=xJKQKFfs9ew",
+      "title": "¿Compro un AUDI A1 o un TOYOTA COROLLA? AHORA CUESTAN IGUAL",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

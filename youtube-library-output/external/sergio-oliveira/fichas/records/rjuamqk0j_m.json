@@ -1,0 +1,94 @@
+{
+  "id": "RJuaMqk0J_M",
+  "slug": "me-lo-compro-o-no-me-lo-compro-con-lalo-vargas-peugeot-ram-y-renault-RJuaMqk0J_M",
+  "source_url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+  "source_context": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission",
+    "editorial_permission_required": true
+  },
+  "usage_rights": "external-reference",
+  "reuse_policy": "embed_link_and_summarize_only",
+  "transcript_policy": "do_not_store_full_transcript_without_permission",
+  "editorial_permission_required": true,
+  "title_original": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+  "title_seo": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+  "meta_description": "Un nuevo episodio de Me Lo Compro o No Me Lo Compro, con Lalo Vargas de Tixuz, donde exploramos las gamas de Peugeot, Ram y Renault para conocer sus modelo",
+  "executive_summary": "Un nuevo episodio de Me Lo Compro o No Me Lo Compro, con Lalo Vargas de Tixuz, donde exploramos las gamas de Peugeot, Ram y Renault para conocer sus modelos a la venta en México.",
+  "key_takeaways": [
+    "Un nuevo episodio de Me Lo Compro o No Me Lo Compro, con Lalo Vargas de Tixuz, donde exploramos las gamas de Peugeot, Ram y Renault para conocer sus modelos a la venta en México."
+  ],
+  "vehicles_or_brands": [],
+  "buyer_questions_answered": [],
+  "market_topics": [
+    "Compro",
+    "Con",
+    "Lalo",
+    "México",
+    "Peugeot",
+    "Ram",
+    "Renault",
+    "Tixuz",
+    "Vargas"
+  ],
+  "publishable_article_outline": [],
+  "internal_links_to_create": [],
+  "schema_org_notes": [],
+  "external_claims": [
+    {
+      "vehicle_or_brand": "Peugeot",
+      "claim_summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Ram",
+      "claim_summary": "Fuente externa registrada sobre Ram; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Renault",
+      "claim_summary": "Fuente externa registrada sobre Renault; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "claims_count": 3,
+  "claims_extraction_provider": "local",
+  "editorial_warnings": [
+    "Fuente externa: publicar como resumen con embed/enlace y atribucion; no republicar transcripcion completa sin permiso."
+  ],
+  "duration": 3553,
+  "upload_date": "20260320",
+  "thumbnail": "https://i.ytimg.com/vi/RJuaMqk0J_M/maxresdefault.jpg",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "transcript_available": false,
+  "transcript_chars": 0,
+  "enrichment_provider": "local",
+  "generated_at": "2026-05-29T22:47:42.963939+00:00"
+}

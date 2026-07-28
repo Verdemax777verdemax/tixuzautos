@@ -1,0 +1,243 @@
+{
+  "topic": "Dodge",
+  "slug": "dodge",
+  "generated_at": "2026-06-01T01:07:14.787358+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 68,
+  "angle": "Guia de compra sobre Dodge apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 12,
+  "selected_claim_count": 10,
+  "source_count": 5,
+  "sources": {
+    "El Dios de los Autos": 4,
+    "CarsLatino": 3,
+    "Autoboutique 1/4 de Milla": 2,
+    "Jaime Gabaldoni": 2,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 7,
+    "negative": 3,
+    "positive": 2
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "BMa0m5JtNss",
+      "url": "https://www.youtube.com/watch?v=BMa0m5JtNss",
+      "title": "DODGE #2021 ¿Me lo Compro o No me lo Compro? Dodge",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "pdMZqhjiZcw",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Dodge convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Dodge que debe revisar un comprador?",
+    "Que modelos de Dodge tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Dodge en Mexico?",
+    "Conviene comprar Dodge nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Dodge para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "El video contiene una posible opinion critica sobre Dodge; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Dodge Attitude mejora de la tierra al cielo - LaCochera Radio 7sep",
+      "source_url": "https://www.youtube.com/watch?v=oBEJMOQgZeg",
+      "source_video_id": "oBEJMOQgZeg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "2024 Dodge Durango SRT Hellcat Review 🔥 | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=Jl7hOoO6E1s",
+      "source_video_id": "Jl7hOoO6E1s",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "2023 Dodge Challenger SRT Review // 🦖 An American in danger of extinction 🇺🇸 - Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=C21eAHuMhgA",
+      "source_video_id": "C21eAHuMhgA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Dodge; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¿QUÉ IDIOTA COMPRA UN DODGE ATTITUDE 2025?",
+      "source_url": "https://www.youtube.com/watch?v=s28DNfI0zCg",
+      "source_video_id": "s28DNfI0zCg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Dodge; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "JEEP GRAND CHEROKEE VS DODGE DURANGO ¿CUAL ES MEJOR? | Versus de vehículos",
+      "source_url": "https://www.youtube.com/watch?v=kqOJExPj9BE",
+      "source_video_id": "kqOJExPj9BE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Dodge; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "JEEP GRAND CHEROKEE VS DODGE DURANGO ¿CUAL ES MEJOR? | Versus de vehículos",
+      "source_url": "https://www.youtube.com/watch?v=kqOJExPj9BE",
+      "source_video_id": "kqOJExPj9BE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 DODGE QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=U9XFsfIUJWk",
+      "source_video_id": "U9XFsfIUJWk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "!El Nuevo Dodge Attitude Chino ES MEJOR que el Anterior! ¿Porque? *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=NdRz8h8nIKU",
+      "source_video_id": "NdRz8h8nIKU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "hyundai atos a prueba de dinamometro vendido en mexico dodge motor 1.0 litros",
+      "source_url": "https://www.youtube.com/watch?v=dBPQQ84QPoQ",
+      "source_video_id": "dBPQQ84QPoQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Dodge; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Dodge Challenger SRT Hellcat Redeye Widebody | PruebameLa... Nave #87 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=H8GrL02XiOM",
+      "source_video_id": "H8GrL02XiOM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "BMa0m5JtNss",
+      "url": "https://www.youtube.com/watch?v=BMa0m5JtNss",
+      "title": "DODGE #2021 ¿Me lo Compro o No me lo Compro? Dodge",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "pdMZqhjiZcw",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "oBEJMOQgZeg",
+      "url": "https://www.youtube.com/watch?v=oBEJMOQgZeg",
+      "title": "Dodge Attitude mejora de la tierra al cielo - LaCochera Radio 7sep",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "Jl7hOoO6E1s",
+      "url": "https://www.youtube.com/watch?v=Jl7hOoO6E1s",
+      "title": "2024 Dodge Durango SRT Hellcat Review 🔥 | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "C21eAHuMhgA",
+      "url": "https://www.youtube.com/watch?v=C21eAHuMhgA",
+      "title": "2023 Dodge Challenger SRT Review // 🦖 An American in danger of extinction 🇺🇸 - Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

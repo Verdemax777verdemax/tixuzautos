@@ -32,7 +32,7 @@ exports.handler = async function (event) {
 
   // 1. Traer suscripciones activas no expiradas
   const subsRes = await fetch(
-    `${supaUrl}/rest/v1/ai_search_subscriptions?status=eq.active&expires_at=gt.${new Date().toISOString()}&select=*`,
+    `${supaUrl}/rest/v1/ai_search_subscriptionsstatus=eq.active&expires_at=gt.${new Date().toISOString()}&select=*`,
     { headers: { apikey: supaKey, Authorization: `Bearer ${supaKey}` } }
   );
 
@@ -78,7 +78,7 @@ exports.handler = async function (event) {
 
       const aiData = await aiRes.json();
       const text = (aiData.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n');
-      const match = text.match(/<resultados>([\s\S]*?)<\/resultados>/);
+      const match = text.match(/<resultados>([\s\S]*)<\/resultados>/);
       let listings = [];
       if (match) {
         try { listings = JSON.parse(match[1].trim()); } catch (e) { listings = []; }
@@ -122,7 +122,7 @@ exports.handler = async function (event) {
 
       // 5. Actualizar sent_urls en Supabase (concatenar nuevos)
       const updatedUrls = [...sentUrls, ...newOnes.map(l => l.url)].slice(-200);
-      await fetch(`${supaUrl}/rest/v1/ai_search_subscriptions?id=eq.${sub.id}`, {
+      await fetch(`${supaUrl}/rest/v1/ai_search_subscriptionsid=eq.${sub.id}`, {
         method: 'PATCH',
         headers: {
           apikey: supaKey,

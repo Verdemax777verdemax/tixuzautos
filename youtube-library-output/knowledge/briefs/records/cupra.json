@@ -1,0 +1,142 @@
+{
+  "topic": "Cupra",
+  "slug": "cupra",
+  "generated_at": "2026-06-01T01:07:14.939139+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 45,
+  "angle": "Guia de compra sobre Cupra apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 5,
+  "selected_claim_count": 3,
+  "source_count": 2,
+  "sources": {
+    "Sergio Oliveira": 3,
+    "Autoboutique 1/4 de Milla": 2
+  },
+  "polarity": {
+    "positive": 2,
+    "negative": 2,
+    "neutral": 1
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "XXBP3FxGefM",
+      "url": "https://www.youtube.com/watch?v=XXBP3FxGefM",
+      "title": "CUPRA # 2021 ¿me lo compro, o no me lo compro?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "pdMZqhjiZcw",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Cupra convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Cupra que debe revisar un comprador?",
+    "Que modelos de Cupra tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Cupra en Mexico?",
+    "Conviene comprar Cupra nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Cupra para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Cupra; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Cupra Formentor 190 - Precioso, pero no para entusiastas",
+      "source_url": "https://www.youtube.com/watch?v=4jrRvn9Guh0",
+      "source_video_id": "4jrRvn9Guh0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Cupra; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Seat Leon Cupra 290 | PruebameLa... Nave #18 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=wCIFANQS4RM",
+      "source_video_id": "wCIFANQS4RM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Cupra; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Comparativas 0-100 en CDMX Mazda 3 Signaturo Turbo Vs Seat Leon Cupra.",
+      "source_url": "https://www.youtube.com/watch?v=dTKOz2AF8do",
+      "source_video_id": "dTKOz2AF8do",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "XXBP3FxGefM",
+      "url": "https://www.youtube.com/watch?v=XXBP3FxGefM",
+      "title": "CUPRA # 2021 ¿me lo compro, o no me lo compro?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "pdMZqhjiZcw",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "4jrRvn9Guh0",
+      "url": "https://www.youtube.com/watch?v=4jrRvn9Guh0",
+      "title": "Cupra Formentor 190 - Precioso, pero no para entusiastas",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "wCIFANQS4RM",
+      "url": "https://www.youtube.com/watch?v=wCIFANQS4RM",
+      "title": "Seat Leon Cupra 290 | PruebameLa... Nave #18 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "dTKOz2AF8do",
+      "url": "https://www.youtube.com/watch?v=dTKOz2AF8do",
+      "title": "Comparativas 0-100 en CDMX Mazda 3 Signaturo Turbo Vs Seat Leon Cupra.",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

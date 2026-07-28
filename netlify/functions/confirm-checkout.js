@@ -32,7 +32,7 @@ async function getStripeSession(sessionId, stripeKey) {
   }, 10000);
   const txt = await res.text(); let data = {};
   try { data = txt ? JSON.parse(txt) : {}; } catch { data = { error: { message: txt } }; }
-  if (!res.ok) throw new Error(data.error?.message || txt || `Stripe HTTP ${res.status}`);
+  if (!res.ok) throw new Error(data.error.message || txt || `Stripe HTTP ${res.status}`);
   return data;
 }
 async function getListingPaymentState({ supabaseUrl, serviceKey, listingId }) {
@@ -86,14 +86,14 @@ exports.handler = async function(event) {
 
   try {
     const session = await getStripeSession(sessionId, STRIPE_KEY);
-    const listingId = String(session.client_reference_id || session.metadata?.listing_id || requestedListingId || '').trim();
+    const listingId = String(session.client_reference_id || session.metadata.listing_id || requestedListingId || '').trim();
     if (!listingId) return respond(400, { ok: false, error: 'Stripe no trae listing_id', stage: 'stripe_session' });
     if (requestedListingId && requestedListingId !== listingId) return respond(400, { ok: false, error: 'listing_id no coincide con Stripe', stage: 'stripe_session' });
     const paid = session.status === 'complete' && (session.payment_status === 'paid' || session.payment_status === 'no_payment_required');
     if (!paid) return respond(402, { ok: false, error: `Stripe todavía no marca pagado. status=${session.status}, payment_status=${session.payment_status}`, stage: 'stripe_session' });
 
     const existing = await getListingPaymentState({ supabaseUrl: SUPABASE_URL, serviceKey: SERVICE_KEY, listingId });
-    if (existing?.payment_status === 'paid' && existing?.stripe_session_id === session.id) {
+    if (existing.payment_status === 'paid' && existing.stripe_session_id === session.id) {
       return respond(200, { ok: true, listing_id: listingId, status: 'pending_payment', review_status: 'pending_review', already_processed: true });
     }
 

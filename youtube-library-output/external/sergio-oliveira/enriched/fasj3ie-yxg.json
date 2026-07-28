@@ -1,0 +1,42 @@
+{
+  "source_video_id": "fASJ3iE-Yxg",
+  "source_url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+  "source": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel": "@autossergiooliveira",
+    "source_channel_title": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission"
+  },
+  "draft_status": "needs_ai_review",
+  "slug": "me-lo-compro-o-no-me-lo-compro-1-con-lalo-vargas-china-infiniti-y-jeep-fASJ3iE-Yxg",
+  "title_original": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+  "title_seo": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+  "summary": "Un nuevo episodio de Me lo Compro o no me lo compro, con Lalo Vargas de Tixuz, donde analizamos la situación de la industria China y exploramos las gamas de Infiniti y Jeep para conocer sus modelos",
+  "key_points": [
+    "Un nuevo episodio de Me lo Compro o no me lo compro, con Lalo Vargas de Tixuz, donde analizamos la situación de la industria China y exploramos las gamas de Infiniti y Jeep para conocer sus modelos"
+  ],
+  "detected_topics": [
+    "China",
+    "Compro",
+    "Con",
+    "Infiniti",
+    "Jeep",
+    "Lalo",
+    "Tixuz",
+    "Vargas"
+  ],
+  "buyer_intent": [],
+  "vehicle_entities": [],
+  "content_type": "youtube_video",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "generated_at": "2026-05-29T22:34:41.158379+00:00"
+}

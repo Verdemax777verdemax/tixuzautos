@@ -1,0 +1,176 @@
+{
+  "topic": "GMC",
+  "slug": "gmc",
+  "generated_at": "2026-06-01T01:07:14.805628+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 52,
+  "angle": "Guia de compra sobre GMC apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 8,
+  "selected_claim_count": 6,
+  "source_count": 4,
+  "sources": {
+    "Jaime Gabaldoni": 3,
+    "Autoboutique 1/4 de Milla": 2,
+    "Sergio Oliveira": 2,
+    "CarsLatino": 1
+  },
+  "polarity": {
+    "neutral": 8
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "6jD4N_6URPY",
+      "url": "https://www.youtube.com/watch?v=6jD4N_6URPY",
+      "title": "GMC #2021 ¿me lo compro, o no me lo compro?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de GMC convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de GMC que debe revisar un comprador?",
+    "Que modelos de GMC tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra GMC en Mexico?",
+    "Conviene comprar GMC nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa GMC para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+      "source_url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+      "source_video_id": "E-dAwmDZ80M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+      "source_url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+      "source_video_id": "gw9Rc4_qs6U",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "GMC Sierra EV AT4 2026: La pick-up eléctrica más capaz de GMC | Prueba de manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=-FnDxyk1_cI",
+      "source_video_id": "-FnDxyk1_cI",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "CAMBIOS AL HONDA CIVIC! SSC TUATARA! GMC HUMMER EV Y MAS! - CLN ep1 - *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=-_wYK6bMjs0",
+      "source_video_id": "-_wYK6bMjs0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "GMC Sierra Denali 2019 | PruebameLa... Nave #73 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=uqldlna5qnk",
+      "source_video_id": "uqldlna5qnk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "217. Mazda más barato, filtran nuevo GTI, GMC en China",
+      "source_url": "https://www.youtube.com/watch?v=ezQ8q8eoTfc",
+      "source_video_id": "ezQ8q8eoTfc",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "6jD4N_6URPY",
+      "url": "https://www.youtube.com/watch?v=6jD4N_6URPY",
+      "title": "GMC #2021 ¿me lo compro, o no me lo compro?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "E-dAwmDZ80M",
+      "url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "gw9Rc4_qs6U",
+      "url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+      "title": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-FnDxyk1_cI",
+      "url": "https://www.youtube.com/watch?v=-FnDxyk1_cI",
+      "title": "GMC Sierra EV AT4 2026: La pick-up eléctrica más capaz de GMC | Prueba de manejo | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-_wYK6bMjs0",
+      "url": "https://www.youtube.com/watch?v=-_wYK6bMjs0",
+      "title": "CAMBIOS AL HONDA CIVIC! SSC TUATARA! GMC HUMMER EV Y MAS! - CLN ep1 - *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

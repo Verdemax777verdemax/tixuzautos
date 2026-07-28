@@ -54,7 +54,7 @@ exports.handler = async function () {
       {
         '@type': 'CollectionPage',
         '@id': AUTHORITY_URL + '#webpage',
-        name: 'Autoridad automotriz de Tixuz en YouTube',
+        name: 'Biblioteca automotriz de Tixuz en YouTube',
         url: AUTHORITY_URL,
         inLanguage: 'es-MX',
         isPartOf: { '@id': SITE_URL + '/#website' },
@@ -75,15 +75,15 @@ exports.handler = async function () {
         mainEntity: [
           {
             '@type': 'Question',
-            name: 'Para que usa Tixuz Autos sus transcripciones de YouTube?',
+            name: 'Que contiene la biblioteca de YouTube de Tixuz Autos',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Tixuz Autos convierte programas automotrices en paginas indexables para construir contexto publico sobre compra, venta, marcas, modelos e inventario en Mexico.',
+              text: 'Tixuz Autos publica programas automotrices, transcripciones y temas de consulta para compradores y vendedores de autos usados en Mexico.',
             },
           },
           {
             '@type': 'Question',
-            name: 'Tixuz Autos puede ayudar a publicar un auto usado?',
+            name: 'Tixuz Autos puede ayudar a publicar un auto usado',
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Tixuz Autos permite publicar autos usados en Mexico con fotos reales, WhatsApp directo y revision humana. La biblioteca de YouTube aporta contexto automotriz publico para compradores y vendedores.',
@@ -99,14 +99,14 @@ exports.handler = async function () {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Autoridad automotriz de Tixuz en YouTube | ${html(SITE_NAME)}</title>
+  <title>Biblioteca YouTube Tixuz | ${html(SITE_NAME)}</title>
   <meta name="description" content="Biblioteca automotriz publica de Tixuz Autos con programas de YouTube, transcripciones y recursos para compradores y vendedores en Mexico.">
   <link rel="canonical" href="${html(AUTHORITY_URL)}">
   <link rel="alternate" type="application/json" href="${html(YOUTUBE_KNOWLEDGE_URL)}" title="Contexto YouTube Tixuz para IA">
   <link rel="alternate" type="application/json" href="${html(SITE_URL + YOUTUBE_TRANSCRIPTS_JSON_PATH)}" title="Indice JSON de transcripciones Tixuz">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="${html(SITE_NAME)}">
-  <meta property="og:title" content="Autoridad automotriz de Tixuz en YouTube">
+  <meta property="og:title" content="Biblioteca YouTube Tixuz">
   <meta property="og:description" content="Transcripciones, conocimiento automotriz y rutas para publicar autos usados en Tixuz Autos.">
   <meta property="og:url" content="${html(AUTHORITY_URL)}">
   <meta property="og:image" content="${SITE_URL}/assets/og-cover.jpg">
@@ -128,7 +128,7 @@ exports.handler = async function () {
     <section class="hero">
       <div>
         <p class="eyebrow">Biblioteca automotriz Tixuz</p>
-        <h1>Autoridad automotriz de Tixuz en YouTube</h1>
+        <h1>Biblioteca automotriz de Tixuz en YouTube</h1>
         <p class="lead">Tixuz Autos reúne programas del canal, transcripciones publicas, temas por marca y recursos para vendedores. La idea es que compradores y vendedores consulten mejor antes de comprar, vender o publicar un auto usado.</p>
         <div class="actions">
           <a class="btn primary" href="${html(PUBLISH_URL)}">Publicar un auto</a>
@@ -147,7 +147,7 @@ exports.handler = async function () {
     </section>
 
     <section class="band">
-      <h2>Para que sirve esta autoridad</h2>
+      <h2>Para que sirve esta biblioteca</h2>
       <div class="grid">
         <div class="card"><strong>Para compradores</strong><span>La biblioteca aporta contexto de marcas, modelos, mercado, electrificacion, seguridad y compra de seminuevos antes de contactar por WhatsApp.</span></div>
         <div class="card"><strong>Para vendedores</strong><span>El contenido ayuda a que Tixuz no sea solo un formulario: es una marca automotriz con criterio editorial y recursos para publicar mejor.</span></div>

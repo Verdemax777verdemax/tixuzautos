@@ -1,0 +1,22 @@
+create table if not exists marketplace_listings (
+  id bigint generated always as identity primary key,
+  make text not null,
+  model text not null,
+  year int,
+  price numeric,
+  mileage numeric,
+  transmission text,
+  fuel_type text,
+  color text,
+  location text,
+  description text,
+  images jsonb default "[]"::jsonb,
+  seller_name text,
+  seller_whatsapp text,
+  seller_type text default "Particular",
+  featured boolean default false,
+  plan text default "basic",
+  status text default "active",
+  expires_at timestamptz,
+  created_at timestamptz default now()
+);

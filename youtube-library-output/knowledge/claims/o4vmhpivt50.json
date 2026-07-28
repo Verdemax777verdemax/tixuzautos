@@ -1,0 +1,65 @@
+{
+  "source_attribution": {
+    "source_video_id": "O4VMhPiVT50",
+    "source_url": "https://www.youtube.com/watch?v=O4VMhPiVT50",
+    "source_title": "Toyota Tacoma i-Force Max TRD Pro 2025: Lista para el off-road | Prueba de manejo | Jaime Gabaldoni",
+    "source_channel": "Jaime Gabaldoni",
+    "source_channel_id": "UCSPwimlUyP62TPew_rG8vBg",
+    "source_owner": "Jaime Gabaldoni",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Chevrolet",
+      "claim_summary": "Fuente externa registrada sobre Chevrolet; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Ford",
+      "claim_summary": "Fuente externa registrada sobre Ford; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Honda",
+      "claim_summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mercedes",
+      "claim_summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:18:46.694227+00:00"
+}

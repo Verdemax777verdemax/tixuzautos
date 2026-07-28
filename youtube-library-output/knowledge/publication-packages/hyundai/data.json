@@ -1,0 +1,19 @@
+{
+  "topic": "Hyundai",
+  "slug": "hyundai",
+  "generated_at": "2026-06-01T18:56:00.086553+00:00",
+  "source_brief": "youtube-library-output/knowledge/briefs/records/hyundai.json",
+  "status": "draft_needs_editorial_review",
+  "publication_score": 75,
+  "owned_tixuz_video_count": 4,
+  "selected_claim_count": 7,
+  "canonical": "https://tixuzautos.com/guias/hyundai/",
+  "files": {
+    "article_markdown": "article.md",
+    "article_html": "article.html",
+    "schema": "schema.json",
+    "sources": "sources.csv",
+    "checklist": "checklist.md",
+    "agent_prompt": "agent-prompt.md"
+  }
+}

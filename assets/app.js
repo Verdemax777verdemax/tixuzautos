@@ -10,81 +10,36 @@ function getDb(){
   }
   return null;
 }
-let allCars=[],step=1,uploadedImgs=[],selPlan='free_launch',plans=[],lotRows=[],lotFileTexts=[],prospects=[],activeProspectId=sessionStorage.getItem('tixuz_active_prospect')||'',opsAfterUnlock=null,adminTok=sessionStorage.getItem('ta_tok')||'';
-const OPS_TOKEN_KEY='tixuz_ops_token_v1';
+let allCars=[],step=1,uploadedImgs=[],selPlan='basic',plans=[],lotRows=[],lotFileTexts=[],adminTok=sessionStorage.getItem('ta_tok')||'';
+let externalCars=[],externalPortalLinks=[],externalSearchKey='',externalLoading=false,externalError='',externalPartial=false,externalTimer=null,externalAbortController=null,externalSeq=0;
+let externalZeroQuery='';
+let activeDiscoveryFilter=null;
+const LIVE_SEARCH_DEBOUNCE_MS=1400;
 const DETAIL_CACHE=new Map();
-function opsRequested(){return location.search.includes('ops=1')||location.hash==='#ops'}
-function hasOpsAccess(){return !!sessionStorage.getItem(OPS_TOKEN_KEY)}
-function unlockOps(token){
-  if(token)sessionStorage.setItem(OPS_TOKEN_KEY,token);
-  document.body.classList.add('show-ops','ops-unlocked');
-}
-function requestOpsUnlock(after){
-  if(hasOpsAccess()){unlockOps();if(typeof after==='function')after();return true}
-  document.body.classList.add('show-ops');
-  opsAfterUnlock=typeof after==='function'?after:null;
-  const err=document.getElementById('opsPinErr');
-  if(err){err.style.display='none';err.textContent=''}
-  openO('opsPinOv');
-  setTimeout(()=>document.getElementById('opsPinInput')?.focus(),60);
-  return false;
-}
-async function submitOpsPin(){
-  const input=document.getElementById('opsPinInput');
-  const err=document.getElementById('opsPinErr');
-  const pin=String(input?.value||'').trim();
-  if(!pin){if(err){err.textContent='Escribe el PIN';err.style.display='block'}return}
-  try{
-    const res=await fetch('/.netlify/functions/ops-auth',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({pin})
-    });
-    const data=await res.json().catch(()=>({}));
-    if(!res.ok||!data.ok||!data.token)throw new Error(data.error||'PIN incorrecto');
-    if(input)input.value='';
-    if(err){err.style.display='none';err.textContent=''}
-    unlockOps(data.token);
-    closeO('opsPinOv');
-    const next=opsAfterUnlock;opsAfterUnlock=null;
-    if(typeof next==='function')setTimeout(next,50);
-    showToast('Herramientas internas desbloqueadas','ok');
-    return;
-  }catch(e){
-    if(err){err.textContent=e.message||'No se pudo validar el PIN';err.style.display='block'}
-  }
-}
-function initOpsMode(){
-  if(!opsRequested())return;
-  document.body.classList.add('show-ops');
-  if(hasOpsAccess()){unlockOps();setTimeout(()=>openProspects(),350);}
-  else setTimeout(()=>requestOpsUnlock(openProspects),350);
-}
-function openOperatorEntry(){
-  history.replaceState(null,'','?ops=1');
-  requestOpsUnlock(openProspects);
-}
-const FREE_LAUNCH_PLAN={key:'free_launch',name:'Gratis lanzamiento',price_mxn:0,interval_type:'one_time',active_days:30,max_photos:5,badge:'launch'};
+const BASIC_PLAN={key:'basic',name:'Básico',price_mxn:0,interval_type:'one_time',active_days:30,max_photos:5,badge:'Gratis'};
 const DEFAULT_PLANS=[
-  FREE_LAUNCH_PLAN,
-  {key:'basic',name:'Básico',price_mxn:49,interval_type:'one_time',active_days:30,max_photos:5},
+  BASIC_PLAN,
   {key:'featured',name:'Destacado',price_mxn:199,interval_type:'one_time',active_days:60,max_photos:12},
-  {key:'pro',name:'PRO',price_mxn:499,interval_type:'recurring',active_days:30,max_photos:30}
+  {key:'pro',name:'PRO',price_mxn:499,interval_type:'one_time',active_days:30,max_photos:30}
 ];
-function withLaunchPlan(list){
-  const paid=Array.isArray(list)?list.filter(p=>p&&p.key&&p.key!=='free_launch'):[];
-  return [FREE_LAUNCH_PLAN,...paid];
+function withBasicPlan(list){
+  const incoming=Array.isArray(list)?list.filter(p=>p&&p.key):[];
+  const apiBasic=incoming.find(p=>p.key==='basic');
+  const basic={...BASIC_PLAN,...(apiBasic||{}),key:'basic',name:'Básico',price_mxn:0};
+  const paid=incoming.filter(p=>p.key==='featured'||p.key==='pro');
+  return [basic,...paid];
+}
+function planIsComingSoon(p){
+  // 5c (27-jul-2026): por lanzamiento solo el plan Básico gratis está activo.
+  // Destacado y PRO se muestran como "Próximamente", deshabilitados.
+  return Boolean(p&&p.key&&p.key!=='basic');
 }
 function planNameForListing(l){
-  if(l&&l.payment_status==='not_required')return 'Gratis lanzamiento';
+  if(l&&l.payment_status==='not_required')return 'Básico';
   return ({basic:'Básico',featured:'Destacado',pro:'PRO'}[l?.plan]||l?.plan||'Básico');
 }
-function publishButtonLabel(){return selPlan==='free_launch'?'Publicar gratis':'Ir a pagar';}
+function publishButtonLabel(){return selPlan==='basic'?'Publicar gratis':'Ir a pagar';}
 function updatePublishButton(){const b=document.getElementById('btnNext');if(b&&step===3)b.textContent=publishButtonLabel();}
-const SEED_FALLBACK_LIMIT = 8;
-const SEED_SEARCH_LIMIT = 24;
-const SEED_CARS = [{"make":"Nissan","model":"Versa Advance","year":2022,"price":268000,"mileage":42000,"transmission":"Automática","fuel_type":"Gasolina","location":"Guadalajara, Jal.","featured":true,"plan":"basic","id":"seed-001","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T12:00:00Z","images":["assets/seed/demo01.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2022 Nissan Versa Advance."},{"make":"Volkswagen","model":"Jetta Comfortline","year":2021,"price":365000,"mileage":48000,"transmission":"Automática","fuel_type":"Gasolina","location":"CDMX","featured":false,"plan":"pro","id":"seed-002","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T11:00:00Z","images":["assets/seed/demo02.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Volkswagen Jetta Comfortline."},{"make":"Toyota","model":"Corolla LE","year":2020,"price":332000,"mileage":58000,"transmission":"Automática","fuel_type":"Gasolina","location":"Querétaro, Qro.","featured":false,"plan":"basic","id":"seed-003","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T10:00:00Z","images":["assets/seed/demo03.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Toyota Corolla LE."},{"make":"Kia","model":"Rio HB EX","year":2021,"price":245000,"mileage":53000,"transmission":"Automática","fuel_type":"Gasolina","location":"Monterrey, N.L.","featured":true,"plan":"basic","id":"seed-004","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T09:00:00Z","images":["assets/seed/demo04.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Kia Rio HB EX."},{"make":"Mazda","model":"3 Sedán i Grand Touring","year":2021,"price":355000,"mileage":44000,"transmission":"Automática","fuel_type":"Gasolina","location":"Puebla, Pue.","featured":false,"plan":"basic","id":"seed-005","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T08:00:00Z","images":["assets/seed/demo05.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Mazda 3 Sedán i Grand Touring."},{"make":"Nissan","model":"Sentra SR","year":2020,"price":329000,"mileage":61000,"transmission":"Automática","fuel_type":"Gasolina","location":"León, Gto.","featured":false,"plan":"basic","id":"seed-006","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T07:00:00Z","images":["assets/seed/demo06.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Nissan Sentra SR."},{"make":"Honda","model":"Civic i-Style","year":2020,"price":372000,"mileage":64000,"transmission":"Automática","fuel_type":"Gasolina","location":"Mérida, Yuc.","featured":false,"plan":"basic","id":"seed-007","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T06:00:00Z","images":["assets/seed/demo07.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Honda Civic i-Style."},{"make":"Hyundai","model":"Elantra GLS","year":2021,"price":315000,"mileage":49000,"transmission":"Automática","fuel_type":"Gasolina","location":"Aguascalientes, Ags.","featured":false,"plan":"basic","id":"seed-008","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T05:00:00Z","images":["assets/seed/demo08.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Hyundai Elantra GLS."},{"make":"Nissan","model":"Kicks Advance","year":2021,"price":318000,"mileage":46000,"transmission":"Automática","fuel_type":"Gasolina","location":"Morelia, Mich.","featured":true,"plan":"basic","id":"seed-009","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T04:00:00Z","images":["assets/seed/demo09.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Nissan Kicks Advance."},{"make":"Hyundai","model":"Tucson GLS","year":2021,"price":435000,"mileage":55000,"transmission":"Automática","fuel_type":"Gasolina","location":"Tijuana, B.C.","featured":false,"plan":"basic","id":"seed-010","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T03:00:00Z","images":["assets/seed/demo10.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Hyundai Tucson GLS."},{"make":"Honda","model":"HR-V Touring","year":2023,"price":445000,"mileage":28000,"transmission":"Automática","fuel_type":"Gasolina","location":"Cancún, Q. Roo","featured":false,"plan":"pro","id":"seed-011","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T02:00:00Z","images":["assets/seed/demo11.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2023 Honda HR-V Touring."},{"make":"Mazda","model":"CX-30 i Sport","year":2021,"price":399000,"mileage":39000,"transmission":"Automática","fuel_type":"Gasolina","location":"San Luis Potosí, S.L.P.","featured":false,"plan":"basic","id":"seed-012","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T01:00:00Z","images":["assets/seed/demo12.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Mazda CX-30 i Sport."},{"make":"Toyota","model":"Corolla Cross LE","year":2021,"price":438000,"mileage":41000,"transmission":"Automática","fuel_type":"Gasolina","location":"Chihuahua, Chih.","featured":true,"plan":"basic","id":"seed-013","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-24T00:00:00Z","images":["assets/seed/demo13.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Toyota Corolla Cross LE."},{"make":"Kia","model":"Seltos EX","year":2021,"price":389000,"mileage":50000,"transmission":"Automática","fuel_type":"Gasolina","location":"Veracruz, Ver.","featured":false,"plan":"basic","id":"seed-014","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T23:00:00Z","images":["assets/seed/demo14.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Kia Seltos EX."},{"make":"MG","model":"ZS Excite","year":2021,"price":285000,"mileage":52000,"transmission":"Automática","fuel_type":"Gasolina","location":"Toluca, Edo. Mex.","featured":false,"plan":"basic","id":"seed-015","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T22:00:00Z","images":["assets/seed/demo15.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 MG ZS Excite."},{"make":"Suzuki","model":"Vitara GLX","year":2021,"price":365000,"mileage":47000,"transmission":"Automática","fuel_type":"Gasolina","location":"Hermosillo, Son.","featured":false,"plan":"basic","id":"seed-016","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T21:00:00Z","images":["assets/seed/demo16.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Suzuki Vitara GLX."},{"make":"Renault","model":"Duster Intens","year":2022,"price":312000,"mileage":36000,"transmission":"Manual","fuel_type":"Gasolina","location":"Oaxaca, Oax.","featured":false,"plan":"basic","id":"seed-017","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T20:00:00Z","images":["assets/seed/demo17.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2022 Renault Duster Intens."},{"make":"Suzuki","model":"Swift Boosterjet","year":2020,"price":238000,"mileage":59000,"transmission":"Automática","fuel_type":"Gasolina","location":"Culiacán, Sin.","featured":false,"plan":"basic","id":"seed-018","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T19:00:00Z","images":["assets/seed/demo18.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Suzuki Swift Boosterjet."},{"make":"Suzuki","model":"Jimny GLX","year":2021,"price":498000,"mileage":32000,"transmission":"Manual","fuel_type":"Gasolina","location":"Saltillo, Coah.","featured":true,"plan":"basic","id":"seed-019","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T18:00:00Z","images":["assets/seed/demo19.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Suzuki Jimny GLX."},{"make":"Volkswagen","model":"Polo Highline","year":2020,"price":244000,"mileage":62000,"transmission":"Automática","fuel_type":"Gasolina","location":"Durango, Dgo.","featured":false,"plan":"basic","id":"seed-020","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T17:00:00Z","images":["assets/seed/demo20.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Volkswagen Polo Highline."},{"make":"Volkswagen","model":"Tiguan Allspace Comfortline","year":2022,"price":585000,"mileage":40000,"transmission":"Automática","fuel_type":"Gasolina","location":"Tuxtla Gutiérrez, Chis.","featured":false,"plan":"pro","id":"seed-021","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T16:00:00Z","images":["assets/seed/demo21.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2022 Volkswagen Tiguan Allspace Comfortline."},{"make":"Ford","model":"Ranger XLT","year":2021,"price":575000,"mileage":62000,"transmission":"Automática","fuel_type":"Diésel","location":"Mexicali, B.C.","featured":false,"plan":"basic","id":"seed-022","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T15:00:00Z","images":["assets/seed/demo22.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2021 Ford Ranger XLT."},{"make":"Toyota","model":"Hilux SR","year":2020,"price":495000,"mileage":78000,"transmission":"Manual","fuel_type":"Diésel","location":"Villahermosa, Tab.","featured":true,"plan":"basic","id":"seed-023","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T14:00:00Z","images":["assets/seed/demo23.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Toyota Hilux SR."},{"make":"Mitsubishi","model":"Mirage G4 GLS","year":2020,"price":189000,"mileage":66000,"transmission":"Automática","fuel_type":"Gasolina","location":"Colima, Col.","featured":false,"plan":"basic","id":"seed-024","seller_name":"Vendedor particular","seller_type":"Particular","color":"Según foto","created_at":"2026-04-23T13:00:00Z","images":["assets/seed/demo24.jpg"],"description":"Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: 2020 Mitsubishi Mirage G4 GLS."}];
-
 function escJS(v){return String(v ?? '').replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,' ')}
 function escAttr(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function escHTML(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
@@ -128,12 +83,12 @@ function normalizeCar(c){
   out.mileage = Number(out.mileage || 0);
   out.make = out.make || 'Auto';
   out.model = out.model || '';
-  out.created_at = out.created_at || new Date().toISOString();
+  out.created_at = out.created_at || out.published_at || null;
   return out;
 }
 function mergeCars(list){
   const byId = new Map();
-  [...(Array.isArray(list)?list:[]), ...allCars, ...SEED_CARS].forEach(c=>{
+  [...(Array.isArray(list)?list:[]), ...allCars].forEach(c=>{
     const n = cacheCar(c);
     if(n.id && !byId.has(String(n.id))) byId.set(String(n.id), n);
   });
@@ -142,7 +97,7 @@ function mergeCars(list){
 }
 async function fetchListingById(id){
   const sid=String(id||'').trim();
-  if(!sid || sid.startsWith('seed-')||sid.startsWith('demo-'))return null;
+  if(!sid)return null;
   const ctrl=new AbortController();
   const tid=setTimeout(()=>ctrl.abort(),8000);
   try{
@@ -162,9 +117,10 @@ function resetFiltersSilent(){
   ['fQ','fPMin','fPMax','fCity'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
   const yr=document.getElementById('fYear'); if(yr) yr.value='';
   const tr=document.getElementById('fTrans'); if(tr) tr.value='';
-  const so=document.getElementById('fSort'); if(so) so.value='new';
+  const so=document.getElementById('fSort'); if(so) so.value='default';
 }
 function clearAutofillFiltersIfNeeded(){
+  if(String(document.getElementById('heroQ')?.value||'').trim())return false;
   const ids=['fQ','fPMin','fPMax','fCity','fYear','fTrans'];
   const dirty=ids.some(id=>{const el=document.getElementById(id);return el&&String(el.value||'').trim()});
   if(!dirty)return false;
@@ -172,9 +128,12 @@ function clearAutofillFiltersIfNeeded(){
   return true;
 }
 async function init(){
+  initHeroPlaceholder();
+  installLiveSearchScrollGuard();
+  bindHeroSearchControls();
   populateYearFilter();
   resetFiltersSilent();
-  allCars=cacheCars([...SEED_CARS]);
+  allCars=[];
   populateCityFilter();
   applyFilters();
   // Algunos navegadores/autofill meten números viejos en filtros después del primer render.
@@ -192,40 +151,80 @@ async function loadCars(){
   try{
     const ctrl=new AbortController();
     const tid=setTimeout(()=>ctrl.abort(),3500);
-    const r=await fetch(SB_URL+'/rest/v1/public_listings?select=*&order=created_at.desc&limit=300',{
-      signal:ctrl.signal,
-      headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Accept':'application/json'}
-    });
+    let r=await fetch('/.netlify/functions/public-active-listings',{signal:ctrl.signal,headers:{Accept:'application/json'}});
+    let realCars=[];
     clearTimeout(tid);
-    if(!r.ok)throw new Error('HTTP '+r.status);
-    const realCars=await r.json();
-    const cleanReal=(Array.isArray(realCars)?realCars:[]).filter(c=>c&&c.id).map(normalizeCar);
-    // La base visual del marketplace son los autos base curados del ZIP.
-    // Evita que registros viejos/mal sembrados en Supabase tapen estos autos base y causen fotos cruzadas.
-    // Solo agregamos anuncios reales de alta confianza: subidos por el flujo real a Supabase Storage.
-    const hasAnyPhoto=c=>Array.isArray(c.images)&&c.images.some(u=>/^https?:\/\//i.test(String(u||''))||String(u||'').includes('/storage/v1/object/public/marketplace-images/'));
-    const hasSupabasePhoto=c=>Array.isArray(c.images)&&c.images.some(u=>String(u||'').includes('/storage/v1/object/public/marketplace-images/'));
-    const isAuthorizedReal=c=>{
-      const src=normText(c.source||'');
-      const st=normText(c.seller_type||'');
-      return hasSupabasePhoto(c) || ['agencia','lote','importado','autorizado','authorized','user'].some(v=>src.includes(v)||st.includes(v));
-    };
-    const remotePublished=cleanReal.filter(c=>!isSeedCar(c)&&hasAnyPhoto(c)&&isAuthorizedReal(c));
+    if(r.ok){
+      const payload=await r.json();
+      realCars=Array.isArray(payload.listings)?payload.listings:[];
+    }else{
+      const fallback=await fetch(SB_URL+'/rest/v1/public_listings?select=*&order=created_at.desc&limit=300',{
+        headers:{'apikey':SB_ANON,'Authorization':'Bearer '+SB_ANON,'Accept':'application/json'}
+      });
+      if(!fallback.ok)throw new Error('HTTP '+fallback.status);
+      realCars=await fallback.json();
+    }
+    const persistedExternal=await loadPersistedExternalInventory();
+    const cleanReal=[
+      ...(Array.isArray(realCars)?realCars:[]).filter(c=>c&&c.id).map(normalizeCar),
+      ...persistedExternal
+    ];
     const seen=new Set();
-    allCars=cacheCars([...remotePublished,...SEED_CARS].filter(c=>{const k=String(c.id||c.make+'-'+c.model+'-'+c.year); if(seen.has(k))return false; seen.add(k); return true}));
+    allCars=cacheCars(cleanReal.filter(c=>{const k=String(c.id||c.make+'-'+c.model+'-'+c.year); if(seen.has(k))return false; seen.add(k); return true}));
     populateCityFilter();
     applyFilters();
   }catch(e){
-    console.warn('Supabase no cargó; se quedan los autos base directos.', e);
-    allCars=cacheCars([...SEED_CARS]);
+    console.warn('Supabase no cargó; se muestra estado vacío honesto.', e);
+    allCars=[];
     populateCityFilter();
     applyFilters();
   }
 }
 
-function isSeedCar(c){
-  return (String(c&&c.id||'').startsWith('seed-')||String(c&&c.id||'').startsWith('demo-')) || String(c&&c.seller_type||'').toLowerCase()==='demo' || String(c&&c.seller_name||'').toLowerCase()==='tixuz autos';
+function isIndividualExternalListingUrl(value){
+  const url=String(value||'');
+  return /auto\.mercadolibre\.com\.mx\/MLM-\d+/i.test(url)
+    || /seminuevos\.com\/vehicle\/(?:[^/?]+\/)?\d+/i.test(url)
+    || /autocosmos\.com\.mx\/auto\/usado\/[^/]+\/[^/]+\/[^/]+\/[a-f0-9]{32}/i.test(url);
 }
+function normalizeInventoryCar(c){
+  const source=c.agg_source_registry||{};
+  const sourceName=repairMojibakeText(c.source_name||source.source_name||source.name||source.label||'Portal externo').trim();
+  const sourceUrl=String(c.source_url||'').trim();
+  if(/tixuz/i.test(sourceName)||/tixuzautos\.com/i.test(sourceUrl)||!isIndividualExternalListingUrl(sourceUrl))return null;
+  return normalizeExternalCar({
+    url:sourceUrl,
+    portal:sourceName,
+    marca:c.make||c.marca,
+    modelo:c.model||c.modelo||c.title,
+    anio:c.year||c.anio,
+    precio:c.price_mxn||c.price||c.precio,
+    km:c.mileage_km||c.mileage||c.km,
+    ubicacion:c.location||c.ubicacion,
+    city:c.city,
+    state:c.state,
+    version:c.raw_payload?.version,
+    transmission:c.raw_payload?.transmission,
+    seller_name:c.raw_payload?.seller_name,
+    seller_type:c.seller_type||c.raw_payload?.seller_type,
+    published_at:c.raw_payload?.published_at,
+    thumbnail_url:c.thumbnail_url
+  });
+}
+async function loadPersistedExternalInventory(){
+  try{
+    const select='id,source_id,external_id,make,model,year,price_mxn,mileage_km,city,state,location,seller_type,thumbnail_url,source_url,title,last_seen_at,raw_payload,agg_source_registry(source_name,name,label)';
+    const url=SB_URL+'/rest/v1/agg_autos_inventory?status=eq.active&expires_at=gt.'+encodeURIComponent(new Date().toISOString())+'&select='+encodeURIComponent(select)+'&order=last_seen_at.desc&limit=300';
+    const r=await fetch(url,{headers:{apikey:SB_ANON,Authorization:'Bearer '+SB_ANON,Accept:'application/json'}});
+    if(!r.ok)return [];
+    const rows=await r.json();
+    return (Array.isArray(rows)?rows:[]).map(normalizeInventoryCar).filter(c=>c&&c.source_url);
+  }catch(e){
+    console.warn('Inventario externo persistido no disponible.',e);
+    return [];
+  }
+}
+
 function hasAnyActiveFilter(){
   const q=(document.getElementById('fQ')?.value||'').trim();
   const pmin=(document.getElementById('fPMin')?.value||'').trim();
@@ -233,11 +232,11 @@ function hasAnyActiveFilter(){
   const city=(document.getElementById('fCity')?.value||'').trim();
   const yr=(document.getElementById('fYear')?.value||'').trim();
   const tr=(document.getElementById('fTrans')?.value||'').trim();
-  const sort=(document.getElementById('fSort')?.value||'new');
-  return !!(q||pmin||pmax||city||yr||tr||sort!=='new');
+  const sort=(document.getElementById('fSort')?.value||'default');
+  return !!(q||pmin||pmax||city||yr||tr||sort!=='default');
 }
 function activeRealCount(){
-  return (allCars||[]).filter(c=>!isSeedCar(c)).length;
+  return (allCars||[]).length;
 }
 function updateInventoryNotice(list, opts={}){
   const n=document.getElementById('inventoryNotice');
@@ -246,7 +245,7 @@ function updateInventoryNotice(list, opts={}){
   const filtered=!!opts.hasActiveFilters;
   if(!real && !filtered){
     n.style.display='block';
-    n.innerHTML='<strong>Fase piloto por ciudad.</strong> Estamos formando inventario confiable con lotes fundadores y particulares revisados. <button onclick="openSell()">Publicar mi auto</button>';
+    n.innerHTML='<strong>Inventario verificado en crecimiento.</strong> Estamos sumando autos de particulares, lotes y agencias con revision humana antes de activar. <button onclick="openSell()">Publicar mi auto</button>';
   }else if(real && real<6 && !filtered){
     n.style.display='block';
     n.innerHTML='<strong>Anuncios reales en crecimiento.</strong> Primero medimos contactos reales por WhatsApp; los planes pagados vienen despues de probar valor. <button onclick="openSell()">Publicar ahora</button>';
@@ -264,13 +263,338 @@ function updateDensityNotice(list,opts={}){
   const label=cityLabel(city);
   n.style.display='block';
   if(count<6){
-    n.innerHTML=`<strong>${label}: ${count} autos visibles.</strong> Aún estamos construyendo densidad local. Prioridad operativa: sumar lotes fundadores en esta ciudad antes de empujar pagos.`;
+    n.innerHTML=`<strong>${label}: ${count} autos visibles.</strong> Aun estamos aumentando inventario local. Puedes publicar tu auto gratis y ayudar a que haya mas opciones reales en esta ciudad.`;
   }else{
     n.innerHTML=`<strong>${label}: ${count} autos visibles.</strong> Ya hay base local; mide clics a WhatsApp y respuesta del vendedor antes de vender planes pagados.`;
   }
 }
 function normText(v){
   return String(v||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+}
+function toggleMobileMenu(){
+  const menu=document.querySelector('.hbtns');
+  const btn=document.querySelector('.menu-toggle');
+  if(!menu)return;
+  const open=menu.classList.toggle('open');
+  if(btn)btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+}
+function initHeroPlaceholder(){
+  const input=document.getElementById('heroQ');
+  if(!input)return;
+  const examples=['Toyota Hilux 2021 diésel','SUV familiar hasta $350,000','Mazda 3 automático','Pickup para trabajo en Jalisco','Sedán ahorrador menos de $200,000'];
+  let item=0,pos=0,deleting=false;
+  const tick=()=>{
+    if(input.value)return setTimeout(tick,900);
+    const text=examples[item];
+    pos += deleting ? -1 : 1;
+    input.placeholder=text.slice(0,pos);
+    if(!deleting&&pos>=text.length){deleting=true;return setTimeout(tick,1300)}
+    if(deleting&&pos<=0){deleting=false;item=(item+1)%examples.length;return setTimeout(tick,220)}
+    setTimeout(tick,deleting?30:55);
+  };
+  input.placeholder='';
+  tick();
+}
+function hashExternalId(value){
+  let h=0; const s=String(value||'');
+  for(let i=0;i<s.length;i++) h=((h<<5)-h+s.charCodeAt(i))|0;
+  return 'ext-'+Math.abs(h);
+}
+function repairMojibakeText(value){
+  return String(value||'')
+    .replace(/M\u00c3\u00a9/g,'Mé')
+    .replace(/m\u00c3\u00a9/g,'mé')
+    .replace(/\u00c3\u00a9/g,'é')
+    .replace(/\u00c3\u00a1/g,'á')
+    .replace(/\u00c3\u00ad/g,'í')
+    .replace(/\u00c3\u00b3/g,'ó')
+    .replace(/\u00c3\u00ba/g,'ú')
+    .replace(/\u00c3\u00b1/g,'ñ')
+    .replace(/\u00c3\u00bc/g,'ü')
+    .replace(/\u00c2\u00bf/g,'¿')
+    .replace(/\u00c2\u00a1/g,'¡')
+    .replace(/\u00c2/g,'');
+}
+function normalizeExternalCar(c){
+  const url=String(c.url||c.fuente_url||'').trim();
+  const portal=repairMojibakeText(c.portal||c.fuente_portal||c.source||'Portal externo').trim();
+  const title=repairMojibakeText(c.title||'').trim();
+  return {
+    id: hashExternalId(url || title),
+    external: true,
+    source_url: url,
+    clickout_url: String(c.clickout_url||'').trim(),
+    source: portal,
+    make: repairMojibakeText(c.marca||c.make||'').trim(),
+    model: repairMojibakeText(c.modelo||c.model||title||'Auto externo').trim(),
+    year: c.anio || c.year || '',
+    price: c.precio || c.price || 0,
+    mileage: c.km || c.mileage || 0,
+    transmission: c.transmission || '',
+    fuel_type: c.fuel_type || '',
+    location: repairMojibakeText(c.ubicacion||c.location||[c.city,c.state].filter(Boolean).join(', ')).trim()||null,
+    city: repairMojibakeText(c.city||'').trim()||null,
+    state: repairMojibakeText(c.state||'').trim()||null,
+    version: c.version||null,
+    images: c.thumbnail_url ? [c.thumbnail_url] : [],
+    image_kind: c.image_kind || (c.thumbnail_url ? 'real_source' : 'placeholder'),
+    seller_name: c.seller_name||null,
+    seller_type: c.seller_type||portal,
+    published_at: c.published_at||null,
+    created_at: c.published_at||null
+  };
+}
+function currentExternalKey(q,city){
+  return `${normText(q).trim()}|${city||''}`;
+}
+function externalMatchesControls(c,pmin,pmax,yr,tr){
+  if(Number(c.price||0) && (Number(c.price||0)<pmin || Number(c.price||0)>pmax)) return false;
+  if(yr && Number(c.year||0) && Number(c.year||0)<yr) return false;
+  if(tr && c.transmission && c.transmission!==tr) return false;
+  return true;
+}
+function cancelPendingExternalSearch(clearResults=false){
+  clearTimeout(externalTimer);
+  externalTimer=null;
+  if(externalAbortController){
+    externalAbortController.abort();
+    externalAbortController=null;
+  }
+  externalSeq++;
+  externalLoading=false;
+  if(clearResults){
+    externalCars=[];
+    externalPortalLinks=[];
+    externalSearchKey='';
+    externalError='';
+    externalPartial=false;
+    externalZeroQuery='';
+  }
+}
+function scheduleExternalSearch(q,city,opts={}){
+  const clean=String(q||'').trim();
+  const key=currentExternalKey(clean,city);
+  if(clean.length<3){
+    cancelPendingExternalSearch(true);
+    return;
+  }
+  const keyChanged=externalSearchKey!==key;
+  if(opts.immediate)cancelPendingExternalSearch(keyChanged);
+  else if(keyChanged)cancelPendingExternalSearch(true);
+  else if(externalLoading || externalCars.length || externalError)return;
+  externalLoading=true; externalError=''; externalPartial=false; externalSearchKey=key;
+  const delay=opts.immediate?0:LIVE_SEARCH_DEBOUNCE_MS;
+  externalTimer=setTimeout(()=>loadExternalCars(clean,city,key),delay);
+}
+async function loadExternalCars(q,city,key){
+  const seq=++externalSeq;
+  const ctrl=new AbortController();
+  externalAbortController=ctrl;
+  try{
+    const params=new URLSearchParams({q,limit:'40'});
+    if(city)params.set('ciudad',cityLabel(city));
+    const r=await fetch('/api/buscar-serper?'+params.toString(),{signal:ctrl.signal,headers:{Accept:'application/json'}});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const payload=await r.json();
+    if(seq!==externalSeq||key!==externalSearchKey)return;
+    const resultItems=Array.isArray(payload.results)?payload.results:[];
+    const externalItems=resultItems;
+    externalCars=externalItems
+      .filter(item=>item&&item.type==='aggregated')
+      .map(item=>normalizeExternalCar({
+        title:item.title,
+        portal:item.source,
+        url:item.url,
+        clickout_url:item.clickout_url,
+        marca:item.make,
+        modelo:item.model,
+        anio:item.year,
+        precio:item.price_mxn,
+        km:item.mileage_km,
+        ubicacion:item.location,
+        city:item.city,
+        state:item.state,
+        version:item.version,
+        transmission:item.transmission,
+        seller_name:item.seller_name,
+        seller_type:item.seller_type,
+        published_at:item.published_at,
+        thumbnail_url:item.image_url,
+        image_kind:item.image_kind
+      }))
+      .filter(c=>c.source_url&&!/tixuz/i.test(c.source||'')&&!/tixuzautos\.com/i.test(c.source_url||''));
+    externalPortalLinks=[];
+    externalZeroQuery='';
+    externalPartial=Boolean(payload.partial);
+    externalError=externalPartial?'Busqueda externa parcial; puedes reintentar para consultar nuevamente todos los portales.':'';
+  }catch(err){
+    if(err&&err.name==='AbortError')return;
+    if(seq!==externalSeq||key!==externalSearchKey)return;
+    externalCars=[];
+    externalPortalLinks=[];
+    externalZeroQuery='';
+    externalPartial=true;
+    externalError='Los portales externos estan tardando. Mostrando inventario Tixuz.';
+  }finally{
+    if(externalAbortController===ctrl)externalAbortController=null;
+    if(seq===externalSeq&&key===externalSearchKey){
+      externalLoading=false;
+      applyFilters({skipExternalFetch:true});
+    }
+  }
+}
+function syncHeroSearch(){
+  const hero=document.getElementById('heroQ');
+  const q=document.getElementById('fQ');
+  if(!hero||!q)return;
+  q.value=hero.value;
+  applyFilters();
+}
+function handleLiveSearchInput(source){
+  activeDiscoveryFilter=null;
+  cancelPendingExternalSearch(true);
+  if(source==='hero')syncHeroSearch();
+  else applyFilters();
+}
+function setHeroQuery(value){
+  activeDiscoveryFilter=null;
+  const hero=document.getElementById('heroQ');
+  if(hero)hero.value=value||'';
+  const q=document.getElementById('fQ');
+  if(q)q.value=hero?.value||'';
+  markExplicitSearch();
+  forceHybridSearch();
+  scrollToInventory({explicit:true});
+}
+async function setDiscoveryFilter(filters,label){
+  const allowedBodyTypes=new Set(['suv','sedan','hatchback','pickup','van','otro']);
+  const bodyType=String(filters?.body_type||'').toLowerCase();
+  const priceMin=Number(filters?.price_min||0);
+  const priceMax=Number(filters?.price_max||0);
+  activeDiscoveryFilter={
+    ...(allowedBodyTypes.has(bodyType)?{body_type:bodyType}:{}),
+    ...(priceMin>0?{price_min:Math.round(priceMin)}:{}),
+    ...(priceMax>0?{price_max:Math.round(priceMax)}:{})
+  };
+  if(!Object.keys(activeDiscoveryFilter).length)return;
+  cancelPendingExternalSearch(true);
+  const hero=document.getElementById('heroQ');
+  const q=document.getElementById('fQ');
+  if(hero)hero.value=label||'';
+  if(q)q.value=label||'';
+  externalLoading=true;
+  externalError='';
+  markExplicitSearch();
+  applyFilters({skipExternalFetch:true});
+  scrollToInventory({explicit:true});
+  const seq=++externalSeq;
+  try{
+    const params=new URLSearchParams({limit:'100'});
+    Object.entries(activeDiscoveryFilter).forEach(([key,value])=>params.set(key,String(value)));
+    const r=await fetch('/api/buscar?'+params.toString(),{headers:{Accept:'application/json'}});
+    if(!r.ok)throw new Error('HTTP '+r.status);
+    const payload=await r.json();
+    if(seq!==externalSeq||!activeDiscoveryFilter)return;
+    externalCars=(Array.isArray(payload.results)?payload.results:[])
+      .filter(item=>item&&item.type==='aggregated')
+      .map(item=>normalizeExternalCar({
+        title:item.title,
+        portal:item.source,
+        url:item.original_url||item.url,
+        clickout_url:item.url,
+        marca:item.make,
+        modelo:item.model,
+        anio:item.year,
+        precio:item.price_mxn,
+        km:item.mileage_km,
+        ubicacion:item.location,
+        city:item.city,
+        state:item.state,
+        transmission:item.transmission,
+        thumbnail_url:item.image_url,
+        image_kind:item.image_kind
+      }));
+  }catch(err){
+    if(seq!==externalSeq)return;
+    externalCars=[];
+    externalError='No pudimos aplicar este filtro. Intenta de nuevo.';
+  }finally{
+    if(seq===externalSeq){
+      externalLoading=false;
+      applyFilters({skipExternalFetch:true});
+    }
+  }
+}
+function searchInputHasFocus(){
+  const active=document.activeElement;
+  return active?.id==='heroQ'||active?.id==='fQ';
+}
+function markExplicitSearch(){
+  window.__tixuzNativeExplicitSearchUntil=Date.now()+3000;
+}
+function installLiveSearchScrollGuard(){
+  if(window.__tixuzNativeScrollGuard)return;
+  window.__tixuzNativeScrollGuard=true;
+  const originalScrollIntoView=Element.prototype.scrollIntoView;
+  Element.prototype.scrollIntoView=function(...args){
+    try{
+      const inLiveBox=this.id==='tixuz-live-box'||this.closest?.('#tixuz-live-box');
+      const explicit=Number(window.__tixuzNativeExplicitSearchUntil||0)>Date.now();
+      if(inLiveBox&&searchInputHasFocus()&&!explicit)return;
+    }catch(_){/* never block an unrelated scroll */}
+    return originalScrollIntoView.apply(this,args);
+  };
+}
+function scrollToInventory(opts={}){
+  if(!opts.explicit&&searchInputHasFocus())return;
+  const target=document.getElementById('carsGrid')||document.getElementById('inventoryNotice');
+  target?.scrollIntoView({behavior:'smooth',block:'start'});
+}
+function heroSearchSubmit(ev){
+  if(ev&&ev.preventDefault)ev.preventDefault();
+  activeDiscoveryFilter=null;
+  const hero=document.getElementById('heroQ');
+  const q=document.getElementById('fQ');
+  if(hero&&q)q.value=hero.value;
+  markExplicitSearch();
+  forceHybridSearch();
+  scrollToInventory({explicit:true});
+}
+function forceHybridSearch(){
+  activeDiscoveryFilter=null;
+  const qRaw=(document.getElementById('fQ')?.value||document.getElementById('heroQ')?.value||'').trim();
+  if(qRaw.length<3){cancelPendingExternalSearch(true);applyFilters({skipExternalFetch:true});return;}
+  const fQ=document.getElementById('fQ');
+  const hero=document.getElementById('heroQ');
+  if(fQ)fQ.value=qRaw;
+  if(hero)hero.value=qRaw;
+  const city=document.getElementById('fCity')?.value||'';
+  scheduleExternalSearch(qRaw,city,{immediate:true});
+  applyFilters({skipExternalFetch:true});
+}
+function bindHeroSearchControls(){
+  const form=document.querySelector('.hero-search');
+  const input=document.getElementById('heroQ');
+  const filterInput=document.getElementById('fQ');
+  if(form&&!form.dataset.boundHybridSearch){
+    form.dataset.boundHybridSearch='1';
+    form.addEventListener('submit',heroSearchSubmit);
+  }
+  if(input&&!input.dataset.boundHybridSearch){
+    input.dataset.boundHybridSearch='1';
+    input.addEventListener('input',()=>handleLiveSearchInput('hero'));
+  }
+  if(filterInput&&!filterInput.dataset.boundHybridSearch){
+    filterInput.dataset.boundHybridSearch='1';
+    filterInput.addEventListener('input',()=>handleLiveSearchInput('filters'));
+    filterInput.addEventListener('keydown',ev=>{
+      if(ev.key!=='Enter')return;
+      ev.preventDefault();
+      markExplicitSearch();
+      forceHybridSearch();
+      scrollToInventory({explicit:true});
+    });
+  }
 }
 function carSmartTags(c){
   const s=normText(`${c.make||''} ${c.model||''} ${c.description||''}`);
@@ -281,8 +605,58 @@ function carSmartTags(c){
   if(/sentra|versa|jetta|corolla|mazda 3|civic|elantra|mirage g4|sedan|sedán/.test(s)) tags.push('sedan sedán familiar ciudad');
   return tags.join(' ');
 }
-function applyFilters(){
-  const q=normText(document.getElementById('fQ').value);
+function carRealDate(c){
+  const raw=c?.published_at||c?.created_at;
+  if(!raw)return null;
+  const parsed=new Date(raw);
+  return Number.isNaN(parsed.getTime())?null:parsed;
+}
+function updateHonestSortOptions(list){
+  const select=document.getElementById('fSort');
+  if(!select)return'yr';
+  const rows=Array.isArray(list)?list:[];
+  const total=rows.length;
+  const hideRecent=total>0&&rows.filter(c=>!carRealDate(c)).length/total>0.5;
+  const hideKm=total>0&&rows.filter(c=>!(Number(c?.mileage||0)>0)).length/total>0.5;
+  const recent=select.querySelector('option[value="new"]');
+  const km=select.querySelector('option[value="km"]');
+  if(recent){recent.hidden=hideRecent;recent.disabled=hideRecent}
+  if(km){km.hidden=hideKm;km.disabled=hideKm}
+  // "Ordenar resultados" es el estado inicial: conserva el orden histórico
+  // (año descendente) sin convertirlo en una elección explícita del usuario.
+  if((select.value||'default')==='default')return'yr';
+  if((select.value==='new'&&hideRecent)||(select.value==='km'&&hideKm))select.value='yr';
+  return select.value;
+}
+function carSort(sort){
+  return(a,b)=>{
+    if(sort==='lo')return Number(a.price||0)-Number(b.price||0);
+    if(sort==='hi')return Number(b.price||0)-Number(a.price||0);
+    if(sort==='yr')return Number(b.year||0)-Number(a.year||0);
+    if(sort==='km')return Number(a.mileage||0)-Number(b.mileage||0);
+    return Number(carRealDate(b)?.getTime()||0)-Number(carRealDate(a)?.getTime()||0);
+  };
+}
+function isTixuzListing(c){
+  // Los resultados agregados se normalizan siempre con external:true; los
+  // marketplace_listings propios no. No se infiere por título, marca o año.
+  return !c?.external;
+}
+function tixuzDefaultSort(a,b){
+  const aIsTixuz=isTixuzListing(a);
+  const bIsTixuz=isTixuzListing(b);
+  if(aIsTixuz!==bIsTixuz)return aIsTixuz?-1:1;
+  // Dentro del bloque propio, el anuncio más reciente va primero.
+  if(aIsTixuz){
+    return Number(carRealDate(b)?.getTime()||0)-Number(carRealDate(a)?.getTime()||0);
+  }
+  // El bloque agregado conserva exactamente el orden histórico por año.
+  return carSort('yr')(a,b);
+}
+function applyFilters(opts={}){
+  const discovery=activeDiscoveryFilter;
+  const qRaw=discovery?'':(document.getElementById('fQ').value||'');
+  const q=normText(qRaw);
   const stop=new Set(['de','del','la','el','los','las','para','en','con','y','o','un','una']);
   const qTokens=q.split(/\s+/).filter(t=>t&&!stop.has(t));
   const pmin=parseFloat(document.getElementById('fPMin').value)||0;
@@ -290,8 +664,7 @@ function applyFilters(){
   const city=document.getElementById('fCity')?.value||'';
   const yr=parseInt(document.getElementById('fYear').value)||0;
   const tr=document.getElementById('fTrans').value;
-  const sort=document.getElementById('fSort').value;
-  let list=allCars.filter(c=>{
+  let list=discovery?[]:allCars.filter(c=>{
     const searchText=normText(`${c.make||''} ${c.model||''} ${c.description||''} ${c.location||''} ${c.transmission||''} ${c.fuel_type||''} ${carSmartTags(c)}`);
     if(qTokens.length&&!qTokens.every(t=>searchText.includes(t)))return false;
     if(city&&cityKey(c.location)!==city)return false;
@@ -300,52 +673,93 @@ function applyFilters(){
     if(tr&&(c.transmission||'')!==tr)return false;
     return true;
   });
-  list.sort((a,b)=>{
-    if(sort==='lo')return Number(a.price||0)-Number(b.price||0);
-    if(sort==='hi')return Number(b.price||0)-Number(a.price||0);
-    if(sort==='yr')return Number(b.year||0)-Number(a.year||0);
-    if(sort==='km')return Number(a.mileage||0)-Number(b.mileage||0);
-    return new Date(b.created_at||0)-new Date(a.created_at||0);
-  });
+  if(!discovery&&qTokens.length && !opts.skipExternalFetch) scheduleExternalSearch(qRaw,city);
+  if(!discovery&&!qTokens.length && !opts.skipExternalFetch){
+    cancelPendingExternalSearch(true);
+  }
+  const externalList=(discovery||qTokens.length)
+    ? externalCars.filter(c=>externalMatchesControls(c,pmin,pmax,yr,tr))
+    : [];
+  const selectedSort=document.getElementById('fSort')?.value||'default';
+  const sort=updateHonestSortOptions([...list,...externalList]);
   const hasFilters=hasAnyActiveFilter();
-  const real=activeRealCount();
-  if(!real && !hasFilters) list=list.slice(0,SEED_FALLBACK_LIMIT);
-  renderGrid(list,{hasActiveFilters:hasFilters,city});
+  renderGrid(list,{hasActiveFilters:hasFilters,city,sort,prioritizeTixuz:selectedSort==='default',externalList,externalPortalLinks:!discovery&&qTokens.length?externalPortalLinks:[],externalLoading:Boolean((discovery||qTokens.length)&&externalLoading),externalError:(discovery||qTokens.length)?externalError:''});
 }
 
 function ago(d){
-  const s=Math.floor((Date.now()-new Date(d))/1000);
+  const date=carRealDate({created_at:d});
+  if(!date)return'Fecha no disponible';
+  const s=Math.floor((Date.now()-date)/1000);
   if(s<3600)return'Hoy';if(s<172800)return'Ayer';return`Hace ${Math.floor(s/86400)} días`;
 }
+
+function handleListingImageError(img){
+  if(!img)return;
+  img.removeAttribute('onerror');
+  img.style.display='none';
+  const fallback=img.nextElementSibling;
+  if(fallback&&fallback.classList.contains('source-ph'))fallback.style.display='flex';
+  const gallery=img.closest('.dgal');
+  if(gallery&&![...gallery.querySelectorAll('img')].some(other=>other.style.display!=='none')){
+    gallery.innerHTML='<div style="min-height:180px;width:100%;display:flex;align-items:center;justify-content:center;background:var(--bg3);color:var(--text3);font-weight:700">Imagen de referencia</div>';
+  }
+}
+window.handleListingImageError=handleListingImageError;
 
 function renderGrid(list,opts={}){
   updateInventoryNotice(list,opts);
   updateDensityNotice(list,opts);
-  document.getElementById('gc').innerHTML=`<strong>${list.length}</strong> <span>autos encontrados</span>`;
-  if(!list.length){document.getElementById('carsGrid').innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Demanda detectada, inventario faltante</h3><p>No hay autos de Tixuz con esos filtros todavia. Puedes ampliar la busqueda con IA o publicar un auto parecido para aparecer cuando alguien busque esto.</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px"><button class="btn btn-primary" onclick="openFullSearchAI()">Buscar tambien fuera de Tixuz</button><button class="btn btn-green" onclick="openSellFromCurrentSearch()">Publicar auto parecido</button><button class="btn btn-ghost" onclick="openSearchAI()">Ajustar filtros</button></div></div>';return}
-  document.getElementById('carsGrid').innerHTML=list.map((c,idx)=>{
+  const externalList=Array.isArray(opts.externalList)?opts.externalList:[];
+  const portalLinks=Array.isArray(opts.externalPortalLinks)?opts.externalPortalLinks:[];
+  const displaySeen=new Set();
+  const displayList=[...list,...externalList].filter(c=>{
+    const key=c.external?String(c.source_url||'').replace(/[?#].*$/,'').replace(/\/$/,'').toLowerCase():`tixuz:${c.id}`;
+    if(!key||displaySeen.has(key))return false;
+    displaySeen.add(key);return true;
+  });
+  displayList.sort(opts.prioritizeTixuz?tixuzDefaultSort:carSort(opts.sort||'yr'));
+  document.getElementById('gc').innerHTML=`<strong>${displayList.length}</strong> <span>autos encontrados</span>`;
+  if(!displayList.length && !opts.externalLoading){document.getElementById('carsGrid').innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Sin resultados visibles todavia</h3><p>No encontramos autos de Tixuz ni fuentes externas para esos filtros. Prueba con marca/modelo mas amplio o publica un auto parecido para aparecer cuando alguien busque esto.</p><div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:12px"><button class="btn btn-primary" onclick="forceHybridSearch()">Reintentar busqueda hibrida</button><button class="btn btn-green" onclick="openSellFromCurrentSearch()">Publicar auto parecido</button><button class="btn btn-ghost" onclick="openSearchAI()">Ajustar filtros</button></div></div>';return}
+  const cards=displayList.map((c,idx)=>{
     c=cacheCar(c);
     const sid=escJS(c.id);
     const sidAttr=escAttr(c.id);
     const loading=idx<4?'eager':'lazy';
     const priority=idx===0?' fetchpriority="high"':'';
-    const img=c.images?.[0]?`<img src="${c.images[0]}" alt="${c.make} ${c.model}" loading="${loading}" decoding="async"${priority} onerror="this.style.display='none'">`:`<div class="cimg-ph">🚗</div>`;
-    const isSeed=isSeedCar(c);
+    const sourceLabel=(c.external?c.source:'Tixuz')||'AUTO';
+    const sourceInitials=sourceLabel.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'AUTO';
+    const img=c.images?.[0]?`<img src="${escAttr(c.images[0])}" alt="${escAttr(c.make)} ${escAttr(c.model)}" loading="${loading}" decoding="async"${priority} onerror="handleListingImageError(this)"><div class="cimg-ph source-ph" style="display:none"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`:`<div class="cimg-ph source-ph"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`;
     const badge=c.plan==='pro'?'<span class="cbadge bp">PRO</span>':c.featured?'<span class="cbadge bf">Destacado</span>':'';
-    const srcName=normText(c.source||c.seller_type||'');
-    const sourceBadge=srcName.includes('mercadolibre')?'<span class="cbadge bf" style="left:8px;right:auto;background:rgba(255,255,255,.92);color:#111">MercadoLibre</span>':(!isSeed?'<span class="cbadge bf" style="left:8px;right:auto;background:rgba(16,185,129,.92);color:#04130d">Revisión Tixuz</span>':'');
-    const displaySellerType=isSeed?'Particular':(c.seller_type||'Particular');
-    const p=Number(c.price).toLocaleString('es-MX');
-    const km=Number(c.mileage||0).toLocaleString('es-MX');
-    return`<a class="car-card" href="${escAttr(publicListingUrl(c.id))}" data-id="${sidAttr}" data-detail-id="${sidAttr}" aria-label="Ver ${escAttr(c.year+' '+c.make+' '+c.model)}">
+    const sourceBadge=c.external
+      ? `<span class="cbadge bf" style="left:8px;right:auto;background:rgba(148,163,184,.92);color:#0f172a">${escHTML(c.source||'externa')}</span>`
+      : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">Tixuz · Directo</span>';
+    const displaySellerType=c.seller_type||'Particular';
+    const verdictText=(normText(c.tixuz_note_status)==='published'&&(c.tixuz_note_pros||c.tixuz_note_watch))?String(c.tixuz_note_pros||c.tixuz_note_watch).split(/[.;\n]/)[0].trim():'';
+    const verdict=verdictText?`<div class="verdict-chip ${c.tixuz_note_watch&&!c.tixuz_note_pros?'watch':''}">${escHTML(verdictText).slice(0,72)}</div>`:'';
+    const hasPrice=Number(c.price||0)>0;
+    const hasKm=Number(c.mileage||0)>0;
+    const title=[Number(c.year||0)>0?c.year:'',c.make,c.model].filter(Boolean).join(' ');
+    const p=hasPrice?Number(c.price).toLocaleString('es-MX'):'';
+    const km=hasKm?Number(c.mileage).toLocaleString('es-MX'):'';
+    const clickout=c.clickout_url||('/api/ir?'+new URLSearchParams({to:c.source_url,source:c.source||'Portal externo',q:(document.getElementById('fQ')?.value||'')}).toString());
+    const href=c.external?escAttr(clickout):escAttr(publicListingUrl(c.id));
+    const target=c.external?' target="_blank" rel="nofollow noopener"':'';
+    const dataDetail=c.external?'':` data-detail-id="${sidAttr}"`;
+    return`<a class="car-card" href="${href}"${target} data-id="${sidAttr}"${dataDetail} aria-label="Ver ${escAttr(title||'Auto')}">
       <div class="cimg">${img}${sourceBadge}${badge}<span class="cstype">${displaySellerType}</span></div>
       <div class="cbody">
-        <div class="ctitle">${c.year} ${c.make} ${c.model}</div>
-        <div class="cprice">$${p}</div>
-        <div class="cmeta"><span>${km} km</span><span>${c.transmission||'—'}</span><span>${c.fuel_type||'—'}</span></div>
-        <div class="cloc"><span>${c.location||'México'}</span><span>${ago(c.created_at)}</span></div>
+        <div class="ctitle">${escHTML(title||'Auto')}</div>
+        <div class="cprice">${hasPrice?'$'+p:'Ver precio'}</div>
+        ${verdict}
+        <div class="cmeta"><span>${hasKm?km+' km':'—'}</span><span>${c.transmission||'—'}</span><span>${c.fuel_type||'—'}</span></div>
+        <div class="cloc"><span>${c.location||'Ubicación no disponible'}</span><span>${ago(c.published_at||c.created_at)}</span></div>
       </div></a>`;
   }).join('');
+  const loader=opts.externalLoading?'<div class="empty" style="grid-column:1/-1"><h3>Buscando fuentes externas...</h3><p>Ya mostramos primero los autos de Tixuz; agregamos portales externos en cuanto respondan.</p></div>':'';
+  const links=portalLinks.length?`<div class="empty" style="grid-column:1/-1;text-align:left"><h3>Sigue buscando en otros portales:</h3><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">${portalLinks.map(l=>`<a class="btn btn-ghost" href="${escAttr(l.url)}" target="_blank" rel="nofollow noopener" style="font-size:.78rem;padding:7px 10px">${escHTML(l.portal||l.label||'Portal')}</a>`).join('')}</div></div>`:'';
+  const zero=externalZeroQuery?`<div class="empty" style="grid-column:1/-1"><h3>No encontramos "${escHTML(externalZeroQuery)}" ahorita</h3><p>Mira estos similares:</p></div>`:'';
+  const error=opts.externalError&&!externalZeroQuery?`<div class="empty" style="grid-column:1/-1"><h3>Busqueda externa parcial</h3><p>${escHTML(opts.externalError)}</p><button class="btn btn-primary" onclick="forceHybridSearch()">Reintentar</button></div>`:'';
+  document.getElementById('carsGrid').innerHTML=zero+cards+loader+error+links;
 }
 
 // ── DETAIL ──
@@ -355,7 +769,7 @@ async function openDetailById(id){
   try{
     let car = DETAIL_CACHE.get(sid)
       || allCars.find(c => String(c.id) === sid)
-      || SEED_CARS.find(c => String(c.id) === sid);
+;
     if(!car) car = await fetchListingById(sid);
     if(!car){showToast('No se encontró la ficha del auto','error');return;}
     car=cacheCar(car);
@@ -364,19 +778,21 @@ async function openDetailById(id){
     console.error('Error abriendo ficha:',err);
     showToast('No pude abrir la ficha del auto','error');
     try{
-      const fallback = DETAIL_CACHE.get(sid) || allCars.find(c => String(c.id) === sid) || SEED_CARS.find(c => String(c.id) === sid);
+      const fallback = DETAIL_CACHE.get(sid) || allCars.find(c => String(c.id) === sid);
       if(fallback) openDetailFallback(fallback);
     }catch(e2){console.error('Fallback ficha falló:',e2)}
   }
 }
 window.openDetailById=openDetailById;
-function bumpViewSafely(car){
+async function bumpViewSafely(car){
   try{
     if(!car || !car.id)return;
-    const client=getDb();
-    if(!client || typeof client.rpc!=='function')return;
-    const req=client.rpc('increment_view',{p_listing_id:car.id});
-    if(req && typeof req.catch==='function')req.catch(()=>{});
+    await fetch('/api/listing-view',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({listing_id:String(car.id)}),
+      keepalive:true
+    });
   }catch(e){console.warn('Vista no incrementada, pero ficha abierta:',e)}
 }
 function openDetailFallback(car){
@@ -384,47 +800,51 @@ function openDetailFallback(car){
   const title=`${car.year||''} ${car.make||'Auto'} ${car.model||''}`.trim();
   document.getElementById('detailTitle').textContent=title||'Detalle del auto';
   const p=Number(car.price||0).toLocaleString('es-MX');
+  const mileageText=Number(car.mileage)>0?`${Number(car.mileage).toLocaleString('es-MX')} km`:'No especificado';
   document.getElementById('detailBody').innerHTML=`
     <div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:12px">🚗</div>
     <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px">${escHTML(title)}</h3>
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
     <div class="dgrid">
-      <div class="di"><label>Kilometraje</label><span>${Number(car.mileage||0).toLocaleString('es-MX')} km</span></div>
+      <div class="di"><label>Kilometraje</label><span>${mileageText}</span></div>
       <div class="di"><label>Transmisión</label><span>${escHTML(car.transmission||'—')}</span></div>
       <div class="di"><label>Ubicación</label><span>${escHTML(car.location||'México')}</span></div>
       <div class="di"><label>Vendedor</label><span>${escHTML(car.seller_name||'—')} · ${escHTML(car.seller_type||'—')}</span></div>
     </div>
     <div style="border:1px solid var(--border);background:rgba(59,130,246,.08);border-radius:12px;padding:12px;margin-top:12px;color:var(--text2);font-size:.84rem;line-height:1.5">
       La ficha se abrió en modo seguro porque el registro trae algún dato irregular. El anuncio no se pierde.
+    </div>
+    <div class="detail-note">
+      <strong style="color:var(--text)">Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto.
     </div>`;
   openO('detailOv');
 }
 function openDetail(car){
   if(typeof car==='string')try{car=JSON.parse(car)}catch{return}
   car=normalizeCar(car);
+  const isDemo=car.demo===true||car.is_demo===true||car.seed===true;
   window.__lastDetailCar = car; // v65: guardar para mensaje WhatsApp pre-llenado
-  const isDemo = isSeedCar(car);
   const title=`${car.year||''} ${car.make||'Auto'} ${car.model||''}`.trim();
   document.getElementById('detailTitle').textContent=title;
   const imgs=(car.images||[]).filter(Boolean);
-  const gal=imgs.length?`<div class="dgal">${imgs.map(u=>`<img src="${escAttr(u)}" alt="" onerror="this.style.display='none'">`).join('')}</div>`:`<div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:12px">🚗</div>`;
+  const gal=imgs.length?`<div class="dgal">${imgs.map(u=>`<img src="${escAttr(u)}" alt="" onerror="handleListingImageError(this)">`).join('')}</div>`:`<div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-weight:700;margin-bottom:12px">Imagen de referencia</div>`;
   const p=Number(car.price||0).toLocaleString('es-MX');
-  const km=Number(car.mileage||0).toLocaleString('es-MX');
+  const km=Number(car.mileage)>0?`${Number(car.mileage).toLocaleString('es-MX')} km`:'No especificado';
   const b=car.plan==='pro'?'<span class="cbadge bp" style="position:static;display:inline-block">PRO</span>':car.featured?'<span class="cbadge bf" style="position:static;display:inline-block">Destacado</span>':'';
   const waTarget=safeWaTarget(car.id);
-  const displaySellerName=isDemo?'Vendedor particular':(car.seller_name||'—');
-  const displaySellerType=isDemo?'Particular':(car.seller_type||'—');
-  const trust=isDemo?'<div class="trust-row"><span class="trust-chip warn">Ficha de referencia</span><span class="trust-chip warn">Inventario inicial</span><span class="trust-chip">No enviar anticipos</span></div>':'<div class="trust-row"><span class="trust-chip good">Revision manual Tixuz</span><span class="trust-chip good">WhatsApp protegido</span><span class="trust-chip">Reporte disponible</span></div>';
-  const descText = isDemo ? `Seminuevo del mercado mexicano. Foto y descripción corresponden al modelo: ${title}.` : (car.description||'');
+  const displaySellerName=car.seller_name||'—';
+  const displaySellerType=car.seller_type||'—';
+  const trust='<div class="trust-row"><span class="trust-chip good">Revisión manual Tixuz</span><span class="trust-chip good">WhatsApp protegido</span><span class="trust-chip">Reporte disponible</span></div>';
+  const descText = car.description||'';
   const originalLink = (!isDemo && car.source_url) ? `<a href="${escAttr(car.source_url)}" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:7px;text-decoration:none">Ver publicación original</a>` : '';
   const safetyNote = `
     <div class="detail-note">
-      <strong style="color:var(--text)">Compra segura:</strong> revisa documentos, evita anticipos y verifica el auto antes de pagar.
+      <strong style="color:var(--text)">Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto.
       <a href="mailto:soporte@tixuzautos.com?subject=Reporte%20de%20anuncio%20${encodeURIComponent(title)}" style="color:var(--accent);font-weight:700;text-decoration:none">Reportar anuncio</a>
     </div>`;
   const actionBlock = isDemo ? `
     <div class="detail-note">
-      <strong style="color:var(--text)">Inventario inicial de Tixuz Autos.</strong><br>
+      <strong style="color:var(--text)">Inventario activo de Tixuz Autos.</strong><br>
       Esta ficha muestra cómo se verá un anuncio activo. Para recibir compradores reales, publica tu propio auto.
     </div>
     <div class="detail-actions">
@@ -442,7 +862,7 @@ function openDetail(car){
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
     ${trust}
     <div class="dgrid">
-      <div class="di"><label>Kilometraje</label><span>${km} km</span></div>
+      <div class="di"><label>Kilometraje</label><span>${km}</span></div>
       <div class="di"><label>Transmisión</label><span>${escHTML(car.transmission||'—')}</span></div>
       <div class="di"><label>Combustible</label><span>${escHTML(car.fuel_type||'—')}</span></div>
       <div class="di"><label>Color</label><span>${escHTML(car.color||'—')}</span></div>
@@ -501,870 +921,8 @@ async function revealWA(id,btn,targetId){
   }
 }
 
-// ── LOT PROSPECTING ──
-const PROSPECT_KEY='tixuz_lot_prospects_v1';
-const PROSPECT_DAILY_GOAL=10;
-const LOT_LANDING_PUBLIC_URL='https://tixuzautos.com/publicar-auto/lotes?inv=prospectos-lotes';
-const LOT_INTAKE_PUBLIC_URL='https://tixuzautos.com/?lote=1&inv=prospectos-lotes';
-const PROSPECT_TEMPLATES={
-  founder:`Hola, son {nombre}? Soy del programa de Tixuz Autos en YouTube. Estamos armando inventario real por ciudad e invitando lotes fundadores esta semana.\n\nPueden publicar hasta 20 autos gratis por 90 dias, sin comision por venta, con compradores directo a su WhatsApp y revision humana antes de activar.\n\nPrimero revisen la invitacion aqui:\n${LOT_LANDING_PUBLIC_URL}`,
-  followup:`Buen dia, le doy seguimiento a la invitacion de Tixuz Autos. La etapa de lotes fundadores sigue abierta esta semana: hasta 20 autos gratis por 90 dias, sin comision y con contacto directo a su WhatsApp.\n\nSi les interesa, aqui pueden revisar como funciona:\n${LOT_LANDING_PUBLIC_URL}`,
-  inventory:`Para cargar su inventario en Tixuz Autos, entren aqui:\n${LOT_INTAKE_PUBLIC_URL}\n\nNecesitan: nombre del lote, WhatsApp, ciudad, un PIN de 4 digitos para gestionar su carga y la lista/archivo de autos con marca, modelo, ano, precio y fotos si las tienen.\n\nNo pedimos tarjeta ni datos bancarios. Revision estimada: 24 a 48 horas.`,
-  cost:`Por ahora cuesta $0 porque estamos en etapa piloto y queremos sumar inventario real antes de cobrar planes. La invitacion cubre hasta 20 autos gratis por 90 dias, sin comision por venta y sin pedir tarjeta.\n\nPueden revisar primero aqui:\n${LOT_LANDING_PUBLIC_URL}`,
-  trust:`Entiendo perfecto la duda. Para cuidarlos: no pedimos dinero, tarjeta, contrasenas ni datos bancarios. El PIN solo sirve para gestionar su carga, y los autos quedan en revision humana antes de activarse.\n\nPueden revisar la invitacion y decidir aqui:\n${LOT_LANDING_PUBLIC_URL}`
-};
-const PROSPECT_STATUS_LABELS={pendiente:'pendiente',contactado:'contactado',interesado:'interesado',no:'no'};
-function loadProspects(){
-  try{prospects=(JSON.parse(localStorage.getItem(PROSPECT_KEY)||'[]')||[]).map(normalizeProspect)}catch{prospects=[]}
-  return prospects;
-}
-function saveProspects(){localStorage.setItem(PROSPECT_KEY,JSON.stringify(prospects));}
-function prospectId(){return 'p_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7)}
-function localISODate(offset=0){
-  const d=new Date();
-  d.setDate(d.getDate()+Number(offset||0));
-  d.setMinutes(d.getMinutes()-d.getTimezoneOffset());
-  return d.toISOString().slice(0,10);
-}
-function shortDate(iso){
-  const s=String(iso||'').slice(0,10);
-  const m=s.match(/^(\d{4})-(\d{2})-(\d{2})$/);
-  return m?`${m[3]}/${m[2]}`:'';
-}
-function isDueProspect(p){
-  return p.status==='contactado'&&p.next_followup&&p.next_followup<=localISODate(0);
-}
-function isProspectTouchedToday(p){
-  return String(p?.last_contact||'').slice(0,10)===localISODate(0);
-}
-function openProspects(){
-  if(!hasOpsAccess())return requestOpsUnlock(openProspects);
-  loadProspects();
-  syncProspectTemplateText(false);
-  renderProspectSources();
-  renderProspects();
-  openO('prospectOv');
-}
-function openOperatorGuide(){
-  if(!hasOpsAccess())return requestOpsUnlock(openOperatorGuide);
-  openO('operatorGuideOv');
-}
-function prospectMsg(text,type=''){
-  const el=document.getElementById('prospectStatus');
-  if(!el)return;
-  el.textContent=text;
-  el.style.color=type==='bad'?'var(--danger)':type==='ok'?'var(--green)':type==='warn'?'var(--gold)':'var(--text3)';
-}
-function syncProspectTemplateText(force=false){
-  const key=document.getElementById('prospectTemplate')?.value||'founder';
-  const box=document.getElementById('prospectTemplateText');
-  if(!box)return;
-  if(force||!box.value.trim())box.value=PROSPECT_TEMPLATES[key]||PROSPECT_TEMPLATES.founder;
-}
-function changeProspectTemplate(){syncProspectTemplateText(true);renderProspects()}
-function resetProspectTemplate(){syncProspectTemplateText(true);renderProspects();prospectMsg('Plantilla restaurada.','ok')}
-function currentProspectTemplate(){
-  const key=document.getElementById('prospectTemplate')?.value||'founder';
-  return document.getElementById('prospectTemplateText')?.value.trim()||PROSPECT_TEMPLATES[key]||PROSPECT_TEMPLATES.founder;
-}
-function prospectSourceQueries(city){
-  const place=(city||'Mexico').trim();
-  return [
-    {label:'Google Maps',hint:'lotes con telefono publico',query:`lotes de autos usados ${place}`,url:`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`lotes de autos usados ${place}`)}`},
-    {label:'Google',hint:'directorios y paginas propias',query:`lotes autos usados ${place} WhatsApp`,url:`https://www.google.com/search?q=${encodeURIComponent(`lotes autos usados ${place} WhatsApp`)}`},
-    {label:'Seminuevos',hint:'lotes con inventario activo',query:`site:seminuevos.com lote autos ${place}`,url:`https://www.google.com/search?q=${encodeURIComponent(`site:seminuevos.com lote autos ${place}`)}`},
-    {label:'Facebook publico',hint:'paginas de negocio, no mensajes masivos',query:`site:facebook.com lote autos usados ${place}`,url:`https://www.google.com/search?q=${encodeURIComponent(`site:facebook.com lote autos usados ${place}`)}`}
-  ];
-}
-function renderProspectSources(){
-  const box=document.getElementById('prospectSources');
-  if(!box)return;
-  const city=document.getElementById('prospectCityFocus')?.value||'';
-  box.innerHTML=prospectSourceQueries(city).map(s=>`<a class="psource" href="${escAttr(s.url)}" target="_blank" rel="noopener"><strong>${escHTML(s.label)}</strong>${escHTML(s.hint)}<br><span style="color:var(--text3)">${escHTML(s.query)}</span></a>`).join('');
-}
-function openProspectSource(kind='maps'){
-  const city=document.getElementById('prospectCityFocus')?.value||'Mexico';
-  const sources=prospectSourceQueries(city);
-  const picked=sources.find(s=>String(s.label).toLowerCase().includes(kind))||sources[0];
-  window.open(picked.url,'_blank','noopener');
-  prospectMsg(`Búsqueda abierta para ${city||'Mexico'}. Copia fichas de lotes y vuelve a pegar.`, 'ok');
-}
-function prospectPhone10(v){
-  let d=String(v||'').replace(/\D/g,'');
-  if(d.startsWith('521')&&d.length>=13)d=d.slice(3);
-  else if(d.startsWith('52')&&d.length>=12)d=d.slice(2);
-  if(d.length>10)d=d.slice(-10);
-  return d;
-}
-function prospectEmail(v){
-  const m=String(v||'').match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i);
-  return m?m[0].toLowerCase():'';
-}
-function normalizeProspectUrl(raw){
-  let u=String(raw||'').trim().replace(/[),.;]+$/,'');
-  if(!u)return '';
-  if(!/^https?:\/\//i.test(u))u='https://'+u;
-  try{return new URL(u).toString()}catch(e){return ''}
-}
-function prospectUrls(v){
-  const s=String(v||'');
-  const matches=s.match(/(?:https?:\/\/|www\.)[^\s<>"']+|(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z]{2,}(?:\/[^\s<>"']*)?/ig)||[];
-  const seen=new Set(), out=[];
-  matches.forEach(raw=>{
-    if(raw.includes('@'))return;
-    if(/\b(?:p\.?m|a\.?m)\b/i.test(raw))return;
-    const u=normalizeProspectUrl(raw);
-    if(!u||seen.has(u))return;
-    seen.add(u);out.push(u);
-  });
-  return out.slice(0,8);
-}
-function prospectContactDetails(text){
-  const urls=prospectUrls(text);
-  const email=prospectEmail(text);
-  const facebook=urls.find(u=>/\/\/(?:www\.)?(facebook|fb)\.com\//i.test(u))||'';
-  const instagram=urls.find(u=>/\/\/(?:www\.)?instagram\.com\//i.test(u))||'';
-  const link=urls.find(u=>!u.includes('google.com/maps')&&!u.includes('maps.app.goo.gl')&&!/\/\/(?:www\.)?(facebook|fb)\.com\//i.test(u)&&!/\/\/(?:www\.)?instagram\.com\//i.test(u))||'';
-  return {email,link,facebook,instagram,urls};
-}
-function parseProspectLine(line){
-  const cells=csvLine(line, line.includes('\t')?'\t':',');
-  if(cells.length>=2){
-    const details=prospectContactDetails(cells.join(' '));
-    return {name:cells[0],whatsapp:cells[1],city:cells[2]||'',source:cells[3]||'',link:cells[4]||details.link,autos:cells[5]||'',notes:cells.slice(6).join(' '),email:details.email,facebook:details.facebook,instagram:details.instagram};
-  }
-  const details=prospectContactDetails(line);
-  const wa=mapsPhone(line)||prospectPhone10((line.match(/(?:\+?52)?[\s.-]*(?:\(?\d{2,3}\)?[\s.-]*)?\d{3,4}[\s.-]*\d{4}\b/)||[])[0]||'');
-  const clean=line.replace(/(?:\+?52)?[\s.-]*(?:\(?\d{2,3}\)?[\s.-]*)?\d{3,4}[\s.-]*\d{4}\b/g,'').replace(/\s+/g,' ').trim();
-  return {name:clean,whatsapp:wa,city:'',source:'manual',link:details.link,autos:'',notes:line,email:details.email,facebook:details.facebook,instagram:details.instagram};
-}
-function parseProspectRows(text){
-  const lines=String(text||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-  if(!lines.length)return [];
-  const first=lines[0].toLowerCase();
-  const hasHeader=/nombre|lote|whatsapp|telefono|tel[eé]fono|ciudad|fuente|link|email|correo|facebook|instagram|web/.test(first);
-  if(hasHeader){
-    const sep=lines[0].includes('\t')?'\t':',';
-    const headers=csvLine(lines[0],sep).map(normalizeHeader);
-    return lines.slice(1).map(line=>{
-      const cells=csvLine(line,sep),r={};
-      headers.forEach((h,i)=>r[h]=cells[i]||'');
-      return {
-        name:findVal(r,['nombre','lote','name','dealer','agencia'])||'',
-        whatsapp:findVal(r,['whatsapp','telefono','teléfono','phone','celular'])||'',
-        city:findVal(r,['ciudad','city','ubicacion','ubicación'])||'',
-        source:findVal(r,['fuente','source'])||'',
-        link:findVal(r,['link','url','web'])||'',
-        email:findVal(r,['email','correo','mail'])||'',
-        facebook:findVal(r,['facebook','fb'])||'',
-        instagram:findVal(r,['instagram','ig'])||'',
-        autos:findVal(r,['autos','inventario','cantidad'])||'',
-        notes:findVal(r,['notas','notes'])||'',
-        status:findVal(r,['estado','status'])||'',
-        next_followup:findVal(r,['proximo_seguimiento','seguimiento','followup','next_followup'])||'',
-        last_contact:findVal(r,['ultimo_contacto','last_contact'])||'',
-      };
-    });
-  }
-  return lines.map(parseProspectLine);
-}
-const MAPS_NOISE_RE=/^(indicaciones|directions|guardar|save|compartir|share|llamar|call|sitio web|website|enviar|send to|copiar|copy|reservar|menu|ordenar|cerrado|abierto|open|closed|closes|horario|hours|fotos|photos|reseñas|reviews|vista|street view|suggest|sugerir|reclamar|claim|ver todo|more|route|cómo llegar|como llegar|más información|mas información|tu historial de google maps|historial de google maps|índices|indices|añadir una etiqueta|anadir una etiqueta|servicios)$/i;
-const MAPS_CATEGORY_RE=/\b(auto|autos|seminuevo|seminuevos|usado|usados|car|cars|dealer|dealership|concesionario|agencia|lote|automotriz|veh[ií]culo|vehiculos)\b/i;
-function mapsCleanLine(line){
-  return String(line||'').replace(/[\uE000-\uF8FF]/g,' ').replace(/[^\S\r\n]+/g,' ').trim();
-}
-function mapsAddressLike(line){
-  const l=mapsCleanLine(line).toLowerCase();
-  return /\b(av\.?|avenida|calle|c\.|blvd|boulevard|carr\.?|carretera|piso|local|col\.?|colonia|alcald[ií]a|municipio|cp|c\.p\.|ciudad de m[eé]xico|cdmx|m[eé]xico|edo\.?|estado)\b/.test(l) || /^[a-z0-9]{3,}\+[a-z0-9]{2,}/i.test(l);
-}
-function mapsUrl(line){
-  return prospectContactDetails(line).link||prospectContactDetails(line).facebook||prospectContactDetails(line).instagram||'';
-}
-function mapsPhone(line){
-  const matches=String(line||'').match(/(?:\+?52[\s.-]*)?(?:\(?\d{2,3}\)?[\s.-]*)?\d{3,4}[\s.-]*\d{4}\b/g)||[];
-  for(const m of matches){
-    const d=prospectPhone10(m);
-    if(d.length===10)return d;
-  }
-  return '';
-}
-function mapsNameCandidate(line){
-  const l=mapsCleanLine(line);
-  if(l.length<3||l.length>90)return false;
-  if(!/[a-záéíóúñ]/i.test(l))return false;
-  if(MAPS_NOISE_RE.test(l))return false;
-  if(mapsAddressLike(l))return false;
-  if(mapsUrl(l)||mapsPhone(l))return false;
-  if(/\b(abierto|cerrado|cierra|abre|horario|p\.?m\.?|a\.?m\.?)\b/i.test(l))return false;
-  if(/\b(etiqueta|historial|google maps|sugerir|cambio|anadir|a.adir)\b/i.test(l))return false;
-  if(/^\d(?:\.\d)?(?:\s|\(|$)/.test(l))return false;
-  if(/^\(?\d+[\d,.\s]*\)?$/.test(l))return false;
-  if(/^(concesionario|agencia|tienda|automobile|used car|car dealer|lote de autos|autos usados|servicio|servicios|taller)\b/i.test(l))return false;
-  return true;
-}
-function mapsCityFromLines(lines,fallback=''){
-  const joined=normText((Array.isArray(lines)?lines:[String(lines||'')]).join(' '));
-  const cities=[
-    ['Guadalajara',/\b(guadalajara|zapopan|tlaquepaque|tonala|jal|jalisco|gdl)\b/],
-    ['CDMX',/\b(cdmx|ciudad de mexico|cuauhtemoc|algarin|mexico city)\b/],
-    ['Monterrey',/\b(monterrey|nuevo leon|san pedro|apodaca|guadalupe)\b/],
-    ['Querétaro',/\b(queretaro|qro)\b/],
-    ['Puebla',/\b(puebla|pue)\b/],
-    ['Tijuana',/\b(tijuana|baja california)\b/],
-    ['León',/\b(leon|guanajuato)\b/],
-    ['Mérida',/\b(merida|yucatan)\b/],
-    ['Toluca',/\b(toluca|estado de mexico|edo mex)\b/]
-  ];
-  const hit=cities.find(([,re])=>re.test(joined));
-  return hit?hit[0]:(fallback||'');
-}
-function titleFromDomain(link){
-  try{
-    const host=new URL(link).hostname.replace(/^www\./,'');
-    const base=host.split('.')[0].replace(/gdl$/i,' gdl').replace(/[-_]+/g,' ');
-    return base.split(/\s+/).filter(Boolean).map(w=>w.toLowerCase()==='gdl'?'GDL':w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join(' ');
-  }catch(e){return ''}
-}
-function prospectFallbackName(whatsapp='',city=''){
-  const wa=prospectPhone10(whatsapp);
-  const place=String(city||document.getElementById('prospectCityFocus')?.value||'').trim();
-  return `${place?`Prospecto ${place}`:'Prospecto'}${wa?` ${wa.slice(-4)}`:''}`.trim();
-}
-function mapsFallbackName(clean,phone,link,city){
-  const name=clean.find(mapsNameCandidate)||titleFromDomain(link);
-  return name||prospectFallbackName(phone,city);
-}
-function parseMapsBlock(lines){
-  const city=mapsCityFromLines(lines,document.getElementById('prospectCityFocus')?.value||'');
-  const clean=lines.map(mapsCleanLine).filter(Boolean).filter(l=>!MAPS_NOISE_RE.test(l));
-  if(!clean.length)return null;
-  const details=prospectContactDetails(clean.join('\n'));
-  const phone=clean.map(mapsPhone).find(Boolean)||'';
-  const link=details.link||clean.map(mapsUrl).find(Boolean)||'';
-  const name=mapsFallbackName(clean,phone,link,city);
-  const category=clean.find(l=>MAPS_CATEGORY_RE.test(l)&&!mapsNameCandidate(l))||'';
-  if(!phone)return null;
-  return {name,whatsapp:phone,city,source:'Google Maps',link,autos:'',notes:category,email:details.email,facebook:details.facebook,instagram:details.instagram};
-}
-function parseMapsByBlocks(text){
-  return String(text||'').split(/\n\s*\n+/).map(block=>parseMapsBlock(block.split(/\r?\n/))).filter(Boolean);
-}
-function parseMapsByScan(text){
-  const lines=String(text||'').split(/\r?\n/).map(mapsCleanLine).filter(Boolean).filter(l=>!MAPS_NOISE_RE.test(l));
-  const city=mapsCityFromLines(lines,document.getElementById('prospectCityFocus')?.value||'');
-  const rows=[];
-  let current=null;
-  lines.forEach((line,i)=>{
-    const next=lines.slice(i+1,i+6).join(' ');
-    const startsRecord=mapsNameCandidate(line)&&(MAPS_CATEGORY_RE.test(next)||mapsPhone(next)||/^\d(?:\.\d)?(?:\s|\(|$)/.test(lines[i+1]||'')||MAPS_CATEGORY_RE.test(line));
-    if(startsRecord){
-      if(current&&current.name&&current.whatsapp)rows.push(current);
-      current={name:line,whatsapp:'',city,source:'Google Maps',link:'',autos:'',notes:''};
-      return;
-    }
-    if(!current)return;
-    const phone=mapsPhone(line),link=mapsUrl(line);
-    if(phone&&!current.whatsapp)current.whatsapp=phone;
-    if(link&&!current.link)current.link=link;
-    if(MAPS_CATEGORY_RE.test(line)&&!current.notes&&!mapsNameCandidate(line))current.notes=line;
-  });
-  if(current&&current.name&&current.whatsapp)rows.push(current);
-  return rows;
-}
-function parseMapsLooseProspect(text){
-  const lines=String(text||'').split(/\r?\n/).map(mapsCleanLine).filter(Boolean).filter(l=>!MAPS_NOISE_RE.test(l));
-  if(!lines.length)return null;
-  const details=prospectContactDetails(lines.join('\n'));
-  const phone=lines.map(mapsPhone).find(Boolean)||'';
-  const link=details.link||lines.map(mapsUrl).find(Boolean)||'';
-  if(!phone&&!details.email&&!link&&!details.facebook&&!details.instagram)return null;
-  const city=mapsCityFromLines(lines,document.getElementById('prospectCityFocus')?.value||'');
-  const name=mapsFallbackName(lines,phone,link,city);
-  const category=lines.find(l=>MAPS_CATEGORY_RE.test(l)&&!mapsNameCandidate(l))||'';
-  return {name,whatsapp:phone,city,source:'Google Maps',link,autos:'',notes:category||'Importado desde ficha de Maps',email:details.email,facebook:details.facebook,instagram:details.instagram};
-}
-function parseMapsProspectRows(text){
-  const blockRows=parseMapsByBlocks(text);
-  const hasBlankBlocks=/\n\s*\n+/.test(String(text||''));
-  let rows=(blockRows.length&&(hasBlankBlocks||blockRows.some(r=>r.whatsapp)))?blockRows:[...blockRows,...parseMapsByScan(text)];
-  const loose=parseMapsLooseProspect(text);
-  if(!rows.length&&loose)rows=[loose];
-  else if(loose){
-    rows=rows.map(r=>{
-      if(prospectPhone10(r.whatsapp)!==prospectPhone10(loose.whatsapp))return r;
-      const fallbackLike=!r.name||/^Prospecto(?:\s|$)/i.test(r.name);
-      return {...r,name:fallbackLike?loose.name:r.name,city:r.city||loose.city,link:r.link||loose.link,email:r.email||loose.email,facebook:r.facebook||loose.facebook,instagram:r.instagram||loose.instagram,notes:r.notes||loose.notes};
-    });
-  }
-  const seen=new Set();
-  return rows.filter(r=>{
-    const nr=normalizeProspect(r);
-    if(!prospectHasAnyChannel(nr))return false;
-    const key=prospectUniqueKey(nr);
-    if(seen.has(key))return false;
-    seen.add(key);
-    return true;
-  });
-}
-function normalizeProspect(p){
-  const whatsapp=prospectPhone10(p.whatsapp||'');
-  const city=String(p.city||document.getElementById('prospectCityFocus')?.value||'').trim().slice(0,120);
-  const name=String(p.name||'').trim()||prospectFallbackName(whatsapp,city);
-  const details=prospectContactDetails([p.email,p.link,p.facebook,p.instagram,p.notes].join(' '));
-  const rawLink=normalizeProspectUrl(p.link);
-  const rawFacebook=normalizeProspectUrl(p.facebook)||details.facebook||(/\/\/(?:www\.)?(facebook|fb)\.com\//i.test(rawLink)?rawLink:'');
-  const rawInstagram=normalizeProspectUrl(p.instagram)||details.instagram||(/\/\/(?:www\.)?instagram\.com\//i.test(rawLink)?rawLink:'');
-  const cleanLink=(rawLink&&!/\/\/(?:www\.)?(facebook|fb)\.com\//i.test(rawLink)&&!/\/\/(?:www\.)?instagram\.com\//i.test(rawLink))?rawLink:details.link;
-  return {
-    id:p.id||prospectId(),
-    name:name.slice(0,120),
-    whatsapp,
-    city,
-    source:String(p.source||'manual').trim().slice(0,120),
-    link:(cleanLink||'').slice(0,500),
-    email:(prospectEmail(p.email)||details.email).slice(0,160),
-    facebook:(rawFacebook||'').slice(0,500),
-    instagram:(rawInstagram||'').slice(0,500),
-    no_whatsapp:!!p.no_whatsapp,
-    last_channel:String(p.last_channel||'').slice(0,40),
-    autos:String(p.autos||'').replace(/[^\d]/g,'').slice(0,4),
-    notes:String(p.notes||'').trim().slice(0,500),
-    status:PROSPECT_STATUS_LABELS[p.status]?p.status:'pendiente',
-    created_at:p.created_at||new Date().toISOString(),
-    last_contact:p.last_contact||'',
-    next_followup:String(p.next_followup||'').slice(0,10),
-    last_message:String(p.last_message||'').slice(0,1000),
-  };
-}
-function prospectCleanSummary(p){
-  if(!p)return '';
-  return [
-    `Nombre: ${p.name||'Sin nombre'}`,
-    p.whatsapp?`Telefono: ${p.whatsapp}${p.no_whatsapp?' (sin WhatsApp)':''}`:'',
-    p.city?`Ciudad: ${p.city}`:'',
-    p.email?`Email: ${p.email}`:'',
-    p.link?`Web: ${p.link}`:'',
-    p.facebook?`Facebook: ${p.facebook}`:'',
-    p.instagram?`Instagram: ${p.instagram}`:'',
-    `Mejor canal: ${prospectChannelLabel(bestProspectChannel(p))}`,
-    p.source?`Fuente: ${p.source}`:''
-  ].filter(Boolean).join('\n');
-}
-function showImportedProspect(p){
-  if(!p)return;
-  setActiveProspect(p.id);
-  const box=document.getElementById('prospectPaste');
-  if(box)box.value=prospectCleanSummary(p);
-}
-function addProspectRows(rawRows,label='prospectos'){
-  const rows=rawRows.map(normalizeProspect).filter(prospectHasAnyChannel);
-  if(!rows.length)return prospectMsg('No pude importar. Necesito al menos un teléfono, email, web, Facebook o Instagram.','bad');
-  loadProspects();
-  const seen=new Set(prospects.map(prospectUniqueKey));
-  let added=0, target=null;
-  rows.forEach(p=>{
-    const key=prospectUniqueKey(p);
-    if(seen.has(key)){
-      if(!target)target=prospects.find(x=>prospectUniqueKey(x)===key)||p;
-      return;
-    }
-    seen.add(key);prospects.push(p);added++;
-    if(!target)target=p;
-  });
-  saveProspects();renderProspects();
-  if(target)showImportedProspect(target);
-  prospectMsg(`${added} ${label} nuevos importados · ${rows.length-added} duplicados omitidos`, added?'ok':'warn');
-}
-function importPastedProspectsUnified(){
-  const text=document.getElementById('prospectPaste')?.value||'';
-  if(!text.trim())return prospectMsg('Pega primero el texto copiado de Google Maps.','bad');
-  return smartImportPasted(true);
-}
-function looksDelimitedProspects(text){
-  const lines=String(text||'').split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
-  const first=(lines[0]||'').toLowerCase();
-  if(/nombre|lote|whatsapp|telefono|tel[eé]fono|ciudad|fuente|link/.test(first))return true;
-  return lines.some(line=>{
-    const sep=line.includes('\t')?'\t':',';
-    const cells=csvLine(line,sep);
-    return cells.length>=3&&prospectPhone10(cells[1]).length===10;
-  });
-}
-function looksLikeMapsText(text){
-  return /maps\.app\.goo\.gl|google\.com\/maps|c[oó]mo llegar|indicaciones|concesionario|lote de autos|reseñas|reviews|compartir/i.test(String(text||''));
-}
-function detectProspectRows(text,preferMaps=false){
-  const mapsRows=parseMapsProspectRows(text);
-  const csvRows=parseProspectRows(text);
-  if((preferMaps||looksLikeMapsText(text))&&mapsRows.length)return {rows:mapsRows,label:'prospectos de Maps'};
-  if(looksDelimitedProspects(text)&&csvRows.length)return {rows:csvRows,label:'prospectos'};
-  if(mapsRows.length)return {rows:mapsRows,label:'prospectos de Maps'};
-  return {rows:csvRows,label:'prospectos'};
-}
-function smartImportPasted(preferMaps=false){
-  const text=document.getElementById('prospectPaste').value;
-  const found=detectProspectRows(text,preferMaps);
-  if(found.label==='prospectos de Maps'&&!found.rows.length){
-    return prospectMsg('No detecté teléfono válido. Puedes borrar todo y dejar solo el teléfono de 10 dígitos; el nombre es opcional.','bad');
-  }
-  return addProspectRows(found.rows,found.label);
-}
-async function pasteClipboardAndImportProspects(preferMaps=true){
-  if(!navigator.clipboard||!navigator.clipboard.readText){
-    return prospectMsg('Tu navegador no dejó leer el portapapeles. Pega el texto en el cuadro y usa Importar lo pegado.','warn');
-  }
-  try{
-    const text=await navigator.clipboard.readText();
-    if(!text.trim())return prospectMsg('El portapapeles está vacío. Copia primero la ficha o lista.','warn');
-    document.getElementById('prospectPaste').value=text;
-    smartImportPasted(preferMaps);
-  }catch(e){
-    prospectMsg('No pude leer el portapapeles. Pega manualmente y usa Importar lo pegado.','warn');
-  }
-}
-function importProspects(){
-  const text=document.getElementById('prospectPaste').value;
-  return addProspectRows(parseProspectRows(text),'prospectos');
-}
-function importMapsProspects(){
-  const text=document.getElementById('prospectPaste').value;
-  const rows=parseMapsProspectRows(text);
-  if(!rows.length)return prospectMsg('No detecté teléfono válido. Puedes borrar todo y dejar solo el teléfono de 10 dígitos; el nombre es opcional.','bad');
-  return addProspectRows(rows,'prospectos de Maps');
-}
-function clearProspectInput(){document.getElementById('prospectPaste').value=''}
-function addManualProspectFromFields(){
-  const name=(document.getElementById('manualProspectName')?.value||'').trim();
-  const whatsapp=prospectPhone10(document.getElementById('manualProspectPhone')?.value||'');
-  const city=(document.getElementById('manualProspectCity')?.value||document.getElementById('prospectCityFocus')?.value||'').trim();
-  const email=(document.getElementById('manualProspectEmail')?.value||'').trim();
-  const alt=(document.getElementById('manualProspectAlt')?.value||'').trim();
-  const details=prospectContactDetails([email,alt].join(' '));
-  if(whatsapp&&whatsapp.length!==10)return prospectMsg('El teléfono debe tener 10 dígitos. Ejemplo: 5515104493','bad');
-  addProspectRows([{name:name||prospectFallbackName(whatsapp,city),whatsapp,city,source:'manual',link:details.link,autos:'',notes:'',email:details.email||email,facebook:details.facebook,instagram:details.instagram}],'prospectos manuales');
-  ['manualProspectName','manualProspectPhone','manualProspectCity','manualProspectEmail','manualProspectAlt'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-}
-function lotIntakeLink(p={}){
-  try{
-    const u=new URL(LOT_INTAKE_PUBLIC_URL);
-    if(p.name)u.searchParams.set('nombre',p.name);
-    if(p.whatsapp)u.searchParams.set('wa',p.whatsapp);
-    if(p.city)u.searchParams.set('ciudad',p.city);
-    return u.toString();
-  }catch(e){return LOT_INTAKE_PUBLIC_URL}
-}
-async function copyLotIntakeLinkForProspect(id){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id)||activeProspect()||nextProspect()||{};
-  const link=lotIntakeLink(p);
-  try{
-    await navigator.clipboard.writeText(link);
-    prospectMsg(`Link de carga copiado: ${link}`,'ok');
-  }catch(e){
-    prospectMsg(`Link de carga: ${link}`,'ok');
-  }
-}
-function copyActiveLotIntakeLink(){
-  const p=activeProspect()||nextProspect();
-  if(!p)return prospectMsg(`Link de carga: ${LOT_INTAKE_PUBLIC_URL}`,'ok');
-  copyLotIntakeLinkForProspect(p.id);
-}
-function removeProspectsWithoutPhone(){
-  loadProspects();
-  const before=prospects.length;
-  prospects=prospects.filter(prospectHasAnyChannel);
-  const removed=before-prospects.length;
-  if(activeProspectId&&!prospects.some(p=>p.id===activeProspectId))setActiveProspect('');
-  saveProspects();renderProspects();
-  prospectMsg(removed?`${removed} prospectos sin canal eliminados.`:'No habia prospectos sin canal.','ok');
-}
-function fillTemplate(t,p){
-  const city=p.city||document.getElementById('prospectCityFocus')?.value||'tu ciudad';
-  return String(t||'').replaceAll('{nombre}',p.name||'').replaceAll('{ciudad}',city||'tu ciudad').replaceAll('{autos}',p.autos||'varios').replaceAll('{linkCarga}',lotIntakeLink(p)).replaceAll('{link}',p.link||'').replaceAll('{email}',p.email||'').trim();
-}
-function prospectMessage(p){
-  return fillTemplate(currentProspectTemplate(),p);
-}
-function prospectWaUrl(p){
-  if(!p.whatsapp||p.whatsapp.length!==10||p.no_whatsapp)return '';
-  return `https://web.whatsapp.com/send?phone=52${p.whatsapp}&text=${encodeURIComponent(prospectMessage(p))}&type=phone_number&app_absent=0`;
-}
-function prospectSafeLink(url){
-  const u=String(url||'').trim();
-  return /^https?:\/\//i.test(u)?u:'';
-}
-function prospectUniqueKey(p){
-  if(p.whatsapp)return 'tel:'+p.whatsapp;
-  if(p.email)return 'email:'+String(p.email).toLowerCase();
-  if(p.link)return 'web:'+String(p.link).toLowerCase();
-  if(p.facebook)return 'fb:'+String(p.facebook).toLowerCase();
-  if(p.instagram)return 'ig:'+String(p.instagram).toLowerCase();
-  return `name:${String(p.name||'')}|${String(p.city||'')}`.toLowerCase();
-}
-function prospectHasAnyChannel(p){
-  return !!(p&&((p.whatsapp&&p.whatsapp.length===10)||p.email||p.link||p.facebook||p.instagram));
-}
-function bestProspectChannel(p){
-  if(!p)return 'none';
-  if(p.whatsapp&&p.whatsapp.length===10&&!p.no_whatsapp)return 'whatsapp';
-  if(p.email)return 'email';
-  if(p.link)return 'web';
-  if(p.facebook)return 'facebook';
-  if(p.instagram)return 'instagram';
-  if(p.whatsapp&&p.whatsapp.length===10)return 'call';
-  return 'none';
-}
-function prospectChannelLabel(ch){
-  return ({whatsapp:'WhatsApp',email:'Email',web:'Web',facebook:'Facebook',instagram:'Instagram',call:'Llamada',sin_whatsapp:'Sin WhatsApp',none:'Sin canal'}[ch]||ch||'Sin canal');
-}
-function prospectEmailSubject(p){return `Invitación Tixuz Autos${p.city?' - '+p.city:''}`;}
-function prospectEmailUrl(p){
-  if(!p.email)return '';
-  return `mailto:${encodeURIComponent(p.email)}?subject=${encodeURIComponent(prospectEmailSubject(p))}&body=${encodeURIComponent(prospectMessage(p))}`;
-}
-function prospectCallScript(p){
-  return `Hola, soy del programa de Tixuz Autos en YouTube. Estamos invitando lotes fundadores a publicar hasta 20 autos gratis por 90 dias, sin comision y con contacto directo a su WhatsApp. ¿Me puede pasar con la persona que ve publicaciones de inventario?`;
-}
-function saveProspectTouch(p,channel){
-  if(!p)return;
-  p.last_channel=channel||bestProspectChannel(p);
-  saveProspects();
-  setActiveProspect(p.id);
-}
-async function copyProspectText(text){
-  try{await navigator.clipboard.writeText(text);return true}catch(e){return false}
-}
-async function openProspectEmail(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  saveProspectTouch(p,'email');
-  await copyProspectText(prospectMessage(p));
-  window.open(prospectEmailUrl(p),'_blank','noopener');
-  prospectMsg(`Email preparado para ${p.name}. Mensaje copiado; revisa y manda manualmente.`,'ok');
-}
-async function openProspectWeb(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  saveProspectTouch(p,'web');
-  await copyProspectText(prospectMessage(p));
-  if(p.link)window.open(p.link,'_blank','noopener');
-  prospectMsg(`Web abierta para ${p.name}. Mensaje copiado; busca contacto, formulario, correo o WhatsApp alterno.`,'ok');
-}
-async function openProspectSocial(id,kind){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  const url=kind==='instagram'?p.instagram:p.facebook;
-  if(!url)return openPreferredProspectContact(id);
-  saveProspectTouch(p,kind);
-  await copyProspectText(prospectMessage(p));
-  window.open(url,'_blank','noopener');
-  prospectMsg(`${prospectChannelLabel(kind)} abierto para ${p.name}. Mensaje copiado; pega y manda manualmente si corresponde.`,'ok');
-}
-async function openProspectCall(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  saveProspectTouch(p,'call');
-  await copyProspectText(prospectCallScript(p));
-  prospectMsg(`Guion de llamada copiado para ${p.name}: ${p.whatsapp||'sin telefono'}. Pide WhatsApp o correo del encargado.`,'ok');
-}
-function markProspectNoWhatsApp(id){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  p.no_whatsapp=true;
-  p.last_channel='sin_whatsapp';
-  saveProspects();renderProspects();
-  prospectMsg(`${p.name} marcado sin WhatsApp. Siguiente mejor canal: ${prospectChannelLabel(bestProspectChannel(p))}.`,'warn');
-}
-function openPreferredProspectContact(id){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id);if(!p)return prospectMsg('No encontré ese prospecto.','bad');
-  const ch=bestProspectChannel(p);
-  if(ch==='whatsapp')return openProspectWhatsApp(id);
-  if(ch==='email')return openProspectEmail(id);
-  if(ch==='web')return openProspectWeb(id);
-  if(ch==='facebook')return openProspectSocial(id,'facebook');
-  if(ch==='instagram')return openProspectSocial(id,'instagram');
-  if(ch==='call')return openProspectCall(id);
-  return copyProspect(id);
-}
-function setActiveProspect(id){
-  activeProspectId=id||'';
-  if(activeProspectId)sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
-  else sessionStorage.removeItem('tixuz_active_prospect');
-  renderProspectActive();
-}
-function activeProspect(){
-  loadProspects();
-  const p=prospects.find(p=>p.id===activeProspectId)||null;
-  if(!p)return null;
-  if(p.status==='pendiente'||p.status==='interesado'||isDueProspect(p))return p;
-  return null;
-}
-function renderProspectActive(){
-  const el=document.getElementById('prospectActive');
-  const pv=document.getElementById('prospectPreview');
-  const qr=document.getElementById('prospectQuickReplies');
-  if(!el)return;
-  const active=activeProspect();
-  const next=active||nextProspect();
-  if(!next){
-    el.innerHTML='Siguiente: sin prospectos.';
-    if(pv)pv.textContent='El mensaje se llena cuando importes un lote.';
-    if(qr)qr.style.display='none';
-    return;
-  }
-  if(qr)qr.style.display='flex';
-  const label=active?'Activo':'Siguiente';
-  const ch=bestProspectChannel(next);
-  const phone=next.whatsapp?` · ${escHTML(next.whatsapp)}${next.no_whatsapp?' sin WhatsApp':''}`:' · sin telefono';
-  const follow=next.next_followup?` · sigue ${escHTML(shortDate(next.next_followup))}`:'';
-  el.innerHTML=`${label}: <strong>${escHTML(next.name)}</strong> · ${escHTML(next.city||'sin ciudad')}${phone}${follow} <span class="channel-badge ${ch==='call'?'warn':''}">${escHTML(prospectChannelLabel(ch))}</span>`;
-  const contactBits=[next.email&&`Email ${next.email}`,next.link&&'Web',next.facebook&&'Facebook',next.instagram&&'Instagram'].filter(Boolean).join(' · ');
-  if(pv)pv.textContent=`Siguiente acción: ${prospectChannelLabel(ch)}${contactBits?' · '+contactBits:''}. Mensaje: ${prospectMessage(next).slice(0,190)}${prospectMessage(next).length>190?'...':''}`;
-}
-async function copyActiveProspectReply(kind='followup'){
-  loadProspects();
-  const p=activeProspect()||nextProspect();
-  if(!p)return prospectMsg('No hay prospecto activo para responder.','warn');
-  const key=PROSPECT_TEMPLATES[kind]?kind:'followup';
-  const msg=fillTemplate(PROSPECT_TEMPLATES[key],p);
-  const ok=await copyProspectText(msg);
-  p.last_message=msg.slice(0,1000);
-  p.last_contact=new Date().toISOString();
-  if(key==='inventory'){
-    p.status='interesado';
-    p.next_followup=localISODate(1);
-  }else if(key==='followup'){
-    p.status='contactado';
-    p.next_followup=localISODate(2);
-  }else if(p.status==='pendiente'){
-    p.status='contactado';
-    p.next_followup=localISODate(1);
-  }
-  p.last_channel=p.last_channel||bestProspectChannel(p);
-  activeProspectId=p.id;
-  sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
-  saveProspects();renderProspects();
-  const labels={followup:'seguimiento',cost:'costo $0',trust:'confianza',inventory:'link de carga'};
-  prospectMsg(`${ok?'Copiada':'Respuesta lista'}: ${labels[key]||key} para ${p.name}.`, ok?'ok':'warn');
-}
-async function copyProspect(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  const msg=prospectMessage(p);
-  await navigator.clipboard.writeText(msg);
-  p.last_message=msg.slice(0,1000);
-  saveProspects();
-  setActiveProspect(id);
-  prospectMsg(`Mensaje copiado para ${p.name}`,'ok');
-}
-function openProspectWhatsApp(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  const url=prospectWaUrl(p);
-  if(!url)return copyProspect(id);
-  saveProspectTouch(p,'whatsapp');
-  navigator.clipboard?.writeText(prospectMessage(p)).catch(()=>{});
-  window.open(url,'_blank','noopener');
-  prospectMsg(`WhatsApp abierto y mensaje copiado para ${p.name}. Si WhatsApp dice que el número no existe, ese teléfono no tiene WhatsApp; marca No / descartar o intenta otro teléfono público.`,'ok');
-}
-function setProspectStatus(id,status){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  p.status=status;
-  if(status==='contactado'){
-    p.last_contact=new Date().toISOString();
-    if(!p.next_followup)p.next_followup=localISODate(2);
-  }
-  if(status==='interesado'||status==='no'){
-    p.last_contact=new Date().toISOString();
-    p.next_followup='';
-  }
-  saveProspects();renderProspects();
-}
-function setProspectFollowup(id,days){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  p.next_followup=localISODate(days);
-  if(p.status==='pendiente')p.status='contactado';
-  saveProspects();renderProspects();
-  prospectMsg(`Seguimiento para ${p.name}: ${days===0?'hoy':shortDate(p.next_followup)}`,'ok');
-}
-function editProspectNotes(id){
-  loadProspects();
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  const next=prompt('Notas del prospecto',p.notes||'');
-  if(next===null)return;
-  p.notes=String(next||'').trim().slice(0,500);
-  saveProspects();renderProspects();
-}
-function nextProspect(){
-  loadProspects();
-  return prospects.find(p=>prospectHasAnyChannel(p)&&isDueProspect(p))||
-    prospects.find(p=>p.status==='pendiente'&&prospectHasAnyChannel(p))||null;
-}
-function advanceActiveProspect(){
-  const next=nextProspect();
-  activeProspectId=next?.id||'';
-  if(activeProspectId)sessionStorage.setItem('tixuz_active_prospect',activeProspectId);
-  else sessionStorage.removeItem('tixuz_active_prospect');
-  return next;
-}
-function openNextProspect(){
-  const p=nextProspect();
-  if(!p)return prospectMsg('No hay prospectos pendientes con canal de contacto.','warn');
-  openPreferredProspectContact(p.id);
-}
-async function copyNextProspect(){
-  const p=nextProspect();
-  if(!p)return prospectMsg('No hay prospectos pendientes.','warn');
-  setActiveProspect(p.id);
-  await copyProspect(p.id);
-}
-function prepareNextProspect(){
-  const p=activeProspect()||nextProspect();
-  if(!p)return prospectMsg('No hay prospectos pendientes con canal de contacto.','warn');
-  openPreferredProspectContact(p.id);
-}
-function markActiveProspectSent(days=1){
-  loadProspects();
-  const p=activeProspect()||nextProspect();
-  if(!p)return prospectMsg('No hay prospecto activo. Primero prepara el siguiente.','warn');
-  p.status='contactado';
-  p.last_contact=new Date().toISOString();
-  p.next_followup=localISODate(days);
-  p.last_channel=p.last_channel||bestProspectChannel(p);
-  saveProspects();
-  const next=advanceActiveProspect();
-  renderProspects();
-  prospectMsg(`${p.name} marcado como enviado. Seguimiento: ${shortDate(p.next_followup)}.${next?` Siguiente: ${next.name}.`:' Ya no quedan pendientes con canal.'}`, 'ok');
-}
-function prospectToLot(id){
-  const p=prospects.find(x=>x.id===id);if(!p)return;
-  closeO('prospectOv');openLotIntake();
-  document.getElementById('lotName').value=p.name||'';
-  document.getElementById('lotWA').value=p.whatsapp||'';
-  document.getElementById('lotCity').value=p.city||'';
-  setProspectStatus(id,'interesado');
-}
-function removeProspect(id){
-  prospects=prospects.filter(p=>p.id!==id);saveProspects();renderProspects();
-}
-function exportProspects(){
-  loadProspects();
-  const headers=['nombre','whatsapp','sin_whatsapp','email','web','facebook','instagram','mejor_canal','ciudad','fuente','autos','estado','ultimo_contacto','proximo_seguimiento','ultimo_canal','notas','ultimo_mensaje'];
-  const lines=[headers.join(',')].concat(prospects.map(p=>[p.name,p.whatsapp,p.no_whatsapp?'si':'',p.email,p.link,p.facebook,p.instagram,prospectChannelLabel(bestProspectChannel(p)),p.city,p.source,p.autos,p.status,p.last_contact,p.next_followup,p.last_channel,p.notes,p.last_message].map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',')));
-  const blob=new Blob([lines.join('\n')],{type:'text/csv;charset=utf-8'});
-  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='tixuz-prospectos-lotes.csv';a.click();URL.revokeObjectURL(a.href);
-}
-function prospectMatchesView(p){
-  const filter=document.getElementById('prospectFilter')?.value||'all';
-  if(filter==='due'&&!isDueProspect(p))return false;
-  if(filter!=='all'&&filter!=='due'&&p.status!==filter)return false;
-  const q=(document.getElementById('prospectSearch')?.value||'').trim().toLowerCase();
-  if(!q)return true;
-  return [p.name,p.whatsapp,p.email,p.link,p.facebook,p.instagram,p.city,p.source,p.autos,p.status,p.notes,p.next_followup,bestProspectChannel(p)].join(' ').toLowerCase().includes(q);
-}
-function prospectRank(p){
-  if(isDueProspect(p))return 0;
-  if(p.status==='pendiente')return 1;
-  if(p.status==='contactado')return 2;
-  if(p.status==='interesado')return 3;
-  return 4;
-}
-function todayProspectQueue(limit=PROSPECT_DAILY_GOAL){
-  loadProspects();
-  return prospects
-    .filter(p=>prospectHasAnyChannel(p)&&(isDueProspect(p)||p.status==='pendiente'))
-    .sort((a,b)=>prospectRank(a)-prospectRank(b)||String(a.created_at).localeCompare(String(b.created_at)))
-    .slice(0,Math.max(1,Number(limit)||PROSPECT_DAILY_GOAL));
-}
-function renderProspectTodayPlan(stats={}){
-  const box=document.getElementById('prospectTodayPlan');
-  if(!box)return;
-  const touched=Number(stats.today||0);
-  const remaining=Math.max(PROSPECT_DAILY_GOAL-touched,0);
-  if(!prospects.length){
-    box.innerHTML='<strong>Plan de hoy</strong><p>Carga prospectos para que Tixuz arme la cola diaria.</p>';
-    return;
-  }
-  const limit=remaining>0?Math.min(PROSPECT_DAILY_GOAL,Math.max(remaining,3)):3;
-  const queue=todayProspectQueue(limit);
-  if(!queue.length){
-    box.innerHTML=`<strong>Plan de hoy: ${touched}/${PROSPECT_DAILY_GOAL}</strong><p>No hay prospectos pendientes con canal. Importa mas lotes o revisa interesados.</p>`;
-    return;
-  }
-  const title=remaining>0?`Plan de hoy: faltan ${remaining} contactos`:`Meta de hoy completa: ${touched}/${PROSPECT_DAILY_GOAL}`;
-  box.innerHTML=`<strong>${escHTML(title)}</strong><p>Trabaja de arriba hacia abajo: preparar contacto, enviar, marcar enviado y dejar seguimiento para manana.</p><div class="today-list">${queue.map((p,i)=>`<div class="today-pill"><b>${i+1}. ${escHTML(p.name)}</b>${escHTML(p.city||'Sin ciudad')} · ${escHTML(prospectChannelLabel(bestProspectChannel(p)))}${isDueProspect(p)?' · seguimiento hoy':''}</div>`).join('')}</div>`;
-}
-function todayProspectPlanText(){
-  loadProspects();
-  const touched=prospects.filter(isProspectTouchedToday).length;
-  const remaining=Math.max(PROSPECT_DAILY_GOAL-touched,0);
-  const queue=todayProspectQueue(remaining>0?Math.min(PROSPECT_DAILY_GOAL,Math.max(remaining,3)):3);
-  const lines=[
-    `Plan Tixuz Prospectos ${localISODate(0)}`,
-    `Enviados hoy: ${touched}/${PROSPECT_DAILY_GOAL}`,
-    remaining>0?`Faltan: ${remaining}`:'Meta diaria completa',
-    ''
-  ];
-  queue.forEach((p,i)=>{
-    lines.push(`${i+1}. ${p.name} | ${p.city||'sin ciudad'} | ${prospectChannelLabel(bestProspectChannel(p))} | ${p.whatsapp||p.email||p.link||p.facebook||p.instagram||''}`);
-  });
-  return lines.join('\n').trim();
-}
-async function copyTodayProspectPlan(){
-  const text=todayProspectPlanText();
-  await copyProspectText(text);
-  prospectMsg('Plan de hoy copiado. Trabaja la lista y marca cada envio.', 'ok');
-}
-function renderProspects(){
-  loadProspects();
-  renderProspectSources();
-  const stats={pendiente:0,contactado:0,interesado:0,no:0,due:0};
-  prospects.forEach(p=>stats[p.status]=(stats[p.status]||0)+1);
-  stats.due=prospects.filter(isDueProspect).length;
-  stats.today=prospects.filter(isProspectTouchedToday).length;
-  const s=document.getElementById('prospectStats');
-  if(s)s.innerHTML=`<div class="pstat"><strong>${stats.today||0}/${PROSPECT_DAILY_GOAL}</strong><span>Enviados hoy</span></div><div class="pstat"><strong>${stats.pendiente||0}</strong><span>Pendientes</span></div><div class="pstat"><strong>${stats.due||0}</strong><span>Tocan hoy</span></div><div class="pstat"><strong>${stats.contactado||0}</strong><span>Contactados</span></div><div class="pstat"><strong>${stats.interesado||0}</strong><span>Interesados</span></div><div class="pstat"><strong>${stats.no||0}</strong><span>No / descartar</span></div>`;
-  renderProspectTodayPlan(stats);
-  renderProspectActive();
-  const table=document.getElementById('prospectTable');
-  if(!table)return;
-  if(!prospects.length){table.innerHTML='<div style="padding:16px;color:var(--text3);font-size:.82rem">Carga prospectos para empezar la cola.</div>';prospectMsg('Sin prospectos todavía.');return}
-  const rows=prospects.filter(prospectMatchesView).sort((a,b)=>prospectRank(a)-prospectRank(b)||String(a.created_at).localeCompare(String(b.created_at)));
-  prospectMsg(`${prospects.length} prospectos cargados · ${rows.length} visibles · siguiente: ${(nextProspect()?.name)||'ninguno'}.`);
-  if(!rows.length){table.innerHTML='<div style="padding:16px;color:var(--text3);font-size:.82rem">No hay prospectos con ese filtro.</div>';return}
-  table.innerHTML=`<table><thead><tr><th>Estado</th><th>Lote</th><th>Fuente</th><th>Seguimiento</th><th>Mensaje / acciones</th></tr></thead><tbody>${rows.map(p=>{
-    const wa=prospectWaUrl(p);
-    const sourceUrl=prospectSafeLink(p.link);
-    const due=isDueProspect(p);
-    const ch=bestProspectChannel(p);
-    const channelClass=ch==='call'?'warn':'';
-    const contacts=[p.whatsapp&&`Tel ${p.whatsapp}${p.no_whatsapp?' sin WA':''}`,p.email&&`Email`,p.link&&`Web`,p.facebook&&`Facebook`,p.instagram&&`Instagram`].filter(Boolean).map(x=>`<span>${escHTML(x)}</span>`).join('');
-    return `<tr>
-      <td><span class="pstatus ${escAttr(p.status)}">${escHTML(p.status)}</span></td>
-      <td><strong>${escHTML(p.name)}</strong><br><span class="pmeta">${escHTML(p.city||'Sin ciudad')} · ${escHTML(p.autos||'?')} autos</span><br><span class="channel-badge ${channelClass}">${escHTML(prospectChannelLabel(ch))}</span>${contacts?`<div class="contact-list">${contacts}</div>`:''}${p.notes?`<div class="pmeta">${escHTML(p.notes)}</div>`:''}</td>
-      <td>${sourceUrl?`<a href="${escAttr(sourceUrl)}" target="_blank" rel="noopener" style="color:var(--accent)">web</a>`:escHTML(p.source||'manual')}${p.email?`<div class="pmeta">${escHTML(p.email)}</div>`:''}${p.facebook?`<div><a href="${escAttr(p.facebook)}" target="_blank" rel="noopener" style="color:var(--accent)">Facebook</a></div>`:''}${p.instagram?`<div><a href="${escAttr(p.instagram)}" target="_blank" rel="noopener" style="color:var(--accent)">Instagram</a></div>`:''}</td>
-      <td><span class="pdue ${due?'due':''}">${p.next_followup?(due?'Toca hoy ':'Sigue ')+shortDate(p.next_followup):'Sin fecha'}</span>${p.last_contact?`<div class="pmeta">Ultimo ${shortDate(p.last_contact)}</div>`:''}${p.last_channel?`<div class="pmeta">Canal: ${escHTML(prospectChannelLabel(p.last_channel))}</div>`:''}</td>
-      <td><div class="pactions">
-        <button onclick="openPreferredProspectContact('${escJS(p.id)}')">Preparar</button>
-        ${wa?`<button onclick="openProspectWhatsApp('${escJS(p.id)}')">WhatsApp</button>`:''}
-        ${p.whatsapp?`<button onclick="markProspectNoWhatsApp('${escJS(p.id)}')">Sin WhatsApp</button>`:''}
-        ${p.email?`<button onclick="openProspectEmail('${escJS(p.id)}')">Email</button>`:''}
-        ${p.link?`<button onclick="openProspectWeb('${escJS(p.id)}')">Web</button>`:''}
-        ${p.facebook?`<button onclick="openProspectSocial('${escJS(p.id)}','facebook')">Facebook</button>`:''}
-        ${p.instagram?`<button onclick="openProspectSocial('${escJS(p.id)}','instagram')">Instagram</button>`:''}
-        ${p.whatsapp?`<button onclick="openProspectCall('${escJS(p.id)}')">Llamar</button>`:''}
-        <button onclick="copyProspect('${escJS(p.id)}')">Copiar</button>
-        <button onclick="setProspectStatus('${escJS(p.id)}','contactado')">Contactado</button>
-        <button onclick="setProspectFollowup('${escJS(p.id)}',1)">Mañana</button>
-        <button onclick="setProspectFollowup('${escJS(p.id)}',3)">3 días</button>
-        <button onclick="editProspectNotes('${escJS(p.id)}')">Nota</button>
-        <button onclick="setProspectStatus('${escJS(p.id)}','interesado')">Interesado</button>
-        <button onclick="copyLotIntakeLinkForProspect('${escJS(p.id)}')">Link carga</button>
-        <button onclick="setProspectStatus('${escJS(p.id)}','no')">No</button>
-        <button onclick="removeProspect('${escJS(p.id)}')">Quitar</button>
-      </div></td>
-    </tr>`;
-  }).join('')}</tbody></table>`;
-}
-
-// ── LOT FOUNDER INTAKE ──
+// -- SELLER INTAKE --
+// ── SELLER INVENTORY INTAKE ──
 function openLotIntake(){
   document.getElementById('lotErr').style.display='none';
   prefillLotIntakeFromUrl();
@@ -1502,7 +1060,7 @@ function normalizeLotRow(raw){
     fuel_type:String(findVal(raw,['fuel_type','combustible'])||(/diesel|diésel/i.test(text)?'Diésel':/hibrid|híbr/i.test(text)?'Híbrido':/elect/i.test(text)?'Eléctrico':'Gasolina')).trim(),
     color:String(findVal(raw,['color'])||'No especificado').trim(),
     location:String(findVal(raw,['location','ubicacion','ubicación','ciudad'])||document.getElementById('lotCity')?.value||'México').trim(),
-    description:String(findVal(raw,['description','descripcion','descripción'])||title||'Inventario de lote fundador Tixuz Autos.').trim(),
+    description:String(findVal(raw,['description','descripcion','descripción'])||title||'Inventario autorizado para Tixuz Autos.').trim(),
     images,
     source_url:String(findVal(raw,['source_url','url','link'])||'').trim(),
   };
@@ -1609,7 +1167,7 @@ async function analyzeLotInventory(){
     if(btn){btn.disabled=false;btn.textContent='Acomodar inventario'}
   }
 }
-async function submitLotFounder(){
+async function submitLotInventory(){
   const err=document.getElementById('lotErr');
   const btn=document.getElementById('lotSubmitBtn');
   const lot={name:document.getElementById('lotName').value.trim(),whatsapp:lotDigits(document.getElementById('lotWA').value),city:document.getElementById('lotCity').value.trim(),pin:document.getElementById('lotPin').value.trim()};
@@ -1621,7 +1179,7 @@ async function submitLotFounder(){
   if(!valid.length)return ferr(err,'No hay autos válidos para enviar. Revisa marca, modelo, año y precio.');
   err.style.display='none';btn.disabled=true;btn.innerHTML='<div class="spin"></div> Enviando a revisión…';
   try{
-    const r=await fetch('/.netlify/functions/lot-founder-intake',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lot,listings:valid,authorized:true})});
+    const r=await fetch('/.netlify/functions/seller-program-intake',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lot,listings:valid,authorized:true})});
     const d=await r.json().catch(()=>({}));
     if(!r.ok||!d.ok)throw new Error(d.error||`HTTP ${r.status}`);
     lotMsg(`${d.inserted} autos enviados a revisión · ${d.needs_photos||0} necesitan fotos · ${d.skipped||0} omitidos`, 'ok');
@@ -1633,7 +1191,7 @@ async function submitLotFounder(){
 
 // ── SELL ──
 function openSell(pre={}){
-  step=1;uploadedImgs=[];selPlan='free_launch';
+  step=1;uploadedImgs=[];selPlan='basic';
   document.querySelectorAll('.field-error').forEach(n=>n.remove());
   if(pre.make)document.getElementById('sMake').value=pre.make||'';
   if(pre.model)document.getElementById('sModel').value=pre.model||'';
@@ -1645,7 +1203,7 @@ function openSell(pre={}){
   document.getElementById('btnNext').textContent='Siguiente →';
   document.getElementById('e1').style.display='none';
   document.getElementById('e3').style.display='none';
-  renderPhotoGrid();plans = plans.length ? withLaunchPlan(plans) : [...DEFAULT_PLANS];renderPlanCards();loadPlans();openO('sellOv');scrollSellModalTop();
+  renderPhotoGrid();plans = plans.length ? withBasicPlan(plans) : [...DEFAULT_PLANS];renderPlanCards();loadPlans();openO('sellOv');scrollSellModalTop();
 }
 function stepNext(){
   if(step===1){
@@ -1675,7 +1233,7 @@ function goStep(n){
   document.getElementById('st'+n).className='stab active';
   document.getElementById('btnBack').style.display=n>1?'':'none';
   document.getElementById('btnNext').textContent=n===3?publishButtonLabel():'Siguiente →';
-  if(n===3){plans = plans.length ? withLaunchPlan(plans) : [...DEFAULT_PLANS];renderPlanCards();updatePublishButton();}
+  if(n===3){plans = plans.length ? withBasicPlan(plans) : [...DEFAULT_PLANS];renderPlanCards();updatePublishButton();}
   scrollSellModalTop();
 }
 function ferr(el,msg,fieldId){
@@ -1809,36 +1367,101 @@ async function loadPlans(){
     const r=await fetch('/.netlify/functions/get-pricing',{cache:'no-store'});
     if(!r.ok)throw new Error('pricing '+r.status);
     const data=await r.json();
-    if(Array.isArray(data)&&data.length){plans=withLaunchPlan(data);renderPlanCards();renderPlansBody();updatePublishButton()}
+    if(Array.isArray(data)&&data.length){plans=withBasicPlan(data);renderPlanCards();renderPlansBody();updatePublishButton()}
   }catch(err){console.warn('Usando planes locales por fallback',err)}
 }
 function planBullets(p,compact=false){
-  if(p.key==='free_launch')return `<li>${p.max_photos} fotos</li><li>${p.active_days} días activo</li><li>Sin pago por lanzamiento</li><li>Revisión humana antes de publicar</li><li>Contacto directo por WhatsApp</li>`;
-  return `<li>${p.max_photos} fotos</li><li>${p.active_days} días${compact?'':' activo'}</li>${p.key==='featured'?'<li>Destacado en grid</li>':''}${p.key==='pro'?'<li>Siempre arriba</li><li>Estadísticas</li>':''}`;
+  if(p.key==='basic')return `<li>${p.max_photos} fotos</li><li>${p.active_days} días activo</li><li>Gratis</li><li>Revisión humana antes de publicar</li><li>Contacto directo por WhatsApp</li>`;
+  return `<li>${p.max_photos} fotos</li><li>${p.active_days} días${compact?'':' activo'}</li>${p.key==='featured'?'<li>Destacado en grid</li><li>Pago único · sin renovación</li>':''}${p.key==='pro'?'<li>Prioridad máxima en el grid</li><li>Estadísticas</li><li>Pago único · sin renovación</li>':''}`;
 }
+function planPriceSuffix(p){return p.interval_type==='recurring'?' MXN/mes':' MXN · pago único'}
 function renderPlanCards(){
   const c=document.getElementById('planCards');
   if(!plans.length)plans=[...DEFAULT_PLANS];
-  plans=withLaunchPlan(plans);
-  if(!plans.some(p=>p.key===selPlan))selPlan=plans[0]?.key||'free_launch';
+  plans=withBasicPlan(plans);
+  if(!plans.some(p=>p.key===selPlan))selPlan=plans[0]?.key||'basic';
   if(!plans.length){c.innerHTML='<div style="color:var(--text3);grid-column:1/-1;text-align:center">Sin planes</div>';return}
-  c.innerHTML=plans.map(p=>`<div class="pcard ${p.key===selPlan?'sel':''}" onclick="selPlanFn('${escJS(p.key)}')">
+  c.innerHTML=plans.map(p=>{
+    const soon=planIsComingSoon(p);
+    return `<div class="pcard ${p.key===selPlan?'sel':''}${soon?' soon':''}"${soon?' aria-disabled="true"':` onclick="selPlanFn('${escJS(p.key)}')"`}>
     <h4>${escHTML(p.name)}</h4>
-    <div class="pp">$${Number(p.price_mxn)||0}<sub> MXN${p.interval_type==='recurring'?'/mes':''}</sub></div>
+    <div class="pp">$${Number(p.price_mxn)||0}<sub>${p.key==='basic'?' MXN · gratis':planPriceSuffix(p)}</sub></div>
+    ${soon?'<div class="soon-badge">Próximamente</div>':''}
     <ul>${planBullets(p,true)}</ul>
-  </div>`).join('');
+  </div>`}).join('');
   updatePublishButton();
 }
-function selPlanFn(k){selPlan=k;renderPlanCards();updatePublishButton()}
-function renderPlansBody(){
-  const planList = withLaunchPlan((plans && plans.length) ? plans : DEFAULT_PLANS);
-  document.getElementById('plansBody').innerHTML=`<div class="pcards">${planList.map(p=>`<div class="pcard">
-    <h4>${p.name}</h4>
-    <div class="pp">$${p.price_mxn}<sub> MXN${p.interval_type==='recurring'?'/mes':''}</sub></div>
-    <ul>${planBullets(p)}</ul>
-  </div>`).join('')}</div>`;
+function selPlanFn(k){
+  const p=plans.find(x=>x&&x.key===k);
+  if(planIsComingSoon(p)){showToast('Ese plan estará disponible próximamente. Por lanzamiento, publicar es gratis.','success');return}
+  selPlan=k;renderPlanCards();updatePublishButton()
 }
-function openPlans(){plans = plans.length ? withLaunchPlan(plans) : [...DEFAULT_PLANS];renderPlansBody();openO('plansOv')}
+function renderPlansBody(){
+  const planList = withBasicPlan((plans && plans.length) ? plans : DEFAULT_PLANS);
+  document.getElementById('plansBody').innerHTML=`<div class="pcards">${planList.map(p=>`<div class="pcard${planIsComingSoon(p)?' soon':''}">
+    <h4>${p.name}</h4>
+    <div class="pp">$${p.price_mxn}<sub>${p.key==='basic'?' MXN · gratis':planPriceSuffix(p)}</sub></div>
+    ${planIsComingSoon(p)?'<div class="soon-badge">Próximamente</div>':''}
+    <ul>${planBullets(p)}</ul>
+  </div>`).join('')}</div><div class="detail-note" style="margin-top:14px"><strong style="color:var(--text)">Publicar es gratis por lanzamiento.</strong> Los planes Destacado y PRO estarán disponibles próximamente. Tixuz no recibe ni custodia el pago del vehículo.</div>`;
+}
+function openPlans(){plans = plans.length ? withBasicPlan(plans) : [...DEFAULT_PLANS];renderPlansBody();openO('plansOv')}
+
+function normalizeCreateListingResult(data){
+  let result=Array.isArray(data)?data[0]:data;
+  if(typeof result==='string'){
+    try{result=JSON.parse(result)}catch{}
+  }
+  return result&&typeof result==='object'?result:{};
+}
+function rememberPublishPin({listingId,wa,pin}){
+  sessionStorage.setItem('tp_lid',listingId||'');
+  sessionStorage.setItem('tp_wa',wa);
+  sessionStorage.setItem('tp_pin',pin);
+  try{
+    const key='tixuz_publish_credentials';
+    const saved=JSON.parse(localStorage.getItem(key)||'[]');
+    const rows=Array.isArray(saved)?saved.filter(x=>x&&x.listing_id!==listingId):[];
+    rows.unshift({listing_id:listingId,whatsapp:wa,pin,saved_at:new Date().toISOString()});
+    localStorage.setItem(key,JSON.stringify(rows.slice(0,10)));
+  }catch(err){console.warn('No se pudo guardar el PIN localmente',err)}
+}
+function showPendingReviewSuccess({listingId,wa,pin}){
+  rememberPublishPin({listingId,wa,pin});
+  const idEl=document.getElementById('publishSuccessId');
+  if(idEl)idEl.textContent=listingId||'';
+  const waEl=document.getElementById('mlWA');
+  const pinEl=document.getElementById('mlPin');
+  if(waEl)waEl.value=wa;
+  if(pinEl)pinEl.value=pin;
+  closeO('sellOv');
+  if(document.getElementById('publishSuccessOv'))openO('publishSuccessOv');
+  else showToast('✅ ¡Listo! Tu anuncio se envió a revisión. En cuanto lo aprobemos (usualmente pocas horas) aparecerá publicado. Te avisamos por WhatsApp.','success');
+}
+async function createBasicListing(listingData){
+  const client=getDb();
+  if(!client)throw new Error('Supabase aún no cargó. Intenta de nuevo.');
+  const {data,error}=await client.rpc('create_listing',{
+    p_make:listingData.make,
+    p_model:listingData.model,
+    p_year:Number(listingData.year),
+    p_price:Number(listingData.price),
+    p_mileage:Number(listingData.mileage||0),
+    p_transmission:listingData.transmission||'Automática',
+    p_fuel_type:listingData.fuel_type||'Gasolina',
+    p_color:listingData.color||'Sin especificar',
+    p_location:listingData.location||'México',
+    p_description:listingData.description||'',
+    p_images:Array.isArray(listingData.images)?listingData.images:[],
+    p_seller_name:listingData.seller_name,
+    p_seller_whatsapp:listingData.seller_whatsapp,
+    p_seller_type:listingData.seller_type||'Particular',
+    p_plan:'basic',
+    p_pin:String(listingData.pin||''),
+  });
+  if(error)throw error;
+  return normalizeCreateListingResult(data);
+}
 
 async function doPublish(){
   const name=document.getElementById('sName').value.trim();
@@ -1850,7 +1473,7 @@ async function doPublish(){
   if(!/^\d{4}$/.test(pin))return ferr(e,'El PIN debe tener exactamente 4 dígitos','sPin');
   e.style.display='none';
   const btn=document.getElementById('btnNext');
-  btn.disabled=true;btn.innerHTML=selPlan==='free_launch'?'<div class="spin"></div> Enviando a revisión…':'<div class="spin"></div> Conectando con Stripe…';
+  btn.disabled=true;btn.innerHTML=selPlan==='basic'?'<div class="spin"></div> Enviando a revisión…':'<div class="spin"></div> Conectando con Stripe…';
   const listingData={
     make:document.getElementById('sMake').value.trim(),
     model:document.getElementById('sModel').value.trim(),
@@ -1866,37 +1489,30 @@ async function doPublish(){
     seller_name:name,seller_whatsapp:wa,
     seller_type:document.getElementById('sType').value,pin,
   };
-  if(selPlan==='free_launch'){
+  if(selPlan==='basic'){
     try{
-      const ctrl = new AbortController();
-      const tid = setTimeout(()=>ctrl.abort(), 12000);
-      const r=await fetch('/.netlify/functions/create-free-listing',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({listingData}),signal:ctrl.signal});
-      clearTimeout(tid);
-      const txt=await r.text();
-      let d={};
-      try{d=txt?JSON.parse(txt):{}}catch{d={error:txt||'Respuesta inválida del servidor'}}
-      if(!r.ok||!d.ok){showPayFailure(e,btn,d.error||`No pude publicar gratis (HTTP ${r.status})`);return}
-      sessionStorage.setItem('tp_wa',wa);
-      sessionStorage.setItem('tp_pin',pin);
-      showToast('Recibido. Tu anuncio quedó en revisión humana. Si publicaste de noche, se revisará por la mañana.','success');
-      closeO('sellOv');
-      await loadCars();
-      document.getElementById('mlWA').value=wa;
-      document.getElementById('mlPin').value=pin;
-      openMyListings();
-      setTimeout(loadML,350);
+      const d=await createBasicListing(listingData);
+      if(!d.ok)throw new Error(d.error||'No se pudo crear el anuncio');
+      if(d.free!==true||d.status!=='pending_review'){
+        throw new Error(`Respuesta inesperada al publicar gratis (${d.status||'sin status'})`);
+      }
+      showPendingReviewSuccess({listingId:d.listing_id,wa,pin});
       btn.disabled=false;btn.textContent=publishButtonLabel();
       return;
     }catch(err){
-      const msg = err && err.name==='AbortError' ? 'La publicación gratis tardó demasiado. Revisa Functions log de create-free-listing.' : 'Error de conexión al publicar gratis. Revisa Functions log de create-free-listing.';
+      const msg=err?.message||'Error de conexión al publicar gratis.';
       showPayFailure(e,btn,msg);return;
     }
   }
 
   try{
+    const selectedPlan=plans.find(p=>p.key===selPlan);
+    if(!selectedPlan||!selectedPlan.stripe_price_id){
+      showPayFailure(e,btn,'Este plan de pago no tiene un precio de Stripe configurado.');return
+    }
     const ctrl = new AbortController();
     const tid = setTimeout(()=>ctrl.abort(), 12000);
-    const r=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({listingData,plan:selPlan}),signal:ctrl.signal});
+    const r=await fetch('/.netlify/functions/create-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({listingData,plan:selPlan,stripe_price_id:selectedPlan.stripe_price_id}),signal:ctrl.signal});
     clearTimeout(tid);
     const txt = await r.text();
     let d={};
@@ -1907,9 +1523,7 @@ async function doPublish(){
     if(!r.ok||d.error||!d.url){
       showPayFailure(e,btn,d.error||`Error al procesar el pago (HTTP ${r.status})`);return
     }
-    sessionStorage.setItem('tp_lid',d.listing_id||'');
-    sessionStorage.setItem('tp_wa',wa);
-    sessionStorage.setItem('tp_pin',pin);
+    rememberPublishPin({listingId:d.listing_id||'',wa,pin});
     window.location.href=d.url;
   }catch(err){
     const msg = err && err.name==='AbortError' ? 'La función de pago tardó demasiado. Ya no se queda colgado: revisa Functions log de create-checkout.' : 'Error de conexión al crear el pago. Revisa Functions log de create-checkout.';
@@ -2138,7 +1752,7 @@ function parseCsv(text){
   const lines=String(text||'').replace(/^\uFEFF/,'').split(/\r?\n/).filter(l=>l.trim());
   if(lines.length<2)return[];
   const headers=splitCsvLine(lines[0]).map(h=>normText(h).replace(/\s+/g,'_'));
-  const aliases={marca:'make',modelo:'model',ano:'year',anio:'year',año:'year',precio:'price',km:'mileage',kilometraje:'mileage',transmision:'transmission',transmisión:'transmission',combustible:'fuel_type',color:'color',ubicacion:'location',ubicación:'location',ciudad:'location',descripcion:'description',descripción:'description',fotos:'images',imagenes:'images',imágenes:'images',foto:'images',image:'images',nombre_vendedor:'seller_name',vendedor:'seller_name',whatsapp:'seller_whatsapp',telefono:'seller_whatsapp',teléfono:'seller_whatsapp',tipo_vendedor:'seller_type',tipo:'seller_type',plan:'plan',destacado:'featured',url:'source_url',link:'source_url',source_url:'source_url'};
+  const aliases={marca:'make',modelo:'model',ano:'year',anio:'year',precio:'price',km:'mileage',kilometraje:'mileage',transmision:'transmission',combustible:'fuel_type',color:'color',ubicacion:'location',ciudad:'location',descripcion:'description',fotos:'images',imagenes:'images',foto:'images',image:'images',nombre_vendedor:'seller_name',vendedor:'seller_name',whatsapp:'seller_whatsapp',telefono:'seller_whatsapp',tipo_vendedor:'seller_type',tipo:'seller_type',plan:'plan',destacado:'featured',url:'source_url',link:'source_url',source_url:'source_url'};
   return lines.slice(1).map(line=>{
     const vals=splitCsvLine(line);const obj={};
     headers.forEach((h,i)=>{const k=aliases[h]||h;obj[k]=vals[i]||''});
@@ -2431,8 +2045,18 @@ async function aiRespond(val){
 // Estados: 0=inicio, 1=marca, 2=modelo, 3=año, 4=presupuesto, 5=transmisión, 6=listo
 let saiStep=0, saiData={};
 
+function saiLooksLikeAd(text){
+  const raw=String(text||'').trim();
+  return /^https?:\/\//i.test(raw)
+    || raw.length>90
+    || /\b(vendo|venta|trato|factura|whatsapp|telefono|tel[eé]fono|kilometraje|km|precio|mxn|publicacion|publicaci[oó]n|link|url|kavak|bbva|seminuevos|autocosmos|mercado\s*libre|mercadolibre|facebook|agencia|lote|conviene|recomiendas|fallas|que revisar|qu[eé] revisar)\b/i.test(raw)
+    || /\$\s*\d[\d,.]*/.test(raw);
+}
+
 function openFullSearchAI(){
   const parts=[];
+  const direct=(document.getElementById('saiInp')?.value||document.getElementById('aiInp')?.value||'').trim();
+  if(direct)parts.push(direct);
   const q=(document.getElementById('fQ')?.value||'').trim();
   const pmin=(document.getElementById('fPMin')?.value||'').trim();
   const pmax=(document.getElementById('fPMax')?.value||'').trim();
@@ -2628,6 +2252,11 @@ async function saiSend(){
   inp.value='';
   saiUser(val);
   document.getElementById('saiSuggs').innerHTML='';
+  if(saiLooksLikeAd(val)){
+    saiBot('Abro el veredicto Tixuz completo para analizar ese anuncio.');
+    window.location.href='/buscar-con-ia.html?q='+encodeURIComponent(val);
+    return;
+  }
   await saiTyping();
   // Si parece texto libre o intención de comprador, parsearlo todo sin forzar marca.
   if(saiStep<=1){
@@ -2714,6 +2343,7 @@ function saiApply(){
   if(fPMax)fPMax.value=saiData.pmax?String(saiData.pmax):'';
   if(fPMin)fPMin.value=saiData.pmin?String(saiData.pmin):'';
   applyFilters();
+  forceHybridSearch();
   closeO('searchAIOv');
   // Scroll al grid
   setTimeout(()=>{
@@ -2752,8 +2382,9 @@ function clearFilters(){
   ['fQ','fPMin','fPMax','fCity'].forEach(id=>{const el=document.getElementById(id);if(el)el.value=''});
   const yr=document.getElementById('fYear'); if(yr) yr.value='';
   const tr=document.getElementById('fTrans'); if(tr) tr.value='';
-  const sort=document.getElementById('fSort'); if(sort) sort.value='new';
-  applyFilters();
+  const sort=document.getElementById('fSort'); if(sort) sort.value='default';
+  cancelPendingExternalSearch(true);
+  applyFilters({skipExternalFetch:true});
 }
 function togglePin(inputId,btn){
   const i=document.getElementById(inputId);
@@ -2801,8 +2432,9 @@ function populateCityFilter(){
   if([...sel.options].some(o=>o.value===current))sel.value=current;
 }
 function openO(id){
-  if((id==='prospectOv'||id==='operatorGuideOv')&&!hasOpsAccess())return requestOpsUnlock(()=>openO(id));
-  document.getElementById(id).classList.add('open');document.body.style.overflow='hidden'
+  const ov=document.getElementById(id);
+  if(!ov)return;
+  ov.classList.add('open');document.body.style.overflow='hidden'
 }
 function closeO(id){document.getElementById(id).classList.remove('open');document.body.style.overflow='';document.querySelectorAll('.field-error').forEach(n=>n.remove())}
 document.querySelectorAll('.overlay').forEach(o=>o.addEventListener('click',e=>{if(e.target===o)closeO(o.id)}));
@@ -2811,7 +2443,6 @@ if(location.search.includes('admin=1')||location.hash==='#admin'){
   document.body.classList.add('show-admin');
   setTimeout(()=>{try{openAdmin()}catch{}},600);
 }
-initOpsMode();
 if(lotIntakeRequested())setTimeout(()=>openLotIntake(),650);
 if(sellRequested())setTimeout(()=>openSell(),650);
 // Apertura única y blindada de ficha: marketplace + Mis Anuncios.

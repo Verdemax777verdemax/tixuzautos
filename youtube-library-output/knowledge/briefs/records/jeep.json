@@ -1,0 +1,182 @@
+{
+  "topic": "Jeep",
+  "slug": "jeep",
+  "generated_at": "2026-06-01T01:07:14.814699+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 40,
+  "angle": "Mapa editorial de Jeep: modelos, dudas frecuentes, reputacion y videos que conviene revisar antes de publicar.",
+  "claim_count": 8,
+  "selected_claim_count": 7,
+  "source_count": 4,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "CarsLatino": 2,
+    "Jaime Gabaldoni": 2,
+    "Sergio Oliveira": 2
+  },
+  "polarity": {
+    "neutral": 7,
+    "negative": 1
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Jeep convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Jeep que debe revisar un comprador?",
+    "Que modelos de Jeep tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Jeep en Mexico?",
+    "Conviene comprar Jeep nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Jeep para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+      "source_url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+      "source_video_id": "fASJ3iE-Yxg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Jeep Avenger Turbo - El Jeep que podríamos comprar",
+      "source_url": "https://www.youtube.com/watch?v=d4RAEvZ5m-k",
+      "source_video_id": "d4RAEvZ5m-k",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Jeep Gladiator Mojave vs Ford F-150 Raptor: ¿Son realmente comparables?",
+      "source_url": "https://www.youtube.com/watch?v=-ayU1rQYyxM",
+      "source_video_id": "-ayU1rQYyxM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "LA FALLA QUE HACE A JEEP PELIGROSA *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=DfGCt5TgDO8",
+      "source_video_id": "DfGCt5TgDO8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Jeep; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 JEEP QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=GOT6xoAf5p0",
+      "source_video_id": "GOT6xoAf5p0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Jeep SkyFreedom 4 cil Turbo | PruebameLa... Nave #128 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=nyNvIP1LJbo",
+      "source_video_id": "nyNvIP1LJbo",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Jeep; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Jeep Grand Cherokee SRT8 | PruebameLa... Nave #109 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=OiivNjk13t4",
+      "source_video_id": "OiivNjk13t4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "fASJ3iE-Yxg",
+      "url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+      "title": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "d4RAEvZ5m-k",
+      "url": "https://www.youtube.com/watch?v=d4RAEvZ5m-k",
+      "title": "Jeep Avenger Turbo - El Jeep que podríamos comprar",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-ayU1rQYyxM",
+      "url": "https://www.youtube.com/watch?v=-ayU1rQYyxM",
+      "title": "Jeep Gladiator Mojave vs Ford F-150 Raptor: ¿Son realmente comparables?",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "DfGCt5TgDO8",
+      "url": "https://www.youtube.com/watch?v=DfGCt5TgDO8",
+      "title": "LA FALLA QUE HACE A JEEP PELIGROSA *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "GOT6xoAf5p0",
+      "url": "https://www.youtube.com/watch?v=GOT6xoAf5p0",
+      "title": "5 JEEP QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

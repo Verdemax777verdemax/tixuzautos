@@ -1,0 +1,263 @@
+{
+  "topic": "BMW",
+  "slug": "bmw",
+  "generated_at": "2026-06-01T01:07:14.769258+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 61,
+  "angle": "Guia de compra sobre BMW apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 17,
+  "selected_claim_count": 12,
+  "source_count": 5,
+  "sources": {
+    "Jaime Gabaldoni": 5,
+    "Sergio Oliveira": 4,
+    "Autoboutique 1/4 de Milla": 3,
+    "El Dios de los Autos": 3,
+    "CarsLatino": 2
+  },
+  "polarity": {
+    "neutral": 12,
+    "negative": 4,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "gY5SbnEIqoM",
+      "url": "https://www.youtube.com/watch?v=gY5SbnEIqoM",
+      "title": "BMW PARTE 2 me lo compro o no me lo compro?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de BMW convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de BMW que debe revisar un comprador?",
+    "Que modelos de BMW tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra BMW en Mexico?",
+    "Conviene comprar BMW nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa BMW para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "BMW Serie 7 2023. El mejor sedán en su categoría.",
+      "source_url": "https://www.youtube.com/watch?v=1V3cZD0T66U",
+      "source_video_id": "1V3cZD0T66U",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "BMW 540i iA M Sport 2018. ¿El mejor sedán de su clase en el mundo?",
+      "source_url": "https://www.youtube.com/watch?v=K-UDgvs1A0g",
+      "source_video_id": "K-UDgvs1A0g",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre BMW; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "El BMW iX 50 2022 es superior al Tesla Model X | Primeras Impresiones",
+      "source_url": "https://www.youtube.com/watch?v=PpaK84peNKc",
+      "source_video_id": "PpaK84peNKc",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "BMW R 1250 RT 2023: Touring de lujo en el Gran Cañón | Prueba de manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=q4Eha0ON8do",
+      "source_video_id": "q4Eha0ON8do",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "BMW 330i xDrive 2025: ¿vale la pena? | Prueba de manejo | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=r0wxQs3Wizw",
+      "source_video_id": "r0wxQs3Wizw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre BMW; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "MG ACABA DE COMPRAR BMW (ESTO LO CAMBIA TODO)",
+      "source_url": "https://www.youtube.com/watch?v=8rRsSjBmFzI",
+      "source_video_id": "8rRsSjBmFzI",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "COMPRÉ UN VOLVO XC40 HIBRIDO ¿REALMENTE DESTROZA AL BMW X1?",
+      "source_url": "https://www.youtube.com/watch?v=oKHE7t_hGjs",
+      "source_video_id": "oKHE7t_hGjs",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "CADILLAC ACABA DE APLASTAR A BMW, AUDI Y MERCEDES (Y NADIE LO HA NOTADO)",
+      "source_url": "https://www.youtube.com/watch?v=6leoXMpsOjw",
+      "source_video_id": "6leoXMpsOjw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Prueba de Manejo BMW 330iA Sport Line 2018 *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=uKEpI2sTjjU",
+      "source_video_id": "uKEpI2sTjjU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 BMW QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=hfnxIwleCjo",
+      "source_video_id": "hfnxIwleCjo",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "boot accu air sema 2016 las vegas nevada nissan gtr lamborghini bmw mercedes benz",
+      "source_url": "https://www.youtube.com/watch?v=4hyw3gHG4YA",
+      "source_video_id": "4hyw3gHG4YA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "BMW X6M50I 2021 | PruebameLa... Nave #137 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=jkAknhO9cfs",
+      "source_video_id": "jkAknhO9cfs",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "gY5SbnEIqoM",
+      "url": "https://www.youtube.com/watch?v=gY5SbnEIqoM",
+      "title": "BMW PARTE 2 me lo compro o no me lo compro?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "1V3cZD0T66U",
+      "url": "https://www.youtube.com/watch?v=1V3cZD0T66U",
+      "title": "BMW Serie 7 2023. El mejor sedán en su categoría.",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "K-UDgvs1A0g",
+      "url": "https://www.youtube.com/watch?v=K-UDgvs1A0g",
+      "title": "BMW 540i iA M Sport 2018. ¿El mejor sedán de su clase en el mundo?",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "PpaK84peNKc",
+      "url": "https://www.youtube.com/watch?v=PpaK84peNKc",
+      "title": "El BMW iX 50 2022 es superior al Tesla Model X | Primeras Impresiones",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "q4Eha0ON8do",
+      "url": "https://www.youtube.com/watch?v=q4Eha0ON8do",
+      "title": "BMW R 1250 RT 2023: Touring de lujo en el Gran Cañón | Prueba de manejo | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

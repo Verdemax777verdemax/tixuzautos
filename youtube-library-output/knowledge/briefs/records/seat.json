@@ -1,0 +1,97 @@
+{
+  "topic": "Seat",
+  "slug": "seat",
+  "generated_at": "2026-06-01T01:07:15.068046+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 33,
+  "angle": "Guia de compra sobre Seat apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 1,
+  "selected_claim_count": 1,
+  "source_count": 1,
+  "sources": {
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 1
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "i849ev1wuhs",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "summary": "En este episodio de Tixuz Autos, se discuten las marcas SEAT, Subaru y Suzuki, evaluando sus modelos más populares y analizando si son una buena opción de compra en 2026. Se destacan tanto sus ventajas como desventajas, ofreciendo una visión clara para los compradores potenciales.",
+      "transcript_available": true,
+      "transcript_chars": 30101
+    },
+    {
+      "id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Seat convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Seat que debe revisar un comprador?",
+    "Que modelos de Seat tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Seat en Mexico?",
+    "Conviene comprar Seat nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Seat para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Seat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Seat Tarraco. ¿Mejor que la Tiguan?",
+      "source_url": "https://www.youtube.com/watch?v=dDztRzElBPg",
+      "source_video_id": "dDztRzElBPg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "i849ev1wuhs",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "dDztRzElBPg",
+      "url": "https://www.youtube.com/watch?v=dDztRzElBPg",
+      "title": "Seat Tarraco. ¿Mejor que la Tiguan?",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

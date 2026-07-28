@@ -1,0 +1,149 @@
+{
+  "topic": "BYD",
+  "slug": "byd",
+  "generated_at": "2026-06-01T01:07:14.863538+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 42,
+  "angle": "Guia de compra sobre BYD apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 6,
+  "selected_claim_count": 4,
+  "source_count": 3,
+  "sources": {
+    "Sergio Oliveira": 3,
+    "Autoboutique 1/4 de Milla": 2,
+    "El Dios de los Autos": 1
+  },
+  "polarity": {
+    "neutral": 3,
+    "positive": 2,
+    "negative": 1
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "F-A1N41Axag",
+      "url": "https://www.youtube.com/watch?v=F-A1N41Axag",
+      "title": "Spark EV vs BYD Dolphin: la batalla de los eléctricos urbanos que debes conocer",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de BYD convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de BYD que debe revisar un comprador?",
+    "Que modelos de BYD tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra BYD en Mexico?",
+    "Conviene comprar BYD nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa BYD para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre BYD; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? BUICK y BYD",
+      "source_url": "https://www.youtube.com/watch?v=K4tz6lkjYQA",
+      "source_video_id": "K4tz6lkjYQA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BYD; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "BYD ES LA MEJOR MARCA DEL MUNDO",
+      "source_url": "https://www.youtube.com/watch?v=paAQvYxjyn0",
+      "source_video_id": "paAQvYxjyn0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre BYD; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "161. BYD Seagull, Cupra Tavaskan, Jaecoo 7 y 9, Mach E en Australia",
+      "source_url": "https://www.youtube.com/watch?v=JrVN4HVNjJg",
+      "source_video_id": "JrVN4HVNjJg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre BYD; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "155. Bloqueos de avenidas, Chevrolet Aveo 2024, BYD ya en México",
+      "source_url": "https://www.youtube.com/watch?v=iMABxN0D1yY",
+      "source_video_id": "iMABxN0D1yY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "F-A1N41Axag",
+      "url": "https://www.youtube.com/watch?v=F-A1N41Axag",
+      "title": "Spark EV vs BYD Dolphin: la batalla de los eléctricos urbanos que debes conocer",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "K4tz6lkjYQA",
+      "url": "https://www.youtube.com/watch?v=K4tz6lkjYQA",
+      "title": "¿Me lo compro o no me lo compro? BUICK y BYD",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "paAQvYxjyn0",
+      "url": "https://www.youtube.com/watch?v=paAQvYxjyn0",
+      "title": "BYD ES LA MEJOR MARCA DEL MUNDO",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "JrVN4HVNjJg",
+      "url": "https://www.youtube.com/watch?v=JrVN4HVNjJg",
+      "title": "161. BYD Seagull, Cupra Tavaskan, Jaecoo 7 y 9, Mach E en Australia",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "iMABxN0D1yY",
+      "url": "https://www.youtube.com/watch?v=iMABxN0D1yY",
+      "title": "155. Bloqueos de avenidas, Chevrolet Aveo 2024, BYD ya en México",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

@@ -1,0 +1,109 @@
+{
+  "topic": "Volvo",
+  "slug": "volvo",
+  "generated_at": "2026-06-01T01:07:15.000338+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 19,
+  "angle": "Mapa editorial de Volvo: modelos, dudas frecuentes, reputacion y videos que conviene revisar antes de publicar.",
+  "claim_count": 3,
+  "selected_claim_count": 3,
+  "source_count": 2,
+  "sources": {
+    "Sergio Oliveira": 2,
+    "El Dios de los Autos": 1
+  },
+  "polarity": {
+    "neutral": 3
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Volvo convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Volvo que debe revisar un comprador?",
+    "Que modelos de Volvo tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Volvo en Mexico?",
+    "Conviene comprar Volvo nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Volvo para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Volvo; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Volvo XC40. Prueba de que lo seguro y económico no tiene que ser aburrido.",
+      "source_url": "https://www.youtube.com/watch?v=lxul6hl3wgE",
+      "source_video_id": "lxul6hl3wgE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volvo; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "De Toyota a Volvo - Me lo compro o no me lo compro",
+      "source_url": "https://www.youtube.com/watch?v=N5eURT_FOTQ",
+      "source_video_id": "N5eURT_FOTQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volvo; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "COMPRÉ UN VOLVO XC40 HIBRIDO ¿REALMENTE DESTROZA AL BMW X1?",
+      "source_url": "https://www.youtube.com/watch?v=oKHE7t_hGjs",
+      "source_video_id": "oKHE7t_hGjs",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "lxul6hl3wgE",
+      "url": "https://www.youtube.com/watch?v=lxul6hl3wgE",
+      "title": "Volvo XC40. Prueba de que lo seguro y económico no tiene que ser aburrido.",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "N5eURT_FOTQ",
+      "url": "https://www.youtube.com/watch?v=N5eURT_FOTQ",
+      "title": "De Toyota a Volvo - Me lo compro o no me lo compro",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "oKHE7t_hGjs",
+      "url": "https://www.youtube.com/watch?v=oKHE7t_hGjs",
+      "title": "COMPRÉ UN VOLVO XC40 HIBRIDO ¿REALMENTE DESTROZA AL BMW X1?",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

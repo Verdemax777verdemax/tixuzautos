@@ -1,0 +1,40 @@
+{
+  "providers": {
+    "openai": {
+      "kind": "openai-compatible",
+      "api_key_env": "OPENAI_API_KEY",
+      "api_base": "https://api.openai.com/v1",
+      "model": "gpt-4o-mini"
+    },
+    "deepseek": {
+      "kind": "openai-compatible",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "api_base": "https://api.deepseek.com",
+      "model": "deepseek-chat"
+    },
+    "kimi": {
+      "kind": "openai-compatible",
+      "api_key_env": "KIMI_API_KEY",
+      "api_base": "https://api.moonshot.ai/v1",
+      "model": "moonshot-v1-8k"
+    },
+    "xai": {
+      "kind": "openai-compatible",
+      "api_key_env": "XAI_API_KEY",
+      "api_base": "https://api.x.ai/v1",
+      "model": "grok-3-mini"
+    },
+    "perplexity": {
+      "kind": "openai-compatible",
+      "api_key_env": "PERPLEXITY_API_KEY",
+      "api_base": "https://api.perplexity.ai",
+      "model": "sonar"
+    }
+  },
+  "routes": {
+    "extract": ["deepseek", "kimi", "xai", "openai"],
+    "classify": ["kimi", "deepseek", "xai", "openai"],
+    "editorial": ["openai", "kimi", "deepseek", "xai"],
+    "verify": ["perplexity", "xai", "openai"]
+  }
+}

@@ -22,6 +22,7 @@ const STATIC_URLS = [
   { loc: '/publicar-auto', changefreq: 'daily', priority: '0.95' },
   { loc: '/lotes', changefreq: 'weekly', priority: '0.93' },
   { loc: '/buscar-con-ia', changefreq: 'daily', priority: '0.8' },
+  { loc: '/bot', changefreq: 'monthly', priority: '0.45' },
   { loc: '/inventory.json', changefreq: 'hourly', priority: '0.6' },
   { loc: '/llms.txt', changefreq: 'daily', priority: '0.5' },
   { loc: '/llms-full.txt', changefreq: 'daily', priority: '0.5' },

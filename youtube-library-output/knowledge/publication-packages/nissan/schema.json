@@ -1,0 +1,110 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Nissan: guia de compra Tixuz",
+      "description": "Borrador editorial de Tixuz Autos sobre Nissan: videos propios, fuentes externas atribuidas y preguntas de compra.",
+      "inLanguage": "es-MX",
+      "isAccessibleForFree": true,
+      "url": "https://tixuzautos.com/guias/nissan/",
+      "author": {
+        "@type": "Person",
+        "name": "Eduardo Vargas"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tixuz Autos",
+        "url": "https://tixuzautos.com",
+        "sameAs": [
+          "https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg",
+          "https://www.youtube.com/c/Tixuz"
+        ]
+      },
+      "about": {
+        "@type": "Brand",
+        "name": "Nissan"
+      },
+      "video": [
+        {
+          "@type": "VideoObject",
+          "name": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Nissan.",
+          "embedUrl": "https://www.youtube.com/embed/bneJw3WuvXU",
+          "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Nissan.",
+          "embedUrl": "https://www.youtube.com/embed/3ulgUZJYsaY",
+          "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Nissan.",
+          "embedUrl": "https://www.youtube.com/embed/IUrYfUtUZmA",
+          "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Nissan Sentra desde piso de ventas l Tixuz",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Nissan.",
+          "embedUrl": "https://www.youtube.com/embed/k2C37jU9e_s",
+          "url": "https://www.youtube.com/watch?v=k2C37jU9e_s",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tixuz"
+          }
+        },
+        {
+          "@type": "VideoObject",
+          "name": "Nissan LEAF 2018 - Y lo puedes comprar por Internet",
+          "description": "Fuente de video usada como referencia editorial para la guia Tixuz sobre Nissan.",
+          "embedUrl": "https://www.youtube.com/embed/yiuViWzrRmU",
+          "url": "https://www.youtube.com/watch?v=yiuViWzrRmU",
+          "publisher": {
+            "@type": "Organization",
+            "name": "Sergio Oliveira"
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tixuz Autos",
+          "item": "https://tixuzautos.com"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Guias",
+          "item": "https://tixuzautos.com/guias/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Nissan",
+          "item": "https://tixuzautos.com/guias/nissan/"
+        }
+      ]
+    }
+  ]
+}

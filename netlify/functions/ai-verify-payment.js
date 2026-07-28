@@ -1,5 +1,5 @@
 // Tixuz AI · Verificar pago y activar suscripción de búsqueda premium 30 días
-// Llamado desde el frontend después del redirect de Stripe (?paid=1&session_id=...)
+// Llamado desde el frontend después del redirect de Stripe (paid=1&session_id=...)
 // Verifica con Stripe que el pago esté completo y crea registro en Supabase.
 
 const Stripe = require('stripe');
@@ -55,13 +55,13 @@ exports.handler = async function (event) {
     }
 
     // Validar que sea nuestro producto
-    if (session.metadata?.product !== 'tixuz_ai_premium_search') {
+    if (session.metadata.product !== 'tixuz_ai_premium_search') {
       return { statusCode: 400, headers: cors, body: JSON.stringify({ error: 'Wrong product' }) };
     }
 
-    const email = session.customer_email || session.customer_details?.email;
-    const whatsapp = session.metadata?.whatsapp || '';
-    const query = session.metadata?.query || '';
+    const email = session.customer_email || session.customer_details.email;
+    const whatsapp = session.metadata.whatsapp || '';
+    const query = session.metadata.query || '';
 
     // Insertar/upsert en Supabase
     const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString();

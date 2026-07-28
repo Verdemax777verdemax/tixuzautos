@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "yIDCcL0gbD4",
+    "source_url": "https://www.youtube.com/watch?v=yIDCcL0gbD4",
+    "source_title": "5 NISSAN QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+    "source_channel": "CarsLatino",
+    "source_channel_id": "UCaZgA3fjvE_ufV-M2uKMi9A",
+    "source_owner": "CarsLatino",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Nissan",
+      "claim_summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:21:10.738693+00:00"
+}

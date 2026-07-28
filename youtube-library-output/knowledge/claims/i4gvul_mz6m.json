@@ -1,0 +1,65 @@
+{
+  "source_attribution": {
+    "source_video_id": "i4gvUL_mZ6M",
+    "source_url": "https://www.youtube.com/shorts/i4gvUL_mZ6M",
+    "source_title": "CUIDADO!!! NO CAIGAS!! #toyota #auto #hyundai #mazda #nissan #honda #mitsubishi #mazda #volkswagen",
+    "source_channel": "El Dios de los Autos",
+    "source_channel_id": "UCDvtCV47PP-5FUfd0NAHP5g",
+    "source_owner": "El Dios de los Autos",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Honda",
+      "claim_summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Hyundai",
+      "claim_summary": "Fuente externa registrada sobre Hyundai; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mazda",
+      "claim_summary": "Fuente externa registrada sobre Mazda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mitsubishi",
+      "claim_summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:15:55.900747+00:00"
+}

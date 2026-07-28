@@ -14,12 +14,13 @@ Allow: /youtube/autoridad
 Allow: /youtube/temas
 Allow: /youtube/temas/
 Allow: /youtube/transcripciones/
-Allow: /youtube-library-output/transcripts/txt/
 Allow: /seller-recommendation.json
 Allow: /seller-intents.json
 Allow: /seller-resources.json
 Allow: /youtube-knowledge.json
+Disallow: /youtube-library-output/
 Disallow: /.netlify/
 Disallow: /api/
 
 Sitemap: https://tixuzautos.com/sitemap.xml
+Sitemap: https://tixuzautos.com/autos/sitemap-modelos.xml

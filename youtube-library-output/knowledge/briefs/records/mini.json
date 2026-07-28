@@ -1,0 +1,76 @@
+{
+  "topic": "Mini",
+  "slug": "mini",
+  "generated_at": "2026-06-01T01:07:15.031860+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 34,
+  "angle": "Guia de compra sobre Mini apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 2,
+  "selected_claim_count": 0,
+  "source_count": 1,
+  "sources": {
+    "El Dios de los Autos": 2
+  },
+  "polarity": {
+    "neutral": 1,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "summary": "Bueno, pues otro programa de la sección tan querida que les gusta con Sergio Oliveira. Oye, un más me lo compro, no me lo compro. Tenemos tres marquitas ahí que están interesantes platicarlas.",
+      "transcript_available": true,
+      "transcript_chars": 44823
+    },
+    {
+      "id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Mini convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Mini que debe revisar un comprador?",
+    "Que modelos de Mini tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Mini en Mexico?",
+    "Conviene comprar Mini nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Mini para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [],
+  "videos_to_embed": [
+    {
+      "video_id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

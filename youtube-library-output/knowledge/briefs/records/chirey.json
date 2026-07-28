@@ -1,0 +1,161 @@
+{
+  "topic": "Chirey",
+  "slug": "chirey",
+  "generated_at": "2026-06-01T01:07:14.931781+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 33,
+  "angle": "Guia de compra sobre Chirey apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 5,
+  "selected_claim_count": 5,
+  "source_count": 2,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 4,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 4,
+    "negative": 1
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "jVU_mY3mdNw",
+      "url": "https://www.youtube.com/watch?v=jVU_mY3mdNw",
+      "title": "CHIREY",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Chirey convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Chirey que debe revisar un comprador?",
+    "Que modelos de Chirey tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Chirey en Mexico?",
+    "Conviene comprar Chirey nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Chirey para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Chirey; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Chirey Omoda 5",
+      "source_url": "https://www.youtube.com/watch?v=NY2ykbBPawA",
+      "source_video_id": "NY2ykbBPawA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Chirey; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Chirey Omoda 5, Subaru WRX S4, Autódromo Riviera Maya, Categorías Rabadilla de Oro | 19",
+      "source_url": "https://www.youtube.com/watch?v=i9MvJIC7Zf0",
+      "source_video_id": "i9MvJIC7Zf0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Chirey; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Casos extremos con fallas en vehiculos Chirey y Omoda.",
+      "source_url": "https://www.youtube.com/watch?v=-q-MKAR9AUc",
+      "source_video_id": "-q-MKAR9AUc",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Chirey; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "224. Tank 300 híbrido, Chirey y DHL hacen alianza, Nissan y Honda vs China",
+      "source_url": "https://www.youtube.com/watch?v=5p0P6HyYtW0",
+      "source_video_id": "5p0P6HyYtW0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Chirey; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "19. Chirey Omoda 5, Subaru WRX S4, Autódromo Riviera Maya, Categorías Rabadilla de Oro",
+      "source_url": "https://www.youtube.com/watch?v=OEP3diaCMWw",
+      "source_video_id": "OEP3diaCMWw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "jVU_mY3mdNw",
+      "url": "https://www.youtube.com/watch?v=jVU_mY3mdNw",
+      "title": "CHIREY",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "NY2ykbBPawA",
+      "url": "https://www.youtube.com/watch?v=NY2ykbBPawA",
+      "title": "Chirey Omoda 5",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "i9MvJIC7Zf0",
+      "url": "https://www.youtube.com/watch?v=i9MvJIC7Zf0",
+      "title": "Chirey Omoda 5, Subaru WRX S4, Autódromo Riviera Maya, Categorías Rabadilla de Oro | 19",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-q-MKAR9AUc",
+      "url": "https://www.youtube.com/watch?v=-q-MKAR9AUc",
+      "title": "Casos extremos con fallas en vehiculos Chirey y Omoda.",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "5p0P6HyYtW0",
+      "url": "https://www.youtube.com/watch?v=5p0P6HyYtW0",
+      "title": "224. Tank 300 híbrido, Chirey y DHL hacen alianza, Nissan y Honda vs China",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

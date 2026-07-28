@@ -1,0 +1,59 @@
+[
+  {
+    "topic": "Ford",
+    "slug": "ford",
+    "generated_at": "2026-06-01T18:56:00.059671+00:00",
+    "source_brief": "youtube-library-output/knowledge/briefs/records/ford.json",
+    "status": "draft_needs_editorial_review",
+    "publication_score": 86,
+    "owned_tixuz_video_count": 3,
+    "selected_claim_count": 10,
+    "canonical": "https://tixuzautos.com/guias/ford/",
+    "files": {
+      "article_markdown": "article.md",
+      "article_html": "article.html",
+      "schema": "schema.json",
+      "sources": "sources.csv",
+      "checklist": "checklist.md",
+      "agent_prompt": "agent-prompt.md"
+    }
+  },
+  {
+    "topic": "Nissan",
+    "slug": "nissan",
+    "generated_at": "2026-06-01T18:56:00.072963+00:00",
+    "source_brief": "youtube-library-output/knowledge/briefs/records/nissan.json",
+    "status": "draft_needs_editorial_review",
+    "publication_score": 76,
+    "owned_tixuz_video_count": 4,
+    "selected_claim_count": 6,
+    "canonical": "https://tixuzautos.com/guias/nissan/",
+    "files": {
+      "article_markdown": "article.md",
+      "article_html": "article.html",
+      "schema": "schema.json",
+      "sources": "sources.csv",
+      "checklist": "checklist.md",
+      "agent_prompt": "agent-prompt.md"
+    }
+  },
+  {
+    "topic": "Hyundai",
+    "slug": "hyundai",
+    "generated_at": "2026-06-01T18:56:00.086553+00:00",
+    "source_brief": "youtube-library-output/knowledge/briefs/records/hyundai.json",
+    "status": "draft_needs_editorial_review",
+    "publication_score": 75,
+    "owned_tixuz_video_count": 4,
+    "selected_claim_count": 7,
+    "canonical": "https://tixuzautos.com/guias/hyundai/",
+    "files": {
+      "article_markdown": "article.md",
+      "article_html": "article.html",
+      "schema": "schema.json",
+      "sources": "sources.csv",
+      "checklist": "checklist.md",
+      "agent_prompt": "agent-prompt.md"
+    }
+  }
+]

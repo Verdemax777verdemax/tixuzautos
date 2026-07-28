@@ -1,0 +1,39 @@
+{
+  "source_video_id": "wFtjSBAacbI",
+  "source_url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+  "source": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel": "@autossergiooliveira",
+    "source_channel_title": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission"
+  },
+  "draft_status": "needs_ai_review",
+  "slug": "me-lo-compro-o-no-me-lo-compro-con-lalo-vargas-fiat-y-ford-wFtjSBAacbI",
+  "title_original": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+  "title_seo": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+  "summary": "Un nuevo episodio de \"Me lo compro o no me lo compro\", junto a Lalo Vargas para analizar los modelos que ofrecen la marcas de Ford y FIAT en el mercado mexicano.",
+  "key_points": [
+    "Un nuevo episodio de \"Me lo compro o no me lo compro\", junto a Lalo Vargas para analizar los modelos que ofrecen la marcas de Ford y FIAT en el mercado mexicano."
+  ],
+  "detected_topics": [
+    "Con",
+    "FIAT",
+    "Ford",
+    "Lalo",
+    "Vargas"
+  ],
+  "buyer_intent": [],
+  "vehicle_entities": [],
+  "content_type": "youtube_video",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "generated_at": "2026-05-29T22:34:41.245375+00:00"
+}

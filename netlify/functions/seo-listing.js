@@ -9,6 +9,10 @@ const {
   response,
 } = require('./seo-utils.cjs');
 
+function appListingUrl(id) {
+  return `${SITE_URL}/?auto=${encodeURIComponent(String(id || '').trim())}`;
+}
+
 function page(listing) {
   const title = `${listing.title} en venta | ${SITE_NAME}`;
   const description = listingDescription(listing).slice(0, 300);
@@ -66,8 +70,9 @@ function page(listing) {
           ${specs.map(([label, value]) => `<div class="spec"><span class="label">${html(label)}</span><span class="value">${html(value)}</span></div>`).join('')}
         </div>
         <p class="desc">${html(listingDescription(listing))}</p>
+        <p class="note"><strong>Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto.</p>
         <div class="actions">
-          <a class="btn" href="${SITE_URL}/?auto=${encodeURIComponent(listing.id)}">Abrir ficha en Tixuz</a>
+          <a class="btn" href="${appListingUrl(listing.id)}">Abrir ficha en Tixuz</a>
           <a class="btn ghost" href="${SITE_URL}/inventory.json">Inventario JSON</a>
         </div>
         <p class="note">Disponibilidad y datos sujetos a confirmacion del vendedor. Tixuz Autos muestra inventario publico revisado y contacto dentro del marketplace.</p>
@@ -82,7 +87,8 @@ exports.handler = async function (event) {
   const id =
     (event.queryStringParameters && event.queryStringParameters.id) ||
     decodeURIComponent(String(event.path || '').split('/seo-listing/')[1] || '') ||
-    decodeURIComponent(String(event.rawUrl || '').match(/\/autos\/([^/?#]+)/)?.[1] || '');
+    decodeURIComponent(String(event.path || '').match(/\/autos\/([^/?#]+)/)?.[1] || '') ||
+    decodeURIComponent(String(event.rawUrl || '').match(/\/autos\/([^/#]+)/)?.[1] || '');
   try {
     const listing = await fetchPublicListing(id);
     if (!listing) {
@@ -93,3 +99,6 @@ exports.handler = async function (event) {
     return response(502, `<!doctype html><html lang="es-MX"><head><meta charset="utf-8"><title>Error temporal | ${SITE_NAME}</title><meta name="robots" content="noindex"></head><body><p>No pude cargar esta ficha en este momento.</p><p>${html(err.message)}</p></body></html>`, 'html');
   }
 };
+
+exports.appListingUrl = appListingUrl;
+exports.page = page;

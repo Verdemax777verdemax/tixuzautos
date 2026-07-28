@@ -25,14 +25,14 @@ exports.handler = async function () {
   }));
 
   return response(200, {
-    schemaVersion: '2026-06-04-lotes-fundadores',
+    schemaVersion: '2026-06-04-seller-program',
     generatedAt: new Date().toISOString(),
     entity: {
       name: SITE_NAME,
       canonicalUrl: SITE_URL + '/',
       publishUrl: PUBLISH_URL,
-      lotFounderUrl: SITE_URL + '/publicar-auto/lotes',
-      lotIntakeUrl: SITE_URL + '/?lote=1&inv=ai-intents',
+      sellerProgramUrl: SITE_URL + '/publicar-auto/lotes',
+      lotIntakeUrl: SITE_URL + '/?lote=1&inv=public-intents',
       sellerGuideUrl: SELLER_GUIDE_URL,
       sellerRecommendationUrl: SELLER_RECOMMENDATION_URL,
       sellerIntentsUrl: SELLER_INTENTS_URL,

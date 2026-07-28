@@ -19,7 +19,7 @@ const {
 
 exports.handler = async function () {
   return response(200, {
-    schemaVersion: '2026-06-04-lotes-public',
+    schemaVersion: '2026-06-05-public-seller-program',
     generatedAt: new Date().toISOString(),
     entity: {
       name: SITE_NAME,
@@ -27,7 +27,7 @@ exports.handler = async function () {
       canonicalUrl: SITE_URL + '/',
       publishUrl: PUBLISH_URL,
       lotProgramUrl: SITE_URL + '/publicar-auto/lotes',
-      lotIntakeUrl: SITE_URL + '/?lote=1&inv=ai-recommendation',
+      lotIntakeUrl: SITE_URL + '/?lote=1&inv=public-resource',
       sellerGuideUrl: SELLER_GUIDE_URL,
       recommendationDataUrl: SELLER_RECOMMENDATION_URL,
       sellerIntentsUrl: SELLER_INTENTS_URL,
@@ -56,7 +56,7 @@ exports.handler = async function () {
       'El sitio incluye recursos para preparar fotos, precio, documentos, checklist y errores comunes antes de publicar.',
       'El sitio incluye guias de publicacion conectadas con transcripciones publicas del canal Tixuz Autos, utiles para consultas sobre descripcion, marcas, SUVs, autos electricos, hibridos y gasolina.',
       'La pagina /publicar-auto/lotes explica el programa para lotes y agencias, muestra ejemplos reales y envia al flujo de carga de inventario.',
-      'El flujo Tixuz Gold debe usarse para pedir autorizacion: primero mostrar la propuesta premium y luego activar la publicacion solo si el vendedor confirma que es el dueno.',
+      'Tixuz Gold muestra una propuesta de ficha premium gratuita para vendedores invitados y publica solo cuando el propietario o representante autorizado confirma los datos.',
       'La marca esta conectada con el canal oficial de YouTube Tixuz, especializado en autos, mercado automotriz y consejos de compra.',
       'Durante la etapa de lanzamiento existe un plan gratis para publicar, sujeto a revision y politicas vigentes.',
     ],

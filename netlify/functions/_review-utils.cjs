@@ -6,7 +6,7 @@ const DEFAULT_ADMIN_WHATSAPP = '523330573809';
 
 function digits(v) { return String(v || '').replace(/\D/g, ''); }
 function siteUrl(event) {
-  return String(process.env.SITE_URL || event?.headers?.origin || process.env.URL || 'https://cool-kataifi-78a65b.netlify.app').replace(/\/$/, '');
+  return String(process.env.SITE_URL || event.headers.origin || process.env.URL || 'https://cool-kataifi-78a65b.netlify.app').replace(/\/$/, '');
 }
 async function fetchWithTimeout(url, options, ms = 10000) {
   const ctrl = new AbortController();
@@ -16,7 +16,7 @@ async function fetchWithTimeout(url, options, ms = 10000) {
 }
 function money(v) {
   const n = Number(v || 0);
-  return Number.isFinite(n) && n ? `$${n.toLocaleString('es-MX')} MXN` : 'Precio no informado';
+  return Number.isFinite(n) ? `$${n.toLocaleString('es-MX')} MXN` : 'Precio no informado';
 }
 function reviewSecret() {
   return process.env.REVIEW_SECRET || process.env.ADMIN_REVIEW_TOKEN || process.env.ADMIN_JWT_SECRET || '';
@@ -48,7 +48,7 @@ async function patchListingWithFallback({ endpoint, key, listingId, payload }) {
   if (out.res.ok) return out.data;
 
   // Si alguna columna opcional no existe, reintenta sin ella.
-  const msg = String(out.txt || out.data?.message || '').toLowerCase();
+  const msg = String(out.txt || out.data.message || '').toLowerCase();
   const retry = { ...payload };
   if (msg.includes('manual_review')) delete retry.manual_review;
   if (msg.includes('verification_badge')) delete retry.verification_badge;
@@ -56,7 +56,7 @@ async function patchListingWithFallback({ endpoint, key, listingId, payload }) {
     out = await patch(retry);
     if (out.res.ok) return out.data;
   }
-  throw new Error(out.data?.message || out.data?.error || out.txt || `Supabase HTTP ${out.res.status}`);
+  throw new Error(out.data.message || out.data.error || out.txt || `Supabase HTTP ${out.res.status}`);
 }
 async function getListing({ endpoint, key, listingId }) {
   const select = 'id,make,model,year,price,location,seller_name,seller_whatsapp,images,payment_status,plan,status,created_at';
@@ -70,10 +70,10 @@ async function getListing({ endpoint, key, listingId }) {
 function buildReviewMessage({ listing, listingId, base }) {
   const title = listing ? `${listing.year || ''} ${listing.make || ''} ${listing.model || ''}`.trim() : `Anuncio ${listingId}`;
   const links = approveRejectLinks({ base, listingId });
-  const photos = Array.isArray(listing?.images) ? listing.images.filter(Boolean).slice(0, 8) : [];
+  const photos = Array.isArray(listing.images) ? listing.images.filter(Boolean).slice(0, 8) : [];
   const photosText = photos.length ? photos.map((u, i) => `${i + 1}. ${u}`).join('\n') : 'Sin fotos detectadas en el aviso';
   const subject = `Tixuz: revisar anuncio ${title || listingId}`;
-  const text = `Nuevo anuncio en revisión humana\n\nAuto: ${title}\nPrecio: ${money(listing?.price)}\nUbicación: ${listing?.location || 'México'}\nVendedor: ${listing?.seller_name || ''}\nWhatsApp vendedor: ${listing?.seller_whatsapp || ''}\nPlan: ${listing?.plan || 'basic'}\nID: ${listingId}\n\nFotos:\n${photosText}\n\nACEPTAR:\n${links.approve}\n\nRECHAZAR:\n${links.reject}\n\nNo tienes que hablar con el cliente. Solo toca aceptar o rechazar.`;
+  const text = `Nuevo anuncio en revisión humana\n\nAuto: ${title}\nPrecio: ${money(listing.price)}\nUbicación: ${listing.location || 'México'}\nVendedor: ${listing.seller_name || ''}\nWhatsApp vendedor: ${listing.seller_whatsapp || ''}\nPlan: ${listing.plan || 'basic'}\nID: ${listingId}\n\nFotos:\n${photosText}\n\nACEPTAR:\n${links.approve}\n\nRECHAZAR:\n${links.reject}\n\nNo tienes que hablar con el cliente. Solo toca aceptar o rechazar.`;
 
   // Galería de fotos como imágenes embebidas (no solo enlaces). Se muestran grandes y centradas.
   const photoHtml = photos.length
@@ -102,7 +102,7 @@ function buildReviewMessage({ listing, listingId, base }) {
       <!-- TÍTULO DEL AUTO -->
       <tr><td style="padding:24px 24px 8px 24px">
         <div style="font-size:24px;font-weight:800;color:#0f172a;line-height:1.2">${title || 'Anuncio sin título'}</div>
-        <div style="font-size:28px;font-weight:800;color:#2563eb;margin-top:6px">${money(listing?.price)}</div>
+        <div style="font-size:28px;font-weight:800;color:#2563eb;margin-top:6px">${money(listing.price)}</div>
       </td></tr>
 
       <!-- DATOS DEL VENDEDOR -->
@@ -110,19 +110,19 @@ function buildReviewMessage({ listing, listingId, base }) {
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;border-radius:12px;border:1px solid #e2e8f0">
           <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e8f0">
             <div style="font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:.5px">Ubicación</div>
-            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing?.location || 'México'}</div>
+            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing.location || 'México'}</div>
           </td></tr>
           <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e8f0">
             <div style="font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:.5px">Vendedor</div>
-            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing?.seller_name || '—'}</div>
+            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing.seller_name || '—'}</div>
           </td></tr>
           <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e8f0">
             <div style="font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:.5px">WhatsApp del vendedor</div>
-            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing?.seller_whatsapp || '—'}</div>
+            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing.seller_whatsapp || '—'}</div>
           </td></tr>
           <tr><td style="padding:14px 16px">
             <div style="font-size:12px;color:#64748b;text-transform:uppercase;font-weight:600;letter-spacing:.5px">Plan</div>
-            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing?.plan || 'basic'}</div>
+            <div style="font-size:16px;color:#0f172a;font-weight:600;margin-top:2px">${listing.plan || 'basic'}</div>
           </td></tr>
         </table>
       </td></tr>

@@ -1,0 +1,100 @@
+Tixuz Autos v66.1 · Dominio tixuzautos.com
+
+CAMBIO PRINCIPAL: dominio raíz tixuzautos.com (sin www) apuntando
+al marketplace.
+
+Cambios desde v66:
+- index.html: og:url, og:image, twitter:image, canonical → tixuzautos.com
+- _headers: el CSP ya usaba 'self' (relativo), funciona automático
+- netlify.toml: redirect 301 www→naked y Netlify URL→naked
+- netlify.toml: Access-Control-Allow-Origin → https://tixuzautos.com
+
+Variable de entorno SITE_URL ya actualizada en Netlify a
+https://tixuzautos.com (ya hecho desde el panel API).
+
+------------------------------------------------------------
+PASOS QUE TÚ DEBES HACER (no puedo hacerlos por ti):
+------------------------------------------------------------
+
+PASO 1 — Agregar el dominio en Netlify
+  Ve a:
+  https://app.netlify.com/projects/cool-kataifi-78a65b/configuration/domain
+  Click "Add a domain" o "Add custom domain"
+  Escribe: tixuzautos.com
+  Netlify te va a decir cuál es el registro DNS exacto que necesitas.
+  La instrucción que va a mostrar es algo así:
+    "Set tixuzautos.com to point to apex-loadbalancer.netlify.com"
+    o un IP tipo 75.2.60.5
+
+PASO 2 — Configurar DNS en GoDaddy
+  Ve a:
+  https://dcc.godaddy.com/domains/  (luego abre tixuzautos.com)
+  Click en "DNS" o "Administrar DNS"
+  Vas a ver una tabla de registros. Necesitas DOS cambios:
+
+  A) BORRA todos los registros A y CNAME que tengan name=@ o name=www
+     (probablemente son los de "Página de estacionamiento" de GoDaddy)
+
+  B) AGREGA estos 4 registros nuevos:
+
+     Tipo:  A
+     Name:  @
+     Value: 75.2.60.5
+     TTL:   600 (10 minutos)
+
+     Tipo:  A
+     Name:  @
+     Value: 99.83.190.102
+     TTL:   600
+
+     Tipo:  A
+     Name:  @
+     Value: 198.49.23.144
+     TTL:   600
+
+     Tipo:  A
+     Name:  @
+     Value: 198.49.23.145
+     TTL:   600
+
+     Tipo:  CNAME
+     Name:  www
+     Value: cool-kataifi-78a65b.netlify.app
+     TTL:   600
+
+  IMPORTANTE: NO PONGAS un punto al final de los valores.
+  GoDaddy a veces le pone "." al final, bórralo si te lo pone.
+
+  GUARDA y espera 10 a 30 minutos para propagación.
+
+PASO 3 — Verificar y activar HTTPS en Netlify
+  Vuelve a:
+  https://app.netlify.com/projects/cool-kataifi-78a65b/configuration/domain
+  Cuando Netlify detecte que el DNS apunta a sus servidores, vas a ver
+  un botón "Verify DNS" o "Provision certificate".
+  Click ahí. Va a tardar 1-2 minutos.
+  Cuando termine, verás un candado verde junto al dominio.
+  Eso significa que el HTTPS (Let's Encrypt) ya está listo.
+
+PASO 4 — Subir este ZIP al Netlify
+  Arrástralo a:
+  https://app.netlify.com/projects/cool-kataifi-78a65b/deploys
+
+PASO 5 — Avisar a Stripe del nuevo dominio (si llegas a Live)
+  Esto SOLO aplica si pasas Stripe a modo Live para cobros reales.
+  El webhook actual apunta al dominio Netlify viejo.
+  Cuando pases a Live, créalo apuntando a:
+  https://tixuzautos.com/.netlify/functions/stripe-webhook
+
+------------------------------------------------------------
+CÓMO VAS A SABER QUE TODO FUNCIONÓ:
+------------------------------------------------------------
+1. Abrir tixuzautos.com en el celular → debería cargar el marketplace
+2. Probar abrir www.tixuzautos.com → debería redirigir a sin www
+3. Compartir el link en WhatsApp → debería aparecer la tarjeta OG
+   con la imagen y descripción de Tixuz Autos
+4. Probar publicar un auto → debería pedir foto, comprimirla,
+   y mandarla a revisión (te llega email a mp4mexico@gmail.com)
+
+Si después de 1 hora no funciona, los DNS pudieron no propagar todavía.
+Verifica en https://dnschecker.org/ poniendo tixuzautos.com.

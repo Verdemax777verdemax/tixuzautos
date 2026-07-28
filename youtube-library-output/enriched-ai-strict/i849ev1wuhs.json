@@ -1,0 +1,72 @@
+{
+  "source_video_id": "i849ev1wuhs",
+  "source_url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+  "slug": "no-compres-seat-subaru-o-suzuki-sin-ver-esto",
+  "title_seo": "No compres SEAT, Subaru o Suzuki sin ver esto",
+  "meta_description": "Analizamos los modelos más populares de SEAT, Subaru y Suzuki, sus puntos fuertes y fallas comunes. Descubre si realmente valen tu inversión.",
+  "executive_summary": "En este video, se analizan las marcas SEAT, Subaru y Suzuki, destacando sus modelos más populares, puntos fuertes y fallas comunes. Se ofrece una perspectiva crítica sobre si vale la pena invertir en estos vehículos en el contexto actual del mercado automotriz.",
+  "key_takeaways": [
+    "SEAT ha renovado modelos como Ibiza y Arona, pero enfrenta críticas por falta de potencia.",
+    "Subaru ofrece productos seguros y duraderos, pero con limitaciones en versiones turbo y híbridas.",
+    "Suzuki no fue mencionado en detalle, pero se sugiere precaución al considerar su compra."
+  ],
+  "vehicles_or_brands": [
+    {
+      "make": "SEAT",
+      "model": "Ibiza",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "El Ibiza es el Seat más vendido en México y se menciona que tiene un motor de 1.6 con 110 caballos."
+    },
+    {
+      "make": "SEAT",
+      "model": "Arona",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Se menciona que el Arona es un modelo relacionado con el Ibiza y que tiene características similares."
+    },
+    {
+      "make": "Subaru",
+      "model": "Crosstrek",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Se menciona que Crosstrek es un buen producto, pero le falta potencia."
+    },
+    {
+      "make": "Subaru",
+      "model": "Forester",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Se menciona que la versión híbrida de Forester es la única que se recomendaría."
+    }
+  ],
+  "buyer_questions_answered": [
+    "¿Vale la pena comprar un SEAT en 2026?",
+    "¿Qué modelos de Subaru son recomendables?",
+    "¿Cuáles son las fallas comunes de estos vehículos?"
+  ],
+  "market_topics": [
+    "Análisis de marcas automotrices",
+    "Comparativa de modelos populares",
+    "Tendencias del mercado automotriz en México"
+  ],
+  "publishable_article_outline": [
+    "Introducción al análisis de SEAT, Subaru y Suzuki",
+    "Análisis de SEAT: Ibiza y Arona",
+    "Análisis de Subaru: Crosstrek y Forester",
+    "Conclusiones sobre la compra de estos vehículos"
+  ],
+  "internal_links_to_create": [
+    "Análisis de SEAT",
+    "Comparativa de Subaru",
+    "Guía de compra de Suzuki"
+  ],
+  "schema_org_notes": [
+    "Incluir datos estructurados sobre los modelos mencionados."
+  ],
+  "editorial_warnings": [
+    "Los precios y especificaciones mencionados deben ser validados con fuentes oficiales."
+  ],
+  "generated_at": "2026-05-29T18:28:29.434Z",
+  "model": "gpt-4o-mini"
+}

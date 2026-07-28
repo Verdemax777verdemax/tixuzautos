@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "hHIikqGcfD4",
+    "source_url": "https://www.youtube.com/watch?v=hHIikqGcfD4",
+    "source_title": "EL TESLA MODEL 3 ES El MEJOR AUTO DEL MUNDO",
+    "source_channel": "El Dios de los Autos",
+    "source_channel_id": "UCDvtCV47PP-5FUfd0NAHP5g",
+    "source_owner": "El Dios de los Autos",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Tesla",
+      "claim_summary": "El video contiene una posible opinion favorable sobre Tesla; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:22:18.828385+00:00"
+}

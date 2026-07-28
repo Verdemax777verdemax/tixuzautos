@@ -1,0 +1,43 @@
+{
+  "topic": "Changan",
+  "slug": "changan",
+  "generated_at": "2026-06-01T01:07:15.045908+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 9,
+  "angle": "Alertas y puntos a revisar antes de comprar un Changan, usando referencias externas como pistas editoriales.",
+  "claim_count": 1,
+  "selected_claim_count": 0,
+  "source_count": 1,
+  "sources": {
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "negative": 1
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Changan convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Changan que debe revisar un comprador?",
+    "Que modelos de Changan tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Changan en Mexico?",
+    "Conviene comprar Changan nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Changan para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [],
+  "videos_to_embed": [],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

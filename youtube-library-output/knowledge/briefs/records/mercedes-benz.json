@@ -1,0 +1,82 @@
+{
+  "topic": "Mercedes-Benz",
+  "slug": "mercedes-benz",
+  "generated_at": "2026-06-01T01:07:15.022011+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 22,
+  "angle": "Guia de compra sobre Mercedes-Benz apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 2,
+  "selected_claim_count": 1,
+  "source_count": 1,
+  "sources": {
+    "Sergio Oliveira": 2
+  },
+  "polarity": {
+    "neutral": 2
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "u-QIh-nnUYg",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "summary": "Sergio otra vez está aquí con nosotros. Oye, pues nos toca, ¿me lo compro o no me lo compro? Una marca, pues, híjole, ¿qué te diré?",
+      "transcript_available": true,
+      "transcript_chars": 23686
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Mercedes-Benz convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Mercedes-Benz que debe revisar un comprador?",
+    "Que modelos de Mercedes-Benz tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Mercedes-Benz en Mexico?",
+    "Conviene comprar Mercedes-Benz nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Mercedes-Benz para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Mercedes-Benz; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "source_url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "source_video_id": "RlYrDLaCEIg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "u-QIh-nnUYg",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "RlYrDLaCEIg",
+      "url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

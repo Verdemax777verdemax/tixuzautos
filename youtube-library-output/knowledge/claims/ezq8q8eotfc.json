@@ -1,0 +1,43 @@
+{
+  "source_attribution": {
+    "source_video_id": "ezQ8q8eoTfc",
+    "source_url": "https://www.youtube.com/watch?v=ezQ8q8eoTfc",
+    "source_title": "217. Mazda más barato, filtran nuevo GTI, GMC en China",
+    "source_channel": "Autoboutique 1/4 de Milla",
+    "source_channel_id": "UCpC4ElFQZGj22H6yt6tWFxg",
+    "source_owner": "Autoboutique 1/4 de Milla",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "GMC",
+      "claim_summary": "Fuente externa registrada sobre GMC; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mazda",
+      "claim_summary": "Fuente externa registrada sobre Mazda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:23:10.640026+00:00"
+}

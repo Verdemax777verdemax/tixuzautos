@@ -1,0 +1,177 @@
+{
+  "topic": "Subaru",
+  "slug": "subaru",
+  "generated_at": "2026-06-01T01:07:14.907318+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 66,
+  "angle": "Guia de compra sobre Subaru apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 6,
+  "selected_claim_count": 5,
+  "source_count": 3,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "CarsLatino": 2,
+    "Sergio Oliveira": 2
+  },
+  "polarity": {
+    "neutral": 6
+  },
+  "owned_tixuz_video_count": 3,
+  "owned_tixuz_videos": [
+    {
+      "id": "i849ev1wuhs",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "summary": "En este episodio de Tixuz Autos, se discuten las marcas SEAT, Subaru y Suzuki, evaluando sus modelos más populares y analizando si son una buena opción de compra en 2026. Se destacan tanto sus ventajas como desventajas, ofreciendo una visión clara para los compradores potenciales.",
+      "transcript_available": true,
+      "transcript_chars": 30101
+    },
+    {
+      "id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "summary": "Abril de 2026 ha sido un mes crucial en la industria automotriz, marcado por la presentación de innovadores prototipos y alianzas estratégicas que prometen revolucionar el transporte urbano. Desde el Hyundai Boulder hasta la inversión de Uber en Rivian, este mes ha dejado claro que el futuro de los vehículos autónomos está más cerca de lo que pensamos.",
+      "transcript_available": true,
+      "transcript_chars": 7522
+    },
+    {
+      "id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Subaru convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Subaru que debe revisar un comprador?",
+    "Que modelos de Subaru tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Subaru en Mexico?",
+    "Conviene comprar Subaru nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Subaru para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Subaru; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Subaru Forester 2019, ¿La mejor en su clase?",
+      "source_url": "https://www.youtube.com/watch?v=w13rqSdIQEw",
+      "source_video_id": "w13rqSdIQEw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Subaru; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Subaru BRZ vs Mazda MX-5. ¿Cuál es el mejor?",
+      "source_url": "https://www.youtube.com/watch?v=LZb5dDY_lAI",
+      "source_video_id": "LZb5dDY_lAI",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Subaru; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Los 7 PEORES Subaru del Mundo *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=IsJaHl6QRgY",
+      "source_video_id": "IsJaHl6QRgY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Subaru; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Chirey Omoda 5, Subaru WRX S4, Autódromo Riviera Maya, Categorías Rabadilla de Oro | 19",
+      "source_url": "https://www.youtube.com/watch?v=i9MvJIC7Zf0",
+      "source_video_id": "i9MvJIC7Zf0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Subaru; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "19. Chirey Omoda 5, Subaru WRX S4, Autódromo Riviera Maya, Categorías Rabadilla de Oro",
+      "source_url": "https://www.youtube.com/watch?v=OEP3diaCMWw",
+      "source_video_id": "OEP3diaCMWw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "i849ev1wuhs",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "w13rqSdIQEw",
+      "url": "https://www.youtube.com/watch?v=w13rqSdIQEw",
+      "title": "Subaru Forester 2019, ¿La mejor en su clase?",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "LZb5dDY_lAI",
+      "url": "https://www.youtube.com/watch?v=LZb5dDY_lAI",
+      "title": "Subaru BRZ vs Mazda MX-5. ¿Cuál es el mejor?",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

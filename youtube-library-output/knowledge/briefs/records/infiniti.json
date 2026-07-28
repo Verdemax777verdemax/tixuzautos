@@ -1,0 +1,130 @@
+{
+  "topic": "Infiniti",
+  "slug": "infiniti",
+  "generated_at": "2026-06-01T01:07:14.955872+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 20,
+  "angle": "Mapa editorial de Infiniti: modelos, dudas frecuentes, reputacion y videos que conviene revisar antes de publicar.",
+  "claim_count": 4,
+  "selected_claim_count": 4,
+  "source_count": 2,
+  "sources": {
+    "Sergio Oliveira": 3,
+    "Autoboutique 1/4 de Milla": 1
+  },
+  "polarity": {
+    "neutral": 4
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Infiniti convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Infiniti que debe revisar un comprador?",
+    "Que modelos de Infiniti tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Infiniti en Mexico?",
+    "Conviene comprar Infiniti nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Infiniti para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Infiniti; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+      "source_url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+      "source_video_id": "fASJ3iE-Yxg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Infiniti; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "source_url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "source_video_id": "RlYrDLaCEIg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Infiniti; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Infiniti QX30 2017; Alma de Mercedes, aunque no del mejor Mercedes.",
+      "source_url": "https://www.youtube.com/watch?v=VWTikrCbsyU",
+      "source_video_id": "VWTikrCbsyU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Infiniti; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Infiniti QX50 | PruebameLa... Nave #46 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=KG2WuiEhlK8",
+      "source_video_id": "KG2WuiEhlK8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "fASJ3iE-Yxg",
+      "url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+      "title": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "RlYrDLaCEIg",
+      "url": "https://www.youtube.com/watch?v=RlYrDLaCEIg",
+      "title": "Mercedes-Benz E 200 vs Infiniti Q70",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "VWTikrCbsyU",
+      "url": "https://www.youtube.com/watch?v=VWTikrCbsyU",
+      "title": "Infiniti QX30 2017; Alma de Mercedes, aunque no del mejor Mercedes.",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "KG2WuiEhlK8",
+      "url": "https://www.youtube.com/watch?v=KG2WuiEhlK8",
+      "title": "Infiniti QX50 | PruebameLa... Nave #46 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

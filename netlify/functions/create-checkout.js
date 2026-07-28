@@ -4,7 +4,7 @@
 const DEFAULT_PLANS = {
   basic:    { key: 'basic',    name: 'Básico',    price_mxn: 49,  interval_type: 'one_time',  active_days: 30, max_photos: 5 },
   featured: { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time',  active_days: 60, max_photos: 12 },
-  pro:      { key: 'pro',      name: 'PRO',       price_mxn: 499, interval_type: 'recurring', active_days: 30, max_photos: 30 },
+  pro:      { key: 'pro',      name: 'PRO',       price_mxn: 499, interval_type: 'one_time',  active_days: 30, max_photos: 30 },
 };
 
 const headers = {
@@ -101,12 +101,12 @@ async function createDraftListing({ listingData, planKey, SUPABASE_URL, SUPABASE
 
 async function createStripeCheckout({ STRIPE_KEY, SITE_URL, planKey, listingId }) {
   const params = new URLSearchParams();
-  params.set('mode', planKey === 'pro' ? 'subscription' : 'payment');
+  params.set('mode', DEFAULT_PLANS[planKey]?.interval_type === 'recurring' ? 'subscription' : 'payment');
   params.set('client_reference_id', listingId);
   params.set('metadata[listing_id]', listingId);
   params.set('metadata[plan]', planKey);
-  params.set('success_url', `${SITE_URL}/?payment_success=1&listing_id=${listingId}&session_id={CHECKOUT_SESSION_ID}`);
-  params.set('cancel_url', `${SITE_URL}/?payment_cancelled=1&listing_id=${listingId}`);
+  params.set('success_url', `${SITE_URL}/payment_success=1&listing_id=${listingId}&session_id={CHECKOUT_SESSION_ID}`);
+  params.set('cancel_url', `${SITE_URL}/payment_cancelled=1&listing_id=${listingId}`);
   params.set('locale', 'es');
   params.set('payment_method_types[0]', 'card');
   addLineItem(params, planKey);
@@ -125,7 +125,7 @@ async function createStripeCheckout({ STRIPE_KEY, SITE_URL, planKey, listingId }
   try { data = text ? JSON.parse(text) : {}; } catch { data = { error: { message: text } }; }
 
   if (!res.ok || !data.url) {
-    throw new Error(data.error?.message || text || `Stripe HTTP ${res.status}`);
+    throw new Error(data.error.message || text || `Stripe HTTP ${res.status}`);
   }
 
   return data.url;

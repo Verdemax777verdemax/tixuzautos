@@ -1,0 +1,189 @@
+{
+  "topic": "Toyota",
+  "slug": "toyota",
+  "generated_at": "2026-06-01T01:07:14.829955+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 44,
+  "angle": "Guia de compra sobre Toyota apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 8,
+  "selected_claim_count": 7,
+  "source_count": 3,
+  "sources": {
+    "El Dios de los Autos": 3,
+    "Sergio Oliveira": 3,
+    "CarsLatino": 2
+  },
+  "polarity": {
+    "neutral": 8
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "summary": "Abril de 2026 ha sido un mes crucial en la industria automotriz, marcado por la presentación de innovadores prototipos y alianzas estratégicas que prometen revolucionar el transporte urbano. Desde el Hyundai Boulder hasta la inversión de Uber en Rivian, este mes ha dejado claro que el futuro de los vehículos autónomos está más cerca de lo que pensamos.",
+      "transcript_available": true,
+      "transcript_chars": 7522
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Toyota convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Toyota que debe revisar un comprador?",
+    "Que modelos de Toyota tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Toyota en Mexico?",
+    "Conviene comprar Toyota nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Toyota para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Toyota",
+      "source_url": "https://www.youtube.com/watch?v=-HTgIYuKJi0",
+      "source_video_id": "-HTgIYuKJi0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "De Toyota a Volvo - Me lo compro o no me lo compro",
+      "source_url": "https://www.youtube.com/watch?v=N5eURT_FOTQ",
+      "source_video_id": "N5eURT_FOTQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Comparativa Toyota Prius vs Honda Insight",
+      "source_url": "https://www.youtube.com/watch?v=-iHkQmXpWG4",
+      "source_video_id": "-iHkQmXpWG4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¡Ford está FURIOSO! Responde TOYOTA y Suzuki!!",
+      "source_url": "https://www.youtube.com/watch?v=C0G0H_c_o48",
+      "source_video_id": "C0G0H_c_o48",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "Chevrolet ¡NUEVA Pick Up de $17,000 TIENE a Toyota y Ford de RODILLAS!",
+      "source_url": "https://www.youtube.com/watch?v=hqsVHkRdSP4",
+      "source_video_id": "hqsVHkRdSP4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Los 10 Peores TOYOTA del Mundo! *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=IPLcfL9-sBM",
+      "source_video_id": "IPLcfL9-sBM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Toyota; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 TOYOTA QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=pAJU2TINMkc",
+      "source_video_id": "pAJU2TINMkc",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "-HTgIYuKJi0",
+      "url": "https://www.youtube.com/watch?v=-HTgIYuKJi0",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Toyota",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "N5eURT_FOTQ",
+      "url": "https://www.youtube.com/watch?v=N5eURT_FOTQ",
+      "title": "De Toyota a Volvo - Me lo compro o no me lo compro",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-iHkQmXpWG4",
+      "url": "https://www.youtube.com/watch?v=-iHkQmXpWG4",
+      "title": "Comparativa Toyota Prius vs Honda Insight",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "C0G0H_c_o48",
+      "url": "https://www.youtube.com/watch?v=C0G0H_c_o48",
+      "title": "¡Ford está FURIOSO! Responde TOYOTA y Suzuki!!",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

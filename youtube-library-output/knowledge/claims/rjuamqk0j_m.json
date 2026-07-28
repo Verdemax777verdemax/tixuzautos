@@ -1,0 +1,87 @@
+{
+  "source_attribution": {
+    "source_video_id": "RJuaMqk0J_M",
+    "source_url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+    "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+    "source_channel": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "source_owner": "Sergio Oliveira",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion critica sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion favorable sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion critica sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion critica sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion critica sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Alfa Romeo",
+      "claim_summary": "El video contiene una posible opinion critica sobre Alfa Romeo; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": "es",
+  "transcript_fetch_error": "",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:00:21.493327+00:00"
+}

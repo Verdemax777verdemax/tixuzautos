@@ -1,183 +1,450 @@
+functionsDirectory = "/tmp/tix/netlify/functions"
+functionsDirectoryOrigin = "config"
+headersOrigin = "config"
+redirectsOrigin = "config"
+plugins = []
+
 [build]
-  publish = "."
+publish = "/tmp/tix"
+publishOrigin = "config"
+functions = "/tmp/tix/netlify/functions"
+
+  [build.environment]
+
+  [build.processing]
+
+    [build.processing.css]
+
+    [build.processing.html]
+
+    [build.processing.images]
+
+    [build.processing.js]
+
+  [build.services]
 
 [functions]
-  directory = "netlify/functions"
-  node_bundler = "esbuild"
-  included_files = ["netlify/functions/**"]
 
-[functions."ai-search"]
+  [functions.ai-search]
   timeout = 26
 
-[functions."ai-tts"]
+  [functions.ai-tts]
   timeout = 20
 
-[functions."ai-daily-alerts"]
+  [functions.ai-daily-alerts]
   schedule = "0 15 * * *"
   timeout = 26
 
-# v66.1: forzar dominio canónico tixuzautos.com (sin www)
-[[redirects]]
-  from = "https://www.tixuzautos.com/*"
-  to = "https://tixuzautos.com/:splat"
-  status = 301
-  force = true
+  [functions.warm-buscar-externos]
+  schedule = "*/5 * * * *"
 
-# Si alguien llega por la URL Netlify, mandarlo al dominio real
-[[redirects]]
-  from = "https://cool-kataifi-78a65b.netlify.app/*"
-  to = "https://tixuzautos.com/:splat"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/legal/terminos"
-  to = "/legal/terminos.html"
-  status = 200
-
-[[redirects]]
-  from = "/legal/privacidad"
-  to = "/legal/privacidad.html"
-  status = 200
-
-[[redirects]]
-  from = "/legal/cookies"
-  to = "/legal/cookies.html"
-  status = 200
-
-[[redirects]]
-  from = "/buscar-con-ia"
-  to = "/buscar-con-ia.html"
-  status = 200
-
-[[redirects]]
-  from = "/sitemap.xml"
-  to = "/.netlify/functions/seo-sitemap"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/llms.txt"
-  to = "/.netlify/functions/seo-llms"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/llms-full.txt"
-  to = "/.netlify/functions/seo-llms-full"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/inventory.json"
-  to = "/.netlify/functions/seo-inventory"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/openapi.json"
-  to = "/.netlify/functions/openapi"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/publicar-auto"
-  to = "/.netlify/functions/seo-seller-guide"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/publicar-auto/:intent"
-  to = "/.netlify/functions/seo-seller-intent/:intent"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/lotes"
-  to = "/.netlify/functions/seo-seller-intent/lotes"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/seller-recommendation.json"
-  to = "/.netlify/functions/seo-seller-recommendation"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/seller-intents.json"
-  to = "/.netlify/functions/seo-seller-intents"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/seller-resources.json"
-  to = "/.netlify/functions/seo-seller-resources"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/recursos-vendedor/:slug"
-  to = "/.netlify/functions/seo-seller-resource/:slug"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/youtube-knowledge.json"
-  to = "/.netlify/functions/seo-youtube-knowledge"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/youtube"
-  to = "/.netlify/functions/seo-youtube-authority"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/youtube/autoridad"
-  to = "/.netlify/functions/seo-youtube-authority"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/youtube/temas"
-  to = "/.netlify/functions/seo-youtube-topic"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/youtube/temas/:slug"
-  to = "/.netlify/functions/seo-youtube-topic/:slug"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/autos/:id"
-  to = "/.netlify/functions/seo-listing/:id"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/api/:name"
-  to = "/.netlify/functions/:name"
-  status = 200
-  force = true
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  [functions."*"]
+  included_files = [
+    "netlify/functions/**"
+  ]
+  node_bundler = "esbuild"
 
 [[headers]]
-  for = "/*"
+for = "/*"
+
   [headers.values]
-    X-Frame-Options = "DENY"
-    X-Content-Type-Options = "nosniff"
-    Referrer-Policy = "strict-origin-when-cross-origin"
-    Permissions-Policy = "camera=(), microphone=(self), geolocation=()"
+  X-Frame-Options = "DENY"
+  X-Content-Type-Options = "nosniff"
+  Referrer-Policy = "strict-origin-when-cross-origin"
+  Permissions-Policy = "camera=(), microphone=(self), geolocation=()"
 
 [[headers]]
-  for = "/.netlify/functions/*"
+for = "/"
+
   [headers.values]
-    Access-Control-Allow-Origin = "https://tixuzautos.com"
+  Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com; script-src-elem 'self' 'unsafe-inline' https://js.stripe.com https://www.googletagmanager.com; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com https://www.google-analytics.com https://analytics.google.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/index.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/bot.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/buscar-con-ia.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/buscar-con-ia"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/legal/terminos.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/legal/privacidad.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/legal/cookies.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/youtube/transcripciones/index.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/youtube/transcripciones/*/index.html"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/guias/*"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' 'sha256-w5RolpbU0UEBtsns49IOSqhkzqjev8wtldBY2C1o0F4=' 'sha256-V+rIKqLSnpyjTMhymtKwfiOEqFkDuhSAIVc8kgkph54=' 'sha256-FfGDZlmrfwoanoUF+j/eq9l/wDvIYhQFQlJRsDVWx6c='; script-src-elem 'self' 'sha256-w5RolpbU0UEBtsns49IOSqhkzqjev8wtldBY2C1o0F4=' 'sha256-V+rIKqLSnpyjTMhymtKwfiOEqFkDuhSAIVc8kgkph54=' 'sha256-FfGDZlmrfwoanoUF+j/eq9l/wDvIYhQFQlJRsDVWx6c='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/autos/*"
+
+  [headers.values]
+  Content-Security-Policy = "default-src 'self'; script-src 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-elem 'self' https://js.stripe.com 'sha256-RBkl0d3prKJj5LlffvNjYH7tcBpKg4kh71eeGlQQ3+A=' 'sha256-ChEMX/ziHfkOdTLQ31EbhneAVEjbirwIeQRuoR7Zi+8=' 'sha256-iVprq1vDSKcR7rctiX7Zd4PZy5KrxmIzf5hCqQnH6xs='; script-src-attr 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' data: blob:; connect-src 'self' https://rbiuoljoduekajivffzh.supabase.co https://api.stripe.com https://www.google.com https://speech.googleapis.com https://www.gstatic.com wss://www.google.com; frame-src 'self' https://checkout.stripe.com https://js.stripe.com https://www.youtube.com https://www.youtube-nocookie.com; form-action 'self' https://checkout.stripe.com; frame-ancestors 'none'; base-uri 'self'; object-src 'none'"
+
+[[headers]]
+for = "/assets/app.js"
+
+  [headers.values]
+  Cache-Control = "public, max-age=300, must-revalidate"
+
+[[headers]]
+for = "/assets/og-cover.jpg"
+
+  [headers.values]
+  Cache-Control = "public, max-age=604800"
+
+[[headers]]
+for = "/assets/vendor/*"
+
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+for = "/assets/seed/*"
+
+  [headers.values]
+  Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+from = "https://www.tixuzautos.com/*"
+to = "https://tixuzautos.com/:splat"
+status = 301
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "https://cool-kataifi-78a65b.netlify.app/*"
+to = "https://tixuzautos.com/:splat"
+status = 301
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/legal/terminos"
+to = "/legal/terminos.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/legal/privacidad"
+to = "/legal/privacidad.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/legal/cookies"
+to = "/legal/cookies.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/buscar-con-ia"
+to = "/buscar-con-ia.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/api/*"
+to = "/.netlify/functions/:splat"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/inventory.json"
+to = "/.netlify/functions/seo-inventory"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/llms.txt"
+to = "/.netlify/functions/seo-llms"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/llms-full.txt"
+to = "/.netlify/functions/seo-llms-full"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/seller-recommendation.json"
+to = "/.netlify/functions/seo-seller-recommendation"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/seller-intents.json"
+to = "/.netlify/functions/seo-seller-intents"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/seller-resources.json"
+to = "/.netlify/functions/seo-seller-resources"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/youtube-knowledge.json"
+to = "/.netlify/functions/seo-youtube-knowledge"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/openapi.json"
+to = "/.netlify/functions/openapi"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/sitemap.xml"
+to = "/.netlify/functions/seo-sitemap"
+status = 200
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/publicar-auto"
+to = "/.netlify/functions/seo-seller-guide"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/publicar-auto/:slug"
+to = "/.netlify/functions/seo-seller-intent/:slug"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/lotes"
+to = "/.netlify/functions/seo-seller-intent/lotes"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/recursos-vendedor/:slug"
+to = "/.netlify/functions/seo-seller-resource/:slug"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/youtube/autoridad"
+to = "/.netlify/functions/seo-youtube-authority"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/youtube/temas"
+to = "/.netlify/functions/seo-youtube-topic"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/youtube/temas/:slug"
+to = "/.netlify/functions/seo-youtube-topic/:slug"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/autos/:id"
+to = "/.netlify/functions/seo-listing/:id"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]

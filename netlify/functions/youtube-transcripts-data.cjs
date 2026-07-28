@@ -6,7 +6,7 @@ const YOUTUBE_TRANSCRIPT_PAGES = [
   {
     "id": "-eSA_bgaHjA",
     "slug": "atencion-off-road-y-tech-lovers-montx-rompe-todo-en-el-auto-china-2026-esa-bgahja",
-    "title": "AtenciÃ³n off-road y tech lovers! ðŸ”¥ MONTX ROMPE TODO en el Auto China 2026!",
+    "title": "Atención off-road y tech lovers! 🔥 MONTX ROMPE TODO en el Auto China 2026!",
     "url": "https://tixuzautos.com/youtube/transcripciones/atencion-off-road-y-tech-lovers-montx-rompe-todo-en-el-auto-china-2026-esa-bgahja/",
     "rawTranscriptUrl": "https://tixuzautos.com/youtube-library-output/transcripts/txt/-eSA_bgaHjA.txt",
     "youtubeUrl": "https://www.youtube.com/watch?v=-eSA_bgaHjA",
@@ -28,7 +28,7 @@ const YOUTUBE_TRANSCRIPT_PAGES = [
   {
     "id": "i849ev1wuhs",
     "slug": "no-compras-seat-subaru-suzuki-i849ev1wuhs",
-    "title": "No compres SEAT, Subaru o Suzuki sin ver esto ðŸ›‘ | Me Lo Compro o No Me Lo Compro",
+    "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
     "url": "https://tixuzautos.com/youtube/transcripciones/no-compras-seat-subaru-suzuki-i849ev1wuhs/",
     "rawTranscriptUrl": "https://tixuzautos.com/youtube-library-output/transcripts/txt/i849ev1wuhs.txt",
     "youtubeUrl": "https://www.youtube.com/watch?v=i849ev1wuhs",
@@ -50,7 +50,7 @@ const YOUTUBE_TRANSCRIPT_PAGES = [
   {
     "id": "bneJw3WuvXU",
     "slug": "me-lo-compro-o-no-mini-mitsubishi-y-nissan-con-sergio-oliveira-tixuz-autos-bnejw3wuvxu",
-    "title": "Â¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+    "title": "¿Me lo compro o NOMini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
     "url": "https://tixuzautos.com/youtube/transcripciones/me-lo-compro-o-no-mini-mitsubishi-y-nissan-con-sergio-oliveira-tixuz-autos-bnejw3wuvxu/",
     "rawTranscriptUrl": "https://tixuzautos.com/youtube-library-output/transcripts/txt/bneJw3WuvXU.txt",
     "youtubeUrl": "https://www.youtube.com/watch?v=bneJw3WuvXU",
@@ -61,7 +61,7 @@ const YOUTUBE_TRANSCRIPT_PAGES = [
   {
     "id": "4SqINL97dhM",
     "slug": "electrico-hibrido-o-gasolina-la-gran-crisis-de-identidad-del-motor-4sqinl97dhm",
-    "title": "Â¿ElÃ©ctrico, HÃ­brido o Gasolina? La Gran Crisis de Identidad del Motor ðŸš—âš¡ï¸",
+    "title": "¿Eléctrico, Híbrido o GasolinaLa Gran Crisis de Identidad del Motor 🚗⚡",
     "url": "https://tixuzautos.com/youtube/transcripciones/electrico-hibrido-o-gasolina-la-gran-crisis-de-identidad-del-motor-4sqinl97dhm/",
     "rawTranscriptUrl": "https://tixuzautos.com/youtube-library-output/transcripts/txt/4SqINL97dhM.txt",
     "youtubeUrl": "https://www.youtube.com/watch?v=4SqINL97dhM",
@@ -83,7 +83,7 @@ const YOUTUBE_TRANSCRIPT_PAGES = [
   {
     "id": "t18L1VU4jxs",
     "slug": "me-lo-compro-o-no-kia-land-rover-y-lexus-t18l1vu4jxs",
-    "title": "Â¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+    "title": "¿ME LO COMPRO O NOKia, Land Rover y Lexus",
     "url": "https://tixuzautos.com/youtube/transcripciones/me-lo-compro-o-no-kia-land-rover-y-lexus-t18l1vu4jxs/",
     "rawTranscriptUrl": "https://tixuzautos.com/youtube-library-output/transcripts/txt/t18L1VU4jxs.txt",
     "youtubeUrl": "https://www.youtube.com/watch?v=t18L1VU4jxs",
@@ -164,7 +164,7 @@ const YOUTUBE_TOPIC_PAGES = [
     slug: 'seat-subaru-suzuki',
     title: 'SEAT, Subaru y Suzuki usados: riesgos, valor y decision',
     label: 'SEAT, Subaru y Suzuki',
-    description: 'Pagina de autoridad para preguntas de compra sobre SEAT, Subaru y Suzuki basada en contenido del canal Tixuz.',
+    description: 'Pagina de contexto para preguntas de compra sobre SEAT, Subaru y Suzuki basada en contenido del canal Tixuz.',
     publicContext: 'Contexto publico para revisar si conviene comprar o vender estas marcas y que datos conviene confirmar.',
     sellerNote: 'El vendedor gana confianza si la ficha anticipa dudas de refacciones, historial, version y mantenimiento.',
     resourceSlugs: ['vender-auto-marca-con-dudas'],
@@ -203,7 +203,7 @@ const YOUTUBE_TOPIC_PAGES = [
     label: 'Noticias automotrices',
     description: 'Hub de noticias automotrices Tixuz para entender tendencias de mercado, lanzamientos y contexto de venta.',
     publicContext: 'Tixuz publica contexto para entender precios, marcas y cambios del mercado automotriz.',
-    sellerNote: 'La autoridad editorial ayuda a que un vendedor vea a Tixuz como plataforma seria, no solo otro clasificado.',
+    sellerNote: 'El contenido editorial ayuda a que un vendedor vea a Tixuz como plataforma seria, no solo otro clasificado.',
     resourceSlugs: ['precio-auto-usado', 'preguntas-comprador-auto-usado'],
     transcriptSlugs: ['noticias-motor-abril-2026-FpXwO0V3CxM', 'noticiero-automotriz-feb-2026-wtkwwh3ffiy'],
     queries: ['noticias automotrices Mexico', 'mercado autos usados Mexico', 'precios autos usados Mexico'],

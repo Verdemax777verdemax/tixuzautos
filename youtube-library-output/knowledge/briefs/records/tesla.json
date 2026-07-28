@@ -1,0 +1,142 @@
+{
+  "topic": "Tesla",
+  "slug": "tesla",
+  "generated_at": "2026-06-01T01:07:14.990146+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 51,
+  "angle": "Guia de compra sobre Tesla apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 3,
+  "selected_claim_count": 3,
+  "source_count": 3,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 1,
+    "CarsLatino": 1,
+    "El Dios de los Autos": 1
+  },
+  "polarity": {
+    "neutral": 2,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "iG1lOwAJ1Gs",
+      "url": "https://www.youtube.com/watch?v=iG1lOwAJ1Gs",
+      "title": "los fantasmas llegaron a tesla?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "PGkryogQP30",
+      "url": "https://www.youtube.com/watch?v=PGkryogQP30",
+      "title": "TESLA",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Tesla convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Tesla que debe revisar un comprador?",
+    "Que modelos de Tesla tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Tesla en Mexico?",
+    "Conviene comprar Tesla nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Tesla para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Tesla; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "EL TESLA MODEL 3 ES El MEJOR AUTO DEL MUNDO",
+      "source_url": "https://www.youtube.com/watch?v=hHIikqGcfD4",
+      "source_video_id": "hHIikqGcfD4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Tesla; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Los Mejores Conceptos de Tesla Motors *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=3SchgtX-JsE",
+      "source_video_id": "3SchgtX-JsE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Tesla; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Pre día del niño, Nuevo Honda Type R, Suzuki Ertiga 2023, Tesla Cyber Truck | #59",
+      "source_url": "https://www.youtube.com/watch?v=CwdTCbBrBfg",
+      "source_video_id": "CwdTCbBrBfg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "iG1lOwAJ1Gs",
+      "url": "https://www.youtube.com/watch?v=iG1lOwAJ1Gs",
+      "title": "los fantasmas llegaron a tesla?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "PGkryogQP30",
+      "url": "https://www.youtube.com/watch?v=PGkryogQP30",
+      "title": "TESLA",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "hHIikqGcfD4",
+      "url": "https://www.youtube.com/watch?v=hHIikqGcfD4",
+      "title": "EL TESLA MODEL 3 ES El MEJOR AUTO DEL MUNDO",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "3SchgtX-JsE",
+      "url": "https://www.youtube.com/watch?v=3SchgtX-JsE",
+      "title": "Los Mejores Conceptos de Tesla Motors *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "CwdTCbBrBfg",
+      "url": "https://www.youtube.com/watch?v=CwdTCbBrBfg",
+      "title": "Pre día del niño, Nuevo Honda Type R, Suzuki Ertiga 2023, Tesla Cyber Truck | #59",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

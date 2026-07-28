@@ -1,0 +1,70 @@
+﻿{
+    "id":  "6a037b724f9a920ee54f6fa9",
+    "site_id":  "9f9b8792-51cd-4213-94b4-be8e09746415",
+    "build_id":  null,
+    "state":  "uploading",
+    "name":  "cool-kataifi-78a65b",
+    "url":  "https://tixuzautos.com",
+    "ssl_url":  "https://tixuzautos.com",
+    "admin_url":  "https://app.netlify.com/projects/cool-kataifi-78a65b",
+    "deploy_url":  "http://6a037b724f9a920ee54f6fa9--cool-kataifi-78a65b.netlify.app",
+    "deploy_ssl_url":  "https://6a037b724f9a920ee54f6fa9--cool-kataifi-78a65b.netlify.app",
+    "created_at":  "2026-05-12T19:11:46.801Z",
+    "updated_at":  "2026-05-12T19:11:47.236Z",
+    "user_id":  "6891168a80667d350469f200",
+    "error_message":  null,
+    "required":  [
+
+                 ],
+    "required_functions":  [
+                               "7301dec530c7329f00cea62454051aa72ba164dd6751f0fdc4a3bb2976568e38"
+                           ],
+    "commit_ref":  null,
+    "review_id":  null,
+    "branch":  null,
+    "commit_url":  null,
+    "skipped":  null,
+    "locked":  null,
+    "title":  null,
+    "commit_message":  null,
+    "review_url":  null,
+    "published_at":  null,
+    "context":  "production",
+    "deploy_time":  null,
+    "available_functions":  [
+
+                            ],
+    "screenshot_url":  null,
+    "committer":  null,
+    "skipped_log":  null,
+    "manual_deploy":  true,
+    "plugin_state":  "none",
+    "lighthouse_plugin_scores":  null,
+    "links":  {
+                  "permalink":  "https://6a037b724f9a920ee54f6fa9--cool-kataifi-78a65b.netlify.app",
+                  "alias":  "https://tixuzautos.com",
+                  "branch":  null
+              },
+    "framework":  null,
+    "entry_path":  null,
+    "views_count":  null,
+    "function_schedules":  [
+
+                           ],
+    "public_repo":  null,
+    "pending_review_reason":  null,
+    "lighthouse":  null,
+    "edge_functions_present":  null,
+    "expires_at":  null,
+    "blobs_region":  "us-east-2",
+    "deploy_validations_report":  null,
+    "strict_contributor_verification_failure":  false,
+    "agent_runner_id":  null,
+    "deploy_source":  "api",
+    "database_branch_id":  null,
+    "database_migrations":  null,
+    "database_snapshots":  null,
+    "skew_protection_token":  "11da2a80ac9c5882473d5bcad4b7c838b5e359b36605b259db155d39ac7fc821366130333762373234663961393230656535346636666139",
+    "has_source_zip":  false,
+    "subdomain_alias":  "6a037b724f9a920ee54f6fa9"
+}

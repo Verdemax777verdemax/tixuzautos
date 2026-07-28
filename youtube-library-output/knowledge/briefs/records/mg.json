@@ -1,0 +1,125 @@
+{
+  "topic": "MG",
+  "slug": "mg",
+  "generated_at": "2026-06-01T01:07:14.973346+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 31,
+  "angle": "Guia de compra sobre MG apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 3,
+  "selected_claim_count": 3,
+  "source_count": 2,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 3
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "2tr5BIOGzQg",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de MG convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de MG que debe revisar un comprador?",
+    "Que modelos de MG tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra MG en Mexico?",
+    "Conviene comprar MG nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa MG para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre MG; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "De Mazda a MG - Me lo compro o no me lo compro",
+      "source_url": "https://www.youtube.com/watch?v=1bdcjm9yJVE",
+      "source_video_id": "1bdcjm9yJVE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre MG; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica | #43",
+      "source_url": "https://www.youtube.com/watch?v=BhwicrKoEO4",
+      "source_video_id": "BhwicrKoEO4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre MG; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "43. Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica",
+      "source_url": "https://www.youtube.com/watch?v=cQZbi2OPviU",
+      "source_video_id": "cQZbi2OPviU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "2tr5BIOGzQg",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "1bdcjm9yJVE",
+      "url": "https://www.youtube.com/watch?v=1bdcjm9yJVE",
+      "title": "De Mazda a MG - Me lo compro o no me lo compro",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "BhwicrKoEO4",
+      "url": "https://www.youtube.com/watch?v=BhwicrKoEO4",
+      "title": "Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica | #43",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "cQZbi2OPviU",
+      "url": "https://www.youtube.com/watch?v=cQZbi2OPviU",
+      "title": "43. Fanáticos de MG, Ford Ranger Raptor, Mazda CX-3 Mexicana, Carretera con carga inalámbrica",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

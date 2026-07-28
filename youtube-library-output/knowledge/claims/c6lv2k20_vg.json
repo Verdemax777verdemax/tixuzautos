@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "c6lV2K20_vg",
+    "source_url": "https://www.youtube.com/watch?v=c6lV2K20_vg",
+    "source_title": "Seat León Cupra 2017.  Velocidad a precio de ganga",
+    "source_channel": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "source_owner": "Sergio Oliveira",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Audi",
+      "claim_summary": "El video contiene una posible opinion critica sobre Audi; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": "es",
+  "transcript_fetch_error": "",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:01:21.147573+00:00"
+}

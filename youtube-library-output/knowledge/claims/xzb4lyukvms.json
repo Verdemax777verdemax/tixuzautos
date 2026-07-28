@@ -1,0 +1,87 @@
+{
+  "source_attribution": {
+    "source_video_id": "xzb4lyukVms",
+    "source_url": "https://www.youtube.com/watch?v=xzb4lyukVms",
+    "source_title": "¿MAZDA ES MEJOR AUTO PREMIUM QUE BMW?",
+    "source_channel": "El Dios de los Autos",
+    "source_channel_id": "UCDvtCV47PP-5FUfd0NAHP5g",
+    "source_owner": "El Dios de los Autos",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion critica sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion favorable sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion favorable sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion critica sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion critica sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    },
+    {
+      "vehicle_or_brand": "Acura",
+      "claim_summary": "El video contiene una posible opinion critica sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": "es",
+  "transcript_fetch_error": "",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:01:19.041136+00:00"
+}

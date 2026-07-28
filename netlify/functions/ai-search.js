@@ -273,7 +273,7 @@ function inferBrandModelFromText(normalized) {
 }
 
 function escapeRegExp(value) {
-  return String(value || '').replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return String(value || '').replace(/[.*+^${}()|[\]\\]/g, '\\$&');
 }
 
 function containsAlias(normalizedText, alias) {
@@ -298,8 +298,8 @@ function locationAliasTerms(value) {
 }
 
 function listingLocationMatchesIntent(listing, intent) {
-  if (!intent?.city && !intent?.state) return true;
-  const rawLocation = String(listing?.ubicacion || listing?.location || '');
+  if (!intent.city && !intent.state) return true;
+  const rawLocation = String(listing.ubicacion || listing.location || '');
   const location = normalizeText(rawLocation);
   if (!location || location === 'mexico') return true;
 
@@ -341,7 +341,7 @@ function hasVehicleIntent(text) {
     || /\b(20[0-2]\d|19[8-9]\d)\b/.test(t)
     || /\b(auto|carro|camioneta|suv|pickup|sedan|hatchback|seminuevo|usado|nuevo|agencia)\b/.test(t)
     || /\b(\d{2,3})\s*(mil|k)\b/.test(t)
-    || /\$ ?\d{2,3}[,.]?\d{3}/.test(t);
+    || /\$ \d{2,3}[,.]\d{3}/.test(t);
 }
 
 function decodeHtml(str) {
@@ -374,7 +374,7 @@ function buildSlug(text) {
 function unwrapDuckUrl(url) {
   const decoded = decodeHtml(url);
   if (!decoded) return '';
-  if (decoded.startsWith('//duckduckgo.com/l/?')) {
+  if (decoded.startsWith('//duckduckgo.com/l/')) {
     try {
       const u = new URL('https:' + decoded);
       return u.searchParams.get('uddg') || decoded;
@@ -382,7 +382,7 @@ function unwrapDuckUrl(url) {
       return decoded;
     }
   }
-  if (decoded.startsWith('/l/?')) {
+  if (decoded.startsWith('/l/')) {
     try {
       const u = new URL('https://duckduckgo.com' + decoded);
       return u.searchParams.get('uddg') || decoded;
@@ -423,9 +423,9 @@ function isTrustedAutoUrl(url) {
 
 function inferPrice(text) {
   const s = decodeHtml(text);
-  const mxn = s.match(/\$ ?[\d,.]{4,}\s*(?:MXN|M\.N\.)?/i);
+  const mxn = s.match(/\$ [\d,.]{4,}\s*(:MXN|M\.N\.)/i);
   if (mxn) return mxn[0].replace(/\s+/g, ' ').trim();
-  const pesos = s.match(/\b\d{2,3}[,.]\d{3}\s*(?:pesos|mxn)\b/i);
+  const pesos = s.match(/\b\d{2,3}[,.]\d{3}\s*(:pesos|mxn)\b/i);
   return pesos ? pesos[0].trim() : null;
 }
 
@@ -465,7 +465,7 @@ function kmToNumber(value) {
 
 function inferKm(text) {
   const s = decodeHtml(text);
-  const km = s.match(/\b[\d,.]{1,7}\s*(?:km|kilometros|kilómetros)\b/i);
+  const km = s.match(/\b[\d,.]{1,7}\s*(:km|kilometros|kilómetros)\b/i);
   return km ? km[0].replace(/kil[oó]metros/i, 'km').trim() : null;
 }
 
@@ -476,9 +476,9 @@ function inferLocation(text) {
 }
 
 function isGenericAutoResult(listing) {
-  const title = String(listing?.titulo || '').toLowerCase();
-  const normalizedTitle = normalizeText(listing?.titulo);
-  const url = String(listing?.url || '').toLowerCase();
+  const title = String(listing.titulo || '').toLowerCase();
+  const normalizedTitle = normalizeText(listing.titulo);
+  const url = String(listing.url || '').toLowerCase();
   if (/\b(alternador|refaccion|refacciones|repuesto|repuestos|accesorio|accesorios|faro|faros|calavera|calaveras|rin|rines|llanta|llantas|defensa|parrilla|sensor|bomba|inyector|inyectores|amortiguador|amortiguadores|balata|balatas|pastilla|pastillas|radiador|retrovisor|espejo|manija|tapete|tapetes|cubierta|soporte|modulo|computadora|carcasa|facia|fascia|caliper|resonador|ducto|filtro|compresor|clima|bateria|bujia|bujias|manguera|valvula)\b/.test(normalizedTitle)) return true;
   return /^buscar\s+"/.test(title)
     || /^autos y camionetas\b/.test(title)
@@ -490,14 +490,14 @@ function isGenericAutoResult(listing) {
     || /\busados en méxico\b/.test(title)
     || /\ba partir de\b/.test(title)
     || /^automexico$/.test(title)
-    || /\/mx\/seminuevos\/?$/.test(url)
-    || /kavak\.com\/mx\/seminuevos\/[^?#]+\/?$/.test(url)
-    || /autos\.mercadolibre\.com\.mx\/?$/.test(url);
+    || /\/mx\/seminuevos\/$/.test(url)
+    || /kavak\.com\/mx\/seminuevos\/[^#]+\/$/.test(url)
+    || /autos\.mercadolibre\.com\.mx\/$/.test(url);
 }
 
 function isUsableImage(url) {
   const value = String(url || '').trim();
-  if (!/^https?:\/\//i.test(value)) return false;
+  if (!/^https:\/\//i.test(value)) return false;
   const lower = value.toLowerCase();
   return !lower.includes('main-hero')
     && !lower.includes('/home/jpg/')
@@ -508,7 +508,7 @@ function isUsableImage(url) {
 }
 
 function isDirectListing(listing) {
-  const url = String(listing?.url || '');
+  const url = String(listing.url || '');
   return /tixuzautos\.com\/autos\//i.test(url)
     || /cool-kataifi-78a65b\.netlify\.app\/autos\//i.test(url)
     || /auto\.mercadolibre\.com\.mx\/MLM-\d+.+-_JM/i.test(url)
@@ -526,8 +526,8 @@ function isDisplayQualityListing(listing, intent = null) {
   const title = normalizeText(listing.titulo);
   const hasVehicleWords = /\b(auto|autos|carro|camioneta|suv|sedan|hatchback|pickup|usado|seminuevo|venta)\b/.test(title);
   const hasYearOrPrice = /\b(19[8-9]\d|20[0-2]\d)\b/.test(title)
-    || /\$|consultar|\d{2,3}[,.]?\d{3}/i.test(String(listing.precio || ''));
-  return hasVehicleWords || hasYearOrPrice || Boolean(intent?.model);
+    || /\$|consultar|\d{2,3}[,.]\d{3}/i.test(String(listing.precio || ''));
+  return hasVehicleWords || hasYearOrPrice || Boolean(intent.model);
 }
 
 function listingScore(listing) {
@@ -595,13 +595,13 @@ function foundMessage(count, meta = {}) {
   const ownCount = Number(meta.ownCount || 0);
   const externalCount = Math.max(0, Number(meta.externalCount || 0));
   if (ownCount && externalCount) {
-    return `Encontré ${ownCount} en Tixuz Autos y completé con ${externalCount} de portales externos. Te los muestro en pantalla.`;
+    return `Encontré ${ownCount} en Tixuz Autos y completé con ${externalCount} de portales externos. Abre el veredicto Tixuz para revisar pros, riesgos y preguntas al vendedor.`;
   }
   if (ownCount) {
-    return `Encontré ${ownCount} ${ownCount === 1 ? 'opción' : 'opciones'} en Tixuz Autos. Te ${ownCount === 1 ? 'la' : 'las'} muestro en pantalla.`;
+    return `Encontré ${ownCount} ${ownCount === 1 ? 'opción' : 'opciones'} en Tixuz Autos. Abre el veredicto para ver si conviene y que revisar.`;
   }
   return count
-    ? `Aún no tenemos ese inventario en Tixuz, pero encontré ${count} ${count === 1 ? 'opción externa' : 'opciones externas'} con foto. Te ${count === 1 ? 'la' : 'las'} muestro en pantalla.`
+    ? `Aún no tenemos ese inventario en Tixuz, pero encontré ${count} ${count === 1 ? 'opción externa' : 'opciones externas'} con foto. Abre el veredicto Tixuz antes de ir a la fuente original.`
     : 'No encontré opciones con foto confiable para esos filtros. Puedo ampliar la ciudad o abrir el año.';
 }
 
@@ -620,7 +620,7 @@ function normalizeText(value) {
 function parseBudget(text) {
   const t = normalizeText(text);
   const values = [];
-  const moneyRe = /\$?\s*(\d{2,4})(?:[,.](\d{3}))?\s*(mil|k|mxn|pesos)?/gi;
+  const moneyRe = /\$\s*(\d{2,4})(:[,.](\d{3}))\s*(mil|k|mxn|pesos)/gi;
   let match;
   while ((match = moneyRe.exec(text))) {
     const unit = (match[3] || '').toLowerCase();
@@ -656,8 +656,8 @@ function parseYearIntent(text) {
 
 function parseMileageLimit(text) {
   const normalized = normalizeText(text);
-  const match = normalized.match(/\b(?:menos de|maximo|max|hasta|por debajo de|no mas de)?\s*(\d{1,7})(?:\s*(mil|k))?\s*(?:km|kms|kilometros)\b/)
-    || normalized.match(/\b(?:kilometraje|km|kms|kilometros)\s*(?:maximo|max|hasta|de|con)?\s*(\d{1,7})(?:\s*(mil|k))?\b/);
+  const match = normalized.match(/\b(:menos de|maximo|max|hasta|por debajo de|no mas de)\s*(\d{1,7})(:\s*(mil|k))\s*(:km|kms|kilometros)\b/)
+    || normalized.match(/\b(:kilometraje|km|kms|kilometros)\s*(:maximo|max|hasta|de|con)\s*(\d{1,7})(:\s*(mil|k))\b/);
   if (!match) return null;
   let amount = Number(match[1]);
   if (!Number.isFinite(amount)) return null;
@@ -682,9 +682,9 @@ function inferIntentHeuristic(searchText) {
     condition: /\b(nuevo|nueva|nuevos|agencia|0\s*km|cero\s*km)\b/i.test(searchText)
       ? 'nuevo'
       : (/\b(usado|usada|usados|seminuevo|seminueva|seminuevos|segunda mano)\b/i.test(searchText) ? 'usado' : null),
-    transmission: /\b(automatico|automatica|automático|automática|cvt|tiptronic)\b/i.test(searchText)
+    transmission: /\b(automatico|automatica|autom.tico|autom.tica|cvt|tiptronic)\b/i.test(searchText)
       ? 'automatico'
-      : (/\b(manual|estandar|estándar|std)\b/i.test(searchText) ? 'manual' : null),
+      : (/\b(manual|estandar|est.ndar|std)\b/i.test(searchText) ? 'manual' : null),
     drivetrain: /\b(4x4|awd|4wd)\b/i.test(searchText) ? '4x4' : null,
     min_price: budget.min_price || null,
     max_price: budget.max_price || null,
@@ -787,7 +787,7 @@ Busqueda compacta: ${searchText}`;
     }
     if (!res.ok) throw new Error(`${model}: ${(await res.text()).slice(0, 220)}`);
     const data = await res.json();
-    return JSON.parse(data.choices?.[0]?.message?.content || '{}');
+    return JSON.parse(data.choices?.[0].message.content || '{}');
   };
 
   for (const model of [env('OPENAI_PLANNER_MODEL') || OPENAI_PLANNER_MODEL, 'gpt-4.1-mini']) {
@@ -887,7 +887,7 @@ function filterListingsForIntent(listings, intent) {
 }
 
 async function fetchDuckDuckGo(query) {
-  const url = `https://duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
+  const url = `https://duckduckgo.com/html/q=${encodeURIComponent(query)}`;
   const res = await fetchWithTimeout(url, 3500);
   if (!res.ok) throw new Error(`DuckDuckGo ${res.status}`);
   return res.text();
@@ -899,13 +899,13 @@ function quoteTerm(value) {
 }
 
 function focusedSearchPhrase(searchText, intent = null) {
-  const core = [intent?.make, intent?.model].filter(Boolean).join(' ').trim();
-  const year = intent?.year_min && !intent?.year_max
+  const core = [intent.make, intent.model].filter(Boolean).join(' ').trim();
+  const year = intent.year_min && !intent.year_max
     ? `desde ${intent.year_min}`
-    : (intent?.year_min && intent?.year_max && intent.year_min !== intent.year_max
+    : (intent.year_min && intent.year_max && intent.year_min !== intent.year_max
       ? `${intent.year_min} ${intent.year_max}`
-      : (intent?.year_min || intent?.year_max || ''));
-  const place = [intent?.city, intent?.state].filter(Boolean).join(' ').trim();
+      : (intent.year_min || intent.year_max || ''));
+  const place = [intent.city, intent.state].filter(Boolean).join(' ').trim();
   if (core) return [core, year, place, 'usado seminuevo'].filter(Boolean).join(' ');
 
   return String(searchText || '')
@@ -919,23 +919,23 @@ function serpApiQueries(searchText, intent = null) {
     return intent.queries.slice(0, 8);
   }
 
-  const exact = [intent?.make, intent?.model].filter(Boolean).join(' ').trim();
+  const exact = [intent.make, intent.model].filter(Boolean).join(' ').trim();
   const targets = exact
-    ? [...new Set([exact, ...(intent?.aliases || [])].filter(Boolean).map(quoteTerm))].slice(0, 4)
+    ? [...new Set([exact, ...(intent.aliases || [])].filter(Boolean).map(quoteTerm))].slice(0, 4)
     : [searchText];
   const target = targets[0];
   const altTarget = targets[1] || target;
   const shortTarget = targets[2] || altTarget;
-  const place = [intent?.city, intent?.state].filter(Boolean).join(' ');
-  const price = intent?.max_price ? `hasta ${intent.max_price} pesos` : '';
-  const km = intent?.max_km ? `hasta ${intent.max_km} km` : '';
-  const year = intent?.year_min && intent?.year_max && intent.year_min !== intent.year_max
+  const place = [intent.city, intent.state].filter(Boolean).join(' ');
+  const price = intent.max_price ? `hasta ${intent.max_price} pesos` : '';
+  const km = intent.max_km ? `hasta ${intent.max_km} km` : '';
+  const year = intent.year_min && intent.year_max && intent.year_min !== intent.year_max
     ? `${intent.year_min} ${intent.year_max}`
-    : (intent?.year_min || intent?.year_max || '');
-  const condition = intent?.condition === 'nuevo' ? 'nuevo agencia' : 'usado seminuevo';
-  const extra = [year, place, price, km, intent?.body_type, intent?.transmission, intent?.drivetrain, condition].filter(Boolean).join(' ');
-  const broadExtra = [year, place, km, intent?.body_type, intent?.transmission, intent?.drivetrain, condition].filter(Boolean).join(' ');
-  const mexicoExtra = [year, km, intent?.body_type, intent?.transmission, intent?.drivetrain, `autos ${condition} Mexico precio foto`].filter(Boolean).join(' ');
+    : (intent.year_min || intent.year_max || '');
+  const condition = intent.condition === 'nuevo' ? 'nuevo agencia' : 'usado seminuevo';
+  const extra = [year, place, price, km, intent.body_type, intent.transmission, intent.drivetrain, condition].filter(Boolean).join(' ');
+  const broadExtra = [year, place, km, intent.body_type, intent.transmission, intent.drivetrain, condition].filter(Boolean).join(' ');
+  const mexicoExtra = [year, km, intent.body_type, intent.transmission, intent.drivetrain, `autos ${condition} Mexico precio foto`].filter(Boolean).join(' ');
   const socialNoise = '-tiktok -youtube -instagram -pinterest -facebook';
 
   return [
@@ -952,10 +952,10 @@ function serpApiQueries(searchText, intent = null) {
 }
 
 function serpApiImageQueries(searchText, intent = null) {
-  const exact = [intent?.make, intent?.model].filter(Boolean).join(' ').trim();
+  const exact = [intent.make, intent.model].filter(Boolean).join(' ').trim();
   const target = exact || focusedSearchPhrase(searchText, intent);
-  const place = [intent?.city, intent?.state].filter(Boolean).join(' ');
-  const price = intent?.max_price ? `hasta ${intent.max_price} pesos` : '';
+  const place = [intent.city, intent.state].filter(Boolean).join(' ');
+  const price = intent.max_price ? `hasta ${intent.max_price} pesos` : '';
   const base = [target, place, 'autos usados venta Mexico'].filter(Boolean).join(' ');
   return [
     `${base} MercadoLibre Kavak Seminuevos`,
@@ -1019,7 +1019,7 @@ async function fetchSerpApiImages(query) {
 }
 
 function parseSerpApiOrganic(data, intent = null) {
-  const organic = Array.isArray(data?.organic_results) ? data.organic_results : [];
+  const organic = Array.isArray(data.organic_results) ? data.organic_results : [];
   return organic.map(result => {
     const link = result.link || result.redirect_link || '';
     const text = `${result.title || ''} ${result.snippet || ''}`;
@@ -1030,21 +1030,21 @@ function parseSerpApiOrganic(data, intent = null) {
       kilometraje: inferKm(text) || null,
       portal: portalFromUrl(link, result.source || 'Resultado web'),
       url: link,
-      imagen: result.thumbnail || result.rich_snippet?.top?.detected_extensions?.thumbnail || null,
+      imagen: result.thumbnail || result.rich_snippet.top.detected_extensions.thumbnail || null,
     });
     return listing && listingMatchesIntent(listing, intent) ? listing : null;
   }).filter(Boolean);
 }
 
 function parseSerpApiShopping(data, intent = null) {
-  const items = Array.isArray(data?.shopping_results) ? data.shopping_results : [];
+  const items = Array.isArray(data.shopping_results) ? data.shopping_results : [];
   return items.map(result => {
     const link = result.link || result.product_link || '';
     const listing = normalizeListing({
       titulo: result.title || 'Auto disponible',
-      precio: result.price || (result.extracted_price ? `$${result.extracted_price}` : 'Consultar'),
-      ubicacion: result.delivery || result.extensions?.join(' ') || 'Mexico',
-      kilometraje: inferKm(`${result.title || ''} ${result.extensions?.join(' ') || ''}`),
+      precio: result.price || (result.extracted_price ? `${result.extracted_price}` : 'Consultar'),
+      ubicacion: result.delivery || result.extensions.join(' ') || 'Mexico',
+      kilometraje: inferKm(`${result.title || ''} ${result.extensions.join(' ') || ''}`),
       portal: result.source || portalFromUrl(link, 'Google Shopping'),
       url: link,
       imagen: result.thumbnail || result.image || null,
@@ -1054,7 +1054,7 @@ function parseSerpApiShopping(data, intent = null) {
 }
 
 function parseSerpApiImages(data, intent = null) {
-  const items = Array.isArray(data?.images_results) ? data.images_results : [];
+  const items = Array.isArray(data.images_results) ? data.images_results : [];
   return items.map(result => {
     const link = result.link || result.source || result.original || '';
     const text = `${result.title || ''} ${result.source || ''}`;
@@ -1116,7 +1116,7 @@ async function searchSerpApi(searchText, intent = null, allowRelaxedCity = true)
   const enriched = await enrichListingsWithImages(candidates);
   const top = rankListings(enriched, intent);
 
-  if (top.length < 3 && allowRelaxedCity && (intent?.city || intent?.state)) {
+  if (top.length < 3 && allowRelaxedCity && (intent.city || intent.state)) {
     const relaxedIntent = { ...intent, city: null, state: null, queries: [] };
     const relaxed = await searchSerpApi(searchText, relaxedIntent, false).catch(() => []);
     return enrichListingsWithImages(rankListings([...top, ...relaxed], intent));
@@ -1127,13 +1127,13 @@ async function searchSerpApi(searchText, intent = null, allowRelaxedCity = true)
 
 function parseDuckResults(html, portal) {
   const listings = [];
-  const re = /<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*?)<\/a>[\s\S]*?<a[^>]+class="result__snippet"[^>]*>([\s\S]*?)<\/a>/gi;
+  const re = /<a[^>]+class="result__a"[^>]+href="([^"]+)"[^>]*>([\s\S]*)<\/a>[\s\S]*<a[^>]+class="result__snippet"[^>]*>([\s\S]*)<\/a>/gi;
   let match;
   while ((match = re.exec(html)) && listings.length < 3) {
     const url = unwrapDuckUrl(match[1]);
     const title = cleanTitle(match[2]);
     const snippet = decodeHtml(match[3]).replace(/<[^>]+>/g, '');
-    if (!title || !/^https?:\/\//i.test(url)) continue;
+    if (!title || !/^https:\/\//i.test(url)) continue;
     if (/duckduckgo|google|bing|facebook\.com\/sharer/i.test(url)) continue;
 
     listings.push({
@@ -1159,12 +1159,12 @@ function makeFallbackSearchCards(searchText) {
 
   return [
     { portal: 'MercadoLibre', url: `https://listado.mercadolibre.com.mx/${mlSlug || 'autos'}` },
-    { portal: 'Kavak', url: `https://www.kavak.com/mx/seminuevos?keyword=${slug}` },
-    { portal: 'Seminuevos', url: `https://www.seminuevos.com/autos-en-venta?query=${slug}` },
-    { portal: 'AutoCosmos', url: `https://www.autocosmos.com.mx/auto/usado?q=${slug}` },
+    { portal: 'Kavak', url: `https://www.kavak.com/mx/seminuevoskeyword=${slug}` },
+    { portal: 'Seminuevos', url: `https://www.seminuevos.com/autos-en-ventaquery=${slug}` },
+    { portal: 'AutoCosmos', url: `https://www.autocosmos.com.mx/auto/usadoq=${slug}` },
     { portal: 'AutoMexico', url: `https://automexico.com/auto-usado` },
     { portal: 'Carplanet', url: `https://carplanet.mx/` },
-    { portal: 'Autos nuevos', url: `https://www.autocosmos.com.mx/catalogo?q=${slug}` },
+    { portal: 'Autos nuevos', url: `https://www.autocosmos.com.mx/catalogoq=${slug}` },
   ].map(item => ({
     titulo: `Buscar "${searchText}" en ${item.portal}`,
     precio: 'Consultar',
@@ -1180,7 +1180,7 @@ function dedupeListings(listings) {
   const seen = new Set();
   return listings.filter(l => {
     if (!l || isDeadUrl(l.url)) return false;
-    const key = String(l.url || l.titulo || '').split('?')[0].split('#')[0].toLowerCase();
+    const key = String(l.url || l.titulo || '').split('')[0].split('#')[0].toLowerCase();
     if (!key || seen.has(key)) return false;
     seen.add(key);
     return true;
@@ -1208,7 +1208,7 @@ function isDeadUrl(url) {
 function normalizeListing(raw) {
   const item = raw || {};
   const url = String(item.url || '').trim();
-  if (isDeadUrl(url) || !/^https?:\/\//i.test(url)) return null;
+  if (isDeadUrl(url) || !/^https:\/\//i.test(url)) return null;
   try {
     const u = new URL(url);
     const host = u.hostname.replace(/^www\./, '');
@@ -1251,8 +1251,8 @@ function completeAiListings(aiListings, sourceListings) {
 }
 
 function isTixuzListing(listing) {
-  const url = String(listing?.url || '');
-  const portal = String(listing?.portal || '');
+  const url = String(listing.url || '');
+  const portal = String(listing.portal || '');
   return /tixuzautos\.com\/autos\//i.test(url)
     || /cool-kataifi-78a65b\.netlify\.app\/autos\//i.test(url)
     || /tixuz autos/i.test(portal);
@@ -1268,7 +1268,7 @@ function sourceCounts(listings) {
 
 function moneyLabel(value) {
   const n = Number(value || 0);
-  return Number.isFinite(n) && n > 0 ? `$${Math.round(n).toLocaleString('es-MX')}` : 'Consultar';
+  return Number.isFinite(n) && n > 0 ? `${Math.round(n).toLocaleString('es-MX')}` : 'Consultar';
 }
 
 function kmLabel(value) {
@@ -1277,16 +1277,16 @@ function kmLabel(value) {
 }
 
 function normalizeTixuzPublicListing(listing) {
-  const images = Array.isArray(listing?.images) ? listing.images : [];
+  const images = Array.isArray(listing.images) ? listing.images : [];
   const image = images.find(isUsableImage) || null;
-  const title = listing?.title || [listing?.year, listing?.make, listing?.model].filter(Boolean).join(' ');
+  const title = listing.title || [listing.year, listing.make, listing.model].filter(Boolean).join(' ');
   return normalizeListing({
     titulo: title || 'Auto publicado en Tixuz Autos',
-    precio: moneyLabel(listing?.price),
-    ubicacion: listing?.location || 'Mexico',
-    kilometraje: kmLabel(listing?.mileage),
+    precio: moneyLabel(listing.price),
+    ubicacion: listing.location || 'Mexico',
+    kilometraje: kmLabel(listing.mileage),
     portal: 'Tixuz Autos',
-    url: listing?.url || `${SITE_URL}/autos/${encodeURIComponent(String(listing?.id || '').trim())}`,
+    url: listing.url || `${SITE_URL}/autos/${encodeURIComponent(String(listing.id || '').trim())}`,
     imagen: image,
   });
 }
@@ -1304,10 +1304,10 @@ async function searchTixuzAutos(searchText, intent = null) {
 
 function acquisitionCta(searchText, intent = null, counts = {}) {
   const target = [
-    intent?.year_min,
-    intent?.make,
-    intent?.model,
-    intent?.city || intent?.state,
+    intent.year_min,
+    intent.make,
+    intent.model,
+    intent.city || intent.state,
   ].filter(Boolean).join(' ').trim() || String(searchText || '').trim().slice(0, 120);
   return {
     title: counts.ownCount
@@ -1318,30 +1318,30 @@ function acquisitionCta(searchText, intent = null, counts = {}) {
       : 'Hoy esa busqueda tuvo que ampliarse a portales externos. Publicar ese tipo de auto en Tixuz ayuda a capturar esa demanda.',
     demand: target || 'autos usados en Mexico',
     publishUrl: `${SITE_URL}/?publicar=1`,
-    lotUrl: `${SITE_URL}/?ops=1`,
+    lotUrl: `${SITE_URL}/ops=1`,
   };
 }
 
 function parseMercadoLibreAutos(html) {
   const listings = [];
-  const itemRe = /<li class="ui-search-layout__item">([\s\S]*?)(?=<li class="ui-search-layout__item">|<\/ol>|$)/g;
+  const itemRe = /<li class="ui-search-layout__item">([\s\S]*)(=<li class="ui-search-layout__item">|<\/ol>|$)/g;
   let match;
   while ((match = itemRe.exec(html)) && listings.length < 10) {
     const block = match[1];
-    const link = block.match(/<a[^>]+href="([^"]+)"[^>]+class="poly-component__title"[^>]*>([\s\S]*?)<\/a>/i);
+    const link = block.match(/<a[^>]+href="([^"]+)"[^>]+class="poly-component__title"[^>]*>([\s\S]*)<\/a>/i);
     if (!link) continue;
 
     const url = decodeHtml(link[1]).split('#')[0];
     const title = cleanTitle(link[2]);
     const imageMatch = block.match(/<img[^>]+class="[^"]*poly-component__picture[^"]*"[^>]+src="([^"]+)"/i);
     const priceMatch = block.match(/<span class="andes-money-amount__fraction"[^>]*>([\d,\.]+)<\/span>/i);
-    const attrs = [...block.matchAll(/<li class="poly-attributes_list__item[^"]*"[^>]*>([\s\S]*?)<\/li>/gi)]
+    const attrs = [...block.matchAll(/<li class="poly-attributes_list__item[^"]*"[^>]*>([\s\S]*)<\/li>/gi)]
       .map(x => cleanTitle(x[1]));
-    const locationMatch = block.match(/<span class="poly-component__location"[^>]*>([\s\S]*?)<\/span>/i);
+    const locationMatch = block.match(/<span class="poly-component__location"[^>]*>([\s\S]*)<\/span>/i);
 
     const listing = normalizeListing({
       titulo: title,
-      precio: priceMatch ? `$${priceMatch[1]}` : 'Consultar',
+      precio: priceMatch ? `${priceMatch[1]}` : 'Consultar',
       ubicacion: locationMatch ? cleanTitle(locationMatch[1]) : null,
       kilometraje: attrs.find(a => /\bkm\b/i.test(a)) || null,
       portal: 'MercadoLibre',
@@ -1377,7 +1377,7 @@ async function searchMercadoLibreAutos(searchText, intent = null) {
 
 function parseKavakAutos(html, intent = null) {
   const listings = [];
-  const re = /\{\\"id\\":\\"([^"]+)\\"[\s\S]*?\\"url\\":\\"([^"]+)\\"[\s\S]*?\\"image\\":\\"([^"]+)\\"[\s\S]*?\\"title\\":\\"([^"]*)\\"[\s\S]*?\\"subtitle\\":\\"([^"]*)\\"[\s\S]*?\\"mainPrice\\":\\"([^"]*)\\"[\s\S]*?\\"footerInfo\\":\\"([^"]*)\\"/g;
+  const re = /\{\\"id\\":\\"([^"]+)\\"[\s\S]*\\"url\\":\\"([^"]+)\\"[\s\S]*\\"image\\":\\"([^"]+)\\"[\s\S]*\\"title\\":\\"([^"]*)\\"[\s\S]*\\"subtitle\\":\\"([^"]*)\\"[\s\S]*\\"mainPrice\\":\\"([^"]*)\\"[\s\S]*\\"footerInfo\\":\\"([^"]*)\\"/g;
   let match;
   while ((match = re.exec(html)) && listings.length < 12) {
     const url = decodeHtml(match[2]).replace(/\\\//g, '/');
@@ -1389,7 +1389,7 @@ function parseKavakAutos(html, intent = null) {
     const km = subtitle.match(/[\d,.]+\s*km/i)?.[0] || null;
     const listing = normalizeListing({
       titulo: `${title} ${subtitle}`.replace(/\s+/g, ' ').trim(),
-      precio: mainPrice ? `$${mainPrice}` : 'Consultar',
+      precio: mainPrice ? `${mainPrice}` : 'Consultar',
       ubicacion: footerInfo.split('Entrega')[0].trim() || 'Mexico',
       kilometraje: km,
       portal: 'Kavak',
@@ -1402,12 +1402,12 @@ function parseKavakAutos(html, intent = null) {
 }
 
 async function searchKavakAutos(searchText, intent = null) {
-  const make = buildSlug(intent?.make || '');
-  const model = buildSlug(intent?.model || '');
-  const focused = buildSlug([intent?.make, intent?.model].filter(Boolean).join(' ') || focusedSearchPhrase(searchText, intent));
+  const make = buildSlug(intent.make || '');
+  const model = buildSlug(intent.model || '');
+  const focused = buildSlug([intent.make, intent.model].filter(Boolean).join(' ') || focusedSearchPhrase(searchText, intent));
   const urls = [];
   if (make && model) urls.push(`https://www.kavak.com/mx/seminuevos/${make}/${model}`);
-  if (focused) urls.push(`https://www.kavak.com/mx/seminuevos?keyword=${encodeURIComponent(focused.replace(/-/g, ' '))}`);
+  if (focused) urls.push(`https://www.kavak.com/mx/seminuevoskeyword=${encodeURIComponent(focused.replace(/-/g, ' '))}`);
 
   const results = await Promise.allSettled([...new Set(urls)].map(async url => {
     const res = await fetchWithTimeout(url, 6000);
@@ -1425,10 +1425,10 @@ function parseTrovitAutos(html, intent = null) {
     const href = block.match(/<a[^>]+href="([^"]+)"/i)?.[1];
     const img = block.match(/<img[^>]+src="([^"]+)"[^>]*class="snippet-image"/i)?.[1]
       || block.match(/<img[^>]+class="snippet-image"[^>]+src="([^"]+)"/i)?.[1];
-    const title = cleanTitle(block.match(/<h4[^>]+class="item-title"[^>]*>([\s\S]*?)<\/h4>/i)?.[1]);
-    const price = cleanTitle(block.match(/<span[^>]+class="actual-price"[^>]*>([\s\S]*?)<\/span>/i)?.[1]);
-    const address = cleanTitle(block.match(/<h5[^>]+class="item-address"[^>]*>([\s\S]*?)<\/h5>/i)?.[1]);
-    const props = [...block.matchAll(/<div class="item-property">[\s\S]*?<span>([\s\S]*?)<\/span>/gi)].map(m => cleanTitle(m[1]));
+    const title = cleanTitle(block.match(/<h4[^>]+class="item-title"[^>]*>([\s\S]*)<\/h4>/i)?.[1]);
+    const price = cleanTitle(block.match(/<span[^>]+class="actual-price"[^>]*>([\s\S]*)<\/span>/i)?.[1]);
+    const address = cleanTitle(block.match(/<h5[^>]+class="item-address"[^>]*>([\s\S]*)<\/h5>/i)?.[1]);
+    const props = [...block.matchAll(/<div class="item-property">[\s\S]*<span>([\s\S]*)<\/span>/gi)].map(m => cleanTitle(m[1]));
     const year = props.find(p => /\b(19[8-9]\d|20[0-2]\d)\b/.test(p)) || null;
     const km = props.find(p => /\bkm/i.test(p)) || null;
     const listing = normalizeListing({
@@ -1446,13 +1446,13 @@ function parseTrovitAutos(html, intent = null) {
 }
 
 async function searchTrovitAutos(searchText, intent = null) {
-  const core = [intent?.make, intent?.model].filter(Boolean).join(' ') || focusedSearchPhrase(searchText, intent);
+  const core = [intent.make, intent.model].filter(Boolean).join(' ') || focusedSearchPhrase(searchText, intent);
   const slug = buildSlug(core);
   if (!slug) return [];
   const urls = [
     `https://autos.trovit.com.mx/autos-usados/${slug}`,
   ];
-  if (/jetta/i.test(String(intent?.model || core))) {
+  if (/jetta/i.test(String(intent.model || core))) {
     urls.push('https://autos.trovit.com.mx/autos-usados/volkswagen-jetta-clasico');
   }
 
@@ -1538,7 +1538,7 @@ function collectOpenAIAnnotations(data) {
     if (value.type === 'url_citation' && value.url_citation) {
       add(value.url_citation.url, value.url_citation.title);
     }
-    if (value.url && /https?:\/\//i.test(value.url)) {
+    if (value.url && /https:\/\//i.test(value.url)) {
       add(value.url, value.title);
     }
     if (value.url_citation && value.url_citation.url) {
@@ -1609,7 +1609,7 @@ ${userContext}`;
 
   if (chatRes.ok) {
     const data = await chatRes.json();
-    const text = data.choices?.[0]?.message?.content || '';
+    const text = data.choices?.[0].message.content || '';
     const parsed = parseJsonFromText(text);
     const citations = collectOpenAIAnnotations(data);
     const parsedListings = dedupeListings((parsed.listings || []).map(normalizeListing).filter(Boolean));
@@ -1680,7 +1680,7 @@ async function askOpenAI(messages, sourceListings) {
 
   if (!res.ok) throw new Error((await res.text()).slice(0, 400));
   const data = await res.json();
-  const text = data.choices?.[0]?.message?.content || '';
+  const text = data.choices?.[0].message.content || '';
   const parsed = JSON.parse(text);
   return {
     message: String(parsed.message || '').trim(),
@@ -1721,7 +1721,7 @@ function extractOgImage(html, baseUrl) {
   for (const re of patterns) {
     const match = html.match(re);
     const img = match && absoluteUrl(decodeHtml(match[1]), baseUrl);
-    if (img && /^https?:\/\//i.test(img)) return img;
+    if (img && /^https:\/\//i.test(img)) return img;
   }
   return null;
 }
@@ -1762,7 +1762,7 @@ async function verifyAndEnrichListings(listings) {
       if (pageLooksDead(html.slice(0, 20000)) && !isDirectListing(item) && !isTrustedAutoUrl(item.url)) return null;
       const ogImage = extractOgImage(html.slice(0, 250000), item.url);
       if (/auto\.mercadolibre\.com\.mx\/MLM-\d+/i.test(item.url) && !ogImage) return null;
-      const imagen = item.imagen && /^https?:\/\//i.test(item.imagen)
+      const imagen = item.imagen && /^https:\/\//i.test(item.imagen)
         ? item.imagen
         : ogImage;
       return { ...item, imagen: imagen || null };
@@ -1776,7 +1776,7 @@ async function verifyAndEnrichListings(listings) {
 async function enrichListingsWithImages(listings) {
   const items = dedupeListings(listings).slice(0, 10);
   const enriched = await Promise.all(items.map(async item => {
-    if (item.imagen && /^https?:\/\//i.test(item.imagen)) return item;
+    if (item.imagen && /^https:\/\//i.test(item.imagen)) return item;
     try {
       const res = await fetchWithTimeout(item.url);
       if (!res.ok) return item;
@@ -1819,13 +1819,13 @@ async function askAnthropic(messages) {
   if (!res.ok) throw new Error((await res.text()).slice(0, 400));
   const data = await res.json();
   const fullText = (data.content || []).filter(b => b.type === 'text').map(b => b.text).join('\n');
-  const match = fullText.match(/<resultados>([\s\S]*?)<\/resultados>/);
+  const match = fullText.match(/<resultados>([\s\S]*)<\/resultados>/);
   let listings = [];
   if (match) {
     try { listings = JSON.parse(match[1].trim()); } catch (e) { listings = []; }
   }
   return {
-    message: fullText.replace(/<resultados>[\s\S]*?<\/resultados>/, '').trim(),
+    message: fullText.replace(/<resultados>[\s\S]*<\/resultados>/, '').trim(),
     listings: Array.isArray(listings) ? dedupeListings(listings) : [],
     provider: 'anthropic',
   };
@@ -1843,8 +1843,18 @@ function isCountryWideSearch(text) {
   return /\b(todo mexico|todo el pais|nacional|cualquier ciudad|sin importar ciudad|en mexico|mexico completo)\b/.test(t);
 }
 
+function isAdvisorStyleSearch(text, intent = {}) {
+  const raw = String(text || '');
+  const t = normalizeText(raw);
+  return /^https?:\/\//i.test(raw.trim())
+    || raw.length > 90
+    || /\b(anuncio|publicacion|link|url|conviene|recomiendas|me lo compro|fallas|problemas|que revisar|vendedor|factura|adeudo|tenencia|trato|vendo|venta)\b/.test(t)
+    || /\b(kavak|bbva|seminuevos|autocosmos|mercado libre|mercadolibre|agencia|lote|facebook|trovit|mitula)\b/.test(t)
+    || Boolean(intent.make || intent.model || intent.body_type);
+}
+
 function hasLocationIntent(intent, searchText) {
-  return Boolean(intent?.city || intent?.state || isCountryWideSearch(searchText));
+  return Boolean(intent.city || intent.state || isCountryWideSearch(searchText) || isAdvisorStyleSearch(searchText, intent));
 }
 
 function joinNatural(items) {
@@ -1856,14 +1866,15 @@ function joinNatural(items) {
 
 function buildQualificationQuestion(intent, searchText) {
   const missing = [];
+  const advisorStyle = isAdvisorStyleSearch(searchText, intent);
 
-  if (!intent?.make && !intent?.model) {
+  if (!intent.make && !intent.model && !intent.body_type && !advisorStyle) {
     missing.push('marca y modelo');
   }
   if (!hasLocationIntent(intent, searchText)) {
     missing.push('ciudad o estado');
   }
-  if (!intent?.year_min && !intent?.year_max) missing.push('año');
+  if (!intent.year_min && !intent.year_max && !advisorStyle) missing.push('año');
 
   if (!missing.length) return null;
 
@@ -2021,10 +2032,13 @@ exports.handler = async function (event) {
     console.log('Anthropic unavailable, falling back:', String(e.message || e).slice(0, 200));
   }
 
-  const counts = sourceCounts(sourceListings);
+  const fallbackListings = sourceListings.length ? sourceListings : makeFallbackSearchCards(searchText);
+  const counts = sourceCounts(fallbackListings);
   return json(200, {
-    message: foundMessage(sourceListings.length, counts),
-    listings: sourceListings,
+    message: sourceListings.length
+      ? foundMessage(sourceListings.length, counts)
+      : 'No encontre anuncios especificos con foto confiable. Te dejo busquedas directas por fuente y puedes abrir el veredicto Tixuz para saber que revisar.',
+    listings: fallbackListings,
     used_search: true,
     provider: 'free-automotive-search',
     intent,

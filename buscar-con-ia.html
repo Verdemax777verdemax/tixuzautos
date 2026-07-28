@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Tixuz IA · Háblame, encuentro tu auto</title>
-<meta name="description" content="Háblale a la IA. Te encuentra el auto que buscas en internet en segundos. Tixuz Autos.">
+<title>Tixuz IA - Veredicto para comprar auto</title>
+<meta name="description" content="Pega un anuncio o dime que auto buscas. Tixuz IA encuentra opciones, compara fuentes y te dice que revisar antes de comprar.">
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -228,6 +228,110 @@
     color: var(--text);
     border-color: var(--accent);
   }
+
+  .advisor-form {
+    width: min(720px, 100%);
+    background: rgba(20, 20, 20, 0.92);
+    border: 1px solid var(--line-strong);
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35);
+    text-align: left;
+    margin-bottom: 18px;
+  }
+  .advisor-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 10px;
+    letter-spacing: 0.02em;
+  }
+  .advisor-input {
+    width: 100%;
+    min-height: 128px;
+    resize: vertical;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: #0f0f0f;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.45;
+    padding: 14px;
+    outline: none;
+  }
+  .advisor-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245,158,11,0.12);
+  }
+  .advisor-input::placeholder { color: var(--text-dim); }
+  .advisor-submit {
+    width: 100%;
+    min-height: 52px;
+    margin-top: 12px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    color: #080808;
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+  }
+  .advisor-submit:hover { background: var(--accent-bright); }
+  .advisor-help {
+    color: var(--text-mute);
+    font-size: 13px;
+    line-height: 1.45;
+    margin-top: 10px;
+  }
+  .advisor-examples {
+    width: min(720px, 100%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+  .advisor-chip {
+    border: 1px solid var(--line-strong);
+    background: var(--bg-elev);
+    color: var(--text-mute);
+    border-radius: 999px;
+    min-height: 38px;
+    padding: 0 14px;
+    font-family: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .advisor-chip:hover {
+    color: var(--text);
+    border-color: var(--accent);
+  }
+  .splash-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .voice-mini {
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: transparent;
+    color: var(--text-mute);
+    min-height: 42px;
+    padding: 0 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .voice-mini:hover { color: var(--text); border-color: var(--accent); }
+  .voice-mini svg { width: 17px; height: 17px; }
 
   /* ============================================ */
   /* VIEW: VOICE (la stage central, voz-first)   */
@@ -577,6 +681,187 @@
     border-top: 1px solid var(--line);
   }
   .car-portal::after { content: '↗'; font-family: var(--display); }
+  .car.pasted-ad {
+    border-color: rgba(16,185,129,0.45);
+    background: linear-gradient(180deg, rgba(16,185,129,0.08), rgba(255,255,255,0.03));
+  }
+  .car.pasted-ad .car-img-fallback {
+    color: #bbf7d0;
+    border-bottom: 1px solid rgba(16,185,129,0.22);
+    background: linear-gradient(135deg, rgba(16,185,129,0.18), #101010);
+  }
+  .car-source-badge.pasted {
+    color: #bbf7d0;
+    border-color: rgba(16,185,129,0.35);
+    background: rgba(16,185,129,0.12);
+  }
+  .car-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .verdict-btn,
+  .source-link {
+    min-height: 40px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    text-decoration: none;
+  }
+  .verdict-btn {
+    border: 0;
+    background: var(--accent);
+    color: #070707;
+    cursor: pointer;
+  }
+  .source-link {
+    border: 1px solid var(--line-strong);
+    background: #101010;
+    color: var(--text);
+  }
+  .verdict-panel {
+    grid-column: 1 / -1;
+    background: #101010;
+    border: 1px solid rgba(245,158,11,0.42);
+    border-radius: 16px;
+    padding: 22px;
+    margin: 4px 0 10px;
+    animation: blockIn 0.35s ease both;
+  }
+  .verdict-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 12px;
+    align-items: start;
+    margin-bottom: 14px;
+  }
+  .verdict-head h3 {
+    font-size: 24px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  .verdict-close {
+    border: 1px solid var(--line-strong);
+    background: var(--bg-elev);
+    color: var(--text-mute);
+    border-radius: 8px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+  .verdict-summary {
+    color: var(--text-mute);
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+  .coverage-badge {
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 28px;
+    border-radius: 999px;
+    padding: 5px 10px;
+    border: 1px solid rgba(16,185,129,0.35);
+    background: rgba(16,185,129,0.12);
+    color: #bbf7d0;
+    font-size: 12px;
+    font-weight: 800;
+    margin: 0 0 12px;
+  }
+  .coverage-badge.general {
+    border-color: var(--line-strong);
+    background: rgba(255,255,255,0.04);
+    color: var(--text-mute);
+  }
+  .verdict-note {
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: rgba(255,255,255,0.03);
+    color: var(--text-mute);
+    padding: 12px;
+    line-height: 1.5;
+    margin-top: 12px;
+  }
+  .verdict-sources {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .verdict-sources a {
+    color: var(--accent);
+    border: 1px solid rgba(245,158,11,0.28);
+    background: rgba(245,158,11,0.07);
+    border-radius: 999px;
+    padding: 7px 10px;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .verdict-loading {
+    color: var(--text-mute);
+    line-height: 1.5;
+  }
+  .verdict-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .verdict-box {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.03);
+    padding: 14px;
+  }
+  .verdict-box strong {
+    display: block;
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .verdict-box ul {
+    list-style: none;
+    display: grid;
+    gap: 7px;
+    color: var(--text-mute);
+    font-size: 14px;
+    line-height: 1.4;
+  }
+  .verdict-box li::before {
+    content: '- ';
+    color: var(--accent);
+  }
+  .verdict-cta {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .verdict-cta a {
+    min-height: 42px;
+    border-radius: 10px;
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-weight: 800;
+    background: var(--accent);
+    color: #070707;
+  }
+  .verdict-cta a.secondary {
+    background: var(--bg-elev);
+    border: 1px solid var(--line-strong);
+    color: var(--text);
+  }
   .car-source-badge {
     align-self: flex-start;
     display: inline-flex;
@@ -919,9 +1204,11 @@
     header { padding: 14px 18px; }
     .splash { padding: 24px 20px 40px; }
     .splash h1 { font-size: 36px; }
-    .start-btn { width: 160px; height: 160px; }
-    .start-btn svg { width: 64px; height: 64px; }
-    .start-label { font-size: 18px; }
+    .advisor-form { padding: 12px; }
+    .advisor-input { min-height: 150px; font-size: 15px; }
+    .splash-secondary { align-items: stretch; }
+    .voice-mini,
+    .text-mode-link { width: 100%; justify-content: center; }
     .voice-stage { padding: 20px 16px; }
     .stage-center { height: 240px; }
     .mic-circle { width: 150px; height: 150px; }
@@ -934,6 +1221,8 @@
     .premium { padding: 22px; }
     .premium h3 { font-size: 22px; }
     .vc-btn { font-size: 12px; padding: 8px 14px; }
+    .verdict-grid { grid-template-columns: 1fr; }
+    .verdict-head { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -953,23 +1242,35 @@
 <!-- ===== SPLASH (initial) ===== -->
 <div id="splash" class="splash">
   <div class="splash-eyebrow">Tixuz primero · web si hace falta</div>
-  <h1>Háblame. Yo encuentro <em>tu auto.</em></h1>
-  <p>Soy Tixuz IA. Primero reviso autos publicados en Tixuz. Si todavía no tenemos suficiente inventario, amplio la búsqueda a portales externos y marco la diferencia.</p>
+  <h1>Pega un anuncio. Te digo <em>si conviene.</em></h1>
+  <p>Busco opciones en Tixuz y portales externos, luego convierto cada auto en un veredicto: lo bueno, lo malo, fallas a revisar y preguntas para el vendedor usando la biblioteca Tixuz.</p>
 
-  <button id="startBtn" class="start-btn" aria-label="Empezar conversación por voz">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
-      <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-      <line x1="12" y1="19" x2="12" y2="23"/>
-      <line x1="8" y1="23" x2="16" y2="23"/>
-    </svg>
-  </button>
-  <div class="start-label">Empezar a hablar</div>
-  <div class="start-sub">Necesitamos permiso de tu micrófono</div>
+  <form id="advisorForm" class="advisor-form">
+    <label class="advisor-label" for="advisorInput">Anuncio, link o búsqueda</label>
+    <textarea id="advisorInput" class="advisor-input" placeholder="Ej. Honda Civic 1999 en buen trato. O pega un link/anuncio de Kavak, BBVA, Seminuevos, agencia, Facebook, etc."></textarea>
+    <button class="advisor-submit" type="submit">Buscar y abrir veredicto Tixuz</button>
+    <div class="advisor-help">Primero vemos autos propios. Si no alcanza, ampliamos a fuentes externas y te explicamos por qué comprarlo o qué revisar antes de moverte.</div>
+  </form>
 
-  <button id="textModeBtn" class="text-mode-link">
-    Prefiero escribir
-  </button>
+  <div class="advisor-examples" aria-label="Ejemplos de búsqueda">
+    <button class="advisor-chip" type="button" data-example="Honda Civic 1999 usado en Mexico">Honda Civic 1999</button>
+    <button class="advisor-chip" type="button" data-example="Mazda 3 automatico usado hasta 300 mil pesos nacional">Mazda 3 hasta $300 mil</button>
+    <button class="advisor-chip" type="button" data-example="Toyota Prius hibrido usado, que fallas debo revisar">Prius: fallas y consumo</button>
+    <button class="advisor-chip" type="button" data-example="Compara 3 camionetas SUV familiares usadas en Mexico">Comparar SUV familiares</button>
+  </div>
+
+  <div class="splash-secondary">
+    <button id="startBtn" class="voice-mini" type="button" aria-label="Hablar con Tixuz IA">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+        <line x1="12" y1="19" x2="12" y2="23"/>
+        <line x1="8" y1="23" x2="16" y2="23"/>
+      </svg>
+      Hablarlo
+    </button>
+    <button id="textModeBtn" class="text-mode-link" type="button">Abrir chat</button>
+  </div>
 </div>
 
 <!-- ===== VOICE STAGE (active conversation) ===== -->
@@ -1043,6 +1344,7 @@
 <script>
 (() => {
   const API_SEARCH = '/.netlify/functions/ai-search';
+  const API_VERDICT = '/.netlify/functions/ai-verdict';
   const API_CHECKOUT = '/.netlify/functions/ai-checkout';
   const API_VERIFY = '/.netlify/functions/ai-verify-payment';
   const API_TTS = '/.netlify/functions/ai-tts';
@@ -1069,6 +1371,8 @@
   const muteBtn = $('#muteBtn');
   const textToggleBtn = $('#textToggleBtn');
   const endBtn = $('#endBtn');
+  const advisorForm = $('#advisorForm');
+  const advisorInput = $('#advisorInput');
 
   // ========== STATE ==========
   const conversation = [];
@@ -1077,6 +1381,7 @@
   let isMuted = false;
   let textModeActive = false;
   let premiumShown = false;
+  let directVerdictRenderedFor = '';
   let currentAudio = null;
   let recognition = null;
   let isListening = false;
@@ -1098,6 +1403,7 @@
     'Kavak',
     'Seminuevos',
     'AutoCosmos',
+    'BBVA AutoMarket',
     'AutoTrader MX',
     'AutoMexico',
     'Carplanet',
@@ -1110,7 +1416,7 @@
     'Ford Latino',
   ];
 
-  const GREETING = "¡Qué tal! Soy Tixuz IA. Dime ciudad, año, marca y modelo. Primero reviso Tixuz y luego amplio si hace falta.";
+  const GREETING = "¡Qué tal! Soy Tixuz IA. Pásame un anuncio o dime qué auto buscas. Te digo opciones y qué revisar antes de comprar.";
 
   function initialSearchQuery() {
     const params = new URLSearchParams(window.location.search);
@@ -1155,6 +1461,69 @@
       .trim();
   }
 
+  function isAdAnalysisIntent(text) {
+    const raw = String(text || '');
+    const normalized = normalizeCoreText(raw);
+    return /^https?:\/\//i.test(raw.trim())
+      || raw.length > 90
+      || /\b(anuncio|publicacion|publicación|link|url|conviene|recomiendas|me lo compro|fallas|problemas|que revisar|qué revisar|vendedor|factura|adeudo|tenencia|trato|vendo|venta)\b/i.test(raw)
+      || /\b(kavak|bbva|seminuevos|autocosmos|mercado libre|mercadolibre|agencia|lote|facebook)\b/i.test(raw)
+      || (hasCoreMakeModel(raw) && /\b(19[8-9]\d|20[0-2]\d)\b/.test(normalized));
+  }
+
+  function isPastedAdInput(text) {
+    const raw = String(text || '').trim();
+    if (!raw) return false;
+    return /^https?:\/\//i.test(raw)
+      || raw.length > 90
+      || /\b(vendo|venta|trato|unico due[oñ]o|factura|telefono|tel[eé]fono|whatsapp|kilometraje|km|precio|mxn|publicacion|publicaci[oó]n|link|url|kavak|bbva|seminuevos|autocosmos|mercado libre|mercadolibre|facebook|agencia|lote)\b/i.test(raw)
+      || /\$\s*\d[\d,.]*/.test(raw);
+  }
+
+  function firstUrl(text) {
+    const match = String(text || '').match(/https?:\/\/[^\s<>"']+/i);
+    return match ? match[0].replace(/[),.;]+$/, '') : '';
+  }
+
+  function portalFromText(text) {
+    const raw = String(text || '');
+    const url = firstUrl(raw);
+    const host = (() => {
+      try { return url ? new URL(url).hostname.replace(/^www\./, '') : ''; } catch (e) { return ''; }
+    })();
+    const haystack = `${raw} ${host}`.toLowerCase();
+    if (/kavak/.test(haystack)) return 'Kavak';
+    if (/bbva|automarket/.test(haystack)) return 'BBVA AutoMarket';
+    if (/seminuevos/.test(haystack)) return 'Seminuevos';
+    if (/autocosmos/.test(haystack)) return 'AutoCosmos';
+    if (/mercado\s*libre|mercadolibre/.test(haystack)) return 'MercadoLibre';
+    if (/facebook|marketplace/.test(haystack)) return 'Facebook Marketplace';
+    if (/agencia|lote/.test(haystack)) return 'Agencia / lote';
+    return host || 'Anuncio pegado';
+  }
+
+  function pastedAdTitle(text) {
+    const raw = String(text || '').trim();
+    const lines = raw.split(/\r?\n/).map(line => line.trim()).filter(Boolean);
+    const nonUrl = lines.find(line => !/^https?:\/\//i.test(line) && line.length > 8);
+    const candidate = nonUrl || raw.replace(/^https?:\/\/\S+\s*/i, '').trim() || raw;
+    return candidate.slice(0, 130);
+  }
+
+  function pastedAdPrice(text) {
+    const raw = String(text || '');
+    const match = raw.match(/\$\s*\d[\d,.]*/);
+    if (match) return match[0].replace(/\s+/g, '');
+    const mxn = raw.match(/\b\d{2,3}(?:[,.]\d{3})+\s*(?:mxn|pesos)?\b/i);
+    return mxn ? mxn[0] : 'Precio por confirmar';
+  }
+
+  function pastedAdMileage(text) {
+    const raw = String(text || '');
+    const match = raw.match(/\b\d{1,3}(?:[,.]\d{3})*\s*(?:km|kms|kil[oó]metros)\b/i);
+    return match ? match[0] : '';
+  }
+
   function recentUserSearchText() {
     return conversation
       .filter(m => m.role === 'user')
@@ -1189,10 +1558,11 @@
 
   function missingCoreSearchData() {
     const text = recentUserSearchText();
+    const adLike = isAdAnalysisIntent(text);
     const missing = [];
-    if (!hasCoreLocation(text)) missing.push('ciudad o estado');
-    if (!hasCoreYear(text)) missing.push('año');
-    if (!hasCoreMakeModel(text)) missing.push('marca y modelo');
+    if (!hasCoreLocation(text) && !adLike) missing.push('ciudad o estado');
+    if (!hasCoreYear(text) && !adLike) missing.push('año');
+    if (!hasCoreMakeModel(text) && !adLike) missing.push('marca y modelo');
     return missing;
   }
 
@@ -1208,6 +1578,12 @@
     const lastUser = [...copy].reverse().find(m => m.role === 'user');
     if (lastUser && !/presupuesto abierto/i.test(lastUser.content)) {
       lastUser.content = `${lastUser.content}. Presupuesto abierto hasta 999 mil pesos.`;
+    }
+    if (lastUser && !hasCoreLocation(lastUser.content)) {
+      lastUser.content = `${lastUser.content} Busqueda nacional en Mexico si no especifique ciudad.`;
+    }
+    if (lastUser && isAdAnalysisIntent(lastUser.content)) {
+      lastUser.content = `${lastUser.content} Analiza tambien si conviene comprarlo, riesgos, fallas comunes y que revisar.`;
     }
     return copy;
   }
@@ -1339,9 +1715,296 @@
     resultsArea.appendChild(wrap);
   }
 
+  function vehicleText(listing) {
+    return `${listing?.titulo || ''} ${listing?.portal || ''} ${listing?.ubicacion || ''} ${lastQuery || ''}`;
+  }
+
+  function adviceProfile(listing) {
+    const text = normalizeCoreText(vehicleText(listing));
+    const has = (...needles) => needles.some(needle => text.includes(needle));
+    const base = {
+      family: 'auto usado',
+      summary: 'Lo importante no es solo el precio: hay que revisar historial, papeles, kilometraje real y estado mecanico antes de moverte.',
+      good: ['Puede servir si el precio esta en mercado y tiene papeles claros.', 'Compara contra otras opciones del mismo ano antes de decidir.', 'Pide evidencia de servicios y revisalo con mecanico.'],
+      watch: ['Factura, adeudos, placas y reporte de robo.', 'Golpes estructurales, testigos prendidos y fugas.', 'Kilometraje contra desgaste de volante, pedales y asientos.'],
+      questions: ['¿Factura original o refacturado?', '¿Debe tenencias, multas o verificacion?', '¿Acepta revision mecanica antes de cerrar?'],
+      library: 'Biblioteca Tixuz: usa las transcripciones para contrastar reputacion de marca, costos y fallas antes de comprar.'
+    };
+
+    if (has('civic', 'honda civic')) {
+      return {
+        family: 'Honda Civic',
+        summary: 'Civic suele ser compra noble por durabilidad, manejo y refacciones, pero en unidades viejas manda mas el mantenimiento que el emblema.',
+        good: ['Motor eficiente y generalmente durable si no fue maltratado.', 'Buena reventa y comunidad amplia para refacciones.', 'Manejo ligero, suficiente para ciudad y carretera.'],
+        watch: ['Suspension, bujes, rotulas y amortiguadores.', 'Sobrecalentamiento, fugas de aceite y estado de radiador.', 'Caja automatica si patea o tarda en entrar.'],
+        questions: ['¿Cuando fue el ultimo servicio mayor?', '¿Tiene factura y baja/alta correcta?', '¿Se puede escanear y revisar compresion?'],
+        library: 'Biblioteca Tixuz: Honda aparece como marca de buena reputacion, pero en usados viejos el consejo es revisar mantenimiento real y no comprar solo por fama.'
+      };
+    }
+    if (has('prius', 'hibrido', 'híbrido')) {
+      return {
+        family: 'Toyota Prius / hibrido',
+        summary: 'Buen candidato si buscas consumo bajo, pero la bateria, sistema hibrido y servicios pesan mas que la foto bonita.',
+        good: ['Consumo muy bajo en ciudad.', 'Toyota suele tener buena durabilidad y reventa.', 'Ideal para uso diario si esta bien diagnosticado.'],
+        watch: ['Estado de bateria hibrida y codigos de alta tension.', 'Historial de servicios y enfriamiento de bateria.', 'Suspension y llantas por uso urbano intenso.'],
+        questions: ['¿Tienes diagnostico reciente de bateria?', '¿Servicios en agencia o taller especializado?', '¿Ha trabajado en plataforma o flotilla?'],
+        library: 'Biblioteca Tixuz: en hibridos el veredicto depende de bateria, diagnostico y uso previo, no solo del kilometraje.'
+      };
+    }
+    if (has('mazda', 'cx 30', 'cx-30', 'mazda 3')) {
+      return {
+        family: 'Mazda usado',
+        summary: 'Mazda suele gustar por manejo, interiores y confiabilidad, pero revisa suspension, rines, llantas y golpes bajos.',
+        good: ['Buen manejo y sensacion de calidad.', 'Motores atmosfericos con buena reputacion si tienen servicios.', 'Reventa sana en modelos populares.'],
+        watch: ['Suspension, ruidos en tren delantero y llantas.', 'Historial de servicios y aceite correcto.', 'Golpes en fascia baja o rines por uso urbano.'],
+        questions: ['¿Tiene servicios comprobables?', '¿Se ha reparado suspension o rines?', '¿Acepta prueba de manejo en frio?'],
+        library: 'Biblioteca Tixuz: Mazda aparece bien parado en confiabilidad y reventa, cuidando mantenimiento y golpes.'
+      };
+    }
+    if (has('mercedes', 'bmw', 'audi', 'mini', 'land rover')) {
+      return {
+        family: 'premium usado',
+        summary: 'Puede sentirse como ganga, pero no se compra como auto barato: se compra con presupuesto para mantenimiento premium.',
+        good: ['Mucho equipo y sensacion de lujo por menos dinero.', 'Buen desempeño si esta bien mantenido.', 'Puede ser compra emocional muy disfrutable.'],
+        watch: ['Electronica, sensores, modulos y testigos.', 'Servicios caros, llantas y piezas especificas.', 'Fugas, turbo, suspension y transmision.'],
+        questions: ['¿Tienes historial completo de servicios?', '¿Que reparaciones grandes ya se hicieron?', '¿Acepta escaneo especializado antes de apartar?'],
+        library: 'Biblioteca Tixuz: en premium usado el riesgo no es comprarlo, es comprarlo sin presupuesto de mantenimiento.'
+      };
+    }
+    if (has('mg', 'chirey', 'jac', 'byd')) {
+      return {
+        family: 'marca china / nueva ola',
+        summary: 'Puede traer mucho equipo por precio atractivo; revisa garantia, refacciones, agencia cercana y valor de reventa.',
+        good: ['Mucho equipamiento por el dinero.', 'Modelos recientes pueden conservar garantia.', 'Interiores y tecnologia atractivos.'],
+        watch: ['Disponibilidad de refacciones y tiempos de taller.', 'Historial de garantia y servicios.', 'Depreciacion y demanda de reventa.'],
+        questions: ['¿Sigue con garantia vigente?', '¿Donde se han hecho los servicios?', '¿Hay agencia y refacciones en tu ciudad?'],
+        library: 'Biblioteca Tixuz: para marcas nuevas el consejo fuerte es no comprar solo por equipo; revisar soporte, garantia y reventa.'
+      };
+    }
+    if (has('versa', 'march', 'sentra', 'np300', 'frontier', 'nissan')) {
+      return {
+        family: 'Nissan usado',
+        summary: 'Nissan tiene opciones muy comerciales; separa modelos de batalla confiables de unidades con caja CVT o uso intensivo.',
+        good: ['Refacciones faciles y mercado amplio.', 'Buena demanda en modelos populares.', 'Opciones economicas para ciudad y trabajo.'],
+        watch: ['Caja CVT en modelos que la equipan.', 'Uso de plataforma/flotilla y desgaste interior.', 'Suspension, soportes y historial de servicios.'],
+        questions: ['¿La transmision ha tenido servicio?', '¿Fue particular, flotilla o plataforma?', '¿Hay facturas de mantenimiento?'],
+        library: 'Biblioteca Tixuz: Nissan se evalua modelo por modelo; transmision, uso previo y mantenimiento cambian el veredicto.'
+      };
+    }
+    if (has('jetta', 'vento', 'polo', 'tiguan', 'volkswagen', 'vw')) {
+      return {
+        family: 'Volkswagen usado',
+        summary: 'VW puede ser buena compra por manejo y mercado, pero hay que revisar transmision, sensores y mantenimiento preventivo.',
+        good: ['Buen manejo y sensacion solida.', 'Demanda alta en Jetta, Vento y modelos populares.', 'Refacciones disponibles en muchas ciudades.'],
+        watch: ['Caja automatica/DSG segun version.', 'Testigos, sensores y fugas.', 'Servicios atrasados y reparaciones electricas.'],
+        questions: ['¿Que caja trae y cuando se le dio servicio?', '¿Tiene testigos prendidos?', '¿Se puede escanear antes de negociar?'],
+        library: 'Biblioteca Tixuz: en VW conviene revisar version exacta y caja antes de enamorarse del precio.'
+      };
+    }
+    return base;
+  }
+
+  function verdictTone(listing) {
+    const own = isOwnListing(listing);
+    const price = String(listing?.precio || '');
+    if (/consultar/i.test(price)) return 'Compra con cautela';
+    return own ? 'Buen candidato para revisar' : 'Vale la pena analizarlo';
+  }
+
+  function fallbackVerdict(listing, reason = '') {
+    const profile = adviceProfile(listing);
+    return {
+      ok: true,
+      tone: verdictTone(listing),
+      title: listing?.titulo || profile.family,
+      summary: profile.summary,
+      good: profile.good,
+      watch: profile.watch,
+      questions: profile.questions,
+      next_steps: [
+        'Abrir la fuente original y confirmar precio, version, ciudad y telefono.',
+        'Pedir factura, NIV/serie, adeudos y reporte antes de apartar.',
+        'Hacer revision mecanica, escaneo y prueba de manejo antes de pagar.'
+      ],
+      library_note: profile.library,
+      coverage: {
+        level: 'general',
+        label: reason || 'Analisis local automatico',
+        warning: 'No pude consultar la funcion de biblioteca en este momento; te dejo el checklist local para no dejarte sin respuesta.'
+      },
+      source_links: [],
+      disclaimer: 'No sustituye revision mecanica, legal ni inspeccion fisica.'
+    };
+  }
+
+  async function fetchVerdict(listing) {
+    const res = await fetch(API_VERDICT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        listing,
+        query: lastQuery || listing?.titulo || ''
+      })
+    });
+    if (!res.ok) throw new Error(`verdict ${res.status}`);
+    const data = await res.json();
+    if (!data || data.ok === false) throw new Error(data?.error || 'verdict failed');
+    return data;
+  }
+
+  function verdictItems(items, fallback) {
+    const values = Array.isArray(items) && items.length ? items : fallback;
+    return values.slice(0, 5).map(item => `<li>${esc(item)}</li>`).join('');
+  }
+
+  function verdictSourceLinks(verdict) {
+    const links = Array.isArray(verdict?.source_links) ? verdict.source_links : [];
+    if (!links.length) return '';
+    return `
+      <div class="verdict-sources">
+        ${links.slice(0, 6).map(link => `<a href="${esc(link.url || '#')}" target="_blank" rel="noopener noreferrer">${esc(link.label || 'Fuente Tixuz')}</a>`).join('')}
+      </div>
+    `;
+  }
+
+  function verdictDisplayTitle(verdict, listing) {
+    const raw = String(verdict?.title || listing?.titulo || 'Auto usado').trim();
+    const detected = String(verdict?.detected?.display || '').trim();
+    const pasted = /pegado/i.test(String(listing?.portal || '')) || /pegado/i.test(String(listing?.ubicacion || ''));
+    if (detected && (pasted || /^buscar\s+"/i.test(raw) || raw.length > 100)) return detected;
+    return raw;
+  }
+
+  function renderVerdictContent(panel, listing, verdict) {
+    const coverage = verdict?.coverage || {};
+    const isGeneral = !coverage.level || coverage.level === 'general';
+    const noteParts = [verdict?.library_note, coverage.warning, verdict?.disclaimer].filter(Boolean);
+    const uniqueNotes = [...new Set(noteParts)];
+    const libraryLink = (Array.isArray(verdict?.source_links) && verdict.source_links.find(link => /tixuzautos\.com/i.test(String(link.url || '')))?.url) || '/youtube/transcripciones/';
+    const originalLink = /^https?:\/\//i.test(String(listing?.url || ''))
+      ? `<a href="${esc(listing.url)}" target="_blank" rel="noopener noreferrer">Abrir anuncio original</a>`
+      : '';
+    panel.innerHTML = `
+      <div class="verdict-head">
+        <div>
+          <div class="results-label" style="text-align:left;margin-bottom:8px">Veredicto Tixuz</div>
+          <h3>${esc(verdict?.tone || verdictTone(listing))}: ${esc(verdictDisplayTitle(verdict, listing))}</h3>
+        </div>
+        <button class="verdict-close" type="button" aria-label="Cerrar">Ã—</button>
+      </div>
+      <div class="coverage-badge ${isGeneral ? 'general' : ''}">${esc(coverage.label || 'Analisis automatico')}</div>
+      <p class="verdict-summary">${esc(verdict?.summary || 'Analisis inicial del anuncio.')}</p>
+      <div class="verdict-grid">
+        <div class="verdict-box">
+          <strong>Por que si</strong>
+          <ul>${verdictItems(verdict?.good, ['Puede convenir si el precio, papeles e historial cuadran.'])}</ul>
+        </div>
+        <div class="verdict-box">
+          <strong>Que revisar</strong>
+          <ul>${verdictItems(verdict?.watch, ['Papeles, kilometraje real, testigos, fugas y golpes estructurales.'])}</ul>
+        </div>
+        <div class="verdict-box">
+          <strong>Preguntas al vendedor</strong>
+          <ul>${verdictItems(verdict?.questions, ['Acepta revision mecanica y legal antes de cerrar?'])}</ul>
+        </div>
+      </div>
+      ${uniqueNotes.length ? `<div class="verdict-note">${uniqueNotes.map(item => esc(item)).join(' ')}</div>` : ''}
+      ${verdictSourceLinks(verdict)}
+      <div class="verdict-cta">
+        ${originalLink}
+        <a class="secondary" href="${esc(libraryLink)}" target="_blank" rel="noopener noreferrer">Ver biblioteca Tixuz</a>
+        <a class="secondary" href="/?publicar=1">Tengo uno parecido</a>
+      </div>
+    `;
+    panel.querySelector('.verdict-close').addEventListener('click', () => panel.remove());
+  }
+
+  function renderVerdictPanel(listing, anchor) {
+    document.querySelectorAll('.verdict-panel').forEach(panel => panel.remove());
+    const panel = document.createElement('div');
+    panel.className = 'verdict-panel';
+    panel.innerHTML = `
+      <div class="verdict-head">
+        <div>
+          <div class="results-label" style="text-align:left;margin-bottom:8px">Veredicto Tixuz</div>
+          <h3>Consultando biblioteca Tixuz...</h3>
+        </div>
+        <button class="verdict-close" type="button" aria-label="Cerrar">×</button>
+      </div>
+      <p class="verdict-loading">Estoy cruzando el anuncio con la biblioteca Tixuz, los temas de YouTube y un checklist de comprador. Si la funcion no responde, te muestro el respaldo local.</p>
+    `;
+    anchor.insertAdjacentElement('afterend', panel);
+    panel.querySelector('.verdict-close').addEventListener('click', () => panel.remove());
+    setTimeout(() => panel.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+    fetchVerdict(listing)
+      .then(verdict => {
+        if (panel.isConnected) renderVerdictContent(panel, listing, verdict);
+      })
+      .catch(() => {
+        if (panel.isConnected) renderVerdictContent(panel, listing, fallbackVerdict(listing, 'Analisis local de respaldo'));
+      });
+  }
+
+  function renderPastedAdVerdict(text) {
+    if (!isPastedAdInput(text)) return;
+    const key = normalizeCoreText(text).slice(0, 240);
+    if (key && key === directVerdictRenderedFor) return;
+    directVerdictRenderedFor = key;
+
+    const url = firstUrl(text);
+    const listing = {
+      titulo: pastedAdTitle(text) || 'Anuncio pegado por ti',
+      precio: pastedAdPrice(text),
+      kilometraje: pastedAdMileage(text),
+      ubicacion: 'Anuncio pegado por ti',
+      portal: portalFromText(text),
+      url,
+      descripcion: String(text || '').slice(0, 1600)
+    };
+
+    const wrap = document.createElement('div');
+    wrap.className = 'results-block';
+    const label = document.createElement('div');
+    label.className = 'results-label';
+    label.textContent = 'Anuncio pegado';
+    wrap.appendChild(label);
+
+    const note = document.createElement('div');
+    note.className = 'source-note';
+    note.textContent = 'Analizo este anuncio primero. Despues puedo buscar alternativas para compararlo contra el mercado.';
+    wrap.appendChild(note);
+
+    const grid = document.createElement('div');
+    grid.className = 'results-grid';
+    const card = document.createElement('div');
+    card.className = 'car pasted-ad';
+    const sourceLink = url
+      ? `<a class="source-link" href="${esc(url)}" target="_blank" rel="noopener noreferrer">Abrir fuente original</a>`
+      : '';
+    card.innerHTML = `
+      <div class="car-img-fallback">Anuncio</div>
+      <div class="car-body">
+        <div class="car-source-badge pasted">Pegado por ti</div>
+        <div class="car-title">${esc(listing.titulo)}</div>
+        <div class="car-price">${esc(listing.precio || 'Precio por confirmar')}</div>
+        <div class="car-meta">${esc([listing.ubicacion, listing.kilometraje].filter(Boolean).join(' · '))}</div>
+        <div class="car-portal">${esc(listing.portal || 'Anuncio')}</div>
+        <div class="car-actions">
+          <button class="verdict-btn" type="button">Veredicto Tixuz automatico</button>
+          ${sourceLink}
+        </div>
+      </div>
+    `;
+    card.querySelector('.verdict-btn').addEventListener('click', () => renderVerdictPanel(listing, card));
+    grid.appendChild(card);
+    wrap.appendChild(grid);
+    resultsArea.appendChild(wrap);
+    setTimeout(() => renderVerdictPanel(listing, card), 120);
+  }
+
   function renderResults(listings, meta = {}) {
     if (!Array.isArray(listings) || !listings.length) return;
-    const visibleListings = listings.filter(l => l && /^https?:\/\//i.test(String(l.imagen || '').trim()));
+    const visibleListings = listings.filter(l => l && /^https?:\/\//i.test(String(l.url || '').trim()));
     if (!visibleListings.length) return;
 
     const wrap = document.createElement('div');
@@ -1360,12 +2023,11 @@
     grid.className = 'results-grid';
 
     visibleListings.forEach(l => {
-      const card = document.createElement('a');
+      const card = document.createElement('div');
       card.className = 'car';
-      card.href = l.url || '#';
-      card.target = '_blank';
-      card.rel = 'noopener noreferrer';
-      const img = `<img class="car-img" src="${esc(l.imagen)}" alt="${esc(l.titulo)}" onerror="this.closest('.car')?.remove()">`;
+      const img = /^https?:\/\//i.test(String(l.imagen || '').trim())
+        ? `<img class="car-img" src="${esc(l.imagen)}" alt="${esc(l.titulo)}" onerror="this.outerHTML='<div class=&quot;car-img-fallback&quot;>Sin foto</div>'">`
+        : '<div class="car-img-fallback">Sin foto</div>';
       const own = isOwnListing(l);
       card.innerHTML = `
         ${img}
@@ -1377,8 +2039,13 @@
             ${l.ubicacion ? esc(l.ubicacion) : ''}${l.kilometraje ? ' · ' + esc(l.kilometraje) : ''}
           </div>
           <div class="car-portal">${esc(l.portal || 'Ver listing')}</div>
+          <div class="car-actions">
+            <button class="verdict-btn" type="button">Ver este auto en Tixuz</button>
+            <a class="source-link" href="${esc(l.url || '#')}" target="_blank" rel="noopener noreferrer">Abrir fuente original</a>
+          </div>
         </div>
       `;
+      card.querySelector('.verdict-btn').addEventListener('click', () => renderVerdictPanel(l, card));
       grid.appendChild(card);
     });
 
@@ -1735,6 +2402,7 @@
     renderUserMsgHistory(text);
     conversation.push({ role: 'user', content: text });
     lastQuery = text;
+    renderPastedAdVerdict(text);
 
     const missingCore = missingCoreSearchData();
     if (missingCore.length) {
@@ -1863,6 +2531,26 @@
   }
   sendBtn.addEventListener('click', handleTextSend);
 
+  function openStageInTextMode() {
+    splashEl.style.display = 'none';
+    stageEl.classList.add('active');
+    textModeActive = true;
+    composerEl.classList.add('active');
+    document.body.style.paddingBottom = '120px';
+    showStageVisual('mic');
+    setStatus('Analizando', 'thinking');
+    setupRecognition();
+  }
+
+  function startAdvisorSearch(text) {
+    const query = String(text || '').trim();
+    if (!query || isThinking) return;
+    if (!conversationStarted) conversationStarted = true;
+    openStageInTextMode();
+    textInputEl.value = '';
+    setTimeout(() => processUserSpeech(query), 80);
+  }
+
   // ========== START FLOW ==========
   async function startConversation() {
     if (conversationStarted) return;
@@ -1926,6 +2614,20 @@
     setStatus('Modo texto', '');
     setupRecognition(); // setup pero no start
     textInputEl.focus();
+  });
+
+  if (advisorForm) {
+    advisorForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      startAdvisorSearch(advisorInput ? advisorInput.value : '');
+    });
+  }
+  document.querySelectorAll('.advisor-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      const value = chip.getAttribute('data-example') || chip.textContent || '';
+      if (advisorInput) advisorInput.value = value;
+      startAdvisorSearch(value);
+    });
   });
 
   // ========== VOICE CONTROLS ==========
@@ -2013,9 +2715,14 @@
   }
   handleStripeReturn();
 
-  if (initialSearchQuery()) {
-    setTimeout(() => startConversation(), 350);
+  function bootInitialQuery() {
+    const query = initialSearchQuery();
+    if (!query || conversationStarted || isThinking) return;
+    startAdvisorSearch(query);
   }
+  setTimeout(bootInitialQuery, 350);
+  window.addEventListener('load', () => setTimeout(bootInitialQuery, 120));
+  window.addEventListener('pageshow', () => setTimeout(bootInitialQuery, 120));
 
   // Stop everything on page unload
   window.addEventListener('beforeunload', () => {
@@ -2024,5 +2731,60 @@
   });
 })();
 </script>
-</body>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-05V90MWKN9"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-05V90MWKN9');
+</script><style>
+#tixuz-live-box{margin:18px auto;max-width:1200px;padding:18px;border:1px solid rgba(120,160,255,.28);border-radius:14px;background:rgba(17,24,42,.72);color:#dbe4ff;font-family:inherit}
+#tixuz-live-box .tzl-head{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:700}
+#tixuz-live-box .tzl-sub{opacity:.7;margin-top:6px;font-size:13px}
+.tzl-spin{width:16px;height:16px;border:2px solid rgba(219,228,255,.25);border-top-color:#7aa2ff;border-radius:50%;display:inline-block;animation:tzlspin .8s linear infinite;flex:none}
+@keyframes tzlspin{to{transform:rotate(360deg)}}
+.tzl-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px;margin-top:14px}
+.tzl-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.tzl-card img{width:100%;height:140px;object-fit:cover;background:#0d1426;display:block}
+.tzl-card .tzl-body{padding:10px 12px;display:flex;flex-direction:column;gap:4px}
+.tzl-title{font-size:14px;font-weight:600;color:#eef2ff;line-height:1.25}
+.tzl-price{font-size:16px;font-weight:800;color:#6ea8fe}
+.tzl-src{font-size:11px;opacity:.65}
+.tzl-link{margin-top:6px;font-size:13px;color:#8ab4ff;text-decoration:none;font-weight:600}
+.tzl-portales{margin-top:14px;font-size:13px;opacity:.85}
+.tzl-portales a{color:#8ab4ff;text-decoration:none;font-weight:600}
+.tzl-btn{margin-top:10px;background:#2c67ff;border:0;color:#fff;padding:8px 14px;border-radius:9px;font-weight:700;cursor:pointer}
+.tzl-note{margin-top:12px;font-size:12px;opacity:.55}
+</style>
+<script>
+(function(){'use strict';if(window.__tixuzLiveSearch)return;window.__tixuzLiveSearch=true;var E='/.netlify/functions/buscar-externos',P='AutoCosmos, Kavak, Seminuevos y GoCAR',UMBRAL=5,SUPA='https://rbiuoljoduekajivffzh.supabase.co/rest/v1/agg_marcas_modelos?select=marca,modelo',AK='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJiaXVvbGpvZHVla2FqaXZmZnpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzExNzc4NDYsImV4cCI6MjA4Njc1Mzg0Nn0.fvKu71jVZWfSdIVcqMrhMZqUAjswzvaOgnm6-MQpaxM',ALIAS={vw:'Volkswagen',chevy:'Chevrolet',mb:'Mercedes-Benz',benz:'Mercedes-Benz'},MAP=null,S={lastQ:'',timer:null,ctrl:null,done:{}};function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}function fmt(p){var n=Number(p);if(!n||n<=0)return null;try{return n.toLocaleString('es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0});}catch(e){return'$'+n;}}async function cargarMapa(){if(MAP)return MAP;try{var r=await window.__tzlF(SUPA,{headers:{apikey:AK}});var j=await r.json();MAP={modelos:{},marcas:{}};for(var i=0;i<j.length;i++){var m=j[i];if(m.modelo)MAP.modelos[m.modelo.toLowerCase()]=m.marca;if(m.marca)MAP.marcas[m.marca.toLowerCase()]=1;}}catch(e){MAP={modelos:{},marcas:{}};}return MAP;}async function expandir(q){try{var mapa=await cargarMapa();var toks=q.split(/\s+/).filter(Boolean);var out=[];var hasBrand=false;for(var i=0;i<toks.length;i++){var t=toks[i].toLowerCase();if(ALIAS[t]){out.push(ALIAS[t]);hasBrand=true;}else{out.push(toks[i]);if(mapa.marcas[t])hasBrand=true;}}if(hasBrand)return out.join(' ');for(var j2=0;j2<toks.length;j2++){var m=mapa.modelos[toks[j2].toLowerCase()];if(m)return m+' '+out.join(' ');}return out.join(' ');}catch(e){}return q;}function box(){var b=document.getElementById('tixuz-live-box');if(b)return b;b=document.createElement('div');b.id='tixuz-live-box';var a=null;try{var els=document.querySelectorAll('h1,h2,h3,h4,p,div,span');for(var i=0;i<els.length;i++){var t=(els[i].textContent||'').trim();if((t.indexOf('No encontramos')===0||/^\d+\s+autos?\s+encontrados?/i.test(t))&&t.length<140&&els[i].children.length<=2){a=els[i];break;}}}catch(e){}if(a){var h=a.closest?a.closest('section,div'):a;if(h&&h.parentNode){h.parentNode.insertBefore(b,h.nextSibling);return b;}}var f=document.querySelector('form');if(f&&f.parentNode){f.parentNode.insertBefore(b,f.nextSibling);return b;}document.body.appendChild(b);return b;}function spin(q){var b=box();b.innerHTML='<div class="tzl-head"><span class="tzl-spin"></span>\uD83D\uDD0D Buscando \u201c'+esc(q)+'\u201d en vivo en '+P+'\u2026</div><div class="tzl-sub">Tarda 5\u201310 segundos porque consultamos los portales reales en este momento.</div>';try{b.scrollIntoView({behavior:'smooth',block:'center'});}catch(e){}}function norm(c){var price=c.price||c.precio||c.price_mxn||0,year=c.year||c.anio||c.vehicle_year||null,url=c.url||c.source_url||c.permalink||c.link||'#',img=c.image||c.image_url||c.thumbnail||c.thumbnail_url||'',make=c.make||c.marca||c.brand||'',model=c.model||c.modelo||'',title=c.title||c.titulo||([make,model,year].filter(Boolean).join(' ').trim())||'Auto',source=c.source||c.source_name||c.fuente||'Portal externo',pg=(c.source_kind==='verified_source_page')&&!(Number(price)>0)&&!year;return{price:price,year:year,url:url,img:img,title:title,source:source,pg:pg};}function render(q,arr,partial){var b=box(),reales=[],portales=[],v={};for(var i=0;i<(arr||[]).length;i++){var n=norm(arr[i]);if(n.pg){if(!v[n.source]){v[n.source]=1;portales.push(n);}}else reales.push(n);}var h='';if(reales.length){h+='<div class="tzl-head">\u2705 '+reales.length+' m\u00e1s encontrados en vivo para \u201c'+esc(q)+'\u201d</div><div class="tzl-grid">';for(var j3=0;j3<Math.min(reales.length,12);j3++){var r=reales[j3],p=fmt(r.price);h+='<div class="tzl-card">'+(r.img?'<img src="'+esc(r.img)+'" alt="" loading="lazy" onerror="this.style.display=\'none\'">':'')+'<div class="tzl-body"><div class="tzl-title">'+esc(r.title)+'</div>'+(p?'<div class="tzl-price">'+p+'</div>':'<div class="tzl-price" style="opacity:.7">Ver precio</div>')+'<div class="tzl-src">Fuente: '+esc(r.source)+'</div><a class="tzl-link" href="'+esc(r.url)+'" target="_blank" rel="noopener nofollow">Ver anuncio original \u2192</a></div></div>';}h+='</div><div class="tzl-note">Estos hallazgos ya quedaron guardados en Tixuz: la pr\u00f3xima b\u00fasqueda ser\u00e1 instant\u00e1nea.</div>';}else{h+='<div class="tzl-head">Lo buscamos en 4 portales y a\u00fan no aparece \u201c'+esc(q)+'\u201d.</div><div class="tzl-sub">Ya qued\u00f3 apuntado: el robot lo consigue en las pr\u00f3ximas cargas.</div><button class="tzl-btn" id="tzl-retry">Reintentar</button>';}if(portales.length){var lk=[];for(var k=0;k<portales.length;k++)lk.push('<a href="'+esc(portales[k].url)+'" target="_blank" rel="noopener nofollow">'+esc(portales[k].source)+'</a>');h+='<div class="tzl-portales">Sigue buscando en: '+lk.join(' \u00b7 ')+'</div>';}if(partial)h+='<div class="tzl-note">Algunos portales tardaron; puede haber m\u00e1s en unos minutos.</div>';b.innerHTML=h;var btn=document.getElementById('tzl-retry');if(btn)btn.onclick=function(){S.done[q]=false;live(q);};}function err(q){var b=box();b.innerHTML='<div class="tzl-head">Los portales est\u00e1n tardando m\u00e1s de lo normal.</div><button class="tzl-btn" id="tzl-retry">Reintentar</button>';var btn=document.getElementById('tzl-retry');if(btn)btn.onclick=function(){S.done[q]=false;live(q);};}function live(q){try{if(S.done[q])return;S.done[q]=true;if(S.ctrl){try{S.ctrl.abort();}catch(e){}}var ctrl=('AbortController'in window)?new AbortController():null;S.ctrl=ctrl;spin(q);var to=setTimeout(function(){if(ctrl)try{ctrl.abort();}catch(e){}},15000);window.__tzlF(E+'?q='+encodeURIComponent(q)+'&legacy=1&live=1',ctrl?{signal:ctrl.signal}:undefined).then(function(r){return r.json();}).then(function(j){clearTimeout(to);var a=j.cars||j.results||j.items||(Array.isArray(j)?j:[]);render(q,a,!!j.partial);}).catch(function(){clearTimeout(to);if(S.lastQ===q)err(q);});}catch(e){}}function maybe(q){q=(q||'').trim();if(q.length<3)return;S.lastQ=q;if(S.timer)clearTimeout(S.timer);S.timer=setTimeout(function(){if(S.lastQ!==q)return;expandir(q).then(function(q2){if(S.lastQ===q&&!S.done[q2])live(q2);});},900);}var of=window.fetch.bind(window);window.__tzlF=of;cargarMapa();window.fetch=function(input,init){var u='';try{u=(typeof input==='string')?input:((input&&input.url)||'');}catch(e){}var p=of(input,init);try{if(u.indexOf('/api/buscar')!==-1&&u.indexOf('buscar-externos')===-1){p.then(function(res){try{var cl=res.clone();cl.json().then(function(j){try{var q='';try{q=new URL(u,location.origin).searchParams.get('q')||'';}catch(e){}var l=(j&&(j.results||j.cars||j.items))||[];var n=(typeof j.count==='number')?j.count:l.length;var pocos=!!(j&&(j.zero_results===true||n<UMBRAL));if(pocos&&q)maybe(q);else{if(S.timer)clearTimeout(S.timer);var b=document.getElementById('tixuz-live-box');if(b)b.remove();}}catch(e){}}).catch(function(){});}catch(e){}}).catch(function(){});}}catch(e){}return p;};})();
+</script><script>(function(){function extra(u){u=String(u||'');return /automarket\.bbva\.mx\/[a-z0-9-]+-\d{3,}-\d{3,}\.html/i.test(u)||/kavak\.com\/mx\/usado\/[a-z0-9_-]+/i.test(u)||/seminuevosgocar\.mx\/seminuevo\/[^\/]+\/[a-f0-9]{8,}/i.test(u);}function patch(){try{if(typeof window.isIndividualExternalListingUrl==='function'&&!window.__fuentesParche){var orig=window.isIndividualExternalListingUrl;window.isIndividualExternalListingUrl=function(v){return orig(v)||extra(v);};window.__fuentesParche=true;}}catch(e){}}patch();document.addEventListener('DOMContentLoaded',patch);setTimeout(patch,0);setTimeout(patch,500);})();</script><script>(function(){var EF='https://rbiuoljoduekajivffzh.supabase.co/functions/v1/foto-seminuevos';var KEY=null;function getKey(){if(KEY)return Promise.resolve(KEY);return fetch('/assets/app.js').then(function(r){return r.text();}).then(function(t){var m=t.match(/eyJ[A-Za-z0-9_\-\.]+/);KEY=m?m[0]:null;return KEY;})['catch'](function(){return null;});}var of=window.fetch;window.fetch=function(u,o){try{if(typeof u==='string'&&u.indexOf('/rest/v1/agg_autos_inventory')>-1){u=u.replace('limit=300','limit=500');}}catch(e){}var p=of.call(this,u,o);try{if(typeof u==='string'&&u.indexOf('/api/buscar-serper')>-1){return p.then(function(r){return r.clone().json().then(function(j){var cars=(j&&j.cars)||[];var faltan=[];for(var i=0;i<cars.length;i++){var c=cars[i];if(c&&c.url&&/seminuevos\.com\/vehicle\//i.test(c.url)&&!c.thumbnail_url){faltan.push(c.url);}}if(!faltan.length)return r;return getKey().then(function(k){if(!k)return r;return of(EF,{method:'POST',headers:{'Content-Type':'application/json','apikey':k,'Authorization':'Bearer '+k},body:JSON.stringify({urls:faltan.slice(0,15)})}).then(function(rr){return rr.ok?rr.json():{fotos:{}};}).then(function(f){var fotos=(f&&f.fotos)||{};for(var i=0;i<cars.length;i++){var c=cars[i];var img=c&&c.url?fotos[c.url]:null;if(img){c.thumbnail_url=img;c.imagen_tipo='real_source';}}return new Response(JSON.stringify(j),{status:r.status,headers:{'Content-Type':'application/json'}});})['catch'](function(){return r;});});})['catch'](function(){return r;});});}}catch(e){}return p;};})();</script><script>(function(){var EF='https://rbiuoljoduekajivffzh.supabase.co/functions/v1/foto-seminuevos';var KEY=null;function getKey(){if(KEY)return Promise.resolve(KEY);return fetch('/assets/app.js').then(function(r){return r.text();}).then(function(t){var m=t.match(/eyJ[A-Za-z0-9_\-\.]+/);KEY=m?m[0]:null;return KEY;})['catch'](function(){return null;});}var of=window.fetch;window.fetch=function(u,o){var p=of.call(this,u,o);try{if(typeof u==='string'&&u.indexOf('/api/buscar-serper')>-1){return p.then(function(r){return r.clone().json().then(function(j){var arr=(j&&(j.results||j.cars))||[];var faltan=[];for(var i=0;i<arr.length;i++){var c=arr[i];if(c&&c.url&&/seminuevos\.com\/vehicle\//i.test(c.url)&&!c.image_url){faltan.push(c.url);}}if(!faltan.length)return r;return getKey().then(function(k){if(!k)return r;return of(EF,{method:'POST',headers:{'Content-Type':'application/json','apikey':k,'Authorization':'Bearer '+k},body:JSON.stringify({urls:faltan.slice(0,15)})}).then(function(rr){return rr.ok?rr.json():{fotos:{}};}).then(function(f){var fotos=(f&&f.fotos)||{};for(var i=0;i<arr.length;i++){var c=arr[i];var img=c&&c.url?fotos[c.url]:null;if(img){c.image_url=img;c.image_kind='real_source';c.thumbnail_url=img;c.imagen_tipo='real_source';}}return new Response(JSON.stringify(j),{status:r.status,headers:{'Content-Type':'application/json'}});})['catch'](function(){return r;});});})['catch'](function(){return r;});});}}catch(e){}return p;};})();</script><style>
+.tixuz-dep-btn{background:linear-gradient(135deg,#ef3340,#b91c2a)!important;color:#fff!important;border:1px solid rgba(255,255,255,.18)!important;box-shadow:0 5px 16px rgba(239,51,64,.28)}
+.tixuz-dep-btn:hover{filter:brightness(1.1);transform:translateY(-1px)}
+</style>
+<script>
+(function(){
+  var path=(location.pathname||'').replace(/\/+$/,'')||'/';
+  if(path==='/depreciacion'){
+    location.replace('https://tixuz-depreciacion-2026.netlify.app/'+location.search+location.hash);
+    return;
+  }
+  function updateButton(){
+    var duplicate=document.getElementById('tixuz-dep-hero');
+    if(duplicate)duplicate.remove();
+    var head=document.querySelector('.hbtns');
+    if(!head)return;
+    var a=document.getElementById('tixuz-dep-header');
+    if(!a){
+      a=document.createElement('a');
+      a.id='tixuz-dep-header';
+      a.className='hbtn tixuz-dep-btn';
+      a.href='/depreciacion/';
+      head.insertBefore(a,head.firstChild);
+    }
+    a.textContent='📉 Depreciación 2026';
+  }
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',updateButton);else updateButton();
+})();
+</script></body>
 </html>

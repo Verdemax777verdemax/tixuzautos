@@ -1,0 +1,90 @@
+{
+  "topic": "Acura",
+  "slug": "acura",
+  "generated_at": "2026-06-01T01:07:14.836523+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 23,
+  "angle": "Alertas y puntos a revisar antes de comprar un Acura, usando referencias externas como pistas editoriales.",
+  "claim_count": 7,
+  "selected_claim_count": 2,
+  "source_count": 2,
+  "sources": {
+    "El Dios de los Autos": 4,
+    "Autoboutique 1/4 de Milla": 3
+  },
+  "polarity": {
+    "negative": 5,
+    "neutral": 1,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Acura convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Acura que debe revisar un comprador?",
+    "Que modelos de Acura tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Acura en Mexico?",
+    "Conviene comprar Acura nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Acura para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Acura; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "El Podcast de Autos 104 | PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "source_url": "https://www.youtube.com/watch?v=hRJTmW-1Ajk",
+      "source_video_id": "hRJTmW-1Ajk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Acura; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "104. PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "source_url": "https://www.youtube.com/watch?v=4CAXSFpMq0E",
+      "source_video_id": "4CAXSFpMq0E",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "hRJTmW-1Ajk",
+      "url": "https://www.youtube.com/watch?v=hRJTmW-1Ajk",
+      "title": "El Podcast de Autos 104 | PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "4CAXSFpMq0E",
+      "url": "https://www.youtube.com/watch?v=4CAXSFpMq0E",
+      "title": "104. PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

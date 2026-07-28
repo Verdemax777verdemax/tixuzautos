@@ -1,0 +1,176 @@
+{
+  "topic": "Kia",
+  "slug": "kia",
+  "generated_at": "2026-06-01T01:07:14.875835+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 50,
+  "angle": "Guia de compra sobre Kia apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 6,
+  "selected_claim_count": 6,
+  "source_count": 4,
+  "sources": {
+    "CarsLatino": 3,
+    "Autoboutique 1/4 de Milla": 1,
+    "El Dios de los Autos": 1,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 6
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "summary": "Tenemos programa especial con Sergio el Master. Pues aquí andamos, aquí andamos, mi master. Vamos a darle continuidad a Me lo compro, no me lo compro.",
+      "transcript_available": true,
+      "transcript_chars": 41633
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Kia convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Kia que debe revisar un comprador?",
+    "Que modelos de Kia tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Kia en Mexico?",
+    "Conviene comprar Kia nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Kia para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Kia Stinger. Video con audio mejorado",
+      "source_url": "https://www.youtube.com/watch?v=0quk2v4JBB4",
+      "source_video_id": "0quk2v4JBB4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "Prueba de manejo: MAZDA 3 VS. KIA KOUP",
+      "source_url": "https://www.youtube.com/watch?v=NdhciZTmHU0",
+      "source_video_id": "NdhciZTmHU0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Se INCENDIAN los Autos Kia y Hyundai ¿Que Esta Pasando? *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=cK6f83vbtJ4",
+      "source_video_id": "cK6f83vbtJ4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Prueba de Manejo - Kia Sorento Ex 2018 *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=UswYsvjUq9E",
+      "source_video_id": "UswYsvjUq9E",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 KIA/HYUNDAI QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=mdiWpDX7FNk",
+      "source_video_id": "mdiWpDX7FNk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Kia; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Mesa Autmotriz Febrero 19 | Mazda, Suzuki y Kia | Formula Automotriz",
+      "source_url": "https://www.youtube.com/watch?v=Uszu_nmH-SA",
+      "source_video_id": "Uszu_nmH-SA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "0quk2v4JBB4",
+      "url": "https://www.youtube.com/watch?v=0quk2v4JBB4",
+      "title": "Kia Stinger. Video con audio mejorado",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "NdhciZTmHU0",
+      "url": "https://www.youtube.com/watch?v=NdhciZTmHU0",
+      "title": "Prueba de manejo: MAZDA 3 VS. KIA KOUP",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "cK6f83vbtJ4",
+      "url": "https://www.youtube.com/watch?v=cK6f83vbtJ4",
+      "title": "Se INCENDIAN los Autos Kia y Hyundai ¿Que Esta Pasando? *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "UswYsvjUq9E",
+      "url": "https://www.youtube.com/watch?v=UswYsvjUq9E",
+      "title": "Prueba de Manejo - Kia Sorento Ex 2018 *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

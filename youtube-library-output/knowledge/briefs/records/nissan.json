@@ -1,0 +1,201 @@
+{
+  "topic": "Nissan",
+  "slug": "nissan",
+  "generated_at": "2026-06-01T01:07:14.821273+00:00",
+  "status": "ready_for_human_editor",
+  "publication_score": 76,
+  "angle": "Guia de compra sobre Nissan apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 8,
+  "selected_claim_count": 6,
+  "source_count": 4,
+  "sources": {
+    "CarsLatino": 4,
+    "Autoboutique 1/4 de Milla": 2,
+    "El Dios de los Autos": 1,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 7,
+    "negative": 1
+  },
+  "owned_tixuz_video_count": 4,
+  "owned_tixuz_videos": [
+    {
+      "id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "summary": "Bueno, pues otro programa de la sección tan querida que les gusta con Sergio Oliveira. Oye, un más me lo compro, no me lo compro. Tenemos tres marquitas ahí que están interesantes platicarlas.",
+      "transcript_available": true,
+      "transcript_chars": 44823
+    },
+    {
+      "id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "k2C37jU9e_s",
+      "url": "https://www.youtube.com/watch?v=k2C37jU9e_s",
+      "title": "Nissan Sentra desde piso de ventas l Tixuz",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Nissan convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Nissan que debe revisar un comprador?",
+    "Que modelos de Nissan tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Nissan en Mexico?",
+    "Conviene comprar Nissan nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Nissan para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Nissan LEAF 2018 - Y lo puedes comprar por Internet",
+      "source_url": "https://www.youtube.com/watch?v=yiuViWzrRmU",
+      "source_video_id": "yiuViWzrRmU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "NISSAN Y MITSUBISHI SON COMPRADOS POR MARCA CHINA - ENORME NOTICIA",
+      "source_url": "https://www.youtube.com/watch?v=qG98Th4nygU",
+      "source_video_id": "qG98Th4nygU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "HONDA vs NISSAN ¿Cual es la Reina de las Suv? *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=c1v4SIL4Q3U",
+      "source_video_id": "c1v4SIL4Q3U",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 NISSAN QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=yIDCcL0gbD4",
+      "source_video_id": "yIDCcL0gbD4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "boot accu air sema 2016 las vegas nevada nissan gtr lamborghini bmw mercedes benz",
+      "source_url": "https://www.youtube.com/watch?v=4hyw3gHG4YA",
+      "source_video_id": "4hyw3gHG4YA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "224. Tank 300 híbrido, Chirey y DHL hacen alianza, Nissan y Honda vs China",
+      "source_url": "https://www.youtube.com/watch?v=5p0P6HyYtW0",
+      "source_video_id": "5p0P6HyYtW0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "IUrYfUtUZmA",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "k2C37jU9e_s",
+      "url": "https://www.youtube.com/watch?v=k2C37jU9e_s",
+      "title": "Nissan Sentra desde piso de ventas l Tixuz",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "yiuViWzrRmU",
+      "url": "https://www.youtube.com/watch?v=yiuViWzrRmU",
+      "title": "Nissan LEAF 2018 - Y lo puedes comprar por Internet",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

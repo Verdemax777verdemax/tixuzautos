@@ -24,7 +24,7 @@ const TOPICS_URL = SITE_URL + YOUTUBE_TOPICS_INDEX_PATH;
 
 function slugFromEvent(event) {
   const raw = decodeURIComponent(String(event.rawUrl || event.path || ''));
-  const topicMatch = raw.match(/\/youtube\/temas\/([^/?#]+)/) || raw.match(/\/seo-youtube-topic\/([^/?#]+)/);
+  const topicMatch = raw.match(/\/youtube\/temas\/([^/#]+)/) || raw.match(/\/seo-youtube-topic\/([^/#]+)/);
   return topicMatch ? topicMatch[1].replace(/^\/+|\/+$/g, '') : '';
 }
 
@@ -97,7 +97,7 @@ function layout({ title, description, canonical, jsonLd, body }) {
       <a class="brand" href="${SITE_URL}/">Tixuz Autos</a>
       <div class="nav">
         <a href="${html(SITE_URL + YOUTUBE_TRANSCRIPTS_INDEX_PATH)}">Transcripciones</a>
-        <a href="${html(SITE_URL)}/youtube/autoridad">Autoridad</a>
+        <a href="${html(SITE_URL)}/youtube/autoridad">Biblioteca</a>
         <a href="${html(PUBLISH_URL)}">Publicar auto</a>
       </div>
     </nav>
@@ -150,7 +150,7 @@ function hubHtml() {
       <p class="lead">Estas paginas organizan programas reales de Tixuz por marca, tecnologia y mercado. Sirven para consultar contexto automotriz, comparar mejor y preparar publicaciones mas claras de autos usados en Mexico.</p>
       <div class="actions">
         <a class="btn primary" href="${html(PUBLISH_URL)}">Publicar un auto</a>
-        <a class="btn" href="${html(SITE_URL)}/publicar-auto/lotes">Publicar inventario de lote</a>
+        <a class="btn" href="${html(SITE_URL)}/publicar-auto/lotes">Publicar inventario autorizado</a>
         <a class="btn" href="${html(YOUTUBE_CHANNEL_URL)}" target="_blank" rel="noopener">Canal YouTube</a>
       </div>
     </div>
@@ -225,7 +225,7 @@ function topicHtml(topic) {
         mainEntity: [
           {
             '@type': 'Question',
-            name: `Como ayuda Tixuz con ${topic.label || topic.title}?`,
+            name: `Como ayuda Tixuz con ${topic.label || topic.title}`,
             acceptedAnswer: {
               '@type': 'Answer',
               text: topic.publicContext,
@@ -233,7 +233,7 @@ function topicHtml(topic) {
           },
           {
             '@type': 'Question',
-            name: 'Puedo publicar un auto relacionado con este tema?',
+            name: 'Puedo publicar un auto relacionado con este tema',
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Si. En Tixuz Autos puedes publicar un auto usado con fotos reales, descripcion, WhatsApp directo y revision humana antes de aparecer en el marketplace.',

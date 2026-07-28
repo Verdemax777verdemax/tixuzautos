@@ -1,0 +1,41 @@
+{
+  "source_video_id": "lTGtNxYhLwc",
+  "source_url": "https://www.youtube.com/watch?v=lTGtNxYhLwc",
+  "source": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel": "@autossergiooliveira",
+    "source_channel_title": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission"
+  },
+  "draft_status": "needs_ai_review",
+  "slug": "me-lo-compro-o-no-me-lo-compro-con-lalo-vargas-mazda-lTGtNxYhLwc",
+  "title_original": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Mazda",
+  "title_seo": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Mazda",
+  "summary": "Un nuevo episodio de Me lo Compro o No Me Lo compro, con Lalo Vargas de Tixuz, donde exploramos la gama de Mazda para conocer sus modelos a la venta en México",
+  "key_points": [
+    "Un nuevo episodio de Me lo Compro o No Me Lo compro, con Lalo Vargas de Tixuz, donde exploramos la gama de Mazda para conocer sus modelos a la venta en México"
+  ],
+  "detected_topics": [
+    "Compro",
+    "Con",
+    "Lalo",
+    "Mazda",
+    "México",
+    "Tixuz",
+    "Vargas"
+  ],
+  "buyer_intent": [],
+  "vehicle_entities": [],
+  "content_type": "youtube_video",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "generated_at": "2026-05-29T22:34:41.110777+00:00"
+}

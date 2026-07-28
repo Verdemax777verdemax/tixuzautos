@@ -1,0 +1,177 @@
+{
+  "topic": "Volkswagen",
+  "slug": "volkswagen",
+  "generated_at": "2026-06-01T01:07:14.850287+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 51,
+  "angle": "Guia de compra sobre Volkswagen apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 7,
+  "selected_claim_count": 6,
+  "source_count": 5,
+  "sources": {
+    "CarsLatino": 2,
+    "Sergio Oliveira": 2,
+    "Autoboutique 1/4 de Milla": 1,
+    "El Dios de los Autos": 1,
+    "Jaime Gabaldoni": 1
+  },
+  "polarity": {
+    "neutral": 7
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "summary": "Abril de 2026 ha sido un mes crucial en la industria automotriz, marcado por la presentación de innovadores prototipos y alianzas estratégicas que prometen revolucionar el transporte urbano. Desde el Hyundai Boulder hasta la inversión de Uber en Rivian, este mes ha dejado claro que el futuro de los vehículos autónomos está más cerca de lo que pensamos.",
+      "transcript_available": true,
+      "transcript_chars": 7522
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Volkswagen convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Volkswagen que debe revisar un comprador?",
+    "Que modelos de Volkswagen tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Volkswagen en Mexico?",
+    "Conviene comprar Volkswagen nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Volkswagen para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Volkswagen Taos 2025 - Te digo para quién es la mejor opción",
+      "source_url": "https://www.youtube.com/watch?v=bdABjkUlKVg",
+      "source_video_id": "bdABjkUlKVg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Detalles del ultimo Volkswagen Passat | Prueba de Manejo [4K]",
+      "source_url": "https://www.youtube.com/watch?v=HGMlyLVXiU0",
+      "source_video_id": "HGMlyLVXiU0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "HYUNDAI i10 VS. VOLKSWAGEN UP! ¿CUAL ES MEJOR?",
+      "source_url": "https://www.youtube.com/watch?v=1_3A_7ajBFY",
+      "source_video_id": "1_3A_7ajBFY",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Prueba de Manejo Volkswagen Jetta (Bora) GLI 2007 y algo mas *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=zd9Q6h0GCUU",
+      "source_video_id": "zd9Q6h0GCUU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 VOLKSWAGEN QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=yyB2uL3FoM8",
+      "source_video_id": "yyB2uL3FoM8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Volkswagen; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Volkswagen Polo 2020 | PruebameLa... Nave #112 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=FTgw6q07d9w",
+      "source_video_id": "FTgw6q07d9w",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "FpXwO0V3CxM",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "bdABjkUlKVg",
+      "url": "https://www.youtube.com/watch?v=bdABjkUlKVg",
+      "title": "Volkswagen Taos 2025 - Te digo para quién es la mejor opción",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "HGMlyLVXiU0",
+      "url": "https://www.youtube.com/watch?v=HGMlyLVXiU0",
+      "title": "Detalles del ultimo Volkswagen Passat | Prueba de Manejo [4K]",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "1_3A_7ajBFY",
+      "url": "https://www.youtube.com/watch?v=1_3A_7ajBFY",
+      "title": "HYUNDAI i10 VS. VOLKSWAGEN UP! ¿CUAL ES MEJOR?",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "zd9Q6h0GCUU",
+      "url": "https://www.youtube.com/watch?v=zd9Q6h0GCUU",
+      "title": "Prueba de Manejo Volkswagen Jetta (Bora) GLI 2007 y algo mas *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

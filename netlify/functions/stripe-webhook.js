@@ -41,7 +41,7 @@ async function getListingPaymentState({ supabaseUrl, serviceKey, listingId }) {
   return Array.isArray(arr) ? arr[0] : null;
 }
 async function queuePaidListingForReview({ supabaseUrl, serviceKey, listingId, eventId, session }) {
-  const planKey = session?.metadata?.plan || 'basic';
+  const planKey = session.metadata.plan || 'basic';
   const plan = DEFAULT_PLANS[planKey] || DEFAULT_PLANS.basic;
   const payload = {
     status: 'pending_payment',
@@ -77,7 +77,7 @@ exports.handler = async function(event) {
     if (!listingId) return { statusCode: 200, body: 'No listing_id' };
     try {
       const existing = await getListingPaymentState({ supabaseUrl: SUPABASE_URL, serviceKey: SERVICE_KEY, listingId });
-      if (existing?.payment_status === 'paid' && existing?.stripe_session_id === session.id) {
+      if (existing.payment_status === 'paid' && existing.stripe_session_id === session.id) {
         return { statusCode: 200, body: 'Already processed' };
       }
       await queuePaidListingForReview({ supabaseUrl: SUPABASE_URL, serviceKey: SERVICE_KEY, listingId, eventId: stripeEvent.id, session });

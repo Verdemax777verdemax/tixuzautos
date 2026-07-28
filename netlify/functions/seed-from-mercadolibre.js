@@ -7,7 +7,7 @@
 //   SUPABASE_SERVICE_ROLE_KEY  (service role key — NO lo hardcodees, ponlo en Site settings > Environment variables)
 //
 // Admin password opcional:
-//   SEED_ADMIN_PASSWORD  (si está puesto, la llamada debe incluir ?pass=... que coincida)
+//   SEED_ADMIN_PASSWORD  (si está puesto, la llamada debe incluir pass=... que coincida)
 
 const SUPABASE_URL = 'https://rbiuoljoduekajivffzh.supabase.co';
 const SUPABASE_TABLE = 'marketplace_listings';
@@ -89,7 +89,7 @@ function shuffle(arr) {
 // --- MercadoLibre fetching ----------------------------------------------
 
 async function fetchMLSearch(offset, limit) {
-  const url = `${ML_SEARCH}?category=${ML_CATEGORY}&condition=used&limit=${limit}&offset=${offset}`;
+  const url = `${ML_SEARCH}category=${ML_CATEGORY}&condition=used&limit=${limit}&offset=${offset}`;
   const r = await fetch(url, { headers: { 'Accept': 'application/json' } });
   if (!r.ok) throw new Error('MercadoLibre search falló: ' + r.status);
   return r.json();
@@ -172,7 +172,7 @@ async function buildListingFromML(raw, fetchFullDetail) {
 // --- Supabase insert (tries with source fields, falls back without) ----
 
 async function supabaseInsert(rows, serviceKey) {
-  const url = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?on_conflict=stripe_ref`;
+  const url = `${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}on_conflict=stripe_ref`;
   const headers = {
     'Content-Type': 'application/json',
     'apikey': serviceKey,
@@ -193,7 +193,7 @@ async function supabaseInsert(rows, serviceKey) {
         delete copy.source_url;
         return copy;
       });
-      const r2 = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}?on_conflict=stripe_ref`, {
+      const r2 = await fetch(`${SUPABASE_URL}/rest/v1/${SUPABASE_TABLE}on_conflict=stripe_ref`, {
         method: 'POST',
         headers,
         body: JSON.stringify(stripped)

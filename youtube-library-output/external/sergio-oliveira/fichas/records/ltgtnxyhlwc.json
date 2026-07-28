@@ -1,0 +1,70 @@
+{
+  "id": "lTGtNxYhLwc",
+  "slug": "me-lo-compro-o-no-me-lo-compro-con-lalo-vargas-mazda-lTGtNxYhLwc",
+  "source_url": "https://www.youtube.com/watch?v=lTGtNxYhLwc",
+  "source_context": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission",
+    "editorial_permission_required": true
+  },
+  "usage_rights": "external-reference",
+  "reuse_policy": "embed_link_and_summarize_only",
+  "transcript_policy": "do_not_store_full_transcript_without_permission",
+  "editorial_permission_required": true,
+  "title_original": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Mazda",
+  "title_seo": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Mazda",
+  "meta_description": "Un nuevo episodio de Me lo Compro o No Me Lo compro, con Lalo Vargas de Tixuz, donde exploramos la gama de Mazda para conocer sus modelos a la venta en Méx",
+  "executive_summary": "Un nuevo episodio de Me lo Compro o No Me Lo compro, con Lalo Vargas de Tixuz, donde exploramos la gama de Mazda para conocer sus modelos a la venta en México",
+  "key_takeaways": [
+    "Un nuevo episodio de Me lo Compro o No Me Lo compro, con Lalo Vargas de Tixuz, donde exploramos la gama de Mazda para conocer sus modelos a la venta en México"
+  ],
+  "vehicles_or_brands": [],
+  "buyer_questions_answered": [],
+  "market_topics": [
+    "Compro",
+    "Con",
+    "Lalo",
+    "Mazda",
+    "México",
+    "Tixuz",
+    "Vargas"
+  ],
+  "publishable_article_outline": [],
+  "internal_links_to_create": [],
+  "schema_org_notes": [],
+  "external_claims": [
+    {
+      "vehicle_or_brand": "Mazda",
+      "claim_summary": "Fuente externa registrada sobre Mazda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "claims_count": 1,
+  "claims_extraction_provider": "local",
+  "editorial_warnings": [
+    "Fuente externa: publicar como resumen con embed/enlace y atribucion; no republicar transcripcion completa sin permiso."
+  ],
+  "duration": 3760,
+  "upload_date": "20260303",
+  "thumbnail": "https://i.ytimg.com/vi/lTGtNxYhLwc/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGFAgWyhlMA8=&rs=AOn4CLDzNczGty848Pd3ITw5se933o1PkA",
+  "transcript_language": null,
+  "transcript_is_generated": null,
+  "transcript_available": false,
+  "transcript_chars": 0,
+  "enrichment_provider": "local",
+  "generated_at": "2026-05-29T22:47:43.000212+00:00"
+}

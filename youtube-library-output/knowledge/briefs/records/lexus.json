@@ -1,0 +1,83 @@
+{
+  "topic": "Lexus",
+  "slug": "lexus",
+  "generated_at": "2026-06-01T01:07:15.015798+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 30,
+  "angle": "Guia de compra sobre Lexus apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 2,
+  "selected_claim_count": 1,
+  "source_count": 2,
+  "sources": {
+    "El Dios de los Autos": 1,
+    "Jaime Gabaldoni": 1
+  },
+  "polarity": {
+    "neutral": 2
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "summary": "Tenemos programa especial con Sergio el Master. Pues aquí andamos, aquí andamos, mi master. Vamos a darle continuidad a Me lo compro, no me lo compro.",
+      "transcript_available": true,
+      "transcript_chars": 41633
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Lexus convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Lexus que debe revisar un comprador?",
+    "Que modelos de Lexus tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Lexus en Mexico?",
+    "Conviene comprar Lexus nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Lexus para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Lexus; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Japan Mobility Show 2025: Lexus, Toyota, Subaru, Mazda and the future of mobility | Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/watch?v=Iv9QnL7nz-4",
+      "source_video_id": "Iv9QnL7nz-4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "Iv9QnL7nz-4",
+      "url": "https://www.youtube.com/watch?v=Iv9QnL7nz-4",
+      "title": "Japan Mobility Show 2025: Lexus, Toyota, Subaru, Mazda and the future of mobility | Jaime Gabaldoni",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

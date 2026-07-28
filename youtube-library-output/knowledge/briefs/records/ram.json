@@ -1,0 +1,170 @@
+{
+  "topic": "Ram",
+  "slug": "ram",
+  "generated_at": "2026-06-01T01:07:14.966295+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 56,
+  "angle": "Guia de compra sobre Ram apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 4,
+  "selected_claim_count": 4,
+  "source_count": 2,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "Sergio Oliveira": 2
+  },
+  "polarity": {
+    "neutral": 4
+  },
+  "owned_tixuz_video_count": 4,
+  "owned_tixuz_videos": [
+    {
+      "id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "summary": "Tenemos programa especial con Sergio el Master. Pues aquí andamos, aquí andamos, mi master. Vamos a darle continuidad a Me lo compro, no me lo compro.",
+      "transcript_available": true,
+      "transcript_chars": 41633
+    },
+    {
+      "id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "summary": "Bueno, pues otro programa de la sección tan querida que les gusta con Sergio Oliveira. Oye, un más me lo compro, no me lo compro. Tenemos tres marquitas ahí que están interesantes platicarlas.",
+      "transcript_available": true,
+      "transcript_chars": 44823
+    },
+    {
+      "id": "-ie-mTjGZjI",
+      "url": "https://www.youtube.com/watch?v=-ie-mTjGZjI",
+      "title": "\"La herramienta que hubiera querido tener hace años para comparar coches\"",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    },
+    {
+      "id": "IjPTKQVMvaE",
+      "url": "https://www.youtube.com/watch?v=IjPTKQVMvaE",
+      "title": "@Jaime_Gabaldoni nos habla de su trayectoria en los autos | Instagram Live",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Ram convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Ram que debe revisar un comprador?",
+    "Que modelos de Ram tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Ram en Mexico?",
+    "Conviene comprar Ram nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Ram para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Ram; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "source_url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "source_video_id": "RJuaMqk0J_M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ram; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Ram 700 2021. El mejor valor/precio de su categoría.",
+      "source_url": "https://www.youtube.com/watch?v=vaysVq7ZuDw",
+      "source_video_id": "vaysVq7ZuDw",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ram; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "El precio del limón y el aguacate, Ram Night Edition, Kwid 2023. | Podcast #33",
+      "source_url": "https://www.youtube.com/watch?v=ZfI1VAFeKN8",
+      "source_video_id": "ZfI1VAFeKN8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Ram; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "33. El precio del limón y el aguacate, Ram Night Edition, Kwid 2023.",
+      "source_url": "https://www.youtube.com/watch?v=bff0Ni8J7IM",
+      "source_video_id": "bff0Ni8J7IM",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "t18L1VU4jxs",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "-ie-mTjGZjI",
+      "url": "https://www.youtube.com/watch?v=-ie-mTjGZjI",
+      "title": "\"La herramienta que hubiera querido tener hace años para comparar coches\"",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "IjPTKQVMvaE",
+      "url": "https://www.youtube.com/watch?v=IjPTKQVMvaE",
+      "title": "@Jaime_Gabaldoni nos habla de su trayectoria en los autos | Instagram Live",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "RJuaMqk0J_M",
+      "url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

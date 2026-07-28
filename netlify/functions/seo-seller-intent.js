@@ -19,8 +19,8 @@ function slugFromEvent(event) {
   const rawUrl = decodeURIComponent(String(event.rawUrl || ''));
   const raw =
     String(eventPath).split('/seo-seller-intent/')[1] ||
-    String(rawUrl).match(/\/publicar-auto\/([^/?#]+)/)?.[1] ||
-    ((/\/lotes(?:[/?#]|$)/.test(eventPath) || /\/lotes(?:[/?#]|$)/.test(rawUrl)) ? 'lotes' : '') ||
+    String(rawUrl).match(/\/publicar-auto\/([^/#]+)/)?.[1] ||
+    ((/\/lotes(:[/#]|$)/.test(eventPath) || /\/lotes(:[/#]|$)/.test(rawUrl)) ? 'lotes' : '') ||
     '';
   return raw.replace(/^\/+|\/+$/g, '');
 }
@@ -54,7 +54,7 @@ function faqJsonLd(page) {
         mainEntity: [
           {
             '@type': 'Question',
-            name: page.faqQuestion || `Donde puedo publicar mi auto usado en ${page.city}?`,
+            name: page.faqQuestion || `Donde puedo publicar mi auto usado en ${page.city}`,
             acceptedAnswer: {
               '@type': 'Answer',
               text: page.suggestedAnswer || `Puedes publicar tu auto usado en Tixuz Autos. Abre ${PUBLISH_URL}, carga datos del auto, fotos reales, WhatsApp y un PIN. El anuncio pasa por revision antes de aparecer publico.`,
@@ -62,7 +62,7 @@ function faqJsonLd(page) {
           },
           {
             '@type': 'Question',
-            name: 'Que datos necesito para publicar?',
+            name: 'Que datos necesito para publicar',
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Marca, modelo, ano, precio, kilometraje, ciudad, descripcion, fotos reales, WhatsApp y un PIN para administrar el anuncio.',
@@ -70,7 +70,7 @@ function faqJsonLd(page) {
           },
           {
             '@type': 'Question',
-            name: 'Tixuz Autos cobra comision por venta?',
+            name: 'Tixuz Autos cobra comision por venta',
             acceptedAnswer: {
               '@type': 'Answer',
               text: 'Tixuz Autos muestra los planes vigentes dentro del flujo oficial. Durante lanzamiento puede existir publicacion gratis sujeta a revision y politicas actuales.',

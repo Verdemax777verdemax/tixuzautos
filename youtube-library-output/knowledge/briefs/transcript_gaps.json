@@ -1,0 +1,508 @@
+{
+  "total_owned_videos_in_briefs": 50,
+  "missing_transcripts": 32,
+  "available_transcripts": 18,
+  "high_priority_missing": 14,
+  "rows": [
+    {
+      "topic": "Ford",
+      "publication_score": 86,
+      "video_id": "j9IPzpuHSp8",
+      "title": "FORD #2021 ¿me lo compro, o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=j9IPzpuHSp8",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Ford",
+      "publication_score": 86,
+      "video_id": "cAQZZKiK8GY",
+      "title": "Las JMC telitoly... o como dicen Jodida Mi Camioneta 😂 ford nacidos chinos",
+      "url": "https://www.youtube.com/watch?v=cAQZZKiK8GY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Ford",
+      "publication_score": 86,
+      "video_id": "V79lGPB82zc",
+      "title": "Yougi y Los Ford Cougar",
+      "url": "https://www.youtube.com/watch?v=V79lGPB82zc",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Nissan",
+      "publication_score": 76,
+      "video_id": "IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Nissan",
+      "publication_score": 76,
+      "video_id": "k2C37jU9e_s",
+      "title": "Nissan Sentra desde piso de ventas l Tixuz",
+      "url": "https://www.youtube.com/watch?v=k2C37jU9e_s",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Nissan",
+      "publication_score": 76,
+      "video_id": "3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Hyundai",
+      "publication_score": 75,
+      "video_id": "1uuA-AocDkA",
+      "title": "Hyundai #2021 ¿Me lo compro, o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=1uuA-AocDkA",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Dodge",
+      "publication_score": 68,
+      "video_id": "BMa0m5JtNss",
+      "title": "DODGE #2021 ¿Me lo Compro o No me lo Compro? Dodge",
+      "url": "https://www.youtube.com/watch?v=BMa0m5JtNss",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Dodge",
+      "publication_score": 68,
+      "video_id": "pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Mercedes",
+      "publication_score": 68,
+      "video_id": "2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Subaru",
+      "publication_score": 66,
+      "video_id": "IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Honda",
+      "publication_score": 64,
+      "video_id": "KGqm8vs4o5E",
+      "title": "HONDA #2021 ¿Me lo compro, o NO me lo compro?",
+      "url": "https://www.youtube.com/watch?v=KGqm8vs4o5E",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Chevrolet",
+      "publication_score": 62,
+      "video_id": "Wdm4K-4XpgU",
+      "title": "chevrolet parte 2 me lo compro o no me lo compro",
+      "url": "https://www.youtube.com/watch?v=Wdm4K-4XpgU",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "BMW",
+      "publication_score": 61,
+      "video_id": "gY5SbnEIqoM",
+      "title": "BMW PARTE 2 me lo compro o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=gY5SbnEIqoM",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "high"
+    },
+    {
+      "topic": "Mazda",
+      "publication_score": 57,
+      "video_id": "2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Ram",
+      "publication_score": 56,
+      "video_id": "-ie-mTjGZjI",
+      "title": "\"La herramienta que hubiera querido tener hace años para comparar coches\"",
+      "url": "https://www.youtube.com/watch?v=-ie-mTjGZjI",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Ram",
+      "publication_score": 56,
+      "video_id": "IjPTKQVMvaE",
+      "title": "@Jaime_Gabaldoni nos habla de su trayectoria en los autos | Instagram Live",
+      "url": "https://www.youtube.com/watch?v=IjPTKQVMvaE",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mitsubishi",
+      "publication_score": 54,
+      "video_id": "3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Suzuki",
+      "publication_score": 53,
+      "video_id": "IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "GMC",
+      "publication_score": 52,
+      "video_id": "6jD4N_6URPY",
+      "title": "GMC #2021 ¿me lo compro, o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=6jD4N_6URPY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Tesla",
+      "publication_score": 51,
+      "video_id": "PGkryogQP30",
+      "title": "TESLA",
+      "url": "https://www.youtube.com/watch?v=PGkryogQP30",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Tesla",
+      "publication_score": 51,
+      "video_id": "iG1lOwAJ1Gs",
+      "title": "los fantasmas llegaron a tesla?",
+      "url": "https://www.youtube.com/watch?v=iG1lOwAJ1Gs",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Fiat",
+      "publication_score": 50,
+      "video_id": "ZCmA6BKcNxU",
+      "title": "FIAT 2021 ¿me lo compro, o no me lo compro ?",
+      "url": "https://www.youtube.com/watch?v=ZCmA6BKcNxU",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Cupra",
+      "publication_score": 45,
+      "video_id": "XXBP3FxGefM",
+      "title": "CUPRA # 2021 ¿me lo compro, o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=XXBP3FxGefM",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Cupra",
+      "publication_score": 45,
+      "video_id": "pdMZqhjiZcw",
+      "title": "¿Me lo compro o no? | Con Sergio Oliveira hablamos de Dodge y Cupra 🚗🔥",
+      "url": "https://www.youtube.com/watch?v=pdMZqhjiZcw",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "BYD",
+      "publication_score": 42,
+      "video_id": "F-A1N41Axag",
+      "title": "Spark EV vs BYD Dolphin: la batalla de los eléctricos urbanos que debes conocer",
+      "url": "https://www.youtube.com/watch?v=F-A1N41Axag",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mini",
+      "publication_score": 34,
+      "video_id": "3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Chirey",
+      "publication_score": 33,
+      "video_id": "jVU_mY3mdNw",
+      "title": "CHIREY",
+      "url": "https://www.youtube.com/watch?v=jVU_mY3mdNw",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Seat",
+      "publication_score": 33,
+      "video_id": "IUrYfUtUZmA",
+      "title": "Me lo compro o no me lo compro nissan ,seat subaru,suzuki",
+      "url": "https://www.youtube.com/watch?v=IUrYfUtUZmA",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "MG",
+      "publication_score": 31,
+      "video_id": "2tr5BIOGzQg",
+      "title": "\"¿Me lo compro o no? 🚗 Mazda, McLaren, Mercedes y MG con Sergio Oliveira y Lalo\"",
+      "url": "https://www.youtube.com/watch?v=2tr5BIOGzQg",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Omoda",
+      "publication_score": 31,
+      "video_id": "3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "JAC",
+      "publication_score": 22,
+      "video_id": "ituNwW-NOqs",
+      "title": "JAC #2021 ¿me lo compro, o no me lo compro?",
+      "url": "https://www.youtube.com/watch?v=ituNwW-NOqs",
+      "transcript_available": false,
+      "transcript_chars": 0,
+      "priority": "normal"
+    },
+    {
+      "topic": "Nissan",
+      "publication_score": 76,
+      "video_id": "bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "transcript_available": true,
+      "transcript_chars": 44823,
+      "priority": "normal"
+    },
+    {
+      "topic": "Hyundai",
+      "publication_score": 75,
+      "video_id": "FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "transcript_available": true,
+      "transcript_chars": 7522,
+      "priority": "normal"
+    },
+    {
+      "topic": "Hyundai",
+      "publication_score": 75,
+      "video_id": "u4Hj3qKhhw0",
+      "title": "me lo compro no me lo compro hyundai",
+      "url": "https://www.youtube.com/watch?v=u4Hj3qKhhw0",
+      "transcript_available": true,
+      "transcript_chars": 23448,
+      "priority": "normal"
+    },
+    {
+      "topic": "Hyundai",
+      "publication_score": 75,
+      "video_id": "t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "transcript_available": true,
+      "transcript_chars": 41633,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mercedes",
+      "publication_score": 68,
+      "video_id": "u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "transcript_available": true,
+      "transcript_chars": 23686,
+      "priority": "normal"
+    },
+    {
+      "topic": "Subaru",
+      "publication_score": 66,
+      "video_id": "i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "transcript_available": true,
+      "transcript_chars": 30101,
+      "priority": "normal"
+    },
+    {
+      "topic": "Subaru",
+      "publication_score": 66,
+      "video_id": "FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "transcript_available": true,
+      "transcript_chars": 7522,
+      "priority": "normal"
+    },
+    {
+      "topic": "Ram",
+      "publication_score": 56,
+      "video_id": "t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "transcript_available": true,
+      "transcript_chars": 41633,
+      "priority": "normal"
+    },
+    {
+      "topic": "Ram",
+      "publication_score": 56,
+      "video_id": "bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "transcript_available": true,
+      "transcript_chars": 44823,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mitsubishi",
+      "publication_score": 54,
+      "video_id": "bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "transcript_available": true,
+      "transcript_chars": 44823,
+      "priority": "normal"
+    },
+    {
+      "topic": "Suzuki",
+      "publication_score": 53,
+      "video_id": "i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "transcript_available": true,
+      "transcript_chars": 30101,
+      "priority": "normal"
+    },
+    {
+      "topic": "Volkswagen",
+      "publication_score": 51,
+      "video_id": "FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "transcript_available": true,
+      "transcript_chars": 7522,
+      "priority": "normal"
+    },
+    {
+      "topic": "Kia",
+      "publication_score": 50,
+      "video_id": "t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "transcript_available": true,
+      "transcript_chars": 41633,
+      "priority": "normal"
+    },
+    {
+      "topic": "Toyota",
+      "publication_score": 44,
+      "video_id": "FpXwO0V3CxM",
+      "title": "Noticias Motor Abril 2026",
+      "url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+      "transcript_available": true,
+      "transcript_chars": 7522,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mini",
+      "publication_score": 34,
+      "video_id": "bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "transcript_available": true,
+      "transcript_chars": 44823,
+      "priority": "normal"
+    },
+    {
+      "topic": "Seat",
+      "publication_score": 33,
+      "video_id": "i849ev1wuhs",
+      "title": "No compres SEAT, Subaru o Suzuki sin ver esto 🛑 | Me Lo Compro o No Me Lo Compro",
+      "url": "https://www.youtube.com/watch?v=i849ev1wuhs",
+      "transcript_available": true,
+      "transcript_chars": 30101,
+      "priority": "normal"
+    },
+    {
+      "topic": "Lexus",
+      "publication_score": 30,
+      "video_id": "t18L1VU4jxs",
+      "title": "¿ME LO COMPRO O NO? Kia, Land Rover y Lexus",
+      "url": "https://www.youtube.com/watch?v=t18L1VU4jxs",
+      "transcript_available": true,
+      "transcript_chars": 41633,
+      "priority": "normal"
+    },
+    {
+      "topic": "Mercedes-Benz",
+      "publication_score": 22,
+      "video_id": "u-QIh-nnUYg",
+      "title": "Me lo compro o no me lo compro: Mercedes-Benz",
+      "url": "https://www.youtube.com/watch?v=u-QIh-nnUYg",
+      "transcript_available": true,
+      "transcript_chars": 23686,
+      "priority": "normal"
+    }
+  ]
+}

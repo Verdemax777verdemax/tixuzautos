@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "ArBiSJHJGtQ",
+    "source_url": "https://www.youtube.com/watch?v=ArBiSJHJGtQ",
+    "source_title": "Chevrolet Onix vs Nissan Versa vs Volkswagen Virtus | Autoboutique 1/4 de Milla | Comparativa",
+    "source_channel": "Autoboutique 1/4 de Milla",
+    "source_channel_id": "UCpC4ElFQZGj22H6yt6tWFxg",
+    "source_owner": "Autoboutique 1/4 de Milla",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Chevrolet",
+      "claim_summary": "El video contiene una posible opinion critica sobre Chevrolet; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": "es",
+  "transcript_fetch_error": "",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:00:24.769763+00:00"
+}

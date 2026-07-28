@@ -3,8 +3,10 @@
   "version": "25.0.0",
   "private": true,
   "dependencies": {
-    "stripe": "^16.0.0",
+    "@sparticuz/chromium": "^149.0.0",
+    "@supabase/supabase-js": "^2.49.4",
     "jsonwebtoken": "^9.0.0",
-    "@supabase/supabase-js": "^2.49.4"
+    "puppeteer-core": "^25.3.0",
+    "stripe": "^16.0.0"
   }
 }

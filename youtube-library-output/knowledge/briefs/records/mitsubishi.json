@@ -1,0 +1,183 @@
+{
+  "topic": "Mitsubishi",
+  "slug": "mitsubishi",
+  "generated_at": "2026-06-01T01:07:14.883468+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 54,
+  "angle": "Guia de compra sobre Mitsubishi apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 6,
+  "selected_claim_count": 6,
+  "source_count": 3,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "CarsLatino": 2,
+    "El Dios de los Autos": 2
+  },
+  "polarity": {
+    "neutral": 6
+  },
+  "owned_tixuz_video_count": 2,
+  "owned_tixuz_videos": [
+    {
+      "id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "summary": "Bueno, pues otro programa de la sección tan querida que les gusta con Sergio Oliveira. Oye, un más me lo compro, no me lo compro. Tenemos tres marquitas ahí que están interesantes platicarlas.",
+      "transcript_available": true,
+      "transcript_chars": 44823
+    },
+    {
+      "id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Mitsubishi convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Mitsubishi que debe revisar un comprador?",
+    "Que modelos de Mitsubishi tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Mitsubishi en Mexico?",
+    "Conviene comprar Mitsubishi nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Mitsubishi para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "NISSAN Y MITSUBISHI SON COMPRADOS POR MARCA CHINA - ENORME NOTICIA",
+      "source_url": "https://www.youtube.com/watch?v=qG98Th4nygU",
+      "source_video_id": "qG98Th4nygU",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "CUIDADO!!! NO CAIGAS!! #toyota #auto #hyundai #mazda #nissan #honda #mitsubishi #mazda #volkswagen",
+      "source_url": "https://www.youtube.com/shorts/i4gvUL_mZ6M",
+      "source_video_id": "i4gvUL_mZ6M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "MEJORANDO AL MITSUBISHI 3000GT! (Proyecto 3000gt - ep02) *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=tyIjiNEtZso",
+      "source_video_id": "tyIjiNEtZso",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "5 MITSUBISHI QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=eBAl-Fj1lkQ",
+      "source_video_id": "eBAl-Fj1lkQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Precio elevado, ahorro justificado? Mitsubishi Outlander PHEV | PruebameLa... Nave #175 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=r4yJ_RMtkuE",
+      "source_video_id": "r4yJ_RMtkuE",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Mitsubishi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Mitsubishi L200 2021 | PruebameLaNave #160 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=S3NnUhMRK7c",
+      "source_video_id": "S3NnUhMRK7c",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "bneJw3WuvXU",
+      "url": "https://www.youtube.com/watch?v=bneJw3WuvXU",
+      "title": "¿Me lo compro o NO? Mini, Mitsubishi y Nissan con Sergio Oliveira | Tixuz Autos",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "3ulgUZJYsaY",
+      "url": "https://www.youtube.com/watch?v=3ulgUZJYsaY",
+      "title": "me lo compro o no me lo compro mini,mitsubishi,nissan,omoda.",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "qG98Th4nygU",
+      "url": "https://www.youtube.com/watch?v=qG98Th4nygU",
+      "title": "NISSAN Y MITSUBISHI SON COMPRADOS POR MARCA CHINA - ENORME NOTICIA",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "i4gvUL_mZ6M",
+      "url": "https://www.youtube.com/shorts/i4gvUL_mZ6M",
+      "title": "CUIDADO!!! NO CAIGAS!! #toyota #auto #hyundai #mazda #nissan #honda #mitsubishi #mazda #volkswagen",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "tyIjiNEtZso",
+      "url": "https://www.youtube.com/watch?v=tyIjiNEtZso",
+      "title": "MEJORANDO AL MITSUBISHI 3000GT! (Proyecto 3000gt - ep02) *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

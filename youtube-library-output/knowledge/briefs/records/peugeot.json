@@ -1,0 +1,153 @@
+{
+  "topic": "Peugeot",
+  "slug": "peugeot",
+  "generated_at": "2026-06-01T01:07:14.889051+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 38,
+  "angle": "Mapa editorial de Peugeot: modelos, dudas frecuentes, reputacion y videos que conviene revisar antes de publicar.",
+  "claim_count": 6,
+  "selected_claim_count": 5,
+  "source_count": 4,
+  "sources": {
+    "Autoboutique 1/4 de Milla": 2,
+    "Sergio Oliveira": 2,
+    "CarsLatino": 1,
+    "El Dios de los Autos": 1
+  },
+  "polarity": {
+    "neutral": 6
+  },
+  "owned_tixuz_video_count": 0,
+  "owned_tixuz_videos": [],
+  "buyer_questions": [
+    "Que versiones de Peugeot convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Peugeot que debe revisar un comprador?",
+    "Que modelos de Peugeot tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Peugeot en Mexico?",
+    "Conviene comprar Peugeot nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Contexto y fuentes revisadas",
+    "Que representa Peugeot para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "source_url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "source_video_id": "RJuaMqk0J_M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "QUE AUTO BARATO ME COMPRO PEUGEOT 208",
+      "source_url": "https://www.youtube.com/watch?v=awtjejZLJJQ",
+      "source_video_id": "awtjejZLJJQ",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "¿El PEOR Motor de Peugeot? (Puretech) *CarsLatino* (ep.3)",
+      "source_url": "https://www.youtube.com/watch?v=WkUCl42Bhd0",
+      "source_video_id": "WkUCl42Bhd0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Peugeot Rifter Allure hdi 2021 | PruebameLa... Nave #133 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=a3x14a4C0bg",
+      "source_video_id": "a3x14a4C0bg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Peugeot; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Peugeot 301 HDI 2020 ( diesel )| PruebameLa... Nave #139 | Reseña",
+      "source_url": "https://www.youtube.com/watch?v=sWmGLwDf71o",
+      "source_video_id": "sWmGLwDf71o",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "RJuaMqk0J_M",
+      "url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "awtjejZLJJQ",
+      "url": "https://www.youtube.com/watch?v=awtjejZLJJQ",
+      "title": "QUE AUTO BARATO ME COMPRO PEUGEOT 208",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "WkUCl42Bhd0",
+      "url": "https://www.youtube.com/watch?v=WkUCl42Bhd0",
+      "title": "¿El PEOR Motor de Peugeot? (Puretech) *CarsLatino* (ep.3)",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "a3x14a4C0bg",
+      "url": "https://www.youtube.com/watch?v=a3x14a4C0bg",
+      "title": "Peugeot Rifter Allure hdi 2021 | PruebameLa... Nave #133 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "sWmGLwDf71o",
+      "url": "https://www.youtube.com/watch?v=sWmGLwDf71o",
+      "title": "Peugeot 301 HDI 2020 ( diesel )| PruebameLa... Nave #139 | Reseña",
+      "channel": "Autoboutique 1/4 de Milla",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

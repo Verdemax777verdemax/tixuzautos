@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "6FPe17Hb180",
+    "source_url": "https://www.youtube.com/watch?v=6FPe17Hb180",
+    "source_title": "5 MERCEDES BENZ QUE NO DEBERÍAS COMPRAR Y 5 QUE SI *CarsLatino*",
+    "source_channel": "CarsLatino",
+    "source_channel_id": "UCaZgA3fjvE_ufV-M2uKMi9A",
+    "source_owner": "CarsLatino",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Mercedes",
+      "claim_summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:21:14.087113+00:00"
+}

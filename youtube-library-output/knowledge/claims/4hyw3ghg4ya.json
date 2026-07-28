@@ -1,0 +1,54 @@
+{
+  "source_attribution": {
+    "source_video_id": "4hyw3gHG4YA",
+    "source_url": "https://www.youtube.com/watch?v=4hyw3gHG4YA",
+    "source_title": "boot accu air sema 2016 las vegas nevada nissan gtr lamborghini bmw mercedes benz",
+    "source_channel": "Autoboutique 1/4 de Milla",
+    "source_channel_id": "UCpC4ElFQZGj22H6yt6tWFxg",
+    "source_owner": "Autoboutique 1/4 de Milla",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "BMW",
+      "claim_summary": "Fuente externa registrada sobre BMW; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Mercedes",
+      "claim_summary": "Fuente externa registrada sobre Mercedes; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    },
+    {
+      "vehicle_or_brand": "Nissan",
+      "claim_summary": "Fuente externa registrada sobre Nissan; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:23:03.768021+00:00"
+}

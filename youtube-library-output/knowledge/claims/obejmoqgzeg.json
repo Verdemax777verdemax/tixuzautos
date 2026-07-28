@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "oBEJMOQgZeg",
+    "source_url": "https://www.youtube.com/watch?v=oBEJMOQgZeg",
+    "source_title": "Dodge Attitude mejora de la tierra al cielo - LaCochera Radio 7sep",
+    "source_channel": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "source_owner": "Sergio Oliveira",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Dodge",
+      "claim_summary": "El video contiene una posible opinion critica sobre Dodge; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_candidate_no_verbatim"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:17:36.518557+00:00"
+}

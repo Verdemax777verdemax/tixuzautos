@@ -1,0 +1,258 @@
+{
+  "channel": "@autossergiooliveira",
+  "channel_title": "Sergio Oliveira",
+  "channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+  "fetched_at": "2026-05-29T22:32:16.255704+00:00",
+  "source_counts": {
+    "videos": 1632,
+    "shorts": 102,
+    "streams": 38
+  },
+  "total_unique": 6,
+  "videos": [
+    {
+      "id": "-HTgIYuKJi0",
+      "url": "https://www.youtube.com/watch?v=-HTgIYuKJi0",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Toyota",
+      "duration": 3013.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/-HTgIYuKJi0/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIGEoVDAP&rs=AOn4CLDFyf9vrD9qFtXvHNsb41YgGOs9OA",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.716265+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    },
+    {
+      "id": "RJuaMqk0J_M",
+      "url": "https://www.youtube.com/watch?v=RJuaMqk0J_M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Peugeot, Ram y Renault",
+      "duration": 3554.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/RJuaMqk0J_M/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIEMoXjAP&rs=AOn4CLBHQ1gw4cUhmMnGkX-Ng27FzZBKDQ",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.717641+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    },
+    {
+      "id": "lTGtNxYhLwc",
+      "url": "https://www.youtube.com/watch?v=lTGtNxYhLwc",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | Mazda",
+      "duration": 3761.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/lTGtNxYhLwc/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhQIFsoZTAP&rs=AOn4CLBCzcJ6k8FqWvCgOP5lK43hZRPGaA",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.717998+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    },
+    {
+      "id": "fASJ3iE-Yxg",
+      "url": "https://www.youtube.com/watch?v=fASJ3iE-Yxg",
+      "title": "¿Me lo compro o no me lo compro? 1 Con Lalo Vargas | China, Infiniti y Jeep",
+      "duration": 1740.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/fASJ3iE-Yxg/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhSIFwoZTAP&rs=AOn4CLA_9bLn-zLRCO81ODNFsfkEUZLKJw",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.719829+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    },
+    {
+      "id": "E-dAwmDZ80M",
+      "url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+      "duration": 1977.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/E-dAwmDZ80M/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAqIFigIMCAAQARhTIFgoZTAP&rs=AOn4CLDRf4JJClboXJSR5ZqhFpjCLZcKXA",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.720754+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    },
+    {
+      "id": "wFtjSBAacbI",
+      "url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+      "title": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+      "duration": 2281.0,
+      "timestamp": null,
+      "tabs": [
+        "videos"
+      ],
+      "thumbnail": "https://i.ytimg.com/vi/wFtjSBAacbI/hqdefault.jpg?sqp=-oaymwE2CNACELwBSFXyq4qpAygIARUAAIhCGAFwAcABBvABAfgB_gmAAtAFigIMCAAQARhlIGUoZTAP&rs=AOn4CLDSXW87wbeqyZCG2oHQwOZRFTs1_w",
+      "source": {
+        "source_key": "sergio-oliveira",
+        "source_name": "Sergio Oliveira",
+        "source_owner": "Sergio Oliveira",
+        "source_url": "https://www.youtube.com/@autossergiooliveira",
+        "source_channel": "@autossergiooliveira",
+        "source_channel_title": "Sergio Oliveira",
+        "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+        "usage_rights": "external-reference",
+        "relationship": "collaborator-channel",
+        "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+        "reuse_policy": "embed_link_and_summarize_only",
+        "transcript_policy": "do_not_store_full_transcript_without_permission"
+      },
+      "matched_terms": [
+        "lalo",
+        "vargas"
+      ],
+      "collaboration_context": {
+        "curated_at": "2026-05-29T22:32:22.721016+00:00",
+        "matched_terms": [
+          "lalo",
+          "vargas"
+        ],
+        "curation_note": "Likely collaboration or mention involving Tixuz/Eduardo Vargas. Review before publishing."
+      }
+    }
+  ],
+  "source": {
+    "source_key": "sergio-oliveira",
+    "source_name": "Sergio Oliveira",
+    "source_owner": "Sergio Oliveira",
+    "source_url": "https://www.youtube.com/@autossergiooliveira",
+    "source_channel": "@autossergiooliveira",
+    "source_channel_title": "Sergio Oliveira",
+    "source_channel_id": "UC2ZCVYycQ4clFo28C4yEYPQ",
+    "usage_rights": "external-reference",
+    "relationship": "collaborator-channel",
+    "permission_note": "Usar con embed, enlace y atribucion. No republicar transcripcion completa sin permiso.",
+    "reuse_policy": "embed_link_and_summarize_only",
+    "transcript_policy": "do_not_store_full_transcript_without_permission"
+  },
+  "curated_from": "youtube-library-output\\external\\sergio-oliveira\\catalog\\videos.json",
+  "curated_at": "2026-05-29T22:32:22.859593+00:00",
+  "curation_terms": [
+    "tixuz",
+    "lalo",
+    "eduardo",
+    "vargas"
+  ]
+}

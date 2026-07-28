@@ -1,0 +1,32 @@
+{
+  "source_attribution": {
+    "source_video_id": "t2HI1mdkrZk",
+    "source_url": "https://www.youtube.com/watch?v=t2HI1mdkrZk",
+    "source_title": "Audi Q8 Sportback e-tron 2024 - 🔋 una de las mejores SUV eléctricas hoy ⚡️ | Reseña Jaime Gabaldoni",
+    "source_channel": "Jaime Gabaldoni",
+    "source_channel_id": "UCSPwimlUyP62TPew_rG8vBg",
+    "source_owner": "Jaime Gabaldoni",
+    "usage_rights": "external-reference",
+    "reuse_policy": "embed_link_and_summarize_only"
+  },
+  "claims": [
+    {
+      "vehicle_or_brand": "Audi",
+      "claim_summary": "Fuente externa registrada sobre Audi; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "timestamp_start": null,
+      "confidence": "low",
+      "needs_verification": true,
+      "extraction_method": "local_review_marker"
+    }
+  ],
+  "raw_transcript_stored": false,
+  "raw_transcript": "",
+  "transcript_language": null,
+  "transcript_fetch_error": "HTTPError",
+  "content_reuse_policy": "paraphrased_claims_only",
+  "extraction_provider": "local",
+  "generated_at": "2026-05-31T23:19:25.306400+00:00"
+}

@@ -1,0 +1,84 @@
+{
+  "source_video_id": "FpXwO0V3CxM",
+  "source_url": "https://www.youtube.com/watch?v=FpXwO0V3CxM",
+  "slug": "noticias-motor-abril-2026",
+  "title_seo": "Noticias Motor Abril 2026: Innovaciones y Alianzas en la Industria Automotriz",
+  "meta_description": "Descubre las principales innovaciones y alianzas en la industria automotriz durante abril de 2026, incluyendo nuevos modelos y avances en conducción autónoma.",
+  "executive_summary": "Abril de 2026 ha sido un mes clave en la industria automotriz, con la presentación de nuevos prototipos y alianzas estratégicas que prometen revolucionar el transporte. Desde el Hyundai Boulder hasta el Volkswagen Atlas y el Subaru Getaway, los fabricantes están marcando el camino hacia el futuro con innovaciones tecnológicas y planes de conducción autónoma.",
+  "key_takeaways": [
+    "Presentación del Hyundai Boulder como un prototipo de todo terreno.",
+    "Renovación del Volkswagen Atlas con tecnología avanzada.",
+    "Subaru Getaway se posiciona en el mercado de SUV eléctricos familiares.",
+    "Alianza entre Uber y Rivian para desarrollar una flota de coches autónomos.",
+    "Fusión de divisiones de camiones entre Toyota y Daimler para dominar el sector."
+  ],
+  "vehicles_or_brands": [
+    {
+      "make": "Hyundai",
+      "model": "Boulder",
+      "year": "",
+      "confidence": "high",
+      "evidence": "Hyundai va por el segmento del todo terreno más puro."
+    },
+    {
+      "make": "Volkswagen",
+      "model": "Atlas",
+      "year": "",
+      "confidence": "high",
+      "evidence": "La revolución de verdad está dentro. Esa pantalla gigante de 15 pulgadas y el salto de calidad en la cabina lo cambian todo."
+    },
+    {
+      "make": "Subaru",
+      "model": "Getaway",
+      "year": "",
+      "confidence": "high",
+      "evidence": "Subaru Getaway se mete de lleno en el sector de los subes eléctricos familiares."
+    },
+    {
+      "make": "Toyota",
+      "model": "",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Toyota fusiona sus divisiones de camiones con Daimler."
+    },
+    {
+      "make": "Daimler",
+      "model": "",
+      "year": "",
+      "confidence": "medium",
+      "evidence": "Daimler fusiona sus divisiones de camiones con Toyota."
+    }
+  ],
+  "buyer_questions_answered": [
+    "¿Qué nuevos modelos se han presentado en abril de 2026?",
+    "¿Cómo están evolucionando las alianzas en la industria automotriz?",
+    "¿Qué avances se están haciendo en la conducción autónoma?"
+  ],
+  "market_topics": [
+    "Innovaciones en vehículos eléctricos",
+    "Conducción autónoma",
+    "Alianzas estratégicas en la industria automotriz"
+  ],
+  "publishable_article_outline": [
+    "Introducción a las novedades del mes",
+    "Presentación de nuevos modelos",
+    "Análisis de alianzas estratégicas",
+    "Tendencias en conducción autónoma",
+    "Situación actual del mercado automotriz"
+  ],
+  "internal_links_to_create": [
+    "articulo-sobre-hyundai-boulder",
+    "articulo-sobre-volkswagen-atlas",
+    "articulo-sobre-subaru-getaway",
+    "articulo-sobre-conduccion-autonoma",
+    "articulo-sobre-alianzas-automotrices"
+  ],
+  "schema_org_notes": [
+    "Incluir datos sobre los nuevos modelos y sus características."
+  ],
+  "editorial_warnings": [
+    "Los detalles sobre los modelos presentados son prototipos y pueden no estar disponibles en el mercado."
+  ],
+  "generated_at": "2026-05-29T18:28:11.725Z",
+  "model": "gpt-4o-mini"
+}

@@ -1,0 +1,177 @@
+{
+  "topic": "Fiat",
+  "slug": "fiat",
+  "generated_at": "2026-06-01T01:07:14.869601+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 50,
+  "angle": "Guia de compra sobre Fiat apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 6,
+  "selected_claim_count": 6,
+  "source_count": 4,
+  "sources": {
+    "CarsLatino": 2,
+    "El Dios de los Autos": 2,
+    "Autoboutique 1/4 de Milla": 1,
+    "Sergio Oliveira": 1
+  },
+  "polarity": {
+    "neutral": 5,
+    "positive": 1
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "ZCmA6BKcNxU",
+      "url": "https://www.youtube.com/watch?v=ZCmA6BKcNxU",
+      "title": "FIAT 2021 ¿me lo compro, o no me lo compro ?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Fiat convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Fiat que debe revisar un comprador?",
+    "Que modelos de Fiat tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Fiat en Mexico?",
+    "Conviene comprar Fiat nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Fiat para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Fiat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+      "source_url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+      "source_video_id": "wFtjSBAacbI",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion favorable sobre Fiat; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "positive",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "¡NUEVA SUV Fiat Barata deja obsoletos a Toyota y Nissan!",
+      "source_url": "https://www.youtube.com/watch?v=fk_e5VCbj-Q",
+      "source_video_id": "fk_e5VCbj-Q",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Fiat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "QUE AUTO BARATO ME COMPRO FIAT UNO",
+      "source_url": "https://www.youtube.com/watch?v=897WWp2INF0",
+      "source_video_id": "897WWp2INF0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Fiat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Los 7 Mejores Autos Fiat de la Historia *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=Z1osowesVL0",
+      "source_video_id": "Z1osowesVL0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Fiat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Los 10 Mejores Fiat de la Historia (Parte 1) *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=LgmjYlWAOvA",
+      "source_video_id": "LgmjYlWAOvA",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Fiat; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "El Podcast de Autos 104 | PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "source_url": "https://www.youtube.com/watch?v=hRJTmW-1Ajk",
+      "source_video_id": "hRJTmW-1Ajk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "ZCmA6BKcNxU",
+      "url": "https://www.youtube.com/watch?v=ZCmA6BKcNxU",
+      "title": "FIAT 2021 ¿me lo compro, o no me lo compro ?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "wFtjSBAacbI",
+      "url": "https://www.youtube.com/watch?v=wFtjSBAacbI",
+      "title": "¿Me lo compro o no me lo compro? - Con Lalo Vargas - FIAT y Ford",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "fk_e5VCbj-Q",
+      "url": "https://www.youtube.com/watch?v=fk_e5VCbj-Q",
+      "title": "¡NUEVA SUV Fiat Barata deja obsoletos a Toyota y Nissan!",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "897WWp2INF0",
+      "url": "https://www.youtube.com/watch?v=897WWp2INF0",
+      "title": "QUE AUTO BARATO ME COMPRO FIAT UNO",
+      "channel": "El Dios de los Autos",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "Z1osowesVL0",
+      "url": "https://www.youtube.com/watch?v=Z1osowesVL0",
+      "title": "Los 7 Mejores Autos Fiat de la Historia *CarsLatino*",
+      "channel": "CarsLatino",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

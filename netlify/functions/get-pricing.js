@@ -1,7 +1,6 @@
 const DEFAULT_PLANS = [
-  { key: 'basic', name: 'Básico', price_mxn: 49, interval_type: 'one_time', active_days: 30, max_photos: 5 },
   { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time', active_days: 60, max_photos: 12 },
-  { key: 'pro', name: 'PRO', price_mxn: 499, interval_type: 'recurring', active_days: 30, max_photos: 30 },
+  { key: 'pro', name: 'PRO', price_mxn: 499, interval_type: 'one_time', active_days: 30, max_photos: 30 },
 ];
 const headers = {
   'Content-Type': 'application/json',
@@ -19,7 +18,8 @@ exports.handler = async function(){
     });
     if (!res.ok) return respond(200, DEFAULT_PLANS);
     const data = await res.json();
-    return respond(200, Array.isArray(data) && data.length ? data : DEFAULT_PLANS);
+    const visible = Array.isArray(data) ? data.filter((plan) => plan && plan.key !== 'basic') : [];
+    return respond(200, visible.length ? visible : DEFAULT_PLANS);
   } catch {
     return respond(200, DEFAULT_PLANS);
   }

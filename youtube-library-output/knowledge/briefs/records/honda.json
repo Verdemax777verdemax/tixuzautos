@@ -1,0 +1,262 @@
+{
+  "topic": "Honda",
+  "slug": "honda",
+  "generated_at": "2026-06-01T01:07:14.740702+00:00",
+  "status": "research_brief_needs_editorial_review",
+  "publication_score": 64,
+  "angle": "Guia de compra sobre Honda apoyada primero en videos propios de Tixuz y reforzada con referencias externas atribuidas.",
+  "claim_count": 31,
+  "selected_claim_count": 12,
+  "source_count": 5,
+  "sources": {
+    "Jaime Gabaldoni": 16,
+    "Autoboutique 1/4 de Milla": 4,
+    "CarsLatino": 4,
+    "Sergio Oliveira": 4,
+    "El Dios de los Autos": 3
+  },
+  "polarity": {
+    "neutral": 29,
+    "negative": 2
+  },
+  "owned_tixuz_video_count": 1,
+  "owned_tixuz_videos": [
+    {
+      "id": "KGqm8vs4o5E",
+      "url": "https://www.youtube.com/watch?v=KGqm8vs4o5E",
+      "title": "HONDA #2021 ¿Me lo compro, o NO me lo compro?",
+      "summary": "",
+      "transcript_available": false,
+      "transcript_chars": 0
+    }
+  ],
+  "buyer_questions": [
+    "Que versiones de Honda convienen mas segun presupuesto y uso?",
+    "Cuales son los puntos debiles de Honda que debe revisar un comprador?",
+    "Que modelos de Honda tienen mejor reputacion de confiabilidad?",
+    "Que alternativas reales compiten contra Honda en Mexico?",
+    "Conviene comprar Honda nuevo, seminuevo o usado?"
+  ],
+  "article_outline": [
+    "Video principal de Tixuz y contexto",
+    "Que representa Honda para el comprador mexicano",
+    "Pros mas repetidos en las fuentes",
+    "Contras, riesgos y puntos a verificar",
+    "Modelos o versiones que merecen revision aparte",
+    "Preguntas frecuentes antes de comprar",
+    "Veredicto editorial de Tixuz"
+  ],
+  "selected_claims": [
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+      "source_url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+      "source_video_id": "E-dAwmDZ80M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+      "source_url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+      "source_video_id": "gw9Rc4_qs6U",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Sergio Oliveira",
+      "source_title": "Comparativa Toyota Prius vs Honda Insight",
+      "source_url": "https://www.youtube.com/watch?v=-iHkQmXpWG4",
+      "source_video_id": "-iHkQmXpWG4",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Jaime Gabaldoni",
+      "source_title": "Honda Civic Type R 2023 | Prueba Completa [HD]",
+      "source_url": "https://www.youtube.com/watch?v=TRAdnQbFQm8",
+      "source_video_id": "TRAdnQbFQm8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "El video contiene una posible opinion critica sobre Honda; requiere revision editorial o AI antes de publicarse como afirmacion.",
+      "polarity": "negative",
+      "claim_type": "candidate_opinion",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "ENFRENTÉ al Toyota GR COROLLA con HONDA Civic Type R, Hyundai Elantra N, Subaru WRX y muchos otros",
+      "source_url": "https://www.youtube.com/watch?v=bSqOHwsmxd8",
+      "source_video_id": "bSqOHwsmxd8",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "El Dios de los Autos",
+      "source_title": "CUIDADO!!! NO CAIGAS!! #toyota #auto #hyundai #mazda #nissan #honda #mitsubishi #mazda #volkswagen",
+      "source_url": "https://www.youtube.com/shorts/i4gvUL_mZ6M",
+      "source_video_id": "i4gvUL_mZ6M",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "¿Aun Vale La Pena Un Honda Civic 2009 En El 2024? (Nuevo Auto) *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=JVdm6QxjN-Q",
+      "source_video_id": "JVdm6QxjN-Q",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "Vale La Pena El Honda Civic Lx 2007 ? *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=tYTd934ol2w",
+      "source_video_id": "tYTd934ol2w",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "HONDA vs NISSAN ¿Cual es la Reina de las Suv? *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=c1v4SIL4Q3U",
+      "source_video_id": "c1v4SIL4Q3U",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "CarsLatino",
+      "source_title": "CAMBIOS AL HONDA CIVIC! SSC TUATARA! GMC HUMMER EV Y MAS! - CLN ep1 - *CarsLatino*",
+      "source_url": "https://www.youtube.com/watch?v=-_wYK6bMjs0",
+      "source_video_id": "-_wYK6bMjs0",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "Pre día del niño, Nuevo Honda Type R, Suzuki Ertiga 2023, Tesla Cyber Truck | #59",
+      "source_url": "https://www.youtube.com/watch?v=CwdTCbBrBfg",
+      "source_video_id": "CwdTCbBrBfg",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    },
+    {
+      "summary": "Fuente externa registrada sobre Honda; requiere subtitulo/AI o revision editorial para separar pros, contras y recomendaciones sin copiar el guion.",
+      "polarity": "neutral",
+      "claim_type": "review_needed",
+      "buyer_impact": "Pendiente de clasificar.",
+      "confidence": "low",
+      "needs_verification": true,
+      "source_channel": "Autoboutique 1/4 de Milla",
+      "source_title": "El Podcast de Autos 104 | PruebameLa Nave de Acura Integra, ID Buzz, Fiat Mobi, Honda",
+      "source_url": "https://www.youtube.com/watch?v=hRJTmW-1Ajk",
+      "source_video_id": "hRJTmW-1Ajk",
+      "reuse_policy": "embed_link_and_summarize_only",
+      "content_reuse_policy": "paraphrased_claims_only"
+    }
+  ],
+  "videos_to_embed": [
+    {
+      "video_id": "KGqm8vs4o5E",
+      "url": "https://www.youtube.com/watch?v=KGqm8vs4o5E",
+      "title": "HONDA #2021 ¿Me lo compro, o NO me lo compro?",
+      "channel": "Tixuz",
+      "usage": "owned-primary"
+    },
+    {
+      "video_id": "E-dAwmDZ80M",
+      "url": "https://www.youtube.com/watch?v=E-dAwmDZ80M",
+      "title": "¿Me lo compro o no me lo compro? | Con Lalo Vargas | GMC y Honda",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "gw9Rc4_qs6U",
+      "url": "https://www.youtube.com/watch?v=gw9Rc4_qs6U",
+      "title": "¿Me lo compro o no me lo compro? GMC, GWM, Honda, Hyundai",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "-iHkQmXpWG4",
+      "url": "https://www.youtube.com/watch?v=-iHkQmXpWG4",
+      "title": "Comparativa Toyota Prius vs Honda Insight",
+      "channel": "Sergio Oliveira",
+      "usage": "embed_link_and_summarize_only"
+    },
+    {
+      "video_id": "TRAdnQbFQm8",
+      "url": "https://www.youtube.com/watch?v=TRAdnQbFQm8",
+      "title": "Honda Civic Type R 2023 | Prueba Completa [HD]",
+      "channel": "Jaime Gabaldoni",
+      "usage": "embed_link_and_summarize_only"
+    }
+  ],
+  "editorial_guardrails": [
+    "No publicar como articulo final sin revision humana.",
+    "No copiar guiones ni transcripciones completas de fuentes externas.",
+    "Usar videos externos como cita, enlace o embed con atribucion visible.",
+    "Separar opinion atribuida de dato verificable."
+  ]
+}

@@ -60,8 +60,8 @@ Texto pegado: ${safeString(text, 20000)}`;
       }),
     });
     const data = await res.json().catch(async () => ({ error: await res.text() }));
-    if (!res.ok) return respond(502, { ok: false, error: data.error?.message || data.error || `OpenAI HTTP ${res.status}` });
-    const content = data.choices?.[0]?.message?.content || '';
+    if (!res.ok) return respond(502, { ok: false, error: data.error.message || data.error || `OpenAI HTTP ${res.status}` });
+    const content = data.choices?.[0].message.content || '';
     const parsed = parseJson(content);
     const listings = Array.isArray(parsed.listings) ? parsed.listings.slice(0, 80) : [];
     return respond(200, { ok: true, listings, provider: 'openai' });

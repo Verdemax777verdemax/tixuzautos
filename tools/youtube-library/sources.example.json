@@ -1,0 +1,64 @@
+{
+  "sources": [
+    {
+      "source_key": "tixuz",
+      "source_name": "Tixuz Autos",
+      "source_owner": "Eduardo Vargas",
+      "source_url": "https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg",
+      "channel": "@Tixuz",
+      "usage_rights": "owned",
+      "relationship": "owned-channel",
+      "permission_note": "Contenido propio de Tixuz Autos."
+    },
+    {
+      "source_key": "sergio-oliveira",
+      "source_name": "Sergio Oliveira",
+      "source_owner": "Sergio Oliveira",
+      "source_url": "https://www.youtube.com/@autossergiooliveira",
+      "channel": "@autossergiooliveira",
+      "usage_rights": "external-reference",
+      "relationship": "collaborator-channel",
+      "permission_note": "Usar como fuente externa con embed, enlace y atribucion. Cambiar a authorized solo con permiso explicito."
+    },
+    {
+      "source_key": "el-dios-de-los-autos",
+      "source_name": "El Dios de los Autos",
+      "source_owner": "El Dios de los Autos",
+      "source_url": "https://www.youtube.com/@eldiosdelosautos",
+      "channel": "@eldiosdelosautos",
+      "usage_rights": "external-reference",
+      "relationship": "industry-source",
+      "permission_note": "Extraer solo afirmaciones parafraseadas con atribucion, enlace y embed."
+    },
+    {
+      "source_key": "cuarto-de-milla",
+      "source_name": "Autoboutique 1/4 de Milla",
+      "source_owner": "Autoboutique 1/4 de Milla",
+      "source_url": "https://www.youtube.com/c/autoboutique14demilla",
+      "channel": "https://www.youtube.com/c/autoboutique14demilla",
+      "usage_rights": "external-reference",
+      "relationship": "industry-source",
+      "permission_note": "Extraer solo afirmaciones parafraseadas con atribucion, enlace y embed."
+    },
+    {
+      "source_key": "jaime-gabaldoni",
+      "source_name": "Jaime Gabaldoni",
+      "source_owner": "Jaime Gabaldoni",
+      "source_url": "https://www.youtube.com/@Jaime_Gabaldoni",
+      "channel": "@Jaime_Gabaldoni",
+      "usage_rights": "external-reference",
+      "relationship": "industry-source",
+      "permission_note": "Extraer solo afirmaciones parafraseadas con atribucion, enlace y embed."
+    },
+    {
+      "source_key": "carslatino",
+      "source_name": "CarsLatino",
+      "source_owner": "CarsLatino",
+      "source_url": "https://www.youtube.com/@carslatino",
+      "channel": "@carslatino",
+      "usage_rights": "external-reference",
+      "relationship": "industry-source",
+      "permission_note": "Extraer solo afirmaciones parafraseadas con atribucion, enlace y embed."
+    }
+  ]
+}
