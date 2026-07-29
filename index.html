@@ -82,6 +82,8 @@ header{
 .hbtn-promo:hover{background:var(--green);color:#04130d;border-color:var(--green)}
 .hbtn-green{background:var(--green);color:#fff}
 .hbtn-green:hover{background:var(--green2)}
+.hbtn-red{background:rgba(239,51,64,.18);color:#ffb8bd;border-color:rgba(239,51,64,.48)}
+.hbtn-red:hover{background:#ef3340;color:#fff;border-color:#ef3340}
 .hbtn-ghost{background:rgba(255,255,255,.06);color:var(--text2);border-color:var(--border)}
 .hbtn-ghost:hover{color:var(--text);background:rgba(255,255,255,.1)}
 .admin-lite{display:none!important}
@@ -270,6 +272,7 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .pcard.soon:hover{border-color:var(--border);background:var(--bg2)}
 .pcard .soon-badge{display:inline-block;background:var(--bg4);color:var(--gold);font-size:.6rem;font-weight:800;padding:2px 9px;border-radius:999px;margin-top:5px;text-transform:uppercase;letter-spacing:.05em}
 .plan-visual{height:68px;margin:-4px -4px 8px;border-radius:7px;overflow:hidden;position:relative;background-position:center;background-size:cover;border:1px solid rgba(255,255,255,.12)}
+.plan-visual-basic{height:34px;background-position:center 54%}
 .plan-visual::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(5,10,18,.3),rgba(5,10,18,.06))}
 .plan-visual-label{position:absolute;z-index:1;left:7px;bottom:6px;border-radius:999px;padding:3px 6px;background:rgba(7,12,20,.78);color:#fff;font-size:.57rem;font-weight:800}
 .plan-collage{display:grid;grid-template-columns:1.35fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:2px;background:#1d2938}
@@ -537,6 +540,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
   </div>
   <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú" title="Menú">☰</button>
   <div class="hbtns">
+    <a class="hbtn hbtn-red" href="/depreciacion-autos">Depreciación 2026</a>
     <a class="hbtn hbtn-promo" href="https://tixuz-autos-julio-2026.netlify.app/" target="_blank" rel="noopener">Promos autos nuevos</a>
     <button class="hbtn hbtn-ai" onclick="openAI()">🤖 Asesor IA</button>
     <button class="hbtn hbtn-ai" onclick="openFullSearchAI()">🔎 Veredicto IA</button>

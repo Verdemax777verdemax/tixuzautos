@@ -1506,6 +1506,7 @@ function planBullets(p,compact=false){
 }
 function planPriceSuffix(p){return p.interval_type==='recurring'?' MXN/mes':' MXN · pago único'}
 function planVisual(p){
+  if(p.key==='basic')return `<div class="plan-visual plan-visual-basic" style="background-image:url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=700&q=75')"><span class="plan-visual-label">Incluye 5 fotos</span></div>`;
   if(p.key==='featured')return `<div class="plan-visual" style="background-image:url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80')"><span class="plan-visual-label">Así se verá tu anuncio</span></div>`;
   if(p.key==='pro')return `<div class="plan-visual plan-collage"><i></i><i></i><i></i><i></i><i></i><b>+15 autos</b></div>`;
   return '';
