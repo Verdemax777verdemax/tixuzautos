@@ -442,10 +442,49 @@ force = true
 
   [redirects.headers]
 
+# Rescate de URLs legadas /auto=ID (con y sin codificar) hacia /?auto=ID
 [[redirects]]
-from = "/*"
+from = "/auto%3D*"
+to = "/?auto=:splat"
+status = 301
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/auto=*"
+to = "/?auto=:splat"
+status = 301
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+# Ruta de campaña indexada en Google: conserva 200 (su canonical apunta a /)
+[[redirects]]
+from = "/mes"
 to = "/index.html"
 status = 200
+force = false
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+# Cualquier otra ruta desconocida responde 404 real (evita soft-404 de Google)
+[[redirects]]
+from = "/*"
+to = "/404.html"
+status = 404
 force = false
 
   [redirects.query]

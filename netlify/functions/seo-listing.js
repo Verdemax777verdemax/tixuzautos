@@ -8,6 +8,7 @@ const {
   money,
   response,
 } = require('./seo-utils.cjs');
+const { modelPageSlug } = require('./seo-model-slugs.cjs');
 
 function appListingUrl(id) {
   return `${SITE_URL}/?auto=${encodeURIComponent(String(id || '').trim())}`;
@@ -27,6 +28,19 @@ function page(listing) {
   const image = listing.images[0] || `${SITE_URL}/assets/og-cover.jpg`;
   const jsonLd = JSON.stringify(listingJsonLd(listing));
   const published = publicationDate(listing.createdAt);
+  // Enlace a la pagina de modelo SOLO si existe en el sitemap de modelos (nunca un 404).
+  const modelSlug = modelPageSlug(listing.make, listing.model);
+  const modelLabel = [listing.make, listing.model].filter(Boolean).join(' ');
+  const modelUrl = modelSlug ? `${SITE_URL}/autos/${modelSlug}` : null;
+  const breadcrumbLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Tixuz Autos', item: `${SITE_URL}/` },
+      ...(modelUrl ? [{ '@type': 'ListItem', position: 2, name: `${modelLabel} usados`, item: modelUrl }] : []),
+      { '@type': 'ListItem', position: modelUrl ? 3 : 2, name: listing.title },
+    ],
+  });
   const specs = [
     ['Precio', money(listing.price)],
     ['Kilometraje', listing.mileage ? `${Number(listing.mileage).toLocaleString('es-MX')} km` : 'No especificado'],
@@ -58,8 +72,9 @@ function page(listing) {
   <meta name="twitter:description" content="${html(description)}">
   <meta name="twitter:image" content="${html(image)}">
   <script type="application/ld+json">${jsonLd.replace(/</g, '\\u003c')}</script>
+  <script type="application/ld+json">${breadcrumbLd.replace(/</g, '\\u003c')}</script>
   <style>
-    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#0f1623;color:#f0f4ff}a{color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:28px 18px 48px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{font-weight:800;letter-spacing:.02em}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:750}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:start}.photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:#1e2a3d}.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}.thumbs img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;background:#1e2a3d}.panel{border:1px solid #2a3750;border-radius:8px;background:#161e2e;padding:20px}h1{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.08;margin:0 0 12px}.price{font-size:2rem;color:#60a5fa;font-weight:850;margin:0 0 18px}.direct{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;padding:6px 9px;border:1px solid #2dd4bf;border-radius:999px;background:rgba(45,212,191,.1);color:#b7f7e8;font-size:.82rem;font-weight:800}.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.spec{border:1px solid #2a3750;border-radius:8px;padding:10px 12px;background:#0f1623}.label{display:block;font-size:.72rem;color:#8fa3c0;text-transform:uppercase;margin-bottom:4px}.value{font-weight:700}.desc{color:#c7d2e6;line-height:1.6}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.ghost{background:#263248}.note{margin-top:20px;color:#8fa3c0;font-size:.9rem;line-height:1.5}@media(max-width:760px){.hero{grid-template-columns:1fr}.top{align-items:flex-start}.specs{grid-template-columns:1fr}}
+    *{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:#0f1623;color:#f0f4ff}a{color:inherit}.wrap{max-width:1040px;margin:0 auto;padding:28px 18px 48px}.top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:24px}.brand{font-weight:800;letter-spacing:.02em}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 16px;border-radius:8px;background:#2563eb;color:#fff;text-decoration:none;font-weight:750}.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:28px;align-items:start}.photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;background:#1e2a3d}.thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}.thumbs img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;background:#1e2a3d}.panel{border:1px solid #2a3750;border-radius:8px;background:#161e2e;padding:20px}h1{font-size:clamp(1.7rem,4vw,2.7rem);line-height:1.08;margin:0 0 12px}.price{font-size:2rem;color:#60a5fa;font-weight:850;margin:0 0 18px}.direct{display:inline-flex;align-items:center;gap:6px;margin:0 0 10px;padding:6px 9px;border:1px solid #2dd4bf;border-radius:999px;background:rgba(45,212,191,.1);color:#b7f7e8;font-size:.82rem;font-weight:800}.specs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.spec{border:1px solid #2a3750;border-radius:8px;padding:10px 12px;background:#0f1623}.label{display:block;font-size:.72rem;color:#8fa3c0;text-transform:uppercase;margin-bottom:4px}.value{font-weight:700}.desc{color:#c7d2e6;line-height:1.6}.crumbs{font-size:.85rem;color:#8fa3c0;margin:-12px 0 18px}.crumbs a{color:#60a5fa;text-decoration:none}.crumbs a:hover{text-decoration:underline}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.ghost{background:#263248}.note{margin-top:20px;color:#8fa3c0;font-size:.9rem;line-height:1.5}@media(max-width:760px){.hero{grid-template-columns:1fr}.top{align-items:flex-start}.specs{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -68,6 +83,9 @@ function page(listing) {
       <a class="brand" href="${SITE_URL}/">Tixuz Autos</a>
       <a class="btn ghost" href="${SITE_URL}/">Ver mas autos</a>
     </div>
+    <nav class="crumbs" aria-label="Ruta de navegacion">
+      <a href="${SITE_URL}/">Inicio</a> &rsaquo; ${modelUrl ? `<a href="${modelUrl}">${html(modelLabel)} usados</a> &rsaquo; ` : ''}<span>${html(listing.title)}</span>
+    </nav>
     <section class="hero">
       <div>
         ${listing.images[0] ? `<img class="photo" src="${html(listing.images[0])}" alt="${html(listing.title)}" loading="eager">` : `<div class="photo"></div>`}
@@ -84,6 +102,7 @@ function page(listing) {
         <p class="note"><strong>Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto.</p>
         <div class="actions">
           <a class="btn" href="${appListingUrl(listing.id)}">Abrir ficha en Tixuz</a>
+          ${modelUrl ? `<a class="btn ghost" href="${modelUrl}">Ver mas ${html(modelLabel)} usados</a>` : ''}
           <a class="btn ghost" href="${SITE_URL}/inventory.json">Inventario JSON</a>
         </div>
         <p class="note">Disponibilidad y datos sujetos a confirmacion del vendedor. Tixuz Autos muestra inventario publico revisado y contacto dentro del marketplace.</p>
