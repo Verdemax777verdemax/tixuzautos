@@ -426,10 +426,22 @@ force = false
   [redirects.headers]
 
 [[redirects]]
-from = "/autos/:id"
-to = "/.netlify/functions/seo-listing/:id"
+from = "/autos/sitemap-modelos.xml"
+to = "/.netlify/functions/autos-router/sitemap-modelos.xml"
 status = 200
-force = false
+force = true
+
+  [redirects.query]
+
+  [redirects.conditions]
+
+  [redirects.headers]
+
+[[redirects]]
+from = "/autos/:slug"
+to = "/.netlify/functions/autos-router/:slug"
+status = 200
+force = true
 
   [redirects.query]
 
