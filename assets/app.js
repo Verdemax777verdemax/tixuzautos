@@ -855,6 +855,7 @@ function renderGrid(list,opts={}){
     const clickout=trackedClickoutUrl(c);
     const publication=listingPublicationLabel(c);
     const verified=listingVerificationLabel(c);
+    const reviewed=!c.external&&(c.verification_badge===true||String(c.verification_badge||'').toLowerCase()==='true')?'Publicación revisada':'';
     const href=c.external?escAttr(clickout):escAttr(publicListingUrl(c.id));
     const target=c.external?' target="_blank" rel="nofollow noopener"':'';
     const dataDetail=c.external?'':` data-detail-id="${sidAttr}"`;
@@ -867,7 +868,7 @@ function renderGrid(list,opts={}){
         ${verdict}
         <div class="cmeta"><span>${hasKm?km+' km':'—'}</span><span>${c.transmission||'—'}</span><span>${c.fuel_type||'—'}</span></div>
         <div class="cloc"><span>${c.location||'Ubicación no disponible'}</span></div>
-        <div class="listing-dates"><span>${escHTML(publication)}</span>${verified?`<span class="verified-today">${escHTML(verified)}</span>`:''}</div>
+        <div class="listing-dates"><span>${escHTML(publication)}</span>${reviewed?`<span class="verified-today">${escHTML(reviewed)}</span>`:''}${verified?`<span class="verified-today">${escHTML(verified)}</span>`:''}</div>
       </div></a>`;
   }).join('');
   const loader=opts.externalLoading?'<div class="empty" style="grid-column:1/-1"><h3>Buscando fuentes externas...</h3><p>Ya mostramos primero los autos de Tixuz; agregamos portales externos en cuanto respondan.</p></div>':'';
@@ -949,7 +950,8 @@ function openDetail(car){
   const waTarget=safeWaTarget(car.id);
   const displaySellerName=car.seller_name||'—';
   const displaySellerType=car.seller_type||'—';
-  const trust='<div class="trust-row"><span class="trust-chip good">Revisión humana de tu publicación</span><span class="trust-chip">Contacto directo por WhatsApp</span></div>';
+  const reviewPassed=car.verification_badge===true||String(car.verification_badge||'').toLowerCase()==='true';
+  const trust=`<div class="trust-row"><span class="trust-chip good">${reviewPassed?'Publicación revisada':'Revisión humana de tu publicación'}</span><span class="trust-chip">Contacto directo por WhatsApp</span></div>`;
   const originDetail=isDemo?'':`<div class="listing-provenance"><div class="listing-origin direct">✓ Tixuz Directo · Contacto inmediato por WhatsApp · Sin comisión</div><div class="listing-dates"><span>${escHTML(listingPublicationLabel(car))}</span></div></div>`;
   const descText = car.description||'';
   const originalLink = (!isDemo && car.source_url) ? `<a href="${escAttr(car.source_url)}" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:7px;text-decoration:none">Ver publicación original</a>` : '';

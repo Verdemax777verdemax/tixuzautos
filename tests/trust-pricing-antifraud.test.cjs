@@ -24,6 +24,7 @@ test('free launch stays active while Destacado and PRO Lote expose their future 
   const terms = read('legal/terminos.html');
 
   assert.match(app, /p\.key!==['"]basic['"]/);
+  assert.match(app, /Publicaci.n revisada/);
   assert.match(pricing, /plan\.key !== ['"]basic['"]/);
   assert.match(app, /key:'featured'.*price_mxn:199.*active_days:60.*max_photos:20/);
   assert.match(app, /key:'pro'.*name:'PRO Lote'.*interval_type:'recurring'.*max_photos:20/);
