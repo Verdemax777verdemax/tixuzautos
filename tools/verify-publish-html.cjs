@@ -3,7 +3,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const sourceBytes = 75_930;
+const sourceBytes = 77_998;
 const allowedDeltaBytes = 2_048;
 const target = path.resolve(process.cwd(), process.argv[2] || 'index.html');
 const bytes = fs.readFileSync(target);

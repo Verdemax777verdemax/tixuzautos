@@ -2,9 +2,9 @@
 // Usa Stripe REST API directo para que funcione también en deploy manual ZIP sin node_modules.
 
 const DEFAULT_PLANS = {
-  basic:    { key: 'basic',    name: 'Básico',    price_mxn: 49,  interval_type: 'one_time',  active_days: 30, max_photos: 5 },
-  featured: { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time',  active_days: 60, max_photos: 12 },
-  pro:      { key: 'pro',      name: 'PRO',       price_mxn: 499, interval_type: 'one_time',  active_days: 30, max_photos: 30 },
+  basic:    { key: 'basic',    name: 'Básico',    price_mxn: 0,   interval_type: 'one_time',  active_days: 30, max_photos: 5 },
+  featured: { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time',  active_days: 60, max_photos: 20 },
+  pro:      { key: 'pro',      name: 'PRO Lote',  price_mxn: 499, interval_type: 'recurring', active_days: 30, max_photos: 20 },
 };
 
 const headers = {
@@ -135,6 +135,12 @@ exports.handler = async function(event) {
   if (event.httpMethod === 'OPTIONS') return respond(200, { ok: true });
   if (event.httpMethod !== 'POST') return respond(405, { error: 'Method Not Allowed' });
 
+  // Los cobros no están listos para clientes todavía. Esta barrera también evita
+  // crear Checkout por una llamada directa mientras las tarjetas dicen Próximamente.
+  if (process.env.PAYMENTS_ENABLED !== 'true') {
+    return respond(503, { error: 'Los planes pagados todavía están en preparación.', stage: 'payments_disabled' });
+  }
+
   const STRIPE_KEY = process.env.STRIPE_SECRET_KEY || '';
   const SUPABASE_URL = process.env.SUPABASE_URL || '';
   const SUPABASE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY || '';
@@ -151,8 +157,10 @@ exports.handler = async function(event) {
   const planKey = DEFAULT_PLANS[plan] ? plan : 'basic';
 
   if (!listingData) return respond(400, { error: 'Missing listingData', stage: 'input' });
+  if (planKey === 'basic') return respond(400, { error: 'El plan básico se publica desde el flujo gratuito.', stage: 'input' });
   if (!listingData.make || !listingData.model || !listingData.year || !listingData.price) return respond(400, { error: 'Faltan datos del auto', stage: 'input' });
   if (!Array.isArray(listingData.images) || listingData.images.length < 1) return respond(400, { error: 'Sube al menos 1 foto real del auto para revisión.', stage: 'input' });
+  if (listingData.images.length > DEFAULT_PLANS[planKey].max_photos) return respond(400, { error: `Este plan permite hasta ${DEFAULT_PLANS[planKey].max_photos} fotos.`, stage: 'input' });
   if (!listingData.seller_name || String(listingData.seller_name).trim().length < 2) return respond(400, { error: 'Nombre inválido', stage: 'input' });
   if (!/^\d{10}$/.test(String(listingData.seller_whatsapp || ''))) return respond(400, { error: 'WhatsApp debe ser de 10 dígitos', stage: 'input' });
   if (!/^\d{4}$/.test(String(listingData.pin || ''))) return respond(400, { error: 'PIN debe ser de 4 dígitos', stage: 'input' });

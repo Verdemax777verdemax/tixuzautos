@@ -97,6 +97,7 @@ exports.handler = async function(event) {
 
   if (!listingData.make || !listingData.model || !listingData.year || !listingData.price) return respond(400, { error: 'Faltan datos del auto' });
   if (!Array.isArray(listingData.images) || listingData.images.length < 1) return respond(400, { error: 'Sube al menos 1 foto real del auto para revisión.' });
+  if (listingData.images.length > 5) return respond(400, { error: 'El plan gratuito permite hasta 5 fotos.' });
   if (!listingData.seller_name || String(listingData.seller_name).trim().length < 2) return respond(400, { error: 'Nombre inválido' });
   if (!/^\d{10}$/.test(wa)) return respond(400, { error: 'WhatsApp debe ser de 10 dígitos' });
   if (!/^\d{4}$/.test(String(listingData.pin || ''))) return respond(400, { error: 'PIN debe ser de 4 dígitos' });

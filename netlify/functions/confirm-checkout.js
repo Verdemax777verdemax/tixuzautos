@@ -4,7 +4,7 @@
 const DEFAULT_PLANS = {
   basic:    { active_days: 30, featured: false },
   featured: { active_days: 60, featured: true  },
-  pro:      { active_days: 30, featured: true  },
+  pro:      { active_days: 30, featured: false },
 };
 
 const { patchListingWithFallback, notifyReviewCreated } = require('./_review-utils.cjs');

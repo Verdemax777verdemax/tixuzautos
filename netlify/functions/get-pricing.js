@@ -1,6 +1,6 @@
 const DEFAULT_PLANS = [
-  { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time', active_days: 60, max_photos: 12 },
-  { key: 'pro', name: 'PRO', price_mxn: 499, interval_type: 'one_time', active_days: 30, max_photos: 30 },
+  { key: 'featured', name: 'Destacado', price_mxn: 199, interval_type: 'one_time', active_days: 60, max_photos: 20 },
+  { key: 'pro', name: 'PRO Lote', price_mxn: 499, interval_type: 'recurring', active_days: 30, max_photos: 20, lot_capacity: 20, featured_slots: 2 },
 ];
 const headers = {
   'Content-Type': 'application/json',

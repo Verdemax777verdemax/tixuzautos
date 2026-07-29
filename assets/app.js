@@ -16,18 +16,25 @@ let externalZeroQuery='';
 let activeDiscoveryFilter=null;
 const LIVE_SEARCH_DEBOUNCE_MS=1400;
 const DETAIL_CACHE=new Map();
+const MAX_LISTING_PHOTOS=20;
 const BASIC_PLAN={key:'basic',name:'Básico',price_mxn:0,interval_type:'one_time',active_days:30,max_photos:5,badge:'Gratis'};
 const DEFAULT_PLANS=[
   BASIC_PLAN,
-  {key:'featured',name:'Destacado',price_mxn:199,interval_type:'one_time',active_days:60,max_photos:12},
-  {key:'pro',name:'PRO',price_mxn:499,interval_type:'one_time',active_days:30,max_photos:30}
+  {key:'featured',name:'Destacado',price_mxn:199,interval_type:'one_time',active_days:60,max_photos:20},
+  {key:'pro',name:'PRO Lote',price_mxn:499,interval_type:'recurring',active_days:30,max_photos:20,lot_capacity:20,featured_slots:2}
 ];
+// La presentación no depende todavía de la tabla remota: evita mostrar beneficios
+// viejos mientras los planes de pago siguen desactivados durante el lanzamiento.
+const PLAN_PRESENTATION={
+  featured:{name:'Destacado',price_mxn:199,interval_type:'one_time',active_days:60,max_photos:20},
+  pro:{name:'PRO Lote',price_mxn:499,interval_type:'recurring',active_days:30,max_photos:20,lot_capacity:20,featured_slots:2}
+};
 function withBasicPlan(list){
   const incoming=Array.isArray(list)?list.filter(p=>p&&p.key):[];
   const apiBasic=incoming.find(p=>p.key==='basic');
   const basic={...BASIC_PLAN,...(apiBasic||{}),key:'basic',name:'Básico',price_mxn:0};
   const paid=incoming.filter(p=>p.key==='featured'||p.key==='pro');
-  return [basic,...paid];
+  return [basic,...paid].map(plan=>({...plan,...(PLAN_PRESENTATION[plan.key]||{})}));
 }
 function planIsComingSoon(p){
   // 5c (27-jul-2026): por lanzamiento solo el plan Básico gratis está activo.
@@ -36,7 +43,7 @@ function planIsComingSoon(p){
 }
 function planNameForListing(l){
   if(l&&l.payment_status==='not_required')return 'Básico';
-  return ({basic:'Básico',featured:'Destacado',pro:'PRO'}[l?.plan]||l?.plan||'Básico');
+  return ({basic:'Básico',featured:'Destacado',pro:'PRO Lote'}[l?.plan]||l?.plan||'Básico');
 }
 function publishButtonLabel(){return selPlan==='basic'?'Publicar gratis':'Ir a pagar';}
 function updatePublishButton(){const b=document.getElementById('btnNext');if(b&&step===3)b.textContent=publishButtonLabel();}
@@ -44,6 +51,41 @@ function escJS(v){return String(v ?? '').replace(/\\/g,'\\\\').replace(/'/g,"\\'
 function escAttr(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 function escHTML(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function safeWaTarget(id){return 'waR_'+String(id ?? '').replace(/[^a-zA-Z0-9_-]/g,'_')}
+function comparableKey(value){return String(value||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim().toLowerCase()}
+function priceComparableSignal(car){
+  const price=Number(car?.price||0);
+  const make=comparableKey(car?.make),model=comparableKey(car?.model);
+  const year=Number(car?.year||0),km=Number(car?.mileage||0);
+  const transmission=comparableKey(car?.transmission),fuel=comparableKey(car?.fuel_type),location=comparableKey(car?.location);
+  if(!price||!make||!model||!year)return '';
+  const candidates=allCars.filter(other=>{
+    if(!other||String(other.id)===String(car.id)||other.external)return false;
+    const otherPrice=Number(other.price||0),otherYear=Number(other.year||0),otherKm=Number(other.mileage||0);
+    if(!otherPrice||!otherYear||comparableKey(other.make)!==make||comparableKey(other.model)!==model)return false;
+    if(Math.abs(otherYear-year)>1)return false;
+    if(km&&otherKm&&(otherKm<km*.5||otherKm>km*2))return false;
+    if(transmission&&comparableKey(other.transmission)&&comparableKey(other.transmission)!==transmission)return false;
+    if(fuel&&comparableKey(other.fuel_type)&&comparableKey(other.fuel_type)!==fuel)return false;
+    if(location&&comparableKey(other.location)&&comparableKey(other.location)!==location)return false;
+    return true;
+  });
+  if(candidates.length<10)return '';
+  let values=candidates.map(other=>Number(other.price)).sort((a,b)=>a-b);
+  const quartile=q=>values[Math.floor((values.length-1)*q)];
+  const q1=quartile(.25),q3=quartile(.75),iqr=q3-q1;
+  if(iqr>0)values=values.filter(value=>value>=q1-1.5*iqr&&value<=q3+1.5*iqr);
+  if(values.length<10)return '';
+  const middle=Math.floor(values.length/2);
+  const median=values.length%2?values[middle]:(values[middle-1]+values[middle])/2;
+  if(!median)return '';
+  const difference=Math.round((price/median-1)*100);
+  const format=value=>Math.round(value).toLocaleString('es-MX');
+  const direction=difference<=-3
+    ?`<strong>↓ ${Math.abs(difference)}% debajo de referencia</strong>`
+    :difference>=3?`<strong>↑ ${difference}% arriba de referencia</strong>`:'<strong>En línea con la referencia</strong>';
+  const tone=difference<=-3?'lower':difference>=3?'higher':'';
+  return `<div class="price-signal ${tone}"><strong>Precio comparativo estimado</strong><br>${direction}<small>Rango publicado: $${format(values[0])}–$${format(values.at(-1))} · ${values.length} autos similares. Comparación de anuncios publicados; no es avalúo ni garantía.</small></div>`;
+}
 function publicListingUrl(id){return '/autos/'+encodeURIComponent(String(id||'').trim())}
 const ATTRIBUTION_KEY='tixuz_attribution_v1';
 function makeSessionId(){
@@ -795,7 +837,7 @@ function renderGrid(list,opts={}){
     const sourceLabel=(c.external?c.source:'Tixuz')||'AUTO';
     const sourceInitials=sourceLabel.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'AUTO';
     const img=c.images?.[0]?`<img src="${escAttr(c.images[0])}" alt="${escAttr(c.make)} ${escAttr(c.model)}" loading="${loading}" decoding="async"${priority} onerror="handleListingImageError(this)"><div class="cimg-ph source-ph" style="display:none"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`:`<div class="cimg-ph source-ph"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`;
-    const badge=c.plan==='pro'?'<span class="cbadge bp">PRO</span>':c.featured?'<span class="cbadge bf">Destacado</span>':'';
+    const badge=c.plan==='pro'?'<span class="cbadge bp">PRO Lote</span>':c.featured?'<span class="cbadge bf">Tixuz Destacado</span>':'';
     const sourceBadge=c.external
       ? `<span class="cbadge bsource">Fuente: ${escHTML(c.source||'externa')} ↗</span>`
       : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">Tixuz · Directo</span>';
@@ -816,7 +858,7 @@ function renderGrid(list,opts={}){
     const href=c.external?escAttr(clickout):escAttr(publicListingUrl(c.id));
     const target=c.external?' target="_blank" rel="nofollow noopener"':'';
     const dataDetail=c.external?'':` data-detail-id="${sidAttr}"`;
-    return`<a class="car-card" href="${href}"${target} data-id="${sidAttr}"${dataDetail} aria-label="Ver ${escAttr(title||'Auto')}">
+    return`<a class="car-card${c.featured?' is-tixuz-featured':''}" href="${href}"${target} data-id="${sidAttr}"${dataDetail} aria-label="Ver ${escAttr(title||'Auto')}">
       <div class="cimg">${img}${sourceBadge}${badge}<span class="cstype">${displaySellerType}</span></div>
       <div class="cbody">
         <div class="ctitle">${escHTML(title||'Auto')}</div>
@@ -903,17 +945,17 @@ function openDetail(car){
   const gal=imgs.length?`<div class="dgal">${imgs.map(u=>`<img src="${escAttr(u)}" alt="" onerror="handleListingImageError(this)">`).join('')}</div>`:`<div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-weight:700;margin-bottom:12px">Imagen de referencia</div>`;
   const p=Number(car.price||0).toLocaleString('es-MX');
   const km=Number(car.mileage)>0?`${Number(car.mileage).toLocaleString('es-MX')} km`:'No especificado';
-  const b=car.plan==='pro'?'<span class="cbadge bp" style="position:static;display:inline-block">PRO</span>':car.featured?'<span class="cbadge bf" style="position:static;display:inline-block">Destacado</span>':'';
+  const b=car.plan==='pro'?'<span class="cbadge bp" style="position:static;display:inline-block">PRO Lote</span>':car.featured?'<span class="cbadge bf" style="position:static;display:inline-block">Tixuz Destacado</span>':'';
   const waTarget=safeWaTarget(car.id);
   const displaySellerName=car.seller_name||'—';
   const displaySellerType=car.seller_type||'—';
-  const trust='<div class="trust-row"><span class="trust-chip good">Revisión manual Tixuz</span><span class="trust-chip good">WhatsApp protegido</span><span class="trust-chip">Reporte disponible</span></div>';
+  const trust='<div class="trust-row"><span class="trust-chip good">Revisión humana de tu publicación</span><span class="trust-chip">Contacto directo por WhatsApp</span></div>';
   const originDetail=isDemo?'':`<div class="listing-provenance"><div class="listing-origin direct">✓ Tixuz Directo · Contacto inmediato por WhatsApp · Sin comisión</div><div class="listing-dates"><span>${escHTML(listingPublicationLabel(car))}</span></div></div>`;
   const descText = car.description||'';
   const originalLink = (!isDemo && car.source_url) ? `<a href="${escAttr(car.source_url)}" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:7px;text-decoration:none">Ver publicación original</a>` : '';
   const safetyNote = `
     <div class="detail-note">
-      <strong style="color:var(--text)">Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto.
+      <strong style="color:var(--text)">Prevención de fraude:</strong> No entregues anticipos sin verificar identidad del vendedor, documentos y existencia física del auto. No des apartado ni anticipo antes de ver el auto, al vendedor y sus documentos originales.<br><strong style="color:var(--text)">Si vendes:</strong> No aceptes cheques; no entregues auto, llaves o factura solo por un comprobante de transferencia. Confirma el pago final en tu banco.<br><span style="color:var(--text3)">Tixuz no recibe ni custodia el pago del vehículo; comprador y vendedor acuerdan la operación directamente.</span>
       <a href="mailto:soporte@tixuzautos.com?subject=Reporte%20de%20anuncio%20${encodeURIComponent(title)}" style="color:var(--accent);font-weight:700;text-decoration:none">Reportar anuncio</a>
     </div>`;
   const actionBlock = isDemo ? `
@@ -934,6 +976,7 @@ function openDetail(car){
     ${gal}
     <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">${b}<h3 style="font-size:1.15rem;font-weight:800">${escHTML(title)}</h3></div>
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
+    ${priceComparableSignal(car)}
     ${originDetail}
     ${trust}
     <div class="dgrid">
@@ -1332,9 +1375,14 @@ function ferr(el,msg,fieldId){
 }
 
 // PHOTOS
+function photoLimitForSelectedPlan(){
+  const selected=plans.find(plan=>plan&&plan.key===selPlan)||BASIC_PLAN;
+  return Math.min(MAX_LISTING_PHOTOS,Math.max(1,Number(selected.max_photos||BASIC_PLAN.max_photos)));
+}
 function renderPhotoGrid(){
+  const limit=photoLimitForSelectedPlan();
   let h='';
-  for(let i=0;i<8;i++){
+  for(let i=0;i<limit;i++){
     if(i<uploadedImgs.length)h+=`<div class="pslot"><img src="${uploadedImgs[i]}"><button class="prm" onclick="rmPhoto(${i})">✕</button></div>`;
     else if(i===uploadedImgs.length)h+=`<div class="pslot" onclick="document.getElementById('photoInput').click()"><span style="font-size:1.2rem">📷</span><span>Agregar</span></div>`;
     else h+=`<div class="pslot" style="opacity:.2">📷</div>`;
@@ -1396,7 +1444,11 @@ async function compressImage(file){
   return best || file;
 }
 async function handlePhotos(ev){
-  const files=Array.from(ev.target.files).slice(0,8-uploadedImgs.length);
+  const available=Math.max(0,photoLimitForSelectedPlan()-uploadedImgs.length);
+  const incoming=Array.from(ev.target.files);
+  const files=incoming.slice(0,available);
+  if(incoming.length>files.length)showToast(`Puedes subir hasta ${photoLimitForSelectedPlan()} fotos con este plan.`,'error');
+  if(!files.length){ev.target.value='';return}
   document.getElementById('upStat').textContent=`Optimizando ${files.length} foto(s)…`;
   for(const f of files){
     if(f.size>40*1024*1024){showToast('Foto demasiado grande (>40MB). Usa una foto del celular o reduce tamaño.','error');continue}
@@ -1447,9 +1499,15 @@ async function loadPlans(){
 }
 function planBullets(p,compact=false){
   if(p.key==='basic')return `<li>${p.max_photos} fotos</li><li>${p.active_days} días activo</li><li>Gratis</li><li>Revisión humana antes de publicar</li><li>Contacto directo por WhatsApp</li>`;
-  return `<li>${p.max_photos} fotos</li><li>${p.active_days} días${compact?'':' activo'}</li>${p.key==='featured'?'<li>Destacado en grid</li><li>Pago único · sin renovación</li>':''}${p.key==='pro'?'<li>Prioridad máxima en el grid</li><li>Estadísticas</li><li>Pago único · sin renovación</li>':''}`;
+  if(p.key==='featured')return `<li>20 fotos</li><li>60 días activo</li><li>Tixuz Destacado en resultados</li><li>Pago único · sin renovación</li>`;
+  return `<li>Hasta 20 autos activos</li><li>20 fotos por auto</li><li>2 autos Destacados a la vez</li><li>Perfil y control de inventario</li><li>Archivo, lista o WhatsApp para ingresar autos</li>`;
 }
 function planPriceSuffix(p){return p.interval_type==='recurring'?' MXN/mes':' MXN · pago único'}
+function planVisual(p){
+  if(p.key==='featured')return `<div class="plan-visual" style="background-image:url('https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=900&q=80')"><span class="plan-visual-label">Así se verá tu anuncio</span></div>`;
+  if(p.key==='pro')return `<div class="plan-visual plan-collage"><i></i><i></i><i></i><i></i><i></i><b>+15 autos</b></div>`;
+  return '';
+}
 function renderPlanCards(){
   const c=document.getElementById('planCards');
   if(!plans.length)plans=[...DEFAULT_PLANS];
@@ -1459,6 +1517,7 @@ function renderPlanCards(){
   c.innerHTML=plans.map(p=>{
     const soon=planIsComingSoon(p);
     return `<div class="pcard ${p.key===selPlan?'sel':''}${soon?' soon':''}"${soon?' aria-disabled="true"':` onclick="selPlanFn('${escJS(p.key)}')"`}>
+    ${planVisual(p)}
     <h4>${escHTML(p.name)}</h4>
     <div class="pp">$${Number(p.price_mxn)||0}<sub>${p.key==='basic'?' MXN · gratis':planPriceSuffix(p)}</sub></div>
     ${soon?'<div class="soon-badge">Próximamente</div>':''}
@@ -1474,11 +1533,12 @@ function selPlanFn(k){
 function renderPlansBody(){
   const planList = withBasicPlan((plans && plans.length) ? plans : DEFAULT_PLANS);
   document.getElementById('plansBody').innerHTML=`<div class="pcards">${planList.map(p=>`<div class="pcard${planIsComingSoon(p)?' soon':''}">
+    ${planVisual(p)}
     <h4>${p.name}</h4>
     <div class="pp">$${p.price_mxn}<sub>${p.key==='basic'?' MXN · gratis':planPriceSuffix(p)}</sub></div>
     ${planIsComingSoon(p)?'<div class="soon-badge">Próximamente</div>':''}
     <ul>${planBullets(p)}</ul>
-  </div>`).join('')}</div><div class="detail-note" style="margin-top:14px"><strong style="color:var(--text)">Publicar es gratis por lanzamiento.</strong> Los planes Destacado y PRO estarán disponibles próximamente. Tixuz no recibe ni custodia el pago del vehículo.</div>`;
+  </div>`).join('')}</div><div class="detail-note" style="margin-top:14px"><strong style="color:var(--text)">Publicar es gratis por lanzamiento.</strong> Destacado y PRO Lote están en preparación: no se activa ningún cobro ni suscripción todavía. Tixuz no recibe ni custodia el pago del vehículo.</div>`;
 }
 function openPlans(){plans = plans.length ? withBasicPlan(plans) : [...DEFAULT_PLANS];renderPlansBody();openO('plansOv')}
 
