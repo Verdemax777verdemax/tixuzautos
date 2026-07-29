@@ -4,6 +4,7 @@ const path = require('node:path');
 const test = require('node:test');
 
 const { appListingUrl, page } = require('../netlify/functions/seo-listing.js');
+const seoTracker = fs.readFileSync(path.join(__dirname, '..', 'assets', 'seo-listing-track.js'), 'utf8');
 
 test('appListingUrl puts the listing id in the auto query parameter', () => {
   assert.equal(
@@ -25,10 +26,15 @@ test('SEO listing CTA uses /?auto=ID and never /auto=ID', () => {
     color: 'Azul',
     location: 'Mexico',
     sellerType: 'Agencia',
+    createdAt: '2026-07-29T12:00:00.000Z',
     url: 'https://tixuzautos.com/autos/listing-id-123',
   });
 
   assert.match(rendered, /href="https:\/\/tixuzautos\.com\/\?auto=listing-id-123">Abrir ficha en Tixuz<\/a>/);
+  assert.match(rendered, /✓ Tixuz Directo/);
+  assert.match(rendered, /Publicado en Tixuz/);
+  assert.match(rendered, /<script src="\/assets\/seo-listing-track\.js" data-listing-id="listing-id-123" defer><\/script>/);
+  assert.match(seoTracker, /fetch\('\/api\/listing-view'/);
   assert.doesNotMatch(rendered, /\/auto(?:%3D|=)listing-id-123/i);
 });
 

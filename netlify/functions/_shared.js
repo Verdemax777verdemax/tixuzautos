@@ -39,9 +39,56 @@ function hash(str) {
 }
 
 function clientIp(event) {
-  return event.headers['x-nf-client-connection-ip']
-    || event.headers['x-forwarded-for']?.split(',')[0]?.trim()
+  const headers = event?.headers || {};
+  return headers['x-nf-client-connection-ip']
+    || headers['x-forwarded-for']?.split(',')[0]?.trim()
     || 'unknown';
+}
+
+function requestHeader(event, name) {
+  const wanted = String(name || '').toLowerCase();
+  const headers = event?.headers || {};
+  for (const [key, value] of Object.entries(headers)) {
+    if (String(key).toLowerCase() === wanted) return String(value || '');
+  }
+  return '';
+}
+
+function limitedText(value, max = 300) {
+  return String(value ?? '').trim().slice(0, max);
+}
+
+function deviceFromUserAgent(userAgent) {
+  const ua = String(userAgent || '').toLowerCase();
+  if (/ipad|tablet|kindle|silk\//.test(ua)) return 'tablet';
+  if (/mobi|android|iphone|ipod|windows phone/.test(ua)) return 'mobile';
+  return 'desktop';
+}
+
+// Attribution values are advisory analytics fields. Device and referrer are
+// derived from the request so a browser cannot accidentally report a stale one.
+function trackingFields(event = {}, input = {}) {
+  const query = event.queryStringParameters || {};
+  const pick = (key, max) => limitedText(input[key] ?? query[key], max);
+  const userAgent = requestHeader(event, 'user-agent');
+  return {
+    utm_source: pick('utm_source', 120),
+    utm_medium: pick('utm_medium', 120),
+    utm_campaign: pick('utm_campaign', 180),
+    utm_content: pick('utm_content', 180),
+    referrer: limitedText(requestHeader(event, 'referer') || requestHeader(event, 'referrer') || input.referrer, 500),
+    session_id: pick('session_id', 120),
+    device: deviceFromUserAgent(userAgent),
+    user_agent: limitedText(userAgent, 400),
+  };
+}
+
+async function tixuzTrack(payload) {
+  return sb('rpc/tixuz_track', {
+    method: 'POST',
+    prefer: 'return=representation',
+    body: JSON.stringify({ p: payload }),
+  });
 }
 
 const cors = {
@@ -86,4 +133,20 @@ function hasPII(obj) {
   return tel.test(s) || email.test(s);
 }
 
-module.exports = { sb, hash, clientIp, cors, json, checkRateLimit, hasPII, requireEnv, SUPABASE_URL, SERVICE_KEY };
+module.exports = {
+  sb,
+  hash,
+  clientIp,
+  requestHeader,
+  limitedText,
+  deviceFromUserAgent,
+  trackingFields,
+  tixuzTrack,
+  cors,
+  json,
+  checkRateLimit,
+  hasPII,
+  requireEnv,
+  SUPABASE_URL,
+  SERVICE_KEY,
+};

@@ -45,6 +45,66 @@ function escAttr(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/"/g,'&
 function escHTML(v){return String(v ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')}
 function safeWaTarget(id){return 'waR_'+String(id ?? '').replace(/[^a-zA-Z0-9_-]/g,'_')}
 function publicListingUrl(id){return '/autos/'+encodeURIComponent(String(id||'').trim())}
+const ATTRIBUTION_KEY='tixuz_attribution_v1';
+function makeSessionId(){
+  try{if(window.crypto?.randomUUID)return window.crypto.randomUUID();}catch(e){}
+  return `s-${Date.now().toString(36)}-${Math.random().toString(36).slice(2,12)}`;
+}
+function trackingContext(){
+  const keys=['utm_source','utm_medium','utm_campaign','utm_content'];
+  let saved={};
+  try{saved=JSON.parse(sessionStorage.getItem(ATTRIBUTION_KEY)||'{}')||{};}catch(e){}
+  const params=new URLSearchParams(location.search);
+  keys.forEach(key=>{
+    const value=(params.get(key)||'').trim();
+    if(value)saved[key]=value.slice(0,180);
+  });
+  const requestedSession=(params.get('session_id')||'').trim();
+  saved.session_id=(requestedSession||saved.session_id||makeSessionId()).slice(0,120);
+  try{sessionStorage.setItem(ATTRIBUTION_KEY,JSON.stringify(saved));}catch(e){}
+  return {
+    utm_source:saved.utm_source||'',
+    utm_medium:saved.utm_medium||'',
+    utm_campaign:saved.utm_campaign||'',
+    utm_content:saved.utm_content||'',
+    session_id:saved.session_id,
+    referrer:document.referrer||''
+  };
+}
+function trackedClickoutUrl(car){
+  const destination=String(car?.source_url||'').trim();
+  if(!destination)return String(car?.clickout_url||'').trim();
+  const params=new URLSearchParams({
+    to:destination,
+    source:String(car?.source||'Portal externo'),
+    q:(document.getElementById('fQ')?.value||'').trim(),
+    src:'listing_card',
+    listing_id:String(car?.id||'')
+  });
+  Object.entries(trackingContext()).forEach(([key,value])=>{if(value)params.set(key,value)});
+  return '/api/ir?'+params.toString();
+}
+function formatListingDate(value){
+  const date=value?new Date(value):null;
+  if(!date||Number.isNaN(date.getTime()))return '';
+  return new Intl.DateTimeFormat('es-MX',{day:'numeric',month:'short',year:'numeric',timeZone:'America/Mexico_City'}).format(date);
+}
+function mexicoDay(value){
+  const date=value?new Date(value):null;
+  if(!date||Number.isNaN(date.getTime()))return '';
+  return new Intl.DateTimeFormat('en-CA',{timeZone:'America/Mexico_City'}).format(date);
+}
+function listingPublicationLabel(car){
+  const date=formatListingDate(car?.published_at||car?.created_at);
+  if(!date)return 'Fecha de publicación no disponible';
+  return car?.external?`Publicado: ${date}`:`Publicado en Tixuz: ${date}`;
+}
+function listingVerificationLabel(car){
+  if(!car?.external)return '';
+  const date=formatListingDate(car.last_seen_at);
+  if(!date)return '';
+  return mexicoDay(car.last_seen_at)===mexicoDay(new Date())?'✓ Verificado hoy':`✓ Verificado: ${date}`;
+}
 function requestedAutoId(){
   const p=new URLSearchParams(location.search);
   return (p.get('auto')||p.get('listing')||p.get('id')||'').trim();
@@ -208,6 +268,7 @@ function normalizeInventoryCar(c){
     seller_name:c.raw_payload?.seller_name,
     seller_type:c.seller_type||c.raw_payload?.seller_type,
     published_at:c.raw_payload?.published_at,
+    last_seen_at:c.last_seen_at,
     thumbnail_url:c.thumbnail_url
   });
 }
@@ -341,7 +402,9 @@ function normalizeExternalCar(c){
     seller_name: c.seller_name||null,
     seller_type: c.seller_type||portal,
     published_at: c.published_at||null,
-    created_at: c.published_at||null
+    created_at: c.published_at||null,
+    last_seen_at: c.last_seen_at||c.verified_at||null,
+    vehicle_body_type: c.vehicle_body_type||null
   };
 }
 function currentExternalKey(q,city){
@@ -419,6 +482,7 @@ async function loadExternalCars(q,city,key){
         seller_name:item.seller_name,
         seller_type:item.seller_type,
         published_at:item.published_at,
+        last_seen_at:item.last_seen_at,
         thumbnail_url:item.image_url,
         image_kind:item.image_kind
       }))
@@ -511,6 +575,8 @@ async function setDiscoveryFilter(filters,label){
         city:item.city,
         state:item.state,
         transmission:item.transmission,
+        last_seen_at:item.last_seen_at,
+        vehicle_body_type:item.body_type,
         thumbnail_url:item.image_url,
         image_kind:item.image_kind
       }));
@@ -731,8 +797,11 @@ function renderGrid(list,opts={}){
     const img=c.images?.[0]?`<img src="${escAttr(c.images[0])}" alt="${escAttr(c.make)} ${escAttr(c.model)}" loading="${loading}" decoding="async"${priority} onerror="handleListingImageError(this)"><div class="cimg-ph source-ph" style="display:none"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`:`<div class="cimg-ph source-ph"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`;
     const badge=c.plan==='pro'?'<span class="cbadge bp">PRO</span>':c.featured?'<span class="cbadge bf">Destacado</span>':'';
     const sourceBadge=c.external
-      ? `<span class="cbadge bf" style="left:8px;right:auto;background:rgba(148,163,184,.92);color:#0f172a">${escHTML(c.source||'externa')}</span>`
+      ? `<span class="cbadge bsource">Fuente: ${escHTML(c.source||'externa')} ↗</span>`
       : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">Tixuz · Directo</span>';
+    const origin=c.external
+      ? `<div class="listing-origin aggregated">Fuente: <strong>${escHTML(c.source||'Portal externo')} ↗</strong></div>`
+      : '<div class="listing-origin direct">✓ Tixuz Directo · WhatsApp sin comisión</div>';
     const displaySellerType=c.seller_type||'Particular';
     const verdictText=(normText(c.tixuz_note_status)==='published'&&(c.tixuz_note_pros||c.tixuz_note_watch))?String(c.tixuz_note_pros||c.tixuz_note_watch).split(/[.;\n]/)[0].trim():'';
     const verdict=verdictText?`<div class="verdict-chip ${c.tixuz_note_watch&&!c.tixuz_note_pros?'watch':''}">${escHTML(verdictText).slice(0,72)}</div>`:'';
@@ -741,7 +810,9 @@ function renderGrid(list,opts={}){
     const title=[Number(c.year||0)>0?c.year:'',c.make,c.model].filter(Boolean).join(' ');
     const p=hasPrice?Number(c.price).toLocaleString('es-MX'):'';
     const km=hasKm?Number(c.mileage).toLocaleString('es-MX'):'';
-    const clickout=c.clickout_url||('/api/ir?'+new URLSearchParams({to:c.source_url,source:c.source||'Portal externo',q:(document.getElementById('fQ')?.value||'')}).toString());
+    const clickout=trackedClickoutUrl(c);
+    const publication=listingPublicationLabel(c);
+    const verified=listingVerificationLabel(c);
     const href=c.external?escAttr(clickout):escAttr(publicListingUrl(c.id));
     const target=c.external?' target="_blank" rel="nofollow noopener"':'';
     const dataDetail=c.external?'':` data-detail-id="${sidAttr}"`;
@@ -750,9 +821,11 @@ function renderGrid(list,opts={}){
       <div class="cbody">
         <div class="ctitle">${escHTML(title||'Auto')}</div>
         <div class="cprice">${hasPrice?'$'+p:'Ver precio'}</div>
+        ${origin}
         ${verdict}
         <div class="cmeta"><span>${hasKm?km+' km':'—'}</span><span>${c.transmission||'—'}</span><span>${c.fuel_type||'—'}</span></div>
-        <div class="cloc"><span>${c.location||'Ubicación no disponible'}</span><span>${ago(c.published_at||c.created_at)}</span></div>
+        <div class="cloc"><span>${c.location||'Ubicación no disponible'}</span></div>
+        <div class="listing-dates"><span>${escHTML(publication)}</span>${verified?`<span class="verified-today">${escHTML(verified)}</span>`:''}</div>
       </div></a>`;
   }).join('');
   const loader=opts.externalLoading?'<div class="empty" style="grid-column:1/-1"><h3>Buscando fuentes externas...</h3><p>Ya mostramos primero los autos de Tixuz; agregamos portales externos en cuanto respondan.</p></div>':'';
@@ -790,7 +863,7 @@ async function bumpViewSafely(car){
     await fetch('/api/listing-view',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({listing_id:String(car.id)}),
+      body:JSON.stringify({listing_id:String(car.id),source:'marketplace_listing',tracking:trackingContext()}),
       keepalive:true
     });
   }catch(e){console.warn('Vista no incrementada, pero ficha abierta:',e)}
@@ -835,6 +908,7 @@ function openDetail(car){
   const displaySellerName=car.seller_name||'—';
   const displaySellerType=car.seller_type||'—';
   const trust='<div class="trust-row"><span class="trust-chip good">Revisión manual Tixuz</span><span class="trust-chip good">WhatsApp protegido</span><span class="trust-chip">Reporte disponible</span></div>';
+  const originDetail=isDemo?'':`<div class="listing-provenance"><div class="listing-origin direct">✓ Tixuz Directo · Contacto inmediato por WhatsApp · Sin comisión</div><div class="listing-dates"><span>${escHTML(listingPublicationLabel(car))}</span></div></div>`;
   const descText = car.description||'';
   const originalLink = (!isDemo && car.source_url) ? `<a href="${escAttr(car.source_url)}" target="_blank" rel="noopener" class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:7px;text-decoration:none">Ver publicación original</a>` : '';
   const safetyNote = `
@@ -860,6 +934,7 @@ function openDetail(car){
     ${gal}
     <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">${b}<h3 style="font-size:1.15rem;font-weight:800">${escHTML(title)}</h3></div>
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
+    ${originDetail}
     ${trust}
     <div class="dgrid">
       <div class="di"><label>Kilometraje</label><span>${km}</span></div>
@@ -895,7 +970,7 @@ async function revealWA(id,btn,targetId){
   const ctrl=new AbortController();
   const tid=setTimeout(()=>ctrl.abort(),10000);
   try{
-    const r=await fetch('/.netlify/functions/reveal-whatsapp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({listing_id:id}),signal:ctrl.signal});
+    const r=await fetch('/.netlify/functions/reveal-whatsapp',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({listing_id:id,tracking:trackingContext()}),signal:ctrl.signal});
     clearTimeout(tid);
     const txt=await r.text();
     let d={};

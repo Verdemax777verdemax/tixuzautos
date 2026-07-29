@@ -35,8 +35,15 @@ test('api-buscar builds indexed body and numeric price filters', () => {
 
 test('opening a listing posts to the server-side view tracker', () => {
   assert.match(app, /fetch\('\/api\/listing-view'/);
-  assert.match(app, /body:JSON\.stringify\(\{listing_id:String\(car\.id\)\}\)/);
+  assert.match(app, /body:JSON\.stringify\(\{listing_id:String\(car\.id\),source:'marketplace_listing',tracking:trackingContext\(\)\}\)/);
   assert.doesNotMatch(app, /client\.rpc\('increment_view'/);
+});
+
+test('cards keep publication and verification dates separate and mark direct inventory', () => {
+  assert.match(app, /function listingVerificationLabel\(car\)/);
+  assert.match(app, /✓ Verificado hoy/);
+  assert.match(app, /✓ Tixuz Directo · WhatsApp sin comisión/);
+  assert.match(app, /const clickout=trackedClickoutUrl\(c\)/);
 });
 
 test('visitor hash combines IP and user agent without retaining the IP', () => {

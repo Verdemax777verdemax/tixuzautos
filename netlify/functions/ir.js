@@ -1,4 +1,4 @@
-const { sb } = require('./_shared');
+const { trackingFields, tixuzTrack } = require('./_shared');
 
 exports.handler = async (event = {}) => {
   const qs = event.queryStringParameters || {};
@@ -9,17 +9,15 @@ exports.handler = async (event = {}) => {
     return { statusCode: 400, headers: { 'Content-Type': 'text/plain' }, body: 'URL invalida' };
   }
 
-  await sb('agg_autos_clicks', {
-    method: 'POST',
-    prefer: 'return=minimal',
-    body: JSON.stringify({
+  await tixuzTrack({
       event_type: 'clickout',
+      event: 'clickout',
       fuente_portal: String(qs.source || parsed.hostname).slice(0, 120),
       destino_url: parsed.href,
       query_text: String(qs.q || '').slice(0, 200),
-      src_tag: 'api-buscar',
-      user_agent: String(event.headers?.['user-agent'] || '').slice(0, 500)
-    })
+      src_tag: String(qs.src || 'listing_card').slice(0, 80),
+      listing_id: String(qs.listing_id || '').slice(0, 120),
+      ...trackingFields(event, qs),
   }).catch(() => {});
 
   return {

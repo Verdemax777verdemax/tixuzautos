@@ -1,5 +1,6 @@
 // Tixuz Autos v47 · Revela WhatsApp usando process.env en Netlify Functions.
 const crypto = require('crypto');
+const { trackingFields, tixuzTrack } = require('./_shared');
 const headers = {
   'Content-Type': 'application/json',
   'Cache-Control': 'no-store',
@@ -32,6 +33,18 @@ exports.handler = async function(event){
     },10000);
     const txt=await res.text(); let data={};
     try{data=txt?JSON.parse(txt):{}}catch{data={ok:false,error:txt};}
+    if(res.ok&&data.ok){
+      // reveal_whatsapp creates the rate-limited row; tixuz_track enriches that
+      // same reveal with attribution instead of inserting a duplicate lead.
+      const tracked=await tixuzTrack({
+        event:'whatsapp',
+        listing_id,
+        visitor_hash:ipHash,
+        origen:'marketplace_listing',
+        ...trackingFields(event,body.tracking||body)
+      });
+      if(!tracked.ok||tracked.data?.ok===false)console.error('tixuz_track whatsapp failed',tracked.status,tracked.data);
+    }
     return respond(res.ok?200:res.status,data);
   }catch(err){
     return respond(504,{ok:false,error:err.name==='AbortError'?'Supabase tardó demasiado al revelar WhatsApp':(err.message||'Error revelando WhatsApp'),stage:'timeout_or_fetch'});
