@@ -167,6 +167,20 @@ function cacheCars(list){
   (Array.isArray(list)?list:[]).forEach(cacheCar);
   return list;
 }
+// Sello de veredicto de precio (datos calculados en la base por el cron de Claude).
+// REGLA INNEGOCIABLE: el sello NUNCA sale solo — solo se pinta si tambien hay precio_metodo.
+// 'revisar' es senal interna de posible fraude: NO se pinta al publico.
+const PRECIO_VEREDICTO_LABEL={excelente:'Precio excelente',bueno:'Buen precio',justo:'Precio justo',alto:'Precio arriba del promedio'};
+function precioSelloHTML(car,opts={}){
+  const v=String(car&&car.precio_veredicto||'').toLowerCase().trim();
+  const label=PRECIO_VEREDICTO_LABEL[v];
+  const metodo=String(car&&car.precio_metodo||'').trim();
+  if(!label||!metodo)return '';
+  if(opts.mode==='visible'){
+    return `<div style="margin-bottom:12px"><span class="precio-sello ${escAttr(v)}">${escHTML(label)}</span><div class="precio-metodo-txt">${escHTML(metodo)}</div></div>`;
+  }
+  return `<div><span class="precio-sello ${escAttr(v)}" title="${escAttr(metodo)}">${escHTML(label)}</span></div>`;
+}
 function normalizeCar(c){
   c = c || {};
   const out = {...c};
@@ -446,7 +460,11 @@ function normalizeExternalCar(c){
     published_at: c.published_at||null,
     created_at: c.published_at||null,
     last_seen_at: c.last_seen_at||c.verified_at||null,
-    vehicle_body_type: c.vehicle_body_type||null
+    vehicle_body_type: c.vehicle_body_type||null,
+    precio_veredicto: c.precio_veredicto||null,
+    precio_metodo: c.precio_metodo||null,
+    precio_n: c.precio_n||null,
+    precio_mediana: c.precio_mediana||null
   };
 }
 function currentExternalKey(q,city){
@@ -526,7 +544,11 @@ async function loadExternalCars(q,city,key){
         published_at:item.published_at,
         last_seen_at:item.last_seen_at,
         thumbnail_url:item.image_url,
-        image_kind:item.image_kind
+        image_kind:item.image_kind,
+        precio_veredicto:item.precio_veredicto,
+        precio_metodo:item.precio_metodo,
+        precio_n:item.precio_n,
+        precio_mediana:item.precio_mediana
       }))
       .filter(c=>c.source_url&&!/tixuz/i.test(c.source||'')&&!/tixuzautos\.com/i.test(c.source_url||''));
     externalPortalLinks=[];
@@ -620,7 +642,11 @@ async function setDiscoveryFilter(filters,label){
         last_seen_at:item.last_seen_at,
         vehicle_body_type:item.body_type,
         thumbnail_url:item.image_url,
-        image_kind:item.image_kind
+        image_kind:item.image_kind,
+        precio_veredicto:item.precio_veredicto,
+        precio_metodo:item.precio_metodo,
+        precio_n:item.precio_n,
+        precio_mediana:item.precio_mediana
       }));
   }catch(err){
     if(seq!==externalSeq)return;
@@ -761,14 +787,37 @@ function tixuzDefaultSort(a,b){
   // El bloque agregado conserva exactamente el orden histórico por año.
   return carSort('yr')(a,b);
 }
+function parsePriceInput(value){
+  const limpio=String(value||'').replace(/[^0-9.]/g,'');
+  const n=parseFloat(limpio);
+  return Number.isFinite(n)?n:0;
+}
+function applyPriceRange(){
+  const sel=document.getElementById('fPRange');
+  const min=document.getElementById('fPMin');
+  const max=document.getElementById('fPMax');
+  const wrap=document.getElementById('fPCustom');
+  if(!sel||!min||!max)return;
+  if(sel.value==='custom'){
+    if(wrap)wrap.style.display='';
+    min.value=''; max.value='';
+    min.focus();
+    return;
+  }
+  if(wrap)wrap.style.display='none';
+  const partes=String(sel.value||'').split('-');
+  min.value=partes[0]||'';
+  max.value=partes[1]||'';
+  applyFilters();
+}
 function applyFilters(opts={}){
   const discovery=activeDiscoveryFilter;
   const qRaw=discovery?'':(document.getElementById('fQ').value||'');
   const q=normText(qRaw);
   const stop=new Set(['de','del','la','el','los','las','para','en','con','y','o','un','una']);
   const qTokens=q.split(/\s+/).filter(t=>t&&!stop.has(t));
-  const pmin=parseFloat(document.getElementById('fPMin').value)||0;
-  const pmax=parseFloat(document.getElementById('fPMax').value)||1e9;
+  const pmin=parsePriceInput(document.getElementById('fPMin').value)||0;
+  const pmax=parsePriceInput(document.getElementById('fPMax').value)||1e9;
   const city=document.getElementById('fCity')?.value||'';
   const yr=parseInt(document.getElementById('fYear').value)||0;
   const tr=document.getElementById('fTrans').value;
@@ -864,6 +913,7 @@ function renderGrid(list,opts={}){
       <div class="cbody">
         <div class="ctitle">${escHTML(title||'Auto')}</div>
         <div class="cprice">${hasPrice?'$'+p:'Ver precio'}</div>
+        ${precioSelloHTML(c)}
         ${origin}
         ${verdict}
         <div class="cmeta"><span>${hasKm?km+' km':'—'}</span><span>${c.transmission||'—'}</span><span>${c.fuel_type||'—'}</span></div>
@@ -921,6 +971,7 @@ function openDetailFallback(car){
     <div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:2.5rem;margin-bottom:12px">🚗</div>
     <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px">${escHTML(title)}</h3>
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
+    ${precioSelloHTML(car,{mode:'visible'})}
     <div class="dgrid">
       <div class="di"><label>Kilometraje</label><span>${mileageText}</span></div>
       <div class="di"><label>Transmisión</label><span>${escHTML(car.transmission||'—')}</span></div>
@@ -978,6 +1029,7 @@ function openDetail(car){
     ${gal}
     <div style="display:flex;align-items:center;gap:7px;margin-bottom:7px">${b}<h3 style="font-size:1.15rem;font-weight:800">${escHTML(title)}</h3></div>
     <div style="font-size:1.45rem;font-weight:800;color:var(--accent);margin-bottom:12px">$${p} MXN</div>
+    ${precioSelloHTML(car,{mode:'visible'})}
     ${priceComparableSignal(car)}
     ${originDetail}
     ${trust}
@@ -2509,7 +2561,7 @@ function openSellFromCurrentSearch(){
     if(parts.length>1)pre.model=parts.slice(1,4).join(' ');
   }
   const year=parseInt(document.getElementById('fYear')?.value||'');
-  const pmax=parseFloat(document.getElementById('fPMax')?.value||'');
+  const pmax=parsePriceInput(document.getElementById('fPMax')?.value||'');
   if(year)pre.year=year;
   if(pmax)pre.price=pmax;
   openSell(pre);
@@ -2521,6 +2573,8 @@ function clearFilters(){
   const yr=document.getElementById('fYear'); if(yr) yr.value='';
   const tr=document.getElementById('fTrans'); if(tr) tr.value='';
   const sort=document.getElementById('fSort'); if(sort) sort.value='default';
+  const pr=document.getElementById('fPRange'); if(pr) pr.value='';
+  const pcw=document.getElementById('fPCustom'); if(pcw) pcw.style.display='none';
   cancelPendingExternalSearch(true);
   applyFilters({skipExternalFetch:true});
 }

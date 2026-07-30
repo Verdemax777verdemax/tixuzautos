@@ -29,7 +29,11 @@ function ownToResult(row) {
     mileage_km: row.mileage,
     location: row.location,
     image_url: row.images?.[0] || null,
-    url: row.url
+    url: row.url,
+    precio_veredicto: null,
+    precio_metodo: null,
+    precio_n: null,
+    precio_mediana: null
   };
 }
 
@@ -54,7 +58,11 @@ function aggToResult(row) {
     original_url: row.source_url,
     source,
     image_kind: row.image_url || row.main_image_url ? 'real_source' : 'placeholder',
-    expires_at: row.expires_at
+    expires_at: row.expires_at,
+    precio_veredicto: row.precio_veredicto || null,
+    precio_metodo: row.precio_metodo || null,
+    precio_n: row.precio_n || null,
+    precio_mediana: row.precio_mediana || null
   };
 }
 
@@ -88,6 +96,8 @@ function buildAggregatedPath(filters, limit, now = new Date()) {
     'city', 'state', 'image_url', 'main_image_url', 'expires_at',
     'vehicle_body_type', 'vehicle_brand', 'vehicle_model', 'vehicle_brand_norm',
     'vehicle_model_norm', 'vehicle_year', 'vehicle_km', 'vehicle_transmission',
+    'precio_veredicto', 'precio_mediana', 'precio_n', 'precio_delta_pct',
+    'precio_rango_min', 'precio_rango_max', 'precio_metodo',
   ].join(',');
   query.push(`select=${select}`);
   query.push(`limit=${Math.min(Math.max(limit * 3, 300), 1000)}`);

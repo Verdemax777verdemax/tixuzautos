@@ -124,8 +124,10 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .hero-spacer{flex:1}
 .iconbtn{width:38px;height:38px;border-radius:11px;border:1px solid var(--border);background:transparent;color:var(--text2);display:grid;place-items:center}
 .go{height:38px;padding:0 18px;border:0;border-radius:11px;background:var(--accent);color:#08101F;font-weight:700;font-size:14px;display:inline-flex;align-items:center;gap:8px}
-.quick-actions{display:flex!important;flex-wrap:wrap;justify-content:center;gap:9px;margin:18px auto 0;max-width:640px}
-.quick-actions .hbtn-hero{width:auto;max-width:none;border-radius:999px;padding:9px 15px;font-size:13.5px;color:var(--text2);background:var(--bg2);border:1px solid var(--border)}
+.quick-actions{display:flex!important;flex-wrap:wrap;justify-content:center;gap:8px;margin:20px auto 0;max-width:520px}
+.quick-actions .hbtn-hero{flex:0 0 auto;min-width:112px;justify-content:center;border-radius:999px;padding:10px 18px;font-size:13.5px;font-weight:600;color:var(--text2);background:var(--bg2);border:1px solid var(--border);transition:all .15s}
+.quick-actions .hbtn-hero:hover{background:var(--bg3);border-color:var(--accent);color:var(--text)}
+@media(max-width:520px){.quick-actions{max-width:320px}.quick-actions .hbtn-hero{flex:1 1 calc(50% - 8px);min-width:0}}
 .hero-btns{display:flex!important;justify-content:center;margin:26px auto 0}
 .hero-btns .hbtn-hero:not(.sell-second){display:none}
 .hero-btns .sell-second{background:rgba(37,211,102,.14);border:1px solid rgba(37,211,102,.4);color:#bdf3d2;border-radius:14px;padding:13px 20px;font-size:14.5px}
@@ -211,6 +213,12 @@ body.show-ops.ops-unlocked .ops-lite{display:inline-flex!important}
 .cbody{padding:12px}
 .ctitle{font-weight:700;font-size:.9rem;margin-bottom:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cprice{font-family:'Poppins',sans-serif;font-size:1.2rem;font-weight:800;color:var(--accent);margin-bottom:7px}
+.precio-sello{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:999px;margin-top:5px;cursor:help}
+.precio-sello.excelente{background:#0f3d2e;color:#4ade80;border:1px solid #166534}
+.precio-sello.bueno{background:#12331f;color:#86efac;border:1px solid #14532d}
+.precio-sello.justo{background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
+.precio-sello.alto{background:#3d2410;color:#fdba74;border:1px solid #7c2d12}
+.precio-metodo-txt{font-size:.72rem;color:var(--text3);line-height:1.45;margin-top:4px}
 .cmeta{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:6px}
 .cmeta span{font-size:.7rem;color:var(--text3);background:var(--bg3);padding:2px 8px;border-radius:20px}
 .cmeta span:first-child{font-family:'JetBrains Mono',monospace}
@@ -588,8 +596,6 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
       <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'sedan'},'Sedán')">Sedán</button>
       <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'pickup'},'Pickup')">Pickup</button>
       <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({body_type:'hatchback'},'Hatchback')">Hatchback</button>
-      <button class="hbtn-hero b" type="button" onclick="setDiscoveryFilter({price_max:200000},'Hasta $200,000')">&lt; $200,000</button>
-      <a class="hbtn-hero b" href="https://tixuz-autos-julio-2026.netlify.app/" target="_blank" rel="noopener">Promos julio</a>
     </div>
     <div class="hero-btns">
       <button class="hbtn-hero g sell-second" onclick="openSell()">Vende tu auto</button>
@@ -625,10 +631,22 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
   <select class="fi" id="fCity" onchange="applyFilters()" aria-label="Ciudad o zona">
     <option value="">Ciudad / zona</option>
   </select>
-  <label class="sr-only" for="fPMin">Precio minimo</label>
-  <input class="fi" id="fPMin" type="number" placeholder="Precio mín" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio minimo">
-  <label class="sr-only" for="fPMax">Precio maximo</label>
-  <input class="fi" id="fPMax" type="number" placeholder="Precio máx" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio maximo">
+  <label class="sr-only" for="fPRange">Rango de precio</label>
+  <select class="fi" id="fPRange" onchange="applyPriceRange()" aria-label="Rango de precio">
+    <option value="">Precio</option>
+    <option value="0-150000">Hasta $150,000</option>
+    <option value="150000-250000">$150,000 a $250,000</option>
+    <option value="250000-400000">$250,000 a $400,000</option>
+    <option value="400000-600000">$400,000 a $600,000</option>
+    <option value="600000-">Mas de $600,000</option>
+    <option value="custom">Otro rango...</option>
+  </select>
+  <span id="fPCustom" style="display:none">
+    <label class="sr-only" for="fPMin">Precio minimo</label>
+    <input class="fi" id="fPMin" type="text" placeholder="Precio mín" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio minimo">
+    <label class="sr-only" for="fPMax">Precio maximo</label>
+    <input class="fi" id="fPMax" type="text" placeholder="Precio máx" onchange="applyFilters()" autocomplete="off" inputmode="numeric" aria-label="Precio maximo">
+  </span>
   <label class="sr-only" for="fYear">Ano desde</label>
   <select class="fi" id="fYear" onchange="applyFilters()" autocomplete="off" aria-label="Ano desde">
     <option value="">Año desde</option>
