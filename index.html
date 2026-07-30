@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <title>Tixuz Autos · Compra y vende autos usados en México</title>
 <meta name="description" content="Marketplace de autos usados en México. Publica con IA, contacto por WhatsApp, paga con tarjeta.">
 <!-- Open Graph (WhatsApp, Facebook, LinkedIn) -->
@@ -36,7 +39,7 @@
 <link rel="alternate" type="text/html" href="https://tixuzautos.com/youtube/temas" title="Temas automotrices Tixuz en YouTube">
 <link rel="alternate" type="application/xml" href="https://tixuzautos.com/sitemap.xml" title="Sitemap">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://tixuzautos.com/#organization","name":"Tixuz Autos","url":"https://tixuzautos.com/","logo":"https://tixuzautos.com/assets/og-cover.jpg","sameAs":["https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg","https://www.youtube.com/c/Tixuz"],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"soporte@tixuzautos.com","availableLanguage":["es-MX","es"]}},{"@type":"WebSite","@id":"https://tixuzautos.com/#website","name":"Tixuz Autos","url":"https://tixuzautos.com/","inLanguage":"es-MX","publisher":{"@id":"https://tixuzautos.com/#organization"}},{"@type":"AutomotiveBusiness","@id":"https://tixuzautos.com/#marketplace","name":"Tixuz Autos","url":"https://tixuzautos.com/","image":"https://tixuzautos.com/assets/og-cover.jpg","sameAs":["https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg","https://www.youtube.com/c/Tixuz"],"areaServed":{"@type":"Country","name":"Mexico"},"description":"Marketplace mexicano de autos usados con inventario verificado, publicacion asistida por IA y contacto por WhatsApp."}]}
+{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://tixuzautos.com/#organization","name":"Tixuz Autos","url":"https://tixuzautos.com/","logo":"https://tixuzautos.com/assets/logo-tixuz.png","sameAs":["https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg","https://www.youtube.com/c/Tixuz"],"contactPoint":{"@type":"ContactPoint","contactType":"customer support","email":"soporte@tixuzautos.com","availableLanguage":["es-MX","es"]}},{"@type":"WebSite","@id":"https://tixuzautos.com/#website","name":"Tixuz Autos","url":"https://tixuzautos.com/","inLanguage":"es-MX","publisher":{"@id":"https://tixuzautos.com/#organization"}},{"@type":"AutomotiveBusiness","@id":"https://tixuzautos.com/#marketplace","name":"Tixuz Autos","url":"https://tixuzautos.com/","image":"https://tixuzautos.com/assets/og-cover.jpg","sameAs":["https://www.youtube.com/channel/UCx-BX1_MDzK1v3qRvsHBOTg","https://www.youtube.com/c/Tixuz"],"areaServed":{"@type":"Country","name":"Mexico"},"description":"Marketplace mexicano de autos usados con inventario verificado, publicacion asistida por IA y contacto por WhatsApp."}]}
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -68,6 +71,7 @@ header{
   display:flex;align-items:center;gap:10px;
 }
 .logo{display:flex;align-items:center;gap:8px;font-size:1.05rem;font-weight:800;white-space:nowrap}
+.logo-img{height:32px;width:auto;display:block;flex-shrink:0}
 .logo-icon{width:30px;height:30px;background:linear-gradient(135deg,var(--accent),var(--purple));border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0}
 .logo-txt{line-height:1}
 .logo-sub{font-size:.55rem;font-weight:500;color:var(--text3);letter-spacing:2px;text-transform:uppercase}
@@ -438,6 +442,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
   header{height:auto;min-height:56px;padding:8px 10px;gap:8px;align-items:center;flex-wrap:wrap}
   .logo{flex:1 1 auto;min-width:150px;font-size:1rem}
   .logo-icon{width:28px;height:28px}
+.logo-img{height:28px}
   .logo-sub{font-size:.5rem;letter-spacing:1.5px}
   .menu-toggle{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
   .hbtns{width:100%;margin-left:0;display:none;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
@@ -538,11 +543,8 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:32px 20p
 
 <header>
   <div class="logo">
-    <div class="logo-icon">🚗</div>
-    <div class="logo-txt">
-      Tixuz<span style="color:var(--accent)">.Autos</span>
-      <span class="logo-sub">Marketplace</span>
-    </div>
+    <a href="/" aria-label="TixuzAutos.com - Inicio"><img class="logo-img" src="/assets/logo-tixuz-dark.png" alt="TixuzAutos.com"></a>
+    <span class="logo-sub">Marketplace</span>
   </div>
   <button class="menu-toggle" onclick="toggleMobileMenu()" aria-label="Abrir menú" title="Menú">☰</button>
   <div class="hbtns">

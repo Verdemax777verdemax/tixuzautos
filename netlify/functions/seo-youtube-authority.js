@@ -118,7 +118,7 @@ exports.handler = async function () {
 <body>
   <main class="wrap">
     <nav class="top">
-      <a class="brand" href="${SITE_URL}/">Tixuz Autos</a>
+      <a class="brand" href="${SITE_URL}/"><img src="${SITE_URL}/assets/logo-tixuz-dark.png" alt="TixuzAutos.com" style="height:22px;width:auto;display:block"></a>
       <div class="nav">
         <a href="${html(SITE_URL + YOUTUBE_TOPICS_INDEX_PATH)}">Temas</a>
         <a href="${html(SITE_URL + YOUTUBE_TRANSCRIPTS_INDEX_PATH)}">Transcripciones</a>

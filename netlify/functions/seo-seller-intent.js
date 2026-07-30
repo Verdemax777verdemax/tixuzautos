@@ -212,7 +212,7 @@ function pageHtml(page, liveExamples = []) {
 <body>
   <main class="wrap">
     <div class="top">
-      <a class="brand" href="${SITE_URL}/">Tixuz Autos</a>
+      <a class="brand" href="${SITE_URL}/"><img src="${SITE_URL}/assets/logo-tixuz-dark.png" alt="TixuzAutos.com" style="height:22px;width:auto;display:block"></a>
       <a class="btn alt" href="${SELLER_GUIDE_URL}">Guia nacional</a>
     </div>
     <section class="hero">

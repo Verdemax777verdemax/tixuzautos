@@ -103,7 +103,7 @@ function pageHtml(page) {
 </head>
 <body>
   <main class="wrap">
-    <nav class="top"><a class="brand" href="${SITE_URL}/">Tixuz Autos</a><a href="${SELLER_GUIDE_URL}">Publicar auto</a></nav>
+    <nav class="top"><a class="brand" href="${SITE_URL}/"><img src="${SITE_URL}/assets/logo-tixuz-dark.png" alt="TixuzAutos.com" style="height:22px;width:auto;display:block"></a><a href="${SELLER_GUIDE_URL}">Publicar auto</a></nav>
     <article>
       <p class="eyebrow">Recursos para vendedores</p>
       <h1>${html(page.title)}</h1>

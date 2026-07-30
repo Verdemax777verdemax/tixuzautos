@@ -80,7 +80,7 @@ function page() {
 </head>
 <body>
   <main class="wrap">
-    <nav class="top"><a class="brand" href="${SITE_URL}/">Tixuz Autos</a><a href="${YOUTUBE_CHANNEL_URL}" rel="me noopener">YouTube oficial</a></nav>
+    <nav class="top"><a class="brand" href="${SITE_URL}/"><img src="${SITE_URL}/assets/logo-tixuz-dark.png" alt="TixuzAutos.com" style="height:22px;width:auto;display:block"></a><a href="${YOUTUBE_CHANNEL_URL}" rel="me noopener">YouTube oficial</a></nav>
     <section class="hero">
       <div>
         <p class="eyebrow">Marketplace mexicano conectado con Tixuz</p>

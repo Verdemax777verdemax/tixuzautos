@@ -80,7 +80,7 @@ function page(listing) {
 <body>
   <main class="wrap">
     <div class="top">
-      <a class="brand" href="${SITE_URL}/">Tixuz Autos</a>
+      <a class="brand" href="${SITE_URL}/"><img src="${SITE_URL}/assets/logo-tixuz-dark.png" alt="TixuzAutos.com" style="height:22px;width:auto;display:block"></a>
       <a class="btn ghost" href="${SITE_URL}/">Ver mas autos</a>
     </div>
     <nav class="crumbs" aria-label="Ruta de navegacion">
