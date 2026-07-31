@@ -16,6 +16,10 @@ function queryTokens(q) {
   return norm(q).split(/\s+/).filter(t => t.length >= 2 && !stop.has(t));
 }
 
+function searchTokens(q) {
+  return String(q || '').split(/\s+/).filter(Boolean);
+}
+
 function ownToResult(row) {
   return {
     type: 'marketplace',
@@ -83,7 +87,7 @@ function structuredFilters(params = {}) {
   };
 }
 
-function buildAggregatedPath(filters, limit, now = new Date()) {
+function buildAggregatedPath(filters, limit, now = new Date(), q = '') {
   const query = [
     'active=eq.true',
     `expires_at=gt.${encodeURIComponent(now.toISOString())}`,
@@ -91,6 +95,15 @@ function buildAggregatedPath(filters, limit, now = new Date()) {
   if (filters.bodyType) query.push(`vehicle_body_type=eq.${encodeURIComponent(filters.bodyType)}`);
   if (filters.priceMin) query.push(`price_amount=gte.${filters.priceMin}`);
   if (filters.priceMax) query.push(`price_amount=lte.${filters.priceMax}`);
+
+  // Búsqueda por texto EN LA BASE, no en memoria sobre una ventana truncada.
+  for (const token of searchTokens(q)) {
+    const limpio = token.replace(/[^a-z0-9ñáéíóú]/gi, '');
+    if (limpio.length < 2) continue;
+    const patron = encodeURIComponent(`*${limpio}*`);
+    query.push(`or=(title.ilike.${patron},vehicle_brand.ilike.${patron},vehicle_model.ilike.${patron},city.ilike.${patron},state.ilike.${patron},source.ilike.${patron})`);
+  }
+
   const select = [
     'id', 'source', 'source_name', 'source_url', 'title', 'price', 'price_amount',
     'city', 'state', 'image_url', 'main_image_url', 'expires_at',
@@ -100,6 +113,7 @@ function buildAggregatedPath(filters, limit, now = new Date()) {
     'precio_rango_min', 'precio_rango_max', 'precio_metodo',
   ].join(',');
   query.push(`select=${select}`);
+  query.push('order=captured_at.desc.nullslast');
   query.push(`limit=${Math.min(Math.max(limit * 3, 300), 1000)}`);
   return `aggregated_listings?${query.join('&')}`;
 }
@@ -172,8 +186,12 @@ exports.handler = async (event = {}) => {
     .slice(0, Math.min(12, limit))
     .map(ownToResult);
 
-  const aggRes = await sb(buildAggregatedPath(filters, limit));
-  const allAgg = aggRes.ok && Array.isArray(aggRes.data) ? aggRes.data : [];
+  const aggRes = await sb(buildAggregatedPath(filters, limit, new Date(), q));
+  let allAgg = (aggRes.ok && Array.isArray(aggRes.data)) ? aggRes.data : [];
+  if (q && allAgg.length === 0) {
+    const respaldo = await sb(buildAggregatedPath(filters, 1000, new Date(), ''));
+    allAgg = (respaldo.ok && Array.isArray(respaldo.data)) ? respaldo.data : [];
+  }
   const matchedAgg = allAgg.filter(row => matches(`${row.title} ${row.source} ${row.city} ${row.state}`, q));
   const diversifyWindow = Math.max(0, 12 - own.length);
   const aggregated = diversifyBySource(matchedAgg, 3, diversifyWindow)
