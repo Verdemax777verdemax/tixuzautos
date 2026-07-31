@@ -202,7 +202,23 @@ exports.handler = async (event = {}) => {
     .slice(0, Math.min(12, limit))
     .map(ownToResult);
 
-  const aggRes = await sb(buildAggregatedPath(filters, limit, new Date(), q));
+  let aggRes;
+  if (q && searchTokens(q).length > 0) {
+    // Con búsqueda: igual que en KIMI-04 (or= ilike por token en la base).
+    aggRes = await sb(buildAggregatedPath(filters, limit, new Date(), q));
+  } else {
+    // Sin búsqueda: muestra ya repartida por fuente desde la base,
+    // para que una carga masiva de un portal no coppe la ventana.
+    aggRes = await sb('rpc/tixuz_agregados_variados', {
+      method: 'POST',
+      body: JSON.stringify({
+        p_limit: Math.min(Math.max(limit * 3, 300), 1000),
+        p_body_type: filters.bodyType || null,
+        p_price_min: filters.priceMin || null,
+        p_price_max: filters.priceMax || null,
+      }),
+    });
+  }
   let allAgg = (aggRes.ok && Array.isArray(aggRes.data)) ? aggRes.data : [];
   if (q && allAgg.length === 0) {
     const respaldo = await sb(buildAggregatedPath(filters, 1000, new Date(), ''));
