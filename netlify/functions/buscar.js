@@ -140,7 +140,7 @@ function scoreSuggestion(row, tokens) {
 
 // Regla de diversidad de fuentes (spec de Lalo): en los primeros `windowSize`
 // resultados agregados, máx `maxPerSource` por fuente, intercalados round-robin.
-// El resto (extras de una fuente dominante) se agrega después, no antes.
+// El resto sale en round-robin puro entre todas las fuentes hasta agotarlas.
 function diversifyBySource(rows, maxPerSource, windowSize) {
   const bySource = new Map();
   const sourceOrder = [];
@@ -149,25 +149,41 @@ function diversifyBySource(rows, maxPerSource, windowSize) {
     if (!bySource.has(src)) { bySource.set(src, []); sourceOrder.push(src); }
     bySource.get(src).push(row);
   }
-  const interleaved = [];
+  const salida = [];
   const counts = new Map(sourceOrder.map(s => [s, 0]));
+
+  // Primera vuelta: ventana estricta, máximo maxPerSource por fuente.
   let progressed = true;
-  while (progressed && interleaved.length < windowSize) {
+  while (progressed && salida.length < windowSize) {
     progressed = false;
     for (const src of sourceOrder) {
-      if (interleaved.length >= windowSize) break;
+      if (salida.length >= windowSize) break;
       if (counts.get(src) >= maxPerSource) continue;
       const bucket = bySource.get(src);
       if (bucket.length) {
-        interleaved.push(bucket.shift());
+        salida.push(bucket.shift());
         counts.set(src, counts.get(src) + 1);
         progressed = true;
       }
     }
   }
-  const leftover = [];
-  for (const src of sourceOrder) leftover.push(...bySource.get(src));
-  return [...interleaved, ...leftover];
+
+  // Resto: round-robin puro entre todas las fuentes hasta agotarlas.
+  // Antes esto era leftover.push(...) agrupado por fuente, y por eso una
+  // carga masiva de un portal se apilaba y tapaba a los demás.
+  progressed = true;
+  while (progressed) {
+    progressed = false;
+    for (const src of sourceOrder) {
+      const bucket = bySource.get(src);
+      if (bucket && bucket.length) {
+        salida.push(bucket.shift());
+        progressed = true;
+      }
+    }
+  }
+
+  return salida;
 }
 
 exports.handler = async (event = {}) => {
