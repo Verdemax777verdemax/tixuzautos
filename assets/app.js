@@ -886,7 +886,7 @@ function renderGrid(list,opts={}){
     const sourceLabel=(c.external?c.source:'Tixuz')||'AUTO';
     const sourceInitials=sourceLabel.split(/\s+/).filter(Boolean).slice(0,2).map(x=>x[0]).join('').toUpperCase()||'AUTO';
     const img=c.images?.[0]?`<img src="${escAttr(c.images[0])}" alt="${escAttr(c.make)} ${escAttr(c.model)}" loading="${loading}" decoding="async"${priority} onerror="handleListingImageError(this)"><div class="cimg-ph source-ph" style="display:none"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`:`<div class="cimg-ph source-ph"><strong>Imagen de referencia</strong><span>${escHTML(sourceLabel)}</span></div>`;
-    const badge=c.plan==='pro'?'<span class="cbadge bp">PRO Lote</span>':c.featured?'<span class="cbadge bf">Tixuz Destacado</span>':'';
+    const badge=c.plan==='pro'?'<span class="cbadge bp">PRO Lote</span>':c.featured?'<span class="cbadge bf">⭐ DESTACADO</span>':'';
     const sourceBadge=c.external
       ? `<span class="cbadge bsource">Fuente: ${escHTML(c.source||'externa')} ↗</span>`
       : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">Tixuz · Directo</span>';
@@ -997,7 +997,7 @@ function openDetail(car){
   const gal=imgs.length?`<div class="dgal">${imgs.map(u=>`<img src="${escAttr(u)}" alt="" onerror="handleListingImageError(this)">`).join('')}</div>`:`<div style="height:110px;background:var(--bg3);border-radius:8px;display:flex;align-items:center;justify-content:center;color:var(--text3);font-weight:700;margin-bottom:12px">Imagen de referencia</div>`;
   const p=Number(car.price||0).toLocaleString('es-MX');
   const km=Number(car.mileage)>0?`${Number(car.mileage).toLocaleString('es-MX')} km`:'No especificado';
-  const b=car.plan==='pro'?'<span class="cbadge bp" style="position:static;display:inline-block">PRO Lote</span>':car.featured?'<span class="cbadge bf" style="position:static;display:inline-block">Tixuz Destacado</span>':'';
+  const b=car.plan==='pro'?'<span class="cbadge bp" style="position:static;display:inline-block">PRO Lote</span>':car.featured?'<span class="cbadge bf" style="position:static;display:inline-block">⭐ DESTACADO</span>':'';
   const waTarget=safeWaTarget(car.id);
   const displaySellerName=car.seller_name||'—';
   const displaySellerType=car.seller_type||'—';
