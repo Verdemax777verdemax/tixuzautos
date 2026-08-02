@@ -889,7 +889,7 @@ function renderGrid(list,opts={}){
     const badge=c.plan==='pro'?'<span class="cbadge bp">PRO Lote</span>':c.featured?'<span class="cbadge bf">⭐ DESTACADO</span>':'';
     const sourceBadge=c.external
       ? `<span class="cbadge bsource">Fuente: ${escHTML(c.source||'externa')} ↗</span>`
-      : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">Tixuz · Directo</span>';
+      : '<span class="cbadge btixuz" title="Publicado en Tixuz — directo con el vendedor">TIXUZ</span>';
     const origin=c.external
       ? `<div class="listing-origin aggregated">Fuente: <strong>${escHTML(c.source||'Portal externo')} ↗</strong></div>`
       : '<div class="listing-origin direct">✓ Tixuz Directo · WhatsApp sin comisión</div>';
